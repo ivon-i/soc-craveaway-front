@@ -1,6 +1,6 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
+import Head from 'next/head';
+import Navbar from '../comps/navbar';
+import Searchbar from '../comps/searchbar';
 
 export default function Home() {
   return (
@@ -10,9 +10,9 @@ export default function Home() {
       </Head>
 
       <main>
-        <h1>Yes.</h1>
+        <Navbar></Navbar>
+        <Searchbar />
       </main>
-
     </div>
-  )
+  );
 }

@@ -1,6 +1,6 @@
 import Head from 'next/head';
-import Navbar from '../comps/navbar';
-import Searchbar from '../comps/searchbar';
+import Navbar from '../components/navbar';
+import Searchbar from '../components/searchbar';
 
 export default function Home() {
   return (
@@ -10,7 +10,6 @@ export default function Home() {
       </Head>
 
       <main>
-        <Navbar></Navbar>
         <Searchbar />
       </main>
     </div>

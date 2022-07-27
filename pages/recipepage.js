@@ -1,4 +1,4 @@
-import RecipeReviewCard from "../components/recipecard";
+import RecipeReviewCard from "../components/Recipecard";
 
 const RecipePage = () => {
   return (

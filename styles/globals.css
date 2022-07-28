@@ -24,13 +24,15 @@ a {
     background: white;
   }
 }
-/* 
-#mainBox {
-  max-width: 390px;
-  width: 100%;
-  background-color: blue;
+
+#rating {
+  display: flex;
+  align-items: center;
+  line-height: 0;
+
 }
 
-#stack {
-  overflow-x: auto;
-} */
+span {
+
+}
+

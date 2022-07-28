@@ -4,6 +4,7 @@ import Navbar from '../components/navbar';
 import Searchbar from '../components/searchbar';
 import Card from "../components/recCard";
 import {Box} from "@mui/material"
+import data from "../db/recipeData.js"
 
 export default function Home() {
   return (
@@ -16,7 +17,7 @@ export default function Home() {
         <Navbar></Navbar>
         <Searchbar />
         <Banners />
-        <Card/>
+        <Card data={data}/>
       </main>
     </Box>
   );

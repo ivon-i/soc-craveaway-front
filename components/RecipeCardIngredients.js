@@ -7,7 +7,8 @@ export default function RecipeCardIngredients() {
     return (
       <>
         <Typography>Ingredients</Typography>
-        <Stack direction="row" spacing={1}>
+        <Stack direction="column" spacing={1}
+        sx={{ maxWidth: 345, alignItems: 'center', display: "flex", justifyItems: "flex-start" }}>
           <Chip label="Chicken 500g" />
           <Chip label="Broccoli 1000g" />
           <Chip label="Rice 5000g" />

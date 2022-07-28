@@ -12,10 +12,13 @@ export default function RecipeCardText() {
         <Box
       sx={{
         width: 300,
-        height: 300,
-        backgroundColor: 'primary.dark',
+         height: 300,
+          border: 1,
+          borderRadius: 10,
+          borderColor: "#D3D3D3",
+        backgroundColor: '#ffffff',
         '&:hover': {
-          backgroundColor: 'primary.main',
+          backgroundColor: '#D3D3D3',
           opacity: [0.9, 0.8, 0.7],
         },
       }}
@@ -24,10 +27,13 @@ export default function RecipeCardText() {
         <Box
       sx={{
         width: 300,
-        height: 300,
-        backgroundColor: 'primary.dark',
+          height: 300,
+          border: 1,
+          borderRadius: 10,
+          borderColor: "#D3D3D3",
+        backgroundColor: '#ffffff',
         '&:hover': {
-          backgroundColor: 'primary.main',
+          backgroundColor: '#D3D3D3',
           opacity: [0.9, 0.8, 0.7],
         },
         }}

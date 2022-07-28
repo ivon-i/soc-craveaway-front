@@ -10,6 +10,7 @@ import StarIcon from '@mui/icons-material/Star';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack'; 
+import Box from '@mui/material/Box';
 
 export default function RecipeCard() {
   return (
@@ -18,20 +19,47 @@ export default function RecipeCard() {
         {' '}
         {/*to be aligned in the centre/center*/}
         <CardActionArea>
-          <CardMedia
-            component="img"
-            height="140"
-            image="/static/images/cards/contemplative-reptile.jpg"
-            alt="green iguana"
+          <CardMedia sx={{
+            component:"img",
+            height:"140px",
+            image:"/static/images/cards/contemplative-reptile.jpg",
+            alt:"green iguana",
+            position:"relative",
+            display: "flex",
+            justifyContent: "flex-end"
+          }}
           />
-          <FavoriteBorderIcon />
+          <FavoriteBorderIcon   sx={{
+            color: 'orange',
+            fontSize: "30px",
+            position: 'absolute',
+            display: "flex",
+            justifyContent: "flex-end",
+            bottom: "25%",
+            right: "10%",
+          }} />
+
           <Stack direction="row" spacing={1}>
-            <Chip label="Organic" />
+            <Chip label="Organic" sx={{
+            color: 'orange',
+            fontSize: "12px",
+            position: 'absolute',
+            display: "flex",
+            justifyContent: "flex-end",
+            top: "5%",
+            right: "10%",
+          }}  />
           </Stack>
           <CardContent>
+            <Box sx={{
+              justifyContent: "flex-start",
+              display: "left",
+            }}>
             <StarIcon />
             <Typography>5.0</Typography>
             <Typography>(55)</Typography>
+            </Box>
+            
             <AccessTimeIcon />
             <Typography>Hi</Typography>
             <Typography>Servings: 69</Typography>

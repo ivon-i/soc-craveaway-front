@@ -1,6 +1,7 @@
 const data = [
   {
     title: "Broccoli & Chicken",
+    id: 1,
     image:
       "https://images.pexels.com/photos/262973/pexels-photo-262973.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
     nutritionCatergory: "Orangic",
@@ -17,6 +18,7 @@ const data = [
   },
   {
     title: "Salmon Salad",
+    id: 2,
     image:
       "https://images.pexels.com/photos/262973/pexels-photo-262973.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
     nutritionCatergory: "Orangic",

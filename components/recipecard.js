@@ -9,7 +9,7 @@ import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import StarIcon from '@mui/icons-material/Star';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import Chip from '@mui/material/Chip';
-import Stack from '@mui/material/Stack';
+import Stack from '@mui/material/Stack'; 
 
 export default function RecipeCard() {
   return (

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Paper, Stack, List, Button } from '@mui/material';
+import { Paper, Stack, Box } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -32,18 +32,22 @@ export default function Banners() {
         <Item>Halal</Item>
         <Item>Halal</Item>
       </Stack>
-      {/* <Paper style={{ maxWidth: 300, overflow: 'auto' }} >
-   
-        <Item>Item 1</Item>
-        <Item>Item 2</Item>
-        <Item>Item 3</Item>
-        <Item>Item 1</Item>
-        <Item>Item 2</Item>
-        <Item>Item 3</Item>
-        <Item>Item 1</Item>
-        <Item>Item 2</Item>
-        <Item>Item 3</Item>
-      </Paper> */}
+      <Box
+        sx={{
+          borderStyle: 'solid',
+          borderRadius: 3,
+          mt: '20px',
+          mr: '5px',
+          ml: '5px',
+          p: '10px',
+          justifyContent: 'center',
+          display: 'flex',
+          alignItems: 'center',
+          height: '112px',
+        }}
+      >
+        <p>Recipes that are good for you</p>
+      </Box>
     </div>
   );
 }

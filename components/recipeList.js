@@ -2,7 +2,7 @@ import { Stack } from '@mui/material';
 import RecCard from './recCard';
 import data from '../db/recipeData';
 
-export const RecipeList = () => {
+export default function RecipeList() {
   return (
     <div>
       <Stack direction="row" overflow="auto">
@@ -12,4 +12,4 @@ export const RecipeList = () => {
       </Stack>
     </div>
   );
-};
+}

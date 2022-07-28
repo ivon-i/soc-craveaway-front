@@ -2,10 +2,10 @@ import Head from 'next/head';
 import Banners from '../components/banners';
 import Navbar from '../components/navbar';
 import Searchbar from '../components/searchbar';
-import Card from '../components/recCard';
+import Card from '../components/recCard.js';
 import { Box } from '@mui/material';
 import data from '../db/recipeData.js';
-import { RecipeList } from '../components/recipeList';
+import Recipelist from '../components/recipeList.js';
 
 export default function Home() {
   return (
@@ -18,8 +18,7 @@ export default function Home() {
         <Navbar></Navbar>
         <Searchbar />
         <Banners />
-
-        <RecipeList />
+        <Recipelist />
       </main>
     </Box>
   );

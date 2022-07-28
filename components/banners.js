@@ -14,7 +14,7 @@ const Item = styled(Paper)(({ theme }) => ({
 export default function Banners() {
   return (
     <div>
-      <Stack
+      <Stack id="stack"
         direction='row'
               spacing={{ xs: 1, sm: 2, md: 4 }}
               mt='20px'
@@ -22,7 +22,14 @@ export default function Banners() {
         <Item>Item 1</Item>
         <Item>Item 2</Item>
         <Item>Item 3</Item>
+        <Item>Item 1</Item>
+        <Item>Item 2</Item>
+        <Item>Item 3</Item>
+        <Item>Item 1</Item>
+        <Item>Item 2</Item>
+        <Item>Item 3</Item>
       </Stack>
+
     </div>
   );
 }

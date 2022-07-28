@@ -23,7 +23,7 @@ export default function Searchbar() {
     <>
       <Box
         mt="50px"
-        ml="5px"
+        // ml="5px"
         sx={{
           border: 'solid',
           borderWidth: '1.5px',

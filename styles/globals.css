@@ -24,3 +24,13 @@ a {
     background: white;
   }
 }
+
+#mainBox {
+  max-width: 390px;
+  width: 100%;
+  background-color: blue;
+}
+
+#stack {
+  overflow-x: auto;
+}

@@ -16,7 +16,7 @@ import AccessTimeIcon from '@mui/icons-material/AccessTime';
 
 export default function RecCard({ data }) {
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 345, m: 5 }}>
       <CardActionArea>
         <CardMedia component="img" height="140" image={data[0].image} alt="" />
         <CardContent>

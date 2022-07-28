@@ -1,5 +1,5 @@
 import { Typography, Stack} from "@mui/material"
-import {HiMenu }from 'react-icons/hi'
+import { HiMenu } from 'react-icons/hi'
 
 const Navbar = () => {
   return (

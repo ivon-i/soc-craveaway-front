@@ -10,47 +10,75 @@ import {
   Stack,
   Chip,
   Box,
+  Button,
 } from '@mui/material';
 import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
 import GradeIcon from '@mui/icons-material/Grade';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import { BsFilterCircle } from 'react-icons/bs';
+import AspectRatio from '@mui/joy/AspectRatio';
 
 export default function RecCard({ data }) {
   return (
-    <Card sx={{ maxWidth: 185, m: 1, height: 215 }}>
-      <CardActionArea id="card-container">
-        <CardMedia component="img" height="107.5" image={data.image} alt="" />
-        <CardActions
-          id="heart-icon-area"
-          onClick={() => console.log('Heart icon clicked')}
-        >
-          <IconButton variant="plain" id="heart-icon">
-            <FavoriteBorder />
-          </IconButton>
-        </CardActions>
-        <CardContent>
-          <Typography gutterBottom fontSize="14px" component="div">
-            {data.title}
-          </Typography>
-
-          <Stack spacing={0} alignItems="flex-start">
-            <Chip
-              label={data.rating}
-              icon={<GradeIcon />}
-              variant="outlined"
-              size="small"
-              sx={{ mt: 2, border: 'none' }}
+    <Box
+      sx={{
+        display: 'flex',
+        gap: 1,
+        py: 1,
+        overflow: 'auto',
+        width: 500,
+        scrollSnapType: 'x mandatory',
+        '& > *': {
+          scrollSnapAlign: 'center',
+        },
+        '::-webkit-scrollbar': { display: 'none' },
+      }}
+    >
+      {/* <Stack direction="row" sx={{ overflow: 'auto', maxWidth: 700 }} mt="40px"> */}
+      {data.map((item) => (
+        <Card sx={{ maxWidth: 345 }}>
+          <AspectRatio
+            ratio="1"
+            sx={{ minWidth: 60, borderRadius: 'sm', overflow: 'auto' }}
+          >
+            <CardMedia
+              component="img"
+              height="107.5"
+              image={item.image}
+              alt=""
             />
-            <Chip
-              label={data.timeToCreate}
-              icon={<AccessTimeIcon />}
-              variant="outlined"
-              size="small"
-              sx={{ mt: 0, border: 'none' }}
-            />
-          </Stack>
-        </CardContent>
-      </CardActionArea>
-    </Card>
+            <IconButton
+              variant="plain"
+              id="heart-icon"
+              onClick={() => console.log('milfs')}
+            >
+              <FavoriteBorder />
+            </IconButton>
+            <CardContent>
+              <Typography gutterBottom fontSize="14px" component="div">
+                {item.title}
+              </Typography>
+              <Stack spacing={0} alignItems="flex-start">
+                <Chip
+                  label={item.rating}
+                  icon={<GradeIcon />}
+                  variant="outlined"
+                  size="small"
+                  sx={{ mt: 2, border: 'none' }}
+                />
+                <Chip
+                  label={item.timeToCreate}
+                  icon={<AccessTimeIcon />}
+                  variant="outlined"
+                  size="small"
+                  sx={{ mt: 0, border: 'none' }}
+                />
+              </Stack>
+            </CardContent>
+          </AspectRatio>
+        </Card>
+      ))}
+      {/* </Stack> */}
+    </Box>
   );
 }

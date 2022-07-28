@@ -16,39 +16,50 @@ import AccessTimeIcon from '@mui/icons-material/AccessTime';
 
 export default function RecCard({ data }) {
   return (
-    <Card sx={{ maxWidth: 345, m: 5 }}>
-      <CardActionArea>
-        <CardMedia component="img" height="140" image={data[0].image} alt="" />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
-            {data[0].title}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {data[0].description}
-          </Typography>
-          <Stack spacing={2} alignItems="flex-start">
-            <Chip
-              label={data[0].rating}
-              icon={<GradeIcon />}
-              variant="outlined"
-              size="small"
-              sx={{ mt: 2, border: 'none' }}
+    <div>
+      <Card sx={{ maxWidth: 185, m: 1, height: 215 }}>
+        <CardActionArea id="card-container">
+          <div className="imageandcard-container">
+            <CardMedia
+              component="img"
+              height="107.5"
+              image={data.image}
+              alt=""
             />
-            <Chip
-              label={data[0].timeToCreate}
-              icon={<AccessTimeIcon />}
-              variant="outlined"
-              size="small"
-              sx={{ mt: 2, border: 'none' }}
-            />
-          </Stack>
-        </CardContent>
-      </CardActionArea>
-      <CardActions>
-        <IconButton variant="plain">
-          <FavoriteBorder />
-        </IconButton>
-      </CardActions>
-    </Card>
+            <CardActions
+              id="heart-icon-area"
+              onClick={() => console.log('Heart icon clicked')}
+            >
+              <IconButton variant="plain" id="heart-icon">
+                <FavoriteBorder />
+              </IconButton>
+            </CardActions>
+          </div>
+
+          <CardContent>
+            <Typography gutterBottom fontSize="14px" component="div">
+              {data.title}
+            </Typography>
+
+            <Stack spacing={0} alignItems="flex-start">
+              <Chip
+                label={data.rating}
+                icon={<GradeIcon />}
+                variant="outlined"
+                size="small"
+                sx={{ mt: 2, border: 'none' }}
+              />
+              <Chip
+                label={data.timeToCreate}
+                icon={<AccessTimeIcon />}
+                variant="outlined"
+                size="small"
+                sx={{ mt: 0, border: 'none' }}
+              />
+            </Stack>
+          </CardContent>
+        </CardActionArea>
+      </Card>
+    </div>
   );
 }

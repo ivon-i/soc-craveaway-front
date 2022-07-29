@@ -46,13 +46,30 @@ a {
   background-color: #fff;
 }
 
-.fixedButtonDiv{
- mt:"30px",
- width:"100%",
- height:"80px",
- position: 'fixed',
-  bottom: 0, 
-  left: 0, 
-  p: '24px' 
-  backgroundColor:"white"
+.fixedButtonDiv {
+  background-color: #fff;
+  width: 100%;
+  height: 80px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  padding: 24px;
+}
+.fixedButton {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 24px;
+  width: 85%;
+  color: black;
+  border: 2px solid #ffa629;
+  padding: 8px;
+  border-radius: 8px;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.fixedButton:active {
+  background-color: #ffa629;
 }

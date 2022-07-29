@@ -13,9 +13,9 @@ export default function RecipeCardIngredients() {
           spacing={1}
           sx={{
             maxWidth: 345,
-            alignItems: 'center',
             display: 'flex',
-            justifyItems: 'flex-start',
+            alignContent: 'flex-start',
+            flexWrap: 'wrap',
           }}
         >
           <Chip label="Chicken 500g" />

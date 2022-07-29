@@ -12,7 +12,7 @@ export default function RecipeCardText() {
         <Box
       sx={{
         width: 300,
-         height: 300,
+         height: 200,
           border: 1,
           borderRadius: 10,
           borderColor: "#D3D3D3",
@@ -27,7 +27,7 @@ export default function RecipeCardText() {
         <Box
       sx={{
         width: 300,
-          height: 300,
+          height: 200,
           border: 1,
           borderRadius: 10,
           borderColor: "#D3D3D3",

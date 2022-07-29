@@ -21,7 +21,7 @@ export default function RecipeCard() {
           <CardMedia sx={{
             component:"img",
             height:"140px",
-            image:"/static/images/cards/contemplative-reptile.jpg",
+            src:"https://images.unsplash.com/photo-1459411621453-7b03977f4bfc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8Y2hpY2tlbiUyMGJyb2Njb2xpfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=600&q=60",
             alt:"green iguana",
             position:"relative",
             display: "flex",
@@ -62,7 +62,7 @@ export default function RecipeCard() {
             
             <Box></Box>
             <AccessTimeIcon />
-            <Typography>Hi</Typography>
+            <Typography>20 mins</Typography>
             <Typography>Servings: 69</Typography>
             <Typography>Price per serving: £50,000.00</Typography>
           </CardContent>

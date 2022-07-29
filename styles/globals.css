@@ -84,3 +84,20 @@ a {
   background-color: #ffa629;
   color: #fff;
 }
+
+.submitRecipeButton {
+  position: relative;
+  margin-top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 24px;
+  width: 85%;
+  color: black;
+  border: 2px solid #ffa629;
+  padding: 8px;
+  border-radius: 8px;
+  background-color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  height: 40px;
+}

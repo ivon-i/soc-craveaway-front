@@ -19,6 +19,7 @@ import Box from '@mui/joy/Box';
 import AspectRatio from '@mui/joy/AspectRatio';
 import Card from '@mui/joy/Card';
 import Typography from '@mui/joy/Typography';
+import Link from 'next/link';
 
 export default function RecCard({ data }) {
   return (
@@ -44,6 +45,7 @@ export default function RecCard({ data }) {
         }}
       >
         {data.map((item) => (
+          <Link href="/recipepage">
           <Card
             sx={{
               maxWidth: 345,
@@ -93,6 +95,7 @@ export default function RecCard({ data }) {
               {/* </Box> */}
             </CardContent>
           </Card>
+          </Link>
         ))}
       </Box>
     </>

@@ -84,3 +84,79 @@ a {
   background-color: #ffa629;
   color: #fff;
 }
+
+.recipeName {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  margin-left: 24px;
+}
+
+.card-content-container {
+  /* background-color: aqua; */
+}
+
+.card-image-container {
+  position: relative;
+  height: 224px;
+  background-color: #f4ce5e;
+  margin: 0 24px;
+  border-radius: 8px;
+}
+
+.card-image {
+}
+
+.chip-mui {
+}
+
+.rating-container,
+.timeToCreate,
+.serves,
+.price {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 24px;
+}
+
+.rating-number {
+  margin-left: 8px;
+}
+
+.rating-amount,
+.serving {
+  margin: 8px;
+  opacity: 70%;
+}
+
+.timeToCreate-text,
+.serves-text,
+.price-text,
+.serving {
+  font-size: 16px;
+  margin-left: 8px;
+}
+
+.ingredients-container {
+  margin-top: 36px;
+  margin-left: 24px;
+}
+
+.ingredients-title {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+textarea {
+  width: 100%;
+  max-width: 360px;
+  margin: 0 24px;
+  background-color: transparent;
+  border: 1px solid #000;
+  border-radius: 8px;
+  height: 208px;
+  color: #000;
+  padding: 16px;
+  font-size: 16px;
+}

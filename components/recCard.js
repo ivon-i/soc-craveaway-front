@@ -46,55 +46,58 @@ export default function RecCard({ data }) {
       >
         {data.map((item) => (
           <Link href="/recipepage">
-          <Card
-            sx={{
-              maxWidth: 345,
-              gap: 2,
-              boxShadow: '0px 2px 8px 0px rgba(99, 99, 99, 0.2)',
-            }}
-            key={item.id}
-            elevation={3}
-            width="700px"
-          >
-            <AspectRatio ratio="0.75" sx={{ minWidth: 140, overflow: 'auto' }}>
-              <CardMedia
-                component="img"
-                height="107.5"
-                image={item.image}
-                alt=""
-              />
-              <IconButton
-                variant="plain"
-                id="heart-icon"
-                onClick={() => console.log('milfs')}
+            <Card
+              sx={{
+                maxWidth: 345,
+                gap: 2,
+                boxShadow: '0px 2px 8px 0px rgba(99, 99, 99, 0.2)',
+              }}
+              key={item.id}
+              elevation={3}
+              width="700px"
+            >
+              <AspectRatio
+                ratio="0.75"
+                sx={{ minWidth: 140, overflow: 'auto' }}
               >
-                <FavoriteBorder />
-              </IconButton>
-            </AspectRatio>
-            <CardContent>
-              {/* <Box sx={{ whiteSpace: 'nowrap' }}> */}
-              <Typography gutterBottom fontSize="14px" component="div">
-                {item.title}
-              </Typography>
-              <Stack spacing={0} alignItems="flex-start">
-                <Chip
-                  label={item.rating}
-                  icon={<GradeIcon />}
-                  variant="outlined"
-                  size="small"
-                  sx={{ mt: 2, border: 'none' }}
+                <CardMedia
+                  component="img"
+                  height="107.5"
+                  image={item.image}
+                  alt=""
                 />
-                <Chip
-                  label={item.timeToCreate}
-                  icon={<AccessTimeIcon />}
-                  variant="outlined"
-                  size="small"
-                  sx={{ mt: 0, border: 'none' }}
-                />
-              </Stack>
-              {/* </Box> */}
-            </CardContent>
-          </Card>
+                <IconButton
+                  variant="plain"
+                  id="heart-icon"
+                  onClick={() => console.log('milfs')}
+                >
+                  <FavoriteBorder />
+                </IconButton>
+              </AspectRatio>
+              <CardContent>
+                {/* <Box sx={{ whiteSpace: 'nowrap' }}> */}
+                <Typography gutterBottom fontSize="14px" component="div">
+                  {item.title}
+                </Typography>
+                <Stack spacing={0} alignItems="flex-start">
+                  <Chip
+                    label={item.rating}
+                    icon={<GradeIcon />}
+                    variant="outlined"
+                    size="small"
+                    sx={{ mt: 2, border: 'none' }}
+                  />
+                  <Chip
+                    label={item.timeToCreate}
+                    icon={<AccessTimeIcon />}
+                    variant="outlined"
+                    size="small"
+                    sx={{ mt: 0, border: 'none' }}
+                  />
+                </Stack>
+                {/* </Box> */}
+              </CardContent>
+            </Card>
           </Link>
         ))}
       </Box>

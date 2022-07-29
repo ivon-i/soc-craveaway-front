@@ -51,14 +51,16 @@ export default function RecipeCard() {
           </Stack>
           <CardContent>
             <Box sx={{
+              display: "flex",
               justifyContent: "flex-start",
-              display: "left",
+              alignContent: "space-around"
             }}>
             <StarIcon />
             <Typography>5.0</Typography>
             <Typography>(55)</Typography>
             </Box>
             
+            <Box></Box>
             <AccessTimeIcon />
             <Typography>Hi</Typography>
             <Typography>Servings: 69</Typography>

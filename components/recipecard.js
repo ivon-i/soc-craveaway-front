@@ -1,4 +1,5 @@
 
+
 import * as React from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -38,6 +39,7 @@ export default function RecipeCard() {
             right: "10%",
           }} />
 
+
           <Stack direction="row" spacing={1}>
             <Chip label="Organic" sx={{
             color: 'orange',
@@ -72,5 +74,7 @@ export default function RecipeCard() {
   );
 };
  
+
+
 
 

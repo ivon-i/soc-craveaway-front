@@ -6,6 +6,8 @@ const Navbar = () => {
   <Stack direction='row' spacing ={14} size = '90px'>
   <img alt = 'icon' />
   <Typography> CraveAway</Typography>
+  <a href="/api/auth/login">Login</a>
+  {/* <a href="/api/auth/logout">Logout</a> */}
   <HiMenu onClick ={()=>console.log('Hello')}/>
   </Stack>
   )

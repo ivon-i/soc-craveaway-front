@@ -159,6 +159,7 @@ textarea {
   color: #000;
   padding: 16px;
   font-size: 16px;
+}
 
 .submitRecipeButton {
   position: relative;
@@ -175,5 +176,4 @@ textarea {
   cursor: pointer;
   font-size: 16px;
   height: 40px;
-  
 }

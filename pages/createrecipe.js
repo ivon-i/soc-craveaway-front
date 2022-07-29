@@ -33,6 +33,7 @@ const createRecipe = () => {
 
   return (
     <div>
+
       <Link href="/">Home</Link>
       <Typography mt="20px">Create your recipe</Typography>
       <Stack spacing={1} sx={{ ml: '10px', mt: '24px' }}>
@@ -64,7 +65,7 @@ const createRecipe = () => {
       <Stack spacing={5} direction="row" mt="20px" ml="30px">
         <Stack direction="column">
           <Typography>Cooking Time: </Typography>
-          <Select sx={{ width: '150px' }}>
+          <Select sx={{ width: '150px',height:'50px', borderRadius: '20px'}}>
             {cookingTime.map((item) => (
               <MenuItem>{item}</MenuItem>
             ))}
@@ -72,7 +73,7 @@ const createRecipe = () => {
         </Stack>
         <Stack direction="column">
           <Typography>Serves: </Typography>
-          <Select sx={{ width: '150px' }}>
+          <Select sx={{ width: '150px', height:'50px', borderRadius: '20px' }}>
             {serves.map((item) => (
               <MenuItem>{item}</MenuItem>
             ))}
@@ -82,7 +83,7 @@ const createRecipe = () => {
       <Box sx={{ width: '100%' }}>
         <Stack direction="column" mt="20px" ml="30px">
           <Typography>Estimated price per serving: </Typography>
-          <Select sx={{ width: '150px' }}>
+          <Select sx={{ width: '150px', height:'50px',borderRadius: '20px' }}>
             {price.map((item) => (
               <MenuItem>{item}</MenuItem>
             ))}
@@ -91,7 +92,7 @@ const createRecipe = () => {
       </Box>
       <Stack direction="column" mt="20px" ml="30px">
         <Typography>Nutrition category: </Typography>
-        <Select sx={{ width: '150px' }}>
+        <Select sx={{ width: '150px', height:'50px',borderRadius: '20px' }}>
           {nutritionCat.map((item) => (
             <MenuItem>{item}</MenuItem>
           ))}
@@ -128,14 +129,18 @@ const createRecipe = () => {
         }}
       >
         {chipList.map((item) => (
-          <Chip label={item} variant="filled"></Chip>
+          <Chip label={item} variant="filled"
+            sx={{
+              color:'white',
+              backgroundColor:"#000080"
+          }}></Chip>
         ))}
       </Stack>
       <Typography ml="30px">Description</Typography>
       <TextField
         sx={{ borderRadius: '8px', width: ' 80%', ml: '30px' }}
         variant="outlined"
-        onChange={AddIngredients}
+        // onChange={AddIngredients}
         placeholder="Add Description"
         multiline
         rows={5}

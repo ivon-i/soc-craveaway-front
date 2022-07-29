@@ -18,7 +18,6 @@ export default function Home() {
         <Navbar></Navbar>
         <Searchbar />
         <Banners />
-        {/* <Recipelist /> */}
         <RecCard data={data} />
         <RecCard data={data} />
         <CreateRecipeButton text={'Create Recipe'} />

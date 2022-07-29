@@ -1,9 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: 'Inter', sans-serif;
 }
 
 a {
@@ -49,11 +50,11 @@ a {
 .fixedButtonDiv {
   background-color: #fff;
   width: 100%;
-  height: 80px;
   position: fixed;
   bottom: 0;
   left: 0;
   padding: 24px;
+  height: 90px;
 }
 .fixedButton {
   position: fixed;
@@ -68,8 +69,18 @@ a {
   border-radius: 8px;
   background-color: #fff;
   cursor: pointer;
+  font-size: 16px;
+  height: 40px;
+}
+
+.fixedButton:hover {
+  transition: 250ms ease;
+  background-color: #f4ce5e;
+  border: 2px solid #f4ce5e;
 }
 
 .fixedButton:active {
+  transition: 250ms ease;
   background-color: #ffa629;
+  color: #fff;
 }

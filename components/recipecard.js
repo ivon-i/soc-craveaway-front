@@ -16,7 +16,6 @@ export default function RecipeCard() {
   return (
     <>
       <Card sx={{ maxWidth: 345, alignItems: 'center' }}>
-        {' '}
         {/*to be aligned in the centre/center*/}
         <CardActionArea>
           <CardMedia sx={{

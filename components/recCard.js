@@ -34,7 +34,7 @@ export default function RecCard({ data }) {
           scrollSnapAlign: 'center',
         },
         '::-webkit-scrollbar': { display: 'none' },
-        ml: '5px',
+        ml: '6px',
         mt: '10px',
       }}
     >
@@ -42,17 +42,14 @@ export default function RecCard({ data }) {
         <Card
           sx={{
             maxWidth: 345,
-            border: 'solid',
-            borderWidth: '1px',
-            borderRadius: 10,
-            variant: 'outlined',
             gap: 2,
+            boxShadow: '0px 2px 8px 0px rgba(99, 99, 99, 0.2)',
           }}
           key={item.id}
           elevation={3}
           width="700px"
         >
-          <AspectRatio ratio="0.65" sx={{ minWidth: 100, overflow: 'auto' }}>
+          <AspectRatio ratio="0.75" sx={{ minWidth: 140, overflow: 'auto' }}>
             <CardMedia
               component="img"
               height="107.5"
@@ -68,6 +65,7 @@ export default function RecCard({ data }) {
             </IconButton>
           </AspectRatio>
           <CardContent>
+            {/* <Box sx={{ whiteSpace: 'nowrap' }}> */}
             <Typography gutterBottom fontSize="14px" component="div">
               {item.title}
             </Typography>
@@ -87,6 +85,7 @@ export default function RecCard({ data }) {
                 sx={{ mt: 0, border: 'none' }}
               />
             </Stack>
+            {/* </Box> */}
           </CardContent>
         </Card>
       ))}

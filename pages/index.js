@@ -5,6 +5,7 @@ import Searchbar from '../components/searchbar';
 import RecCard from '../components/recCard.js';
 import { Box } from '@mui/material';
 import data from '../db/recipeData.js';
+import CreateRecipeButton from '../components/createRecipeButton';
 
 export default function Home() {
   return (
@@ -19,6 +20,8 @@ export default function Home() {
         <Banners />
         {/* <Recipelist /> */}
         <RecCard data={data} />
+        <RecCard data={data} />
+        <CreateRecipeButton text={'Create Recipe'} />
       </main>
     </Box>
   );

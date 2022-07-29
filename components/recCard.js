@@ -10,6 +10,7 @@ import {
   Stack,
   Chip,
   Button,
+  Grid,
 } from '@mui/material';
 import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
 import GradeIcon from '@mui/icons-material/Grade';
@@ -33,28 +34,39 @@ export default function RecCard({ data }) {
           scrollSnapAlign: 'center',
         },
         '::-webkit-scrollbar': { display: 'none' },
+        ml: '5px',
+        mt: '10px',
       }}
     >
       {data.map((item) => (
-        <Card sx={{ maxWidth: 345 }}>
-          <AspectRatio
-            ratio="1"
-            sx={{ minWidth: 60, borderRadius: 'sm', overflow: 'auto' }}
-          >
+        <Card
+          sx={{
+            maxWidth: 345,
+            border: 'solid',
+            borderWidth: '1px',
+            borderRadius: 10,
+            variant: 'outlined',
+            gap: 2,
+          }}
+          key={item.id}
+          elevation={3}
+          width="700px"
+        >
+          <AspectRatio ratio="0.65" sx={{ minWidth: 100, overflow: 'auto' }}>
             <CardMedia
               component="img"
               height="107.5"
               image={item.image}
               alt=""
             />
+            <IconButton
+              variant="plain"
+              id="heart-icon"
+              onClick={() => console.log('milfs')}
+            >
+              <FavoriteBorder />
+            </IconButton>
           </AspectRatio>
-          <IconButton
-            variant="plain"
-            id="heart-icon"
-            onClick={() => console.log('milfs')}
-          >
-            <FavoriteBorder />
-          </IconButton>
           <CardContent>
             <Typography gutterBottom fontSize="14px" component="div">
               {item.title}

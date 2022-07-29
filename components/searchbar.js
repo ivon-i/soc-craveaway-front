@@ -1,8 +1,18 @@
-import { Box, IconButton, Paper, Divider, InputBase, MenuItem, Select } from '@mui/material';
-import { useState } from 'react'
+import {
+  Box,
+  IconButton,
+  Paper,
+  Divider,
+  InputBase,
+  MenuItem,
+  Select,
+  FormControl,
+} from '@mui/material';
+import { useState } from 'react';
 // import SearchIcon from '@mui/icons-material/Search';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { BsFilterCircle } from 'react-icons/bs';
+import FilterListIcon from '@mui/icons-material/FilterList';
 
 export default function Searchbar() {
   function handleClick(e) {
@@ -11,13 +21,13 @@ export default function Searchbar() {
   }
 
   const [anchorEl, setAnchorEl] = useState(null);
-    const open = Boolean(anchorEl);
-    const handleDDClick = (event) => {
-      setAnchorEl(event.currentTarget);
-    };
-    const handleDDClose = () => {
-      setAnchorEl(null);
-    };
+  const open = Boolean(anchorEl);
+  const handleDDClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleDDClose = () => {
+    setAnchorEl(null);
+  };
 
   return (
     <>
@@ -30,6 +40,7 @@ export default function Searchbar() {
           borderRadius: 3,
           width: '97%',
         }}
+        ml="6px"
       >
         <Paper
           component="form"
@@ -59,22 +70,32 @@ export default function Searchbar() {
             sx={{ height: 28, m: 1, color: 'black' }}
             orientation="vertical"
           />
-          <Select
-            id="basic-menu"
-            anchorEl={anchorEl}
-            // open={open}
-            onClick={handleDDClick}
-            // onClose={handleDDClose}
-            MenuListProps={{
-              'aria-labelledby': 'basic-button',
+          <FormControl
+            variant="standard"
+            sx={{
+              m: 1,
+              minWidth: 30,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'flex-start',
             }}
-            IconComponent={BsFilterCircle}
-            sx={{borderStyle: 'hidden'}}
           >
-            <MenuItem onClick={handleDDClose}>Profile</MenuItem>
-            <MenuItem onClick={handleDDClose}>My account</MenuItem>
-            <MenuItem onClick={handleDDClose}>Logout</MenuItem>
-          </Select>
+            <Select
+              id="basic-menu"
+              anchorel={anchorEl}
+              // open={open}
+              onClick={handleDDClick}
+              // onClose={handleDDClose}
+              // MenuListProps={{
+              //   'aria-labelledby': 'basic-button',
+              // }}
+              IconComponent={FilterListIcon}
+            >
+              <MenuItem onClick={handleDDClose}>Profile</MenuItem>
+              <MenuItem onClick={handleDDClose}>My account</MenuItem>
+              <MenuItem onClick={handleDDClose}>Logout</MenuItem>
+            </Select>
+          </FormControl>
         </Paper>
       </Box>
     </>

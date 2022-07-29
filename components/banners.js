@@ -22,6 +22,7 @@ export default function Banners() {
         mt="20px"
         sx={{ maxWidth: 375, overflow: 'auto', height: 50 }}
         alignItems="center"
+        ml="6px"
       >
         <Item>Pizza</Item>
         <Item>Later</Item>

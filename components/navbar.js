@@ -3,9 +3,12 @@ import { HiMenu } from 'react-icons/hi'
 
 const Navbar = () => {
   return (
-  <Stack direction='row' spacing ={14} size = '90px'>
+  <Stack direction='row' spacing ={8} size = '90px'> 
+  {/* spacing was 14, changed to 8 to fit auth links */}
   <img alt = 'icon' />
-  <Typography> CraveAway</Typography>
+  <Typography>CraveAway</Typography>
+  <a href="/api/auth/login">Login</a>
+  <a href="/api/auth/logout">Logout</a>
   <HiMenu onClick ={()=>console.log('Hello')}/>
   </Stack>
   )

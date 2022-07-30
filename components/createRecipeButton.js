@@ -1,5 +1,6 @@
 import { Button, Box } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
+import Link from 'next/link';
 
 const CreateRecipeButton = ({ text }) => {
   return (
@@ -11,6 +12,7 @@ const CreateRecipeButton = ({ text }) => {
       //   backgroundColor="white"
       className="fixedButtonDiv"
     >
+    <Link href="/createrecipe" passHref>
       <button
         // variant="outlined"
         // sx={{
@@ -28,6 +30,7 @@ const CreateRecipeButton = ({ text }) => {
       >
         {text}
       </button>
+      </Link>
     </div>
   );
 };

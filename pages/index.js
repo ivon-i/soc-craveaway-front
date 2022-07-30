@@ -7,6 +7,7 @@ import { Box } from '@mui/material';
 import data from '../db/recipeData.js';
 import CreateRecipeButton from '../components/createRecipeButton';
 
+
 export default function Home() {
   return (
     <Box id="mainBox">

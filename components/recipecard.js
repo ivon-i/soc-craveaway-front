@@ -12,10 +12,9 @@ import Rating from '@mui/material/Rating';
 export default function RecipeCard() {
   // FOR RATE-THIS-RECIPE-SECTION
   const [value, setValue] = React.useState(4);
-  const [item, setItem] = React.useState("")
+  const [item, setItem] = React.useState('');
 
   function handleClick(e) {
-   
     //use li target value to add to list in profile
   }
 
@@ -53,30 +52,30 @@ export default function RecipeCard() {
         <div className="recipe-card-info-container">
           <div className="rating-container">
             <StarIcon />
-            <p className="rating-number">5.0</p>
-            <p className="rating-amount">(55)</p>
+            <Typography className="rating-number">5.0</Typography>
+            <Typography className="rating-amount">(55)</Typography>
           </div>
           <div className="timeToCreate">
             <AccessTimeIcon />
-            <p className="timeToCreate-text">20mins</p>
+            <Typography className="timeToCreate-text">20mins</Typography>
           </div>
           <div className="serves">
             <PeopleIcon />
-            <p className="serves-text">2</p>
+            <Typography className="serves-text">2</Typography>
           </div>
           <div className="price">
             <PaymentIcon />
-            <p className="price-text">£5</p>
-            <p className="serving">(Price per serving)</p>
+            <Typography className="price-text">£5</Typography>
+            <Typography className="serving">(Price per serving)</Typography>
           </div>
         </div>
 
         <div className="ingredients-container">
-          <p className="ingredients-title">Ingredients</p>
+          <Typography className="ingredients-title">Ingredients</Typography>
 
           <button>add</button>
           <ul className="ingredients-items">
-          <button>add</button>
+            <button>add</button>
             <li>2 Chicken breasts</li>
             <button>addd</button>
             <li>50g Broccoli</li>
@@ -88,24 +87,24 @@ export default function RecipeCard() {
         </div>
 
         <div className="description-container">
-          <p className="description-title">Description</p>
-          <p className="description-text">
+          <Typography className="description-title">Description</Typography>
+          <Typography className="description-text">
             This salmon salad recipe makes a main dish salad with chopped
             vegetables, flaky fish, and tangy citrus dressing. It has plenty of
             protein and healthy fats, so it’s nutritious and delicious!
-          </p>
+          </Typography>
         </div>
 
         <div className="creator-container">
-          <p className="creator-title">Creator</p>
+          <Typography className="creator-title">Creator</Typography>
           <div className="creator-content">
             <AccountCircleIcon />
-            <p className="creator-name">Raffa</p>
+            <Typography className="creator-name">Raffa</Typography>
           </div>
         </div>
 
         <div className="ratings-container">
-          <p className="ratings-title">Rate this recipe</p>
+          <Typography className="ratings-title">Rate this recipe</Typography>
           <div className="ratings-content">
             <Rating name="read-only" value={value} />
           </div>

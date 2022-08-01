@@ -8,8 +8,6 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
 import { HiMenu } from 'react-icons/hi';
 import HomeIcon from '@mui/icons-material/Home';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
@@ -17,6 +15,7 @@ import DinnerDiningIcon from '@mui/icons-material/DinnerDining';
 import { Login, Logout } from '@mui/icons-material';
 import PolicyIcon from '@mui/icons-material/Policy';
 import Link from 'next/link';
+
 
 export default function SwipeableTemporaryDrawer() {
   const [state, setState] = React.useState({
@@ -45,7 +44,8 @@ export default function SwipeableTemporaryDrawer() {
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
-      <List>
+      <List sx={{
+          background: "#FFC529", color: "white"}}>
         {[
           <Link href="/" passHref>
             Home
@@ -60,9 +60,12 @@ export default function SwipeableTemporaryDrawer() {
           <ListItem key={text} disablePadding>
             <ListItemButton>
               <ListItemIcon>
-                {index === 0 && <HomeIcon />}
-                {index === 1 && <AccountCircleIcon />}
-                {index === 2 && <DinnerDiningIcon />}
+                {index === 0 && <HomeIcon sx={{
+              color: "#FE724C", fontSize:"xx-large"}} />}
+                {index === 1 && <AccountCircleIcon sx={{
+              color: "#FE724C", fontSize:"xx-large"}}/>}
+                {index === 2 && <DinnerDiningIcon sx={{
+              color: "#FE724C", fontSize:"xx-large"}}/>}
               </ListItemIcon>
               <ListItemText primary={text} />
             </ListItemButton>
@@ -70,7 +73,8 @@ export default function SwipeableTemporaryDrawer() {
         ))}
       </List>
       <Divider />
-      <List>
+      <List sx={{
+          background: "white", color: "#FE724C"}}>
         {[
           <Link href="/api/auth/login" passHref>
             Login
@@ -83,9 +87,12 @@ export default function SwipeableTemporaryDrawer() {
           <ListItem key={text} disablePadding>
             <ListItemButton>
               <ListItemIcon>
-                {index === 0 && <Login />}
-                {index === 1 && <Logout />}
-                {index === 2 && <PolicyIcon />}
+                {index === 0 && <Login sx={{
+              color: "#FE724C", fontSize:"xx-large"}}/>}
+                {index === 1 && <Logout sx={{
+              color: "#FE724C", fontSize:"xx-large"}}/>}
+                {index === 2 && <PolicyIcon sx={{
+              color: "#FE724C", fontSize:"xx-large"}}/>}
               </ListItemIcon>
               <ListItemText primary={text} />
             </ListItemButton>
@@ -100,14 +107,14 @@ export default function SwipeableTemporaryDrawer() {
       {['right'].map((anchor) => (
         <React.Fragment key={anchor}>
           <Button onClick={toggleDrawer(anchor, true)}>
-            <HiMenu className="burger-menu" fontSize="xx-large" fontColor="#63666A"/>
+            <HiMenu className="burger-menu" fontSize="xxx-large" color="#FE724C" 
+             />
           </Button>
           <SwipeableDrawer
             anchor={anchor}
             open={state[anchor]}
             onClose={toggleDrawer(anchor, false)}
-            onOpen={toggleDrawer(anchor, true)}
-          >
+            onOpen={toggleDrawer(anchor, true)} >
             {list(anchor)}
           </SwipeableDrawer>
         </React.Fragment>

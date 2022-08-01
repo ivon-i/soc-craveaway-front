@@ -24,18 +24,19 @@ const Navbar = () => {
   return (
 
 
-    <Stack direction='row' spacing={3} width="100%" backgroundColor="#F5BE6B" justifyContent= "space-between"
+    <Stack direction='row' spacing={10} width= '110vw' backgroundColor="#F5BE6B" justifyContent="space-around"
       sx={{
-         position: 'sticky', top:"1%", width:'110%', height: '50px', padding: '6px'
+         position: 'sticky', top:"2%", padding: "6px"
     }}>
       <>
         <Image src={logo} alt='icon'
-          width="60px" height="20px" sx={{
+          width="60vw" height="60vh" sx={{
           }} />
         </>
         <>
-                <Image src={text} alt='text'
-          width="160px" height="130px" margin="10px" sx={{
+          <Image src={text} alt='text'
+          width="190vw" height="40vh"
+          sx={{
             }} />
       </>
       {/* <Typography sx={{

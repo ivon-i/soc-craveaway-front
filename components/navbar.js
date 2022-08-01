@@ -17,8 +17,7 @@ const Navbar = () => {
   };
 
   return (
-  <Stack direction='row' spacing ={8} size = '90px'> 
-  {/* spacing was 14, changed to 8 to fit auth links */}
+  <Stack direction='row' spacing ={14} size = '90px'> 
   <img alt = 'icon' />
   <Typography>CraveAway</Typography>
 
@@ -29,8 +28,9 @@ const Navbar = () => {
       aria-haspopup="true"
       aria-expanded={open ? 'true' : undefined}
       onClick={handleClick}
+      sx={{fontSize: 'xx-large'}}
     >
-      <HiMenu/>
+      <HiMenu className="burger-menu"/>
     </Button>
     <Menu
       id="basic-menu"

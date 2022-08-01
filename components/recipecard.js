@@ -6,20 +6,13 @@ import StarIcon from '@mui/icons-material/Star';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import PeopleIcon from '@mui/icons-material/People';
 import PaymentIcon from '@mui/icons-material/Payment';
-
-// import Card from '@mui/material/Card';
-// import CardContent from '@mui/material/CardContent';
-// import CardMedia from '@mui/material/CardMedia';
-// import Typography from '@mui/material/Typography';
-// import { CardActionArea } from '@mui/material';
-// import AccessTimeIcon from '@mui/icons-material/AccessTime';
-// import StarIcon from '@mui/icons-material/Star';
-// import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-// import Chip from '@mui/material/Chip';
-// import Stack from '@mui/material/Stack';
-// import Box from '@mui/material/Box';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import Rating from '@mui/material/Rating';
 
 export default function RecipeCard() {
+  // FOR RATE-THIS-RECIPE-SECTION
+  const [value, setValue] = React.useState(4);
+
   return (
     <>
       <div className="card-content-container">
@@ -50,45 +43,64 @@ export default function RecipeCard() {
             </IconButton>
           </Stack>
         </div>
-      </div>
 
-      <div className="recipe-card-info-container">
-        <div className="rating-container">
-          <StarIcon />
-          <p className="rating-number">5.0</p>
-          <p className="rating-amount">(55)</p>
+        <div className="recipe-card-info-container">
+          <div className="rating-container">
+            <StarIcon />
+            <p className="rating-number">5.0</p>
+            <p className="rating-amount">(55)</p>
+          </div>
+          <div className="timeToCreate">
+            <AccessTimeIcon />
+            <p className="timeToCreate-text">20mins</p>
+          </div>
+          <div className="serves">
+            <PeopleIcon />
+            <p className="serves-text">2</p>
+          </div>
+          <div className="price">
+            <PaymentIcon />
+            <p className="price-text">£5</p>
+            <p className="serving">(Price per serving)</p>
+          </div>
         </div>
-        <div className="timeToCreate">
-          <AccessTimeIcon />
-          <p className="timeToCreate-text">20mins</p>
+
+        <div className="ingredients-container">
+          <p className="ingredients-title">Ingredients</p>
+
+          <ul className="ingredients-items">
+            <li>2 Chicken breasts</li>
+            <li>50g Broccoli</li>
+            <li>100g Rice</li>
+            <li>Salsa</li>
+            <li>Carrots</li>
+          </ul>
         </div>
-        <div className="serves">
-          <PeopleIcon />
-          <p className="serves-text">2</p>
+
+        <div className="description-container">
+          <p className="description-title">Description</p>
+          <p className="description-text">
+            This salmon salad recipe makes a main dish salad with chopped
+            vegetables, flaky fish, and tangy citrus dressing. It has plenty of
+            protein and healthy fats, so it’s nutritious and delicious!
+          </p>
         </div>
-        <div className="price">
-          <PaymentIcon />
-          <p className="price-text">£5</p>
-          <p className="serving">(Price per serving)</p>
+
+        <div className="creator-container">
+          <p className="creator-title">Creator</p>
+          <div className="creator-content">
+            <AccountCircleIcon />
+            <p className="creator-name">Raffa</p>
+          </div>
+        </div>
+
+        <div className="ratings-container">
+          <p className="ratings-title">Rate this recipe</p>
+          <div className="ratings-content">
+            <Rating name="read-only" value={value} />
+          </div>
         </div>
       </div>
-      <div className="ingredients-container">
-        <p className="ingredients-title">Ingredients</p>
-
-        <ul className="ingredients-items">
-          <li>2 Chicken breasts</li>
-          <li>50g Broccoli</li>
-          <li>100g Rice</li>
-          <li>Salsa</li>
-          <li>Carrots</li>
-        </ul>
-      </div>
-
-      <div className="description-container">
-        <textarea rows="10" cols="40"></textarea>
-      </div>
-
-      <div className="creator-container"></div>
     </>
   );
 }

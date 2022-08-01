@@ -5,6 +5,10 @@ import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Link from "next/link";
+import Image from "next/image";
+import logo from '../extras/craveawaylogo.png'
+import { margin } from "@mui/system";
+import text from '../extras/craveawaytext.png'
 
 const Navbar = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -17,10 +21,28 @@ const Navbar = () => {
   };
 
   return (
-  <Stack direction='row' spacing ={14} size = '90px'> 
-  <img alt = 'icon' />
-  <Typography>CraveAway</Typography>
 
+
+    <Stack direction='row' spacing={3} width="100%" backgroundColor="#F5BE6B" justifyContent= "space-between"
+      sx={{
+         position: 'sticky', top:"1%", width:'110%', height: '50px', padding: '6px'
+    }}>
+      <>
+        <Image src={logo} alt='icon'
+          width="60px" height="20px" sx={{
+          }} />
+        </>
+        <>
+                <Image src={text} alt='text'
+          width="160px" height="130px" margin="10px" sx={{
+            }} />
+      </>
+      {/* <Typography sx={{
+        fontSize: "x-large",
+        justifyContent: "fixed",
+        display: "center",
+        color: "#FE724C",
+  }}>CraveAway</Typography> */}
     <div>
     <Button
       id="basic-button"
@@ -28,7 +50,7 @@ const Navbar = () => {
       aria-haspopup="true"
       aria-expanded={open ? 'true' : undefined}
       onClick={handleClick}
-      sx={{fontSize: 'xx-large', color:'black'}}
+      sx={{fontSize: 'xx-large', color:'#272D2F', ml:"50px"}}
     >
       <HiMenu className="burger-menu"/>
     </Button>

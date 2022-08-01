@@ -12,6 +12,12 @@ import Rating from '@mui/material/Rating';
 export default function RecipeCard() {
   // FOR RATE-THIS-RECIPE-SECTION
   const [value, setValue] = React.useState(4);
+  const [item, setItem] = React.useState("")
+
+  function handleClick(e) {
+   
+    //use li target value to add to list in profile
+  }
 
   return (
     <>
@@ -68,6 +74,7 @@ export default function RecipeCard() {
         <div className="ingredients-container">
           <p className="ingredients-title">Ingredients</p>
 
+          <button>add</button>
           <ul className="ingredients-items">
           <button>add</button>
             <li>2 Chicken breasts</li>

@@ -1,4 +1,6 @@
 import Link from 'next/link';
+import { nanoid } from 'nanoid';
+
 import {
   Typography,
   Stack,
@@ -10,6 +12,7 @@ import {
   Chip,
 } from '@mui/material';
 import { useState } from 'react';
+import { NavigateNextOutlined } from '@mui/icons-material';
 
 const createRecipe = () => {
   const cookingTime = ['15', '25', '35', '45', '60+'];
@@ -25,11 +28,18 @@ const createRecipe = () => {
     console.log(ingredientList);
   }
 
+
+
   function AddToChip() {
-    setChipList([...chipList, ingredientList]);
+    setChipList([...chipList, {id:nanoid(), label: ingredientList}])
     setIngredientList('');
     console.log(chipList);
   }
+
+  const handleDelete = (id) => {
+    const newList = chipList.filter((item) => item.id !== id);
+    setChipList(newList);
+  };
 
   return (
     <div>
@@ -107,7 +117,9 @@ const createRecipe = () => {
           variant="outlined"
           onChange={AddIngredients}
           placeholder="Add Ingredients"
-          value={ingredientList}
+          value={ingredientList} 
+          error={ingredientList === ""}
+          helperText={ingredientList === "" ? 'Empty field!' : ' '}
         />
         <Button
           sx={{ border: 'solid', borderWidth: '1.5px', borderRadius: 3 }}
@@ -129,11 +141,12 @@ const createRecipe = () => {
         }}
       >
         {chipList.map((item) => (
-          <Chip label={item} variant="filled"
-            sx={{
-              color:'white',
-              backgroundColor:"#000080"
-          }}></Chip>
+          <Chip
+            variant="outlined"
+            label={item.label}
+            onDelete={() => handleDelete(item.id)}
+            sx={{ borderColor: '#FCC62E', borderWidth: '1.5px' }}
+          ></Chip>
         ))}
       </Stack>
       <Typography ml="30px">Description</Typography>

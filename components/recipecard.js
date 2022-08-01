@@ -68,6 +68,7 @@ export default function RecipeCard() {
         <div className="ingredients-container">
           <p className="ingredients-title">Ingredients</p>
 
+          <button>add</button>
           <ul className="ingredients-items">
             <li>2 Chicken breasts</li>
             <li>50g Broccoli</li>

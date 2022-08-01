@@ -22,12 +22,13 @@ import Typography from '@mui/joy/Typography';
 import Link from 'next/link';
 
 export default function RecCard({ data }) {
+  function HeartFav() {
+    // POST REQUEST HERE
+    console.log('milfs');
+  }
+
   return (
     <>
-      <Typography mt="32px" ml="24px" fontWeight="600">
-        Top recipes today
-      </Typography>
-
       <Box
         sx={{
           display: 'flex',
@@ -45,35 +46,28 @@ export default function RecCard({ data }) {
         }}
       >
         {data.map((item) => (
-          <Link href="/recipepage">
-            <Card
-              sx={{
-                maxWidth: 345,
-                gap: 2,
-                boxShadow: '0px 2px 8px 0px rgba(99, 99, 99, 0.2)',
-              }}
-              key={item.id}
-              elevation={3}
-              width="700px"
-            >
-              <AspectRatio
-                ratio="0.75"
-                sx={{ minWidth: 140, overflow: 'auto' }}
-              >
-                <CardMedia
-                  component="img"
-                  height="107.5"
-                  image={item.image}
-                  alt=""
-                />
-                <IconButton
-                  variant="plain"
-                  id="heart-icon"
-                  onClick={() => console.log('milfs')}
-                >
-                  <FavoriteBorder />
-                </IconButton>
-              </AspectRatio>
+          <Card
+            sx={{
+              maxWidth: 345,
+              gap: 2,
+              boxShadow: '0px 2px 8px 0px rgba(99, 99, 99, 0.2)',
+            }}
+            key={item.id}
+            elevation={3}
+            width="700px"
+          >
+            <AspectRatio ratio="0.75" sx={{ minWidth: 140, overflow: 'auto' }}>
+              <CardMedia
+                component="img"
+                height="107.5"
+                image={item.image}
+                alt=""
+              />
+              <IconButton variant="plain" id="heart-icon" onClick={HeartFav}>
+                <FavoriteBorder />
+              </IconButton>
+            </AspectRatio>
+            <Link href="/recipe">
               <CardContent>
                 {/* <Box sx={{ whiteSpace: 'nowrap' }}> */}
                 <Typography gutterBottom fontSize="14px" component="div">
@@ -97,8 +91,8 @@ export default function RecCard({ data }) {
                 </Stack>
                 {/* </Box> */}
               </CardContent>
-            </Card>
-          </Link>
+            </Link>
+          </Card>
         ))}
       </Box>
     </>

@@ -28,7 +28,7 @@ const Navbar = () => {
       aria-haspopup="true"
       aria-expanded={open ? 'true' : undefined}
       onClick={handleClick}
-      sx={{fontSize: 'xx-large'}}
+      sx={{fontSize: 'xx-large', color:'black'}}
     >
       <HiMenu className="burger-menu"/>
     </Button>

@@ -94,13 +94,13 @@ a {
 
 .card-content-container {
   /* background-color: aqua; */
+  margin: 0 24px;
 }
 
 .card-image-container {
   position: relative;
   height: 224px;
   background-color: #f4ce5e;
-  margin: 0 24px;
   border-radius: 8px;
 }
 
@@ -117,7 +117,6 @@ a {
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin-left: 24px;
 }
 
 .rating-number {
@@ -138,12 +137,17 @@ a {
   margin-left: 8px;
 }
 
-.ingredients-container {
+.ingredients-container,
+.description-container,
+.creator-container,
+.ratings-container {
   margin-top: 36px;
-  margin-left: 24px;
 }
 
-.ingredients-title {
+.ingredients-title,
+.description-title,
+.creator-title,
+.ratings-title {
   font-size: 16px;
   font-weight: 600;
 }
@@ -176,4 +180,31 @@ textarea {
   cursor: pointer;
   font-size: 16px;
   height: 40px;
+}
+
+.description-title {
+}
+
+.description-text {
+  max-width: 326px;
+}
+
+.creator-container {
+}
+
+.creator-name {
+  margin-left: 8px;
+  /* background-color: red; */
+  margin: 0 0 0 8px;
+}
+
+.creator-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.ratings-container {
+  display: flex;
+  flex-direction: column;
 }

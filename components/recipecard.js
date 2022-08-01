@@ -9,19 +9,8 @@ import PaymentIcon from '@mui/icons-material/Payment';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import Rating from '@mui/material/Rating';
 
-// import Card from '@mui/material/Card';
-// import CardContent from '@mui/material/CardContent';
-// import CardMedia from '@mui/material/CardMedia';
-// import Typography from '@mui/material/Typography';
-// import { CardActionArea } from '@mui/material';
-// import AccessTimeIcon from '@mui/icons-material/AccessTime';
-// import StarIcon from '@mui/icons-material/Star';
-// import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-// import Chip from '@mui/material/Chip';
-// import Stack from '@mui/material/Stack';
-// import Box from '@mui/material/Box';
-
 export default function RecipeCard() {
+  // FOR RATE-THIS-RECIPE-SECTION
   const [value, setValue] = React.useState(4);
 
   return (

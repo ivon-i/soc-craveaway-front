@@ -4,6 +4,7 @@ import * as React from 'react';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
+import Link from "next/link";
 
 const Navbar = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -16,17 +17,11 @@ const Navbar = () => {
   };
 
   return (
-  // <Stack direction='row' spacing ={8} size = '90px'> 
-  // {/* spacing was 14, changed to 8 to fit auth links */}
-  // <img alt = 'icon' />
-  // <Typography>CraveAway</Typography>
-  // <a href="/api/auth/login">Login</a>
-  // <a href="/api/auth/logout">Logout</a>
+  <Stack direction='row' spacing ={8} size = '90px'> 
+  {/* spacing was 14, changed to 8 to fit auth links */}
+  <img alt = 'icon' />
+  <Typography>CraveAway</Typography>
 
-      
-  // <HiMenu onClick ={()=>console.log('Hello')}/>
-  //   </Stack>
-    
     <div>
     <Button
       id="basic-button"
@@ -46,12 +41,26 @@ const Navbar = () => {
         'aria-labelledby': 'basic-button',
       }}
     >
-      <MenuItem onClick={handleClose}>Home</MenuItem>
-      <MenuItem onClick={handleClose}>My profile</MenuItem>
-      <MenuItem onClick={handleClose} href="/pages/createrecipe">Create recipe</MenuItem>
-      <MenuItem onClick={handleClose} href="/api/auth/login">Login</MenuItem>
-    </Menu>
-  </div>
+        <Link href="/" passHref>
+          <MenuItem onClick={handleClose}>Home</MenuItem>
+        </Link>
+        <Link href="/profile" passHref>
+          <MenuItem onClick={handleClose}>My profile</MenuItem>
+          </Link>
+        <Link href="/createrecipe" passHref>
+          <MenuItem onClick={handleClose}>Create recipe</MenuItem>
+        </Link>
+        <Link href="/api/auth/login" passHref>
+          <MenuItem onClick={handleClose}>Login</MenuItem>
+        </Link>
+        <Link href="/api/auth/logout" passHref>
+          <MenuItem onClick={handleClose}>Logout</MenuItem>
+          </Link>
+        </Menu>
+        
+
+      </div>
+      </Stack>
 );
 }
 

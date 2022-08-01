@@ -1,5 +1,7 @@
-import createCache from '@emotion/cache';
+//potential hydration fix 
 
-export default function createEmotionCache() {
-	return createCache({ key: 'css', prepend: true });
-}
+// import createCache from '@emotion/cache';
+
+// export default function createEmotionCache() {
+// 	return createCache({ key: 'css', prepend: true });
+// }

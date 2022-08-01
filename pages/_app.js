@@ -1,18 +1,19 @@
-import Layout from '../components/Layout';
-import '../styles/globals.css';
+import Layout from '../components/Layout'
+import '../styles/globals.css'
 import { UserProvider } from '@auth0/nextjs-auth0';
 
 function MyApp({ Component, pageProps }) {
   return (
-    <UserProvider>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
-    </UserProvider>
-  );
+
+   <UserProvider>
+    <Layout>
+      <Component {...pageProps} />
+    </Layout>
+     </UserProvider>
+  )
 }
 
-export default MyApp;
+export default MyApp
 
 // //if using the below code, error to do with fontFamily appears
 
@@ -45,10 +46,11 @@ export default MyApp;
 // 			</Head>
 // 			<ThemeProvider theme={theme}>
 
+				
 // 				{/* CssBaseline kickstart an elegant,
 // 				consistent, and simple baseline to
 // 				build upon. */}
-
+				
 // 				<CssBaseline />
 //         <UserProvider>
 //     <Layout>
@@ -65,3 +67,4 @@ export default MyApp;
 // 	emotionCache: PropTypes.object,
 // 	pageProps: PropTypes.object.isRequired,
 // };
+

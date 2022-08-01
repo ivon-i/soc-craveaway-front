@@ -9,6 +9,7 @@ import Image from "next/image";
 import logo from '../extras/craveawaylogo.png'
 import { margin } from "@mui/system";
 import text from '../extras/craveawaytext.png'
+import SwipeableTemporaryDrawer from "./navbar drawer";
 
 const Navbar = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -43,7 +44,7 @@ const Navbar = () => {
         display: "center",
         color: "#FE724C",
   }}>CraveAway</Typography> */}
-    <div>
+    {/* <div>
     <Button
       id="basic-button"
       aria-controls={open ? 'basic-menu' : undefined}
@@ -81,8 +82,10 @@ const Navbar = () => {
         </Menu>
         
 
-      </div>
-      </Stack>
+      </div> */}
+      <SwipeableTemporaryDrawer/>
+    </Stack>
+
 );
 }
 

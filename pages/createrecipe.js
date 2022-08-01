@@ -1,4 +1,6 @@
 import Link from 'next/link';
+import { nanoid } from 'nanoid';
+
 import {
   Typography,
   Stack,
@@ -10,6 +12,7 @@ import {
   Chip,
 } from '@mui/material';
 import { useState } from 'react';
+import { NavigateNextOutlined } from '@mui/icons-material';
 
 const createRecipe = () => {
   const cookingTime = ['15', '25', '35', '45', '60+'];
@@ -19,6 +22,13 @@ const createRecipe = () => {
 
   const [ingredientList, setIngredientList] = useState('');
   const [chipList, setChipList] = useState([]);
+  const [recipeSelects, setRecipeSelects] = useState([
+    { cookingTime: '', serves: '', price: '', category: '' },
+  ]);
+
+  function handleChangeee(e) {
+    console.info(e.target.value);
+  }
 
   function AddIngredients(e) {
     setIngredientList(e.target.value);
@@ -26,14 +36,22 @@ const createRecipe = () => {
   }
 
   function AddToChip() {
-    setChipList([...chipList, ingredientList]);
-    setIngredientList('');
-    console.log(chipList);
+    if (ingredientList.length === 0) {
+      return;
+    } else {
+      setChipList([...chipList, { id: nanoid(), label: ingredientList }]);
+      setIngredientList('');
+      console.log(chipList);
+    }
   }
+
+  const handleDelete = (id) => {
+    const newList = chipList.filter((item) => item.id !== id);
+    setChipList(newList);
+  };
 
   return (
     <div>
-
       <Link href="/">Home</Link>
       <Typography mt="20px">Create your recipe</Typography>
       <Stack spacing={1} sx={{ ml: '10px', mt: '24px' }}>
@@ -41,6 +59,8 @@ const createRecipe = () => {
         <TextField
           sx={{ borderRadius: '8px', width: '95%', ml: '5px' }}
           variant="outlined"
+          required
+          label="Required"
         />
       </Stack>
       <Box
@@ -65,17 +85,27 @@ const createRecipe = () => {
       <Stack spacing={5} direction="row" mt="20px" ml="30px">
         <Stack direction="column">
           <Typography>Cooking Time: </Typography>
-          <Select sx={{ width: '150px',height:'50px', borderRadius: '20px'}}>
+          <Select
+            sx={{ width: '150px', height: '50px', borderRadius: '20px' }}
+            onChange={handleChangeee}
+            value={recipeSelects.cookingTime}
+            defaultValue=""
+          >
             {cookingTime.map((item) => (
-              <MenuItem>{item}</MenuItem>
+              <MenuItem value={item}>{item}</MenuItem>
             ))}
           </Select>
         </Stack>
         <Stack direction="column">
           <Typography>Serves: </Typography>
-          <Select sx={{ width: '150px', height:'50px', borderRadius: '20px' }}>
+          <Select
+            sx={{ width: '150px', height: '50px', borderRadius: '20px' }}
+            onChange={handleChangeee}
+            value={recipeSelects.serves}
+            defaultValue=""
+          >
             {serves.map((item) => (
-              <MenuItem>{item}</MenuItem>
+              <MenuItem value={item}>{item}</MenuItem>
             ))}
           </Select>
         </Stack>
@@ -83,18 +113,28 @@ const createRecipe = () => {
       <Box sx={{ width: '100%' }}>
         <Stack direction="column" mt="20px" ml="30px">
           <Typography>Estimated price per serving: </Typography>
-          <Select sx={{ width: '150px', height:'50px',borderRadius: '20px' }}>
+          <Select
+            sx={{ width: '150px', height: '50px', borderRadius: '20px' }}
+            onChange={handleChangeee}
+            value={recipeSelects.price}
+            defaultValue=""
+          >
             {price.map((item) => (
-              <MenuItem>{item}</MenuItem>
+              <MenuItem value={item}>{item}</MenuItem>
             ))}
           </Select>
         </Stack>
       </Box>
       <Stack direction="column" mt="20px" ml="30px">
         <Typography>Nutrition category: </Typography>
-        <Select sx={{ width: '150px', height:'50px',borderRadius: '20px' }}>
+        <Select
+          sx={{ width: '150px', height: '50px', borderRadius: '20px' }}
+          onChange={handleChangeee}
+          value={recipeSelects.category}
+          defaultValue=""
+        >
           {nutritionCat.map((item) => (
-            <MenuItem>{item}</MenuItem>
+            <MenuItem value={item}>{item}</MenuItem>
           ))}
         </Select>
       </Stack>
@@ -108,6 +148,8 @@ const createRecipe = () => {
           onChange={AddIngredients}
           placeholder="Add Ingredients"
           value={ingredientList}
+          required
+          label="Required"
         />
         <Button
           sx={{ border: 'solid', borderWidth: '1.5px', borderRadius: 3 }}
@@ -129,11 +171,13 @@ const createRecipe = () => {
         }}
       >
         {chipList.map((item) => (
-          <Chip label={item} variant="filled"
-            sx={{
-              color:'white',
-              backgroundColor:"#000080"
-          }}></Chip>
+          <Chip
+            variant="outlined"
+            label={item.label}
+            onDelete={() => handleDelete(item.id)}
+            sx={{ borderColor: '#FCC62E', borderWidth: '1.5px' }}
+            key={item.id}
+          ></Chip>
         ))}
       </Stack>
       <Typography ml="30px">Description</Typography>
@@ -144,6 +188,8 @@ const createRecipe = () => {
         placeholder="Add Description"
         multiline
         rows={5}
+        required
+        label="Required"
       />
       <button className="submitRecipeButton">Submit Recipe</button>
     </div>

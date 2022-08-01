@@ -4,6 +4,7 @@ import { UserProvider } from '@auth0/nextjs-auth0';
 
 function MyApp({ Component, pageProps }) {
   return (
+
    <UserProvider>
     <Layout>
       <Component {...pageProps} />
@@ -14,7 +15,7 @@ function MyApp({ Component, pageProps }) {
 
 export default MyApp
 
-//if using the below code, error to do with fontFamily appears
+// //if using the below code, error to do with fontFamily appears
 
 // import Layout from '../components/Layout'
 // import '../styles/globals.css'
@@ -44,6 +45,7 @@ export default MyApp
 // 					content="initial-scale=1, width=device-width" />
 // 			</Head>
 // 			<ThemeProvider theme={theme}>
+
 				
 // 				{/* CssBaseline kickstart an elegant,
 // 				consistent, and simple baseline to

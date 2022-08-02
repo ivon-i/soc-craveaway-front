@@ -3,6 +3,8 @@ import { useUser } from '@auth0/nextjs-auth0';
 import Link from 'next/link';
 import { Typography } from '@mui/joy';
 
+import LockOpenIcon from '@mui/icons-material/LockOpen';
+
 export default function Profile() {
   const { user, error, isLoading } = useUser();
 
@@ -28,12 +30,47 @@ export default function Profile() {
       : {(
         <div>
           <Typography sx={{
+            fontWeight:"900",
             marginTop: 15,
+            marginLeft:3,
             alignItems: "center",
             display: "flex",
             justifyContent: "center",     
-                 
-          }}>You must login to access your profile</Typography>
+          }}>
+            You must login to access your profile!
+          </Typography>
+          <>
+            <LockOpenIcon sx={{
+             fontSize:"120px",
+            fontWeight:"1000",
+              margin: 10,
+            marginLeft:18,
+            alignItems: "center",
+            display: "flex",
+            justifyContent: "center",     
+          }}/>
+          {/* <img
+            alt="Loading..."
+            width="432"
+            height="250"
+            data-id="14475354"
+            data-animated-url="https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif"
+            skip_resize="true"
+            srcset="https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 320w, 
+            https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 400w, 
+            https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 450w, 
+            https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 640w, 
+            https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 700w,
+            https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 800w,
+            https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 840w,
+            https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 1000w,
+            https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 1200w,
+            https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 768w,
+            https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 1600w"
+            sizes="(max-width: 919px) 100vw, max(768px, 98vh)"
+            src="https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif">
+            </img> */}
+            </>
           <Link href="/api/auth/login" passHref>
             <button
               variant="outlined"

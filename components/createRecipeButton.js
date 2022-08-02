@@ -36,7 +36,7 @@ const CreateRecipeButton = ({ text }) => {
             {text}
           </button>
         </Link> ): 
-          (<Link href="/api/auth/login" passHref>
+          (<Link href="/createrecipe" passHref>
             <button
             // variant="outlined"
             // sx={{

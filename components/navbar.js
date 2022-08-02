@@ -26,16 +26,18 @@ const Navbar = () => {
 
     <Stack direction='row' spacing={10} width= '110vw' backgroundColor="#F5BE6B" justifyContent="space-around"
       sx={{
-         position: 'sticky', top:"2%", padding: "6px"
+         position: 'sticky', top:"2%", padding: "1px"
     }}>
       <>
         <Image src={logo} alt='icon'
-          width="60vw" height="60vh" sx={{
+          width="60vw" height="60vh"
+          className="logo" sx={{
           }} />
         </>
         <>
           <Image src={text} alt='text'
           width="190vw" height="40vh"
+          className="logoText" 
           sx={{
             }} />
       </>

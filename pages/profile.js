@@ -40,7 +40,7 @@ export default function Profile() {
             You must login to access your profile!
           </Typography>
           <>
-            <LockOpenIcon sx={{
+            {/* <LockOpenIcon sx={{
              fontSize:"120px",
             fontWeight:"1000",
               margin: 10,
@@ -48,8 +48,8 @@ export default function Profile() {
             alignItems: "center",
             display: "flex",
             justifyContent: "center",     
-          }}/>
-          {/* <img
+          }}/> */}
+          <img
             alt="Loading..."
             width="432"
             height="250"
@@ -69,7 +69,7 @@ export default function Profile() {
             https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 1600w"
             sizes="(max-width: 919px) 100vw, max(768px, 98vh)"
             src="https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif">
-            </img> */}
+            </img>
             </>
           <Link href="/api/auth/login" passHref>
             <button

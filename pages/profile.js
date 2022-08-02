@@ -2,7 +2,6 @@ import React from 'react';
 import { useUser } from '@auth0/nextjs-auth0';
 import Link from 'next/link';
 import { Typography } from '@mui/joy';
-
 import LockOpenIcon from '@mui/icons-material/LockOpen';
 
 export default function Profile() {
@@ -15,7 +14,7 @@ export default function Profile() {
     return (
       <div>
         <img src={user.picture} alt={user.name} />
-        Welcome {user.name}!
+        <h1>Welcome {user.name}!</h1>
       </div>
     );
   }

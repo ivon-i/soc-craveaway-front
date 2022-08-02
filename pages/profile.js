@@ -27,7 +27,13 @@ export default function Profile() {
         </div>)}
       : {(
         <div>
-          <Typography sx={{ m: "61px", padding: "30px" }}>You must login to access your profile</Typography>
+          <Typography sx={{
+            marginTop: 15,
+            alignItems: "center",
+            display: "flex",
+            justifyContent: "center",     
+                 
+          }}>You must login to access your profile</Typography>
           <Link href="/api/auth/login" passHref>
             <button
               variant="outlined"

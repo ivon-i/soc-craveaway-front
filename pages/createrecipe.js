@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { nanoid } from 'nanoid';
+import { user } from '@auth0/nextjs-auth0'
 
 import {
   Typography,
@@ -25,7 +26,8 @@ const createRecipe = () => {
   const [recipeSelects, setRecipeSelects] = useState([
     { cookingTime: '', serves: '', price: '', category: '' },
   ]);
-
+  console.log(user)
+  
   function handleChangeee(e) {
     console.info(e.target.value);
   }

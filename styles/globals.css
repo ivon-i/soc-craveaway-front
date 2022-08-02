@@ -72,6 +72,22 @@ a {
   font-size: 16px;
   height: 40px;
 }
+.fixedLoginButton{
+  position: relative;
+  top: 200px;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 24px;
+  width: 35%;
+  color: black;
+  border: 2px solid #ffa629;
+  padding: 8px;
+  border-radius: 8px;
+  background-color: #ffa629;
+  cursor: pointer;
+  font-size: 16px;
+  height: 40px;
+}
 
 .fixedButton:hover {
   transition: 250ms ease;

@@ -15,7 +15,7 @@ import DinnerDiningIcon from '@mui/icons-material/DinnerDining';
 import { Login, Logout } from '@mui/icons-material';
 import PolicyIcon from '@mui/icons-material/Policy';
 import Link from 'next/link';
-
+import { useUser } from '@auth0/nextjs-auth0';
 
 export default function SwipeableTemporaryDrawer() {
   const [state, setState] = React.useState({

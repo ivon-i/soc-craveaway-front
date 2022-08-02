@@ -13,39 +13,34 @@ export default function Profile() {
     return (
       <div>
         <img src={user.picture} alt={user.name} />
-        Welcome {user.name}! <a href="/api/auth/logout">Logout</a>
+        Welcome {user.name}!
       </div>
     );
   }
-
-  return <a href="/api/auth/login">Login</a>;
+  return (
+    <>
+      {user && (
+        <div>
+          <img src={user.picture} alt={user.name} />
+          <h2>{user.name}</h2>
+          <p>{user.email}</p>
+        </div>)}
+      : {(
+        <div>
+          <Typography sx={{ m: "61px", padding: "30px" }}>You must login to access your profile</Typography>
+          <Link href="/api/auth/login" passHref>
+            <button
+              variant="outlined"
+              className="fixedLoginButton"
+            >Login
+            </button>
+          </Link>
+        </div>)}
+    </>
+  )
 };
 
-  // return (
-  //   <>
-  //   {user && (
-  //     <div>
-  //       <img src={user.picture} alt={user.name} />
-  //       <h2>{user.name}</h2>
-  //       <p>{user.email}</p>
-  //     </div>)}
-  //     {!user && (
-  //       <div> 
-  //         <Typography sx={{m:"61px", padding: "30px"}}>You must login to access your profile</Typography>  
-  //     <Link href="/api/auth/login" passHref>
-  //     <button
-  //     variant="outlined" 
-  //     className="fixedLoginButton"
-  //   >Login
-  //   </button>
-  //       </Link>
-  //       </div>)}
-  //   </>
-  // );
-
-
-
-/////////////old profile page code
+/////////////old profile code
 
 // import { Typography, Chip, Stack } from '@mui/material';
 // import RecCard from '../components/recCard';
@@ -116,4 +111,7 @@ export default function Profile() {
 //         ))}
 //       </Stack>
 //     </Box>
-//   );
+//   )
+
+//   return <a href="/api/auth/login">Login</a>;
+// };

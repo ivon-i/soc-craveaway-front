@@ -20,46 +20,48 @@ export default function Home() {
       <>
 
         <Box id="mainBox">
-      <Head>
-        <title>Craveaway</title>
-      </Head>
+          <Head>
+            <title>Craveaway</title>
+          </Head>
 
-      <main>
+          <main>
             <Searchbar />
             <Typography sx={{
-              mt:"32px", ml:"24px", fontWeight:"600"
+              mt: "32px", ml: "24px", fontWeight: "600"
             }}>
-      Welcome {user.name}! 
-    </Typography>
-        <Banners />
-        <Typography mt="32px" ml="24px" fontWeight="600">
-          Top recipes today
-        </Typography>
-        <RecCard data={data} />
-        <CreateRecipeButton text={'Create Recipe'} />
-      </main>
-    </Box>
-    </>
-  )
-};
-  return (
-  <>        <Box id="mainBox">
-  <Head>
-    <title>Craveaway</title>
-  </Head>
+              Welcome {user.name}!
+            </Typography>
+            <Banners />
+            <Typography mt="32px" ml="24px" fontWeight="600">
+              Top recipes today
+            </Typography>
+            <RecCard data={data} />
+            <CreateRecipeButton text={'Create Recipe'} />
+          </main>
+        </Box>
+      </>
+    )
+  }
+  else {
+    return (
+      <>        <Box id="mainBox">
+        <Head>
+          <title>Craveaway</title>
+        </Head>
 
-  <main>
-        <Searchbar />
-        <a href="/api/auth/login">Login</a>
-    <Banners />
-    <Typography mt="32px" ml="24px" fontWeight="600">
-      Top recipes today
-    </Typography>
-    <RecCard data={data} />
-    <CreateRecipeButton text={'Create Recipe'} />
-  </main>
-</Box></>
-)
+        <main>
+          <Searchbar />
+          {/* <a href="/api/auth/login">Login</a> */}
+          <Banners />
+          <Typography mt="32px" ml="24px" fontWeight="600">
+            Top recipes today
+          </Typography>
+          <RecCard data={data} />
+          <CreateRecipeButton text={'Log in to create a recipe'} />
+        </main>
+      </Box></>
+    )
+  }
 };
 
 /*

@@ -16,6 +16,7 @@ import { Login, Logout } from '@mui/icons-material';
 import PolicyIcon from '@mui/icons-material/Policy';
 import Link from 'next/link';
 import { useUser } from '@auth0/nextjs-auth0';
+import PersonAddIcon from '@mui/icons-material/PersonAdd';
 
 
 export default function SwipeableTemporaryDrawer() {
@@ -84,16 +85,28 @@ export default function SwipeableTemporaryDrawer() {
             Logout
           </Link>,
           'Usage Policy',
+          <Link href="/api/auth/login" passHref>
+          Sign Up
+        </Link>,
         ].map((text, index) => (
           <ListItem key={text} disablePadding>
             <ListItemButton>
               <ListItemIcon>
                 {index === 0 && <Login sx={{
-              color: "#FE724C", fontSize:"xx-large"}}/>}
-                {index === 1 && <Logout sx={{
-              color: "#FE724C", fontSize:"xx-large"}}/>}
+                  color: "#FE724C", fontSize: "xx-large"
+                }} />}
+                                {index === 1 && <Logout sx={{
+                  color: "#FE724C", fontSize: "xx-large"
+                }} />}
+
                 {index === 2 && <PolicyIcon sx={{
-              color: "#FE724C", fontSize:"xx-large"}}/>}
+                  color: "#FE724C", fontSize: "xx-large"
+                }} />}
+
+                {index === 3 && <PersonAddIcon sx={{
+                  color: "#FE724C", fontSize: "xx-large"
+                }} />}
+                
               </ListItemIcon>
               <ListItemText primary={text} />
             </ListItemButton>

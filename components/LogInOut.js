@@ -14,5 +14,5 @@ export default function LogInOut () {
     );
   }
 
-  return <a href="/api/auth/login">Login</a>;
+  return <a href="/api/auth/login"></a>;
 };

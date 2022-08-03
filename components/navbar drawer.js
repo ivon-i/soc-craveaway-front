@@ -15,6 +15,8 @@ import DinnerDiningIcon from '@mui/icons-material/DinnerDining';
 import { Login, Logout } from '@mui/icons-material';
 import PolicyIcon from '@mui/icons-material/Policy';
 import Link from 'next/link';
+import { useUser } from '@auth0/nextjs-auth0';
+import PersonAddIcon from '@mui/icons-material/PersonAdd';
 
 
 export default function SwipeableTemporaryDrawer() {
@@ -37,15 +39,25 @@ export default function SwipeableTemporaryDrawer() {
     setState({ ...state, [anchor]: open });
   };
 
-  const list = (anchor) => (
+  /*
+2. Implement auth0 functionality based on previous log in button 
+3. Return alternative list based on logged in status - handle in return
+*/
+
+  /*NOT LOGGED IN */
+  const notInList = (anchor) => (
     <Box
       sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
       role="presentation"
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
-      <List sx={{
-          background: "#FFC529", color: "white"}}>
+      <List
+        sx={{
+          background: '#FFC529',
+          color: 'white',
+        }}
+      >
         {[
           <Link href="/" passHref>
             Home
@@ -60,12 +72,30 @@ export default function SwipeableTemporaryDrawer() {
           <ListItem key={text} disablePadding>
             <ListItemButton>
               <ListItemIcon>
-                {index === 0 && <HomeIcon sx={{
-              color: "#FE724C", fontSize:"xx-large"}} />}
-                {index === 1 && <AccountCircleIcon sx={{
-              color: "#FE724C", fontSize:"xx-large"}}/>}
-                {index === 2 && <DinnerDiningIcon sx={{
-              color: "#FE724C", fontSize:"xx-large"}}/>}
+                {index === 0 && (
+                  <HomeIcon
+                    sx={{
+                      color: '#FE724C',
+                      fontSize: 'xx-large',
+                    }}
+                  />
+                )}
+                {index === 1 && (
+                  <AccountCircleIcon
+                    sx={{
+                      color: '#FE724C',
+                      fontSize: 'xx-large',
+                    }}
+                  />
+                )}
+                {index === 2 && (
+                  <DinnerDiningIcon
+                    sx={{
+                      color: '#FE724C',
+                      fontSize: 'xx-large',
+                    }}
+                  />
+                )}
               </ListItemIcon>
               <ListItemText primary={text} />
             </ListItemButton>
@@ -73,26 +103,49 @@ export default function SwipeableTemporaryDrawer() {
         ))}
       </List>
       <Divider />
-      <List sx={{
-          background: "white", color: "#FE724C"}}>
+      <List
+        sx={{
+          background: 'white',
+          color: '#FE724C',
+        }}
+      >
         {[
           <Link href="/api/auth/login" passHref>
             Login
+          </Link>, 
+          'Usage Policy', /*Needs to be a link*/
+          <Link href="/api/auth/login" passHref>
+            Sign Up
           </Link>,
-          <Link href="/api/auth/logout" passHref>
-            Logout
-          </Link>,
-          'Usage Policy',
         ].map((text, index) => (
           <ListItem key={text} disablePadding>
             <ListItemButton>
               <ListItemIcon>
-                {index === 0 && <Login sx={{
-              color: "#FE724C", fontSize:"xx-large"}}/>}
-                {index === 1 && <Logout sx={{
-              color: "#FE724C", fontSize:"xx-large"}}/>}
-                {index === 2 && <PolicyIcon sx={{
-              color: "#FE724C", fontSize:"xx-large"}}/>}
+                {index === 0 && (
+                  <Login
+                    sx={{
+                      color: '#FE724C',
+                      fontSize: 'xx-large',
+                    }}
+                  />
+                )}
+                {index === 1 && (
+                  <PolicyIcon
+                    sx={{
+                      color: '#FE724C',
+                      fontSize: 'xx-large',
+                    }}
+                  />
+                )}
+
+                {index === 2 && (
+                  <PersonAddIcon
+                    sx={{
+                      color: '#FE724C',
+                      fontSize: 'xx-large',
+                    }}
+                  />
+                )}
               </ListItemIcon>
               <ListItemText primary={text} />
             </ListItemButton>
@@ -102,23 +155,157 @@ export default function SwipeableTemporaryDrawer() {
     </Box>
   );
 
-  return (
-    <div>
-      {['right'].map((anchor) => (
-        <React.Fragment key={anchor}>
-          <Button onClick={toggleDrawer(anchor, true)}>
-            <HiMenu className="burger-menu" fontSize="xxx-large" color="#FE724C" 
-             />
-          </Button>
-          <SwipeableDrawer
-            anchor={anchor}
-            open={state[anchor]}
-            onClose={toggleDrawer(anchor, false)}
-            onOpen={toggleDrawer(anchor, true)} >
-            {list(anchor)}
-          </SwipeableDrawer>
-        </React.Fragment>
-      ))}
-    </div>
+  const loggedInList = (anchor) => (
+    <Box
+      sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
+      role="presentation"
+      onClick={toggleDrawer(anchor, false)}
+      onKeyDown={toggleDrawer(anchor, false)}
+    >
+      <List
+        sx={{
+          background: '#FFC529',
+          color: 'white',
+        }}
+      >
+        {[
+          <Link href="/" passHref>
+            Home
+          </Link>,
+          <Link href="/profile" passHref>
+            My profile
+          </Link>,
+          <Link href="/createrecipe" passHref>
+            Create a recipe
+          </Link>,
+        ].map((text, index) => (
+          <ListItem key={text} disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                {index === 0 && (
+                  <HomeIcon
+                    sx={{
+                      color: '#FE724C',
+                      fontSize: 'xx-large',
+                    }}
+                  />
+                )}
+                {index === 1 && (
+                  <AccountCircleIcon
+                    sx={{
+                      color: '#FE724C',
+                      fontSize: 'xx-large',
+                    }}
+                  />
+                )}
+                {index === 2 && (
+                  <DinnerDiningIcon
+                    sx={{
+                      color: '#FE724C',
+                      fontSize: 'xx-large',
+                    }}
+                  />
+                )}
+              </ListItemIcon>
+              <ListItemText primary={text} />
+            </ListItemButton>
+          </ListItem>
+        ))}
+      </List>
+      <Divider />
+      <List
+        sx={{
+          background: 'white',
+          color: '#FE724C',
+        }}
+      >
+        {[
+          <Link href="/api/auth/logout" passHref>
+            Logout
+          </Link>,
+          'Usage Policy' /*Needs to be a link*/,
+        ].map((text, index) => (
+          <ListItem key={text} disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                {index === 0 && (
+                  <Logout
+                    sx={{
+                      color: '#FE724C',
+                      fontSize: 'xx-large',
+                    }}
+                  />
+                )}
+
+                {index === 1 && (
+                  <PolicyIcon
+                    sx={{
+                      color: '#FE724C',
+                      fontSize: 'xx-large',
+                    }}
+                  />
+                )}
+              </ListItemIcon>
+              <ListItemText primary={text} />
+            </ListItemButton>
+          </ListItem>
+        ))}
+      </List>
+    </Box>
   );
+
+  const { user, error, isLoading } = useUser();
+
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>{error.message}</div>;
+
+  if (user) {
+    return (
+      <div>
+        {['right'].map((anchor) => (
+          <React.Fragment key={anchor}>
+            <Button onClick={toggleDrawer(anchor, true)}>
+              <HiMenu
+                className="burger-menu"
+                fontSize="xxx-large"
+                color="#FE724C"
+              />
+            </Button>
+            <SwipeableDrawer
+              anchor={anchor}
+              open={state[anchor]}
+              onClose={toggleDrawer(anchor, false)}
+              onOpen={toggleDrawer(anchor, true)}
+            >
+              {loggedInList(anchor)}
+            </SwipeableDrawer>
+          </React.Fragment>
+        ))}
+      </div>
+    );
+  } else {
+    return (
+      <div>
+        {['right'].map((anchor) => (
+          <React.Fragment key={anchor}>
+            <Button onClick={toggleDrawer(anchor, true)}>
+              <HiMenu
+                className="burger-menu"
+                fontSize="xxx-large"
+                color="#FE724C"
+              />
+            </Button>
+            <SwipeableDrawer
+              anchor={anchor}
+              open={state[anchor]}
+              onClose={toggleDrawer(anchor, false)}
+              onOpen={toggleDrawer(anchor, true)}
+            >
+              {notInList(anchor)}
+            </SwipeableDrawer>
+          </React.Fragment>
+        ))}
+      </div>
+    );
+  }
 }

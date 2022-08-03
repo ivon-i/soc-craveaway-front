@@ -2,12 +2,18 @@ import Layout from '../components/Layout'
 import '../styles/globals.css'
 import { UserProvider } from '@auth0/nextjs-auth0';
 
+
 function MyApp({ Component, pageProps }) {
+  
+
+
+  const { user } = pageProps;
+
   return (
 
-   <UserProvider>
-    <Layout>
-      <Component {...pageProps} />
+    <UserProvider user={user}>
+      <Layout> 
+        <Component {...pageProps} />
     </Layout>
      </UserProvider>
   )

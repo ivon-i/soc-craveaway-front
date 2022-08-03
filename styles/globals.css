@@ -73,6 +73,47 @@ a {
   font-size: 16px;
   height: 40px;
 }
+.fixedButton:hover {
+  transition: 250ms ease;
+  background-color: #f4ce5e;
+  border: 2px solid #f4ce5e;
+}
+
+.fixedButton:active {
+  transition: 250ms ease;
+  background-color: #ffa629;
+  color: #fff;
+}
+
+.fixedAboutUsButton {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 24px;
+  width: 35%;
+  color: black;
+  border: 2px solid #ffa629;
+  padding: 8px;
+  border-radius: 8px;
+  background-color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  height: 40px;
+}
+.fixedAboutUsButton:hover {
+  transition: 250ms ease;
+  background-color: #f4ce5e;
+  border: 2px solid #f4ce5e;
+}
+
+.fixedAboutUsButton:active {
+  transition: 250ms ease;
+  background-color: #ffa629;
+  color: #fff;
+}
+
+
 .fixedLoginButton{
   position: fixed;
   top: 500px;
@@ -90,13 +131,13 @@ a {
   height: 40px;
 }
 
-.fixedButton:hover {
+.fixedLoginButton:hover {
   transition: 250ms ease;
   background-color: #f4ce5e;
   border: 2px solid #f4ce5e;
 }
 
-.fixedButton:active {
+.fixedLoginButton:active {
   transition: 250ms ease;
   background-color: #ffa629;
   color: #fff;
@@ -221,4 +262,3 @@ textarea {
   display: flex;
   flex-direction: column;
 }
-

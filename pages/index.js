@@ -18,7 +18,6 @@ export default function Home() {
   if (user) {
     return (
       <>
-
         <Box id="mainBox">
           <Head>
             <title>Craveaway</title>

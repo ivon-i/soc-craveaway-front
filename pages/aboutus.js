@@ -9,12 +9,19 @@ const AboutUs = () => {
     <div>
       <Typography
         sx={{
-          fontWeight: '600',
-          marginTop: 7,
-          marginLeft: '0px',
+          fontSize: '20px',
+          margin: '0',
+          background: '',
+          position: 'fixed',
+          top: '15%',
+          left: '50%',
+          mr: '-50%',
+          transform: 'translate(-50%, -50%)',
+          textAlign: 'center',
           alignItems: 'center',
           display: 'flex',
           justifyContent: 'center',
+          display: 'inline-block',
         }}
       >
         About Us
@@ -23,6 +30,11 @@ const AboutUs = () => {
         sx={{
           lineHeight: 1.6,
           fontSize: 20,
+          position: 'fixed',
+          top: '46%',
+          left: '42%',
+          mr: '-50%',
+          transform: 'translate(-50%, -50%)',
           textAlign: 'center',
           alignItems: 'center',
           display: 'flex',

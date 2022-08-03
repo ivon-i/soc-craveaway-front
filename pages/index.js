@@ -6,6 +6,7 @@ import RecCard from '../components/recCard.js';
 import { Box, Typography } from '@mui/material';
 import data from '../db/recipeData.js';
 import CreateRecipeButton from '../components/createRecipeButton';
+import { useState } from 'react';
 
 export async function getServerSideProps() {
   try {
@@ -18,7 +19,11 @@ export async function getServerSideProps() {
   }
 }
 
+
+
 export default function Home({ payload }) {
+  const [search, setSearch] = useState("")
+  console.log("XXX", payload)
   return (
     <Box id="mainBox">
       <Head>
@@ -26,12 +31,12 @@ export default function Home({ payload }) {
       </Head>
 
       <main>
-        <Searchbar />
+        <Searchbar searchInput={search} setSearchInput={setSearch} />
         <Banners />
         <Typography mt="32px" ml="24px" fontWeight="600">
           Top recipes today
         </Typography>
-        <RecCard data={payload} />
+        <RecCard data={payload && payload.filter(r => r.title?.toUpperCase().includes(search.toUpperCase()))} />
         <CreateRecipeButton text={'Create Recipe'} />
       </main>
     </Box>

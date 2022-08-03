@@ -14,6 +14,15 @@ import {
 import { useState } from 'react';
 import { NavigateNextOutlined } from '@mui/icons-material';
 
+/*
+1. Check that all necessary components are rendered based on back end columns. 
+  Require:
+    - Author
+    - rating
+    - rating_entries
+2. 
+*/
+
 const createRecipe = () => {
   const cookingTime = ['15', '25', '35', '45', '60+'];
   const serves = ['1', '2', '3', '4+'];
@@ -21,7 +30,7 @@ const createRecipe = () => {
   const nutritionCat = ['Vegetarian', 'Vegan', 'Pescatarian', 'Keto'];
 
   const [ingredientList, setIngredientList] = useState('');
-  const [chipList, setChipList] = useState([]);
+  const [chipList, setChipList] = useState([]); //CHIP 1/3
   const [recipeSelects, setRecipeSelects] = useState([
     { cookingTime: '', serves: '', price: '', category: '' },
   ]);
@@ -35,7 +44,7 @@ const createRecipe = () => {
     console.log(ingredientList);
   }
 
-  function AddToChip() {
+  function AddToChip() { //CHIP 2/3
     if (ingredientList.length === 0) {
       return;
     } else {
@@ -154,7 +163,7 @@ const createRecipe = () => {
         <Button
           sx={{ border: 'solid', borderWidth: '1.5px', borderRadius: 3 }}
           variant="outlined"
-          onClick={AddToChip}
+          onClick={AddToChip} /* */
         >
           Add
         </Button>

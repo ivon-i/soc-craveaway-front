@@ -16,7 +16,7 @@ import FilterListIcon from '@mui/icons-material/FilterList';
 
 export async function getServerSideProps() {
   try {
-    const response = await fetch(`http://craveaway.herokuapp.com/recipes`);
+    const response = await fetch(`http://craveaway.herokuapp.com/recipes?search=$`);
     const data = await response.json();
     const { payload } = data;
     return { props: { payload } };
@@ -25,8 +25,8 @@ export async function getServerSideProps() {
   }
 }
 
-export default function Searchbar({ payload }) {
-  const [searchInput, setSearchInput] = useState('');
+export default function Searchbar({ payload, searchInput, setSearchInput }) {
+  // const [searchInput, setSearchInput] = useState('');
   function handleClick(e) {
     e.preventDefault();
     setSearchInput('');

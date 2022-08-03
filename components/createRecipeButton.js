@@ -1,13 +1,9 @@
 import { Button, Box } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import Link from 'next/link';
-import { useUser } from '@auth0/nextjs-auth0';
 
 const CreateRecipeButton = ({ text }) => {
-  const { user, error, isLoading } = useUser();
-
-    
-    return (
+  return (
     <div
       //   mt="30px"
       //   width="100%"
@@ -15,46 +11,26 @@ const CreateRecipeButton = ({ text }) => {
       //   sx={{ position: 'fixed', bottom: 0, left: 0, p: '24px' }}
       //   backgroundColor="white"
       className="fixedButtonDiv"
+    >
+    <Link href="/createrecipe" passHref>
+      <button
+        // variant="outlined"
+        // sx={{
+        //   position: 'fixed',
+        //   bottom: 0,
+        //   left: '50%',
+        //   transform: 'translateX(-50%)',
+        //   mb: '24px',
+        //   width: '85%',
+        //   color: 'black',
+        //   borderColor: ' #FFA629',
+        //   borderWidth: '2px',
+        // }}
+        className="fixedButton"
       >
-        {user ? (<Link href="/createrecipe" passHref>
-
-          <button
-            // variant="outlined"
-            // sx={{
-            //   position: 'fixed',
-            //   bottom: 0,
-            //   left: '50%',
-            //   transform: 'translateX(-50%)',
-            //   mb: '24px',
-            //   width: '85%',
-            //   color: 'black',
-            //   borderColor: ' #FFA629',
-            //   borderWidth: '2px',
-            // }}
-            className="fixedButton"
-          >
-            {text}
-          </button>
-        </Link> ): 
-          (<Link href="/createrecipe" passHref>
-            <button
-            // variant="outlined"
-            // sx={{
-            //   position: 'fixed',
-            //   bottom: 0,
-            //   left: '50%',
-            //   transform: 'translateX(-50%)',
-            //   mb: '24px',
-            //   width: '85%',
-            //   color: 'black',
-            //   borderColor: ' #FFA629',
-            //   borderWidth: '2px',
-            // }}
-            className="fixedButton"
-          >
-            {text}
-          </button>
-      </Link>)}
+        {text}
+      </button>
+      </Link>
     </div>
   );
 };

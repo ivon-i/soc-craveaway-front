@@ -14,10 +14,27 @@ import { AiOutlineSearch } from 'react-icons/ai';
 import { BsFilterCircle } from 'react-icons/bs';
 import FilterListIcon from '@mui/icons-material/FilterList';
 
-export default function Searchbar() {
+export async function getServerSideProps() {
+  try {
+    const response = await fetch(`http://craveaway.herokuapp.com/recipes`);
+    const data = await response.json();
+    const { payload } = data;
+    return { props: { payload } };
+  } catch (error) {
+    console.log(error.message);
+  }
+}
+
+export default function Searchbar({ payload }) {
+  const [searchInput, setSearchInput] = useState('');
   function handleClick(e) {
     e.preventDefault();
-    console.log('leon');
+    setSearchInput('');
+    console.log({ payload });
+  }
+  function handleChange(e) {
+    setSearchInput(e.target.value);
+    console.log(searchInput);
   }
 
   const [anchorEl, setAnchorEl] = useState(null);
@@ -56,6 +73,8 @@ export default function Searchbar() {
             sx={{ ml: 1, flex: 1 }}
             placeholder="Search Recipe"
             inputProps={{ 'aria-label': 'Search Recipes' }}
+            onChange={handleChange}
+            value={searchInput}
           />
 
           <IconButton

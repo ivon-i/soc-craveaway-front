@@ -1,4 +1,11 @@
-import { Typography, Chip, Stack, Select, MenuItem } from '@mui/material';
+import {
+  Typography,
+  Chip,
+  Stack,
+  Select,
+  MenuItem,
+  Button,
+} from '@mui/material';
 import { Box } from '@mui/system';
 import Image from 'next/image';
 import GradeIcon from '@mui/icons-material/Grade';
@@ -6,10 +13,24 @@ import Rating from '@mui/material/Rating';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import PeopleIcon from '@mui/icons-material/People';
 import PaymentIcon from '@mui/icons-material/Payment';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
-export default function Test() {
-  const [value, setValue] = useState(5);
+export default function Test({ payload }) {
+  const [value, setValue] = useState(0);
+
+  //     try {
+  //      setValue(newValue);
+  //     const patch = await fetch(`http://craveaway.herokuapp.com/recipes/${id}`, {
+  //       method: 'PATCH',
+  //       headers: { 'Content-Type': 'application/json' },
+  //       body: JSON.stringify({ rating: }),
+  //     })
+  //     const res = await patch.json();
+  //     console.log(res);
+  //   } catch (error) {
+  //       console.log(error.message )
+  //   }
+  // }
 
   return (
     <Box ml="15px">
@@ -80,7 +101,7 @@ export default function Test() {
         protein and healthy fats, so it’s nutritious and delicious!{' '}
       </Typography>
       <Typography mt="20px">Creator</Typography>
-      <Rating name="read-only" value={value} />
+      <Rating value={value} />
     </Box>
   );
 }

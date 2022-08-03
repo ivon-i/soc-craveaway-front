@@ -7,7 +7,18 @@ import { Box, Typography } from '@mui/material';
 import data from '../db/recipeData.js';
 import CreateRecipeButton from '../components/createRecipeButton';
 
-export default function Home() {
+export async function getServerSideProps() {
+  try {
+    const response = await fetch(`http://craveaway.herokuapp.com/recipes`);
+    const data = await response.json();
+    const { payload } = data;
+    return { props: { payload } };
+  } catch (error) {
+    console.log(error.message);
+  }
+}
+
+export default function Home({ payload }) {
   return (
     <Box id="mainBox">
       <Head>
@@ -20,7 +31,7 @@ export default function Home() {
         <Typography mt="32px" ml="24px" fontWeight="600">
           Top recipes today
         </Typography>
-        <RecCard data={data} />
+        <RecCard data={payload} />
         <CreateRecipeButton text={'Create Recipe'} />
       </main>
     </Box>

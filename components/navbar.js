@@ -24,7 +24,7 @@ const Navbar = () => {
   return (
 
 
-    <Stack direction='row' spacing={10} width= '110vw' backgroundColor="#F5BE6B" justifyContent="space-around"
+    <Stack direction='row' spacing={10} height= "60px" width= '110vw' backgroundColor="#FFD25D" justifyContent="space-evenly"
       sx={{
          position: 'sticky', top:"2%", padding: "1px"
     }}>

@@ -16,7 +16,6 @@ import { NavigateNextOutlined } from '@mui/icons-material';
 import { useUser } from '@auth0/nextjs-auth0';
 
 const createRecipe = () => {
-
   const cookingTime = ['15', '25', '35', '45', '60+'];
   const serves = ['1', '2', '3', '4+'];
   const price = ['£5', '£10', '£15', '£20+'];
@@ -25,14 +24,14 @@ const createRecipe = () => {
 
   const newRecipe = {
     title: '',
-    author: /*`${user}`*/'ME',
+    author: /*`${user}`*/ 'ME',
     description: '',
     time: '',
     cost: '',
     nutrition: '',
     ingredients: '',
     image: 'ngf',
-    serves: ''
+    serves: '',
   };
 
   const [newRecipeSubmission, setNewRecipeSubmission] = useState(newRecipe);
@@ -46,16 +45,20 @@ const createRecipe = () => {
   };
 
   const handleClick = async () => {
-    const response = await fetch('http://craveaway.herokuapp.com/recipes/create/', {
-      method: 'POST',
-      body: JSON.stringify({ newRecipeSubmission }),
-      headers: {
-        'Content-Type': 'application/json'
-      },
-    })
-    const data = await response.json()
-    console.log(data)
-  }
+    const response = await fetch(
+      'http://craveaway.herokuapp.com/recipes/create/',
+      {
+        method: 'POST',
+        body: JSON.stringify(newRecipeSubmission),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }
+    );
+    const data = await response.json();
+    setNewRecipeSubmission(newRecipe);
+    console.log(data);
+  };
 
   return (
     <div>

@@ -1,199 +1,100 @@
-import Link from 'next/link';
-import { nanoid } from 'nanoid';
-
-import {
-  Typography,
-  Stack,
-  TextField,
-  Select,
-  MenuItem,
-  Button,
-  Box,
-  Chip,
-} from '@mui/material';
-import { useState } from 'react';
-import { NavigateNextOutlined } from '@mui/icons-material';
+import { Formik, useFormik } from 'formik';
 
 const createRecipe = () => {
-  const cookingTime = ['15', '25', '35', '45', '60+'];
-  const serves = ['1', '2', '3', '4+'];
-  const price = ['£5', '£10', '£15', '£20+'];
-  const nutritionCat = ['Vegetarian', 'Vegan', 'Pescatarian', 'Keto'];
-
-  const [ingredientList, setIngredientList] = useState('');
-  const [chipList, setChipList] = useState([]);
-  const [recipeSelects, setRecipeSelects] = useState([
-    { cookingTime: '', serves: '', price: '', category: '' },
-  ]);
-
-  function handleChangeee(e) {
-    console.info(e.target.value);
-  }
-
-  function AddIngredients(e) {
-    setIngredientList(e.target.value);
-    console.log(ingredientList);
-  }
-
-  function AddToChip() {
-    if (ingredientList.length === 0) {
-      return;
-    } else {
-      setChipList([...chipList, { id: nanoid(), label: ingredientList }]);
-      setIngredientList('');
-      console.log(chipList);
-    }
-  }
-
-  const handleDelete = (id) => {
-    const newList = chipList.filter((item) => item.id !== id);
-    setChipList(newList);
-  };
+  const formik = useFormik({
+    initialValues: {
+      cookingTime: '0',
+      serves: '0',
+      price: '0',
+      nutritionCat: '',
+    },
+    onSubmit: (values) => {
+      alert(JSON.stringify(values, null, 2));
+    },
+  });
 
   return (
-    <div>
-      <Link href="/">Home</Link>
-      <Typography mt="20px">Create your recipe</Typography>
-      <Stack spacing={1} sx={{ ml: '10px', mt: '24px' }}>
-        <Typography>Name:</Typography>
-        <TextField
-          sx={{ borderRadius: '8px', width: '95%', ml: '5px' }}
-          variant="outlined"
-          required
-          label="Required"
-        />
-      </Stack>
-      <Box
-        sx={{
-          width: '95%',
-          ml: '5px',
-          height: '150px',
-          mt: '24px',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          border: 'solid',
-          borderWidth: '1px',
-          borderRadius: 3,
-        }}
-      >
-        <Button variant="text" component="label">
-          + Upload Image
-          <input hidden accept="image/*" multiple type="file" />
-        </Button>
-      </Box>
-      <Stack spacing={5} direction="row" mt="20px" ml="30px">
-        <Stack direction="column">
-          <Typography>Cooking Time: </Typography>
-          <Select
-            sx={{ width: '150px', height: '50px', borderRadius: '20px' }}
-            onChange={handleChangeee}
-            value={recipeSelects.cookingTime}
-            defaultValue=""
-          >
-            {cookingTime.map((item) => (
-              <MenuItem value={item}>{item}</MenuItem>
-            ))}
-          </Select>
-        </Stack>
-        <Stack direction="column">
-          <Typography>Serves: </Typography>
-          <Select
-            sx={{ width: '150px', height: '50px', borderRadius: '20px' }}
-            onChange={handleChangeee}
-            value={recipeSelects.serves}
-            defaultValue=""
-          >
-            {serves.map((item) => (
-              <MenuItem value={item}>{item}</MenuItem>
-            ))}
-          </Select>
-        </Stack>
-      </Stack>
-      <Box sx={{ width: '100%' }}>
-        <Stack direction="column" mt="20px" ml="30px">
-          <Typography>Estimated price per serving: </Typography>
-          <Select
-            sx={{ width: '150px', height: '50px', borderRadius: '20px' }}
-            onChange={handleChangeee}
-            value={recipeSelects.price}
-            defaultValue=""
-          >
-            {price.map((item) => (
-              <MenuItem value={item}>{item}</MenuItem>
-            ))}
-          </Select>
-        </Stack>
-      </Box>
-      <Stack direction="column" mt="20px" ml="30px">
-        <Typography>Nutrition category: </Typography>
-        <Select
-          sx={{ width: '150px', height: '50px', borderRadius: '20px' }}
-          onChange={handleChangeee}
-          value={recipeSelects.category}
-          defaultValue=""
-        >
-          {nutritionCat.map((item) => (
-            <MenuItem value={item}>{item}</MenuItem>
-          ))}
-        </Select>
-      </Stack>
-      <Typography ml="30px" mt="10px">
-        Ingredients:
-      </Typography>
-      <Stack direction="row" mt="10px" ml="30px" spacing={3}>
-        <TextField
-          sx={{ borderRadius: '8px', width: '220px', ml: '5px' }}
-          variant="outlined"
-          onChange={AddIngredients}
-          placeholder="Add Ingredients"
-          value={ingredientList}
-          required
-          label="Required"
-        />
-        <Button
-          sx={{ border: 'solid', borderWidth: '1.5px', borderRadius: 3 }}
-          variant="outlined"
-          onClick={AddToChip}
-        >
-          Add
-        </Button>
-      </Stack>
-      <Stack
-        spacing={1}
-        sx={{
-          maxWidth: 345,
-          display: 'flex',
-          alignContent: 'flex-start',
-          flexWrap: 'wrap',
-          ml: '30px',
-          mt: '10px',
-        }}
-      >
-        {chipList.map((item) => (
-          <Chip
-            variant="outlined"
-            label={item.label}
-            onDelete={() => handleDelete(item.id)}
-            sx={{ borderColor: '#FCC62E', borderWidth: '1.5px' }}
-            key={item.id}
-          ></Chip>
-        ))}
-      </Stack>
-      <Typography ml="30px">Description</Typography>
-      <TextField
-        sx={{ borderRadius: '8px', width: ' 80%', ml: '30px' }}
-        variant="outlined"
-        // onChange={AddIngredients}
-        placeholder="Add Description"
-        multiline
-        rows={5}
-        required
-        label="Required"
+    <form onSubmit={formik.handleSubmit}>
+      <label htmlFor="cookingTime">Cooking Time</label>
+      <input
+        id="cookingTime"
+        name="cookingTime"
+        type="text"
+        onChange={formik.handleChange}
+        value={formik.values.cookingTime}
       />
-      <button className="submitRecipeButton">Submit Recipe</button>
-    </div>
+
+      <label htmlFor="serves">Serves</label>
+      <input
+        id="serves"
+        name="serves"
+        type="text"
+        onChange={formik.handleChange}
+        value={formik.values.serves}
+      />
+
+      <label htmlFor="price">Price</label>
+      <input
+        id="price"
+        name="price"
+        type="text"
+        onChange={formik.handleChange}
+        value={formik.values.price}
+      />
+
+      <label htmlFor="nutritionCat">Nutrition Category</label>
+      <input
+        id="nutritionCat"
+        name="nutritionCat"
+        type="text"
+        onChange={formik.handleChange}
+        value={formik.values.nutritionCat}
+      />
+
+      <button type="submit">Submit</button>
+    </form>
   );
 };
 
 export default createRecipe;
+
+// import Link from 'next/link';
+// import { nanoid } from 'nanoid';
+
+// import { useState } from 'react';
+
+// const createRecipe = () => {
+//   const cookingTime = ['15', '25', '35', '45', '60+'];
+//   const serves = ['1', '2', '3', '4+'];
+//   const price = ['£5', '£10', '£15', '£20+'];
+//   const nutritionCat = ['Vegetarian', 'Vegan', 'Pescatarian', 'Keto'];
+
+//   const [ingredientList, setIngredientList] = useState('');
+//   const [chipList, setChipList] = useState([]);
+//   const [recipeSelects, setRecipeSelects] = useState([
+//     { cookingTime: '', serves: '', price: '', category: '' },
+//   ]);
+
+//   function handleChangeee(e) {
+//     console.info(e.target.value);
+//   }
+
+//   function AddIngredients(e) {
+//     setIngredientList(e.target.value);
+//     console.log(ingredientList);
+//   }
+
+//   function AddToChip() {
+//     if (ingredientList.length === 0) {
+//       return;
+//     } else {
+//       setChipList([...chipList, { id: nanoid(), label: ingredientList }]);
+//       setIngredientList('');
+//       console.log(chipList);
+//     }
+//   }
+
+//   const handleDelete = (id) => {
+//     const newList = chipList.filter((item) => item.id !== id);
+//     setChipList(newList);
+//   };

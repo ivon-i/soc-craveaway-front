@@ -23,7 +23,7 @@ export async function getServerSideProps() {
 
 export default function Home({ payload }) {
   const [search, setSearch] = useState("")
-  console.log("XXX", payload)
+  // console.log("XXX", payload)
   return (
     <Box id="mainBox">
       <Head>

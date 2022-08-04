@@ -32,6 +32,33 @@ import { useUser } from '@auth0/nextjs-auth0';
 as well as AUTHOR and anything else - ready for patch request
 2. Ability to submit  */
 
+// value={newProjectSubmission.name}
+// onChange={handleChangeFor('name')}
+
+const newRecipe = {
+  title: ,
+  author: user,
+  description: '',
+  time: '',
+  cost: '',
+  ingredients: '',
+  image: '',
+  serves: '',
+  rating: '',
+  rating_entries: '',
+  title: '',
+};
+const [newProjectSubmission, setNewProjectSubmission] = useState(newRecipe);
+
+const handleChangeFor = (propertyName) => (event) => {
+  setNewProjectSubmission((newProjectSubmission) => ({
+    ...newProjectSubmission,
+    [propertyName]: event.target.value,
+  }));
+  console.log(newProjectSubmission.name);
+};
+
+
 const createRecipe = () => {
   const [nameState, setNameState] = useState('');
   const [timeState, setTimeState] = useState('');
@@ -92,7 +119,6 @@ const createRecipe = () => {
   }
 
   // function handleClick() {
-  //   console.log(timeState)
   //   const response = await fetch('api/', {
   //     method: 'POST',
   //     body: JSON.stringify({ /*comment*/ }),

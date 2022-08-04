@@ -35,62 +35,59 @@ export default function Home({ payload }) {
     setFiltered(filter);
     console.log(filtered);
   }
-  
+
   const { user, error, isLoading } = useUser();
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>{error.message}</div>;
   if (user) {
- 
-  return (
-    <Box id="mainBox">
-      <Head>
-        <title>Craveaway</title>
-      </Head>
-
-      <main>
-        <Searchbar
-          searchInput={search}
-          setSearchInput={setSearch}
-          trigger={filterInput}
-        />
-        <Banners />
-        <Typography mt="32px" ml="24px" fontWeight="600">
-          Top recipes today
-        </Typography>
-        <RecCard data={filtered} />;
-        <CreateRecipeButton text={'Create Recipe'} />
-      </main>
-    </Box>
-  );
-}
-}
-
-else {
     return (
-      <>        <Box id="mainBox">
+      <Box id="mainBox">
         <Head>
           <title>Craveaway</title>
         </Head>
+
         <main>
-          <Searchbar />
-          {/* <a href="/api/auth/login">Login</a> */}
+          <Searchbar
+            searchInput={search}
+            setSearchInput={setSearch}
+            trigger={filterInput}
+          />
           <Banners />
           <Typography mt="32px" ml="24px" fontWeight="600">
             Top recipes today
           </Typography>
-          <RecCard data={data} />
-          <CreateRecipeButton text={'Log in to create a recipe'} />
+          <RecCard data={filtered} />;
+          <CreateRecipeButton text={'Create Recipe'} />
         </main>
-      </Box></>
-    )
+      </Box>
+    );
+  } else {
+    return (
+      <>
+        {' '}
+        <Box id="mainBox">
+          <Head>
+            <title>Craveaway</title>
+          </Head>
+          <main>
+            <Searchbar
+              searchInput={search}
+              setSearchInput={setSearch}
+              trigger={filterInput}
+            />
+            {/* <a href="/api/auth/login">Login</a> */}
+            <Banners />
+            <Typography mt="32px" ml="24px" fontWeight="600">
+              Top recipes today
+            </Typography>
+            <RecCard data={filtered} />;
+            <CreateRecipeButton text={'Log in to create a recipe'} />
+          </main>
+        </Box>
+      </>
+    );
   }
-};
-
-
-
-    
-  
-  
+}
 
 /*
 - index.js is where all components are initially accessible from

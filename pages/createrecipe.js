@@ -46,7 +46,8 @@ const createRecipe = () => {
     console.log(ingredientList);
   }
 
-  function AddToChip() { //CHIP 2/3
+  function AddToChip() {
+    //CHIP 2/3
     if (ingredientList.length === 0) {
       return;
     } else {
@@ -210,100 +211,98 @@ const createRecipe = () => {
         >
           Add
         </Button>
-      </Stack>
-      <Stack
-        spacing={1}
-        sx={{
-          maxWidth: 345,
-          display: 'flex',
-          alignContent: 'flex-start',
-          flexWrap: 'wrap',
-          ml: '30px',
-          mt: '10px',
-        }}
-      >
-        {chipList.map((item) => (
-          <Chip
-            variant="outlined"
-            label={item.label}
-            onDelete={() => handleDelete(item.id)}
-            sx={{ borderColor: '#FCC62E', borderWidth: '1.5px' }}
-            key={item.id}
-          ></Chip>
-        ))}
-      </Stack>
-      <Typography ml="30px">Description</Typography>
-      <TextField
-        sx={{ borderRadius: '8px', width: ' 80%', ml: '30px' }}
-        variant="outlined"
-        // onChange={AddIngredients}
-        placeholder="Add Description"
-        multiline
-        rows={5}
-        required
-        label="Required"
-      />
-      <button className="submitRecipeButton">Submit Recipe</button>
-    </div>
-=======
+        {/* </Stack> */}
+        <Stack
+          spacing={1}
+          sx={{
+            maxWidth: 345,
+            display: 'flex',
+            alignContent: 'flex-start',
+            flexWrap: 'wrap',
+            ml: '30px',
+            mt: '10px',
+          }}
+        >
+          {chipList.map((item) => (
+            <Chip
+              variant="outlined"
+              label={item.label}
+              onDelete={() => handleDelete(item.id)}
+              sx={{ borderColor: '#FCC62E', borderWidth: '1.5px' }}
+              key={item.id}
+            ></Chip>
+          ))}
+        </Stack>
+        <Typography ml="30px">Description</Typography>
+        <TextField
+          sx={{ borderRadius: '8px', width: ' 80%', ml: '30px' }}
+          variant="outlined"
+          // onChange={AddIngredients}
+          placeholder="Add Description"
+          multiline
+          rows={5}
+          required
+          label="Required"
+        />
         <button className="submitRecipeButton">Submit Recipe</button>
       </div>
     );
-  }
-  return (
-    <>
-      {user && (
-        <div>
-          <h6> Hello </h6>
-        </div>
-      )}
-      :{' '}
-      {
-        <div>
-          <Typography
-            sx={{
-              fontWeight: "900",
-              marginTop: 15,
-              alignItems: 'center',
-              display: 'flex',
-              justifyContent: 'center',
-            }}
-          >
-            You must login to create a recipe!
-          </Typography>
-          <>
-            <img
-            alt="Loading..."
-            className="fryingpan"
-            width="432"
-            height="250"
-            data-id="14475354"
-            data-animated-url="https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif"
-            skip_resize="true"
-            srcset="https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 320w, 
-            https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 400w, 
-            https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 450w, 
-            https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 640w, 
-            https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 700w,
-            https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 800w,
-            https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 840w,
-            https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 1000w,
-            https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 1200w,
-            https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 768w,
-            https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 1600w"
-            sizes="(max-width: 919px) 100vw, max(768px, 98vh)"
-            src="https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif">
-            </img>
+  } else {
+    return (
+      <>
+        {user && (
+          <div>
+            <h6> Hello </h6>
+          </div>
+        )}
+        :{' '}
+        {
+          <div>
+            <Typography
+              sx={{
+                fontWeight: '900',
+                marginTop: 15,
+                alignItems: 'center',
+                display: 'flex',
+                justifyContent: 'center',
+              }}
+            >
+              You must login to create a recipe!
+            </Typography>
+            <>
+              <img
+                alt="Loading..."
+                className="fryingpan"
+                width="432"
+                height="250"
+                data-id="14475354"
+                data-animated-url="https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif"
+                skip_resize="true"
+                srcset="https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 320w,
+          https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 400w,
+          https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 450w,
+          https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 640w,
+          https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 700w,
+          https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 800w,
+          https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 840w,
+          https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 1000w,
+          https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 1200w,
+          https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 768w,
+          https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 1600w"
+                sizes="(max-width: 919px) 100vw, max(768px, 98vh)"
+                src="https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif"
+              ></img>
             </>
-          <Link href="/api/auth/login" passHref>
-            <button variant="outlined" className="fixedLoginButton">
-              Login
-            </button>
-          </Link>
-        </div>
-      }
-    </>
-
-  );
+            <Link href="/api/auth/login" passHref>
+              <button variant="outlined" className="fixedLoginButton">
+                Login
+              </button>
+            </Link>
+          </div>
+        }
+      </>
+    );
+  }
 };
+
 export default createRecipe;

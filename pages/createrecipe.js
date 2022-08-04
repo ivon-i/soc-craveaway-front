@@ -15,58 +15,7 @@ import { useState } from 'react';
 import { NavigateNextOutlined } from '@mui/icons-material';
 import { useUser } from '@auth0/nextjs-auth0';
 
-/*
-1. State for each input✅
-2. Capture dropdown input into states
-  - For time only: 
-      - Capture input
-      - On submit send post request
-
-3. Repeat for other dropdowns 
-4. Repeat for inputs
-    - Sort Name input box 
-
-5. Add author/user name
-
-5. have a handleSubmit function that puts states into ordered array
-as well as AUTHOR and anything else - ready for patch request
-2. Ability to submit  */
-
-// value={newProjectSubmission.name}
-// onChange={handleChangeFor('name')}
-
-const newRecipe = {
-  title: ,
-  author: user,
-  description: '',
-  time: '',
-  cost: '',
-  ingredients: '',
-  image: '',
-  serves: '',
-  rating: '',
-  rating_entries: '',
-  title: '',
-};
-const [newProjectSubmission, setNewProjectSubmission] = useState(newRecipe);
-
-const handleChangeFor = (propertyName) => (event) => {
-  setNewProjectSubmission((newProjectSubmission) => ({
-    ...newProjectSubmission,
-    [propertyName]: event.target.value,
-  }));
-  console.log(newProjectSubmission.name);
-};
-
-
 const createRecipe = () => {
-  const [nameState, setNameState] = useState('');
-  const [timeState, setTimeState] = useState('');
-  const [servesState, setServesState] = useState('');
-  const [priceState, setPriceState] = useState('');
-  const [categoryState, setCategoryState] = useState('');
-  const [ingredientsState, setIngredientsState] = useState('');
-  const [descriptionState, setDescriptionState] = useState('');
 
   const cookingTime = ['15', '25', '35', '45', '60+'];
   const serves = ['1', '2', '3', '4+'];
@@ -74,84 +23,39 @@ const createRecipe = () => {
   const nutritionCat = ['Vegetarian', 'Vegan', 'Pescatarian', 'Keto'];
   const { user } = useUser();
 
-  // const [ingredientList, setIngredientList] = useState('');
-  const [chipList, setChipList] = useState([]);
-  const [recipeSelects, setRecipeSelects] = useState([
-    { cookingTime: '', serves: '', price: '', category: '' },
-  ]);
+  const newRecipe = {
+    title: '',
+    author: /*`${user}`*/'ME',
+    description: '',
+    time: '',
+    cost: '',
+    nutrition: '',
+    ingredients: '',
+    image: 'ngf',
+    serves: ''
+  };
 
-  function handleNameChange(e) {
-    //✅
-    setNameState(e.target.value);
+  const [newRecipeSubmission, setNewRecipeSubmission] = useState(newRecipe);
+
+  const handleChangeFor = (propertyName) => (e) => {
+    setNewRecipeSubmission((newRecipeSubmission) => ({
+      ...newRecipeSubmission,
+      [propertyName]: e.target.value,
+    }));
+    console.log(newRecipeSubmission);
+  };
+
+  const handleClick = async () => {
+    const response = await fetch('http://craveaway.herokuapp.com/recipes/create/', {
+      method: 'POST',
+      body: JSON.stringify({ newRecipeSubmission }),
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    })
+    const data = await response.json()
+    console.log(data)
   }
-
-  function handleTimeChange(e) {
-    //✅
-    setTimeState(e.target.value);
-  }
-
-  function handleServesChange(e) {
-    //✅
-    setServesState(e.target.value);
-  }
-
-  function handlePriceChange(e) {
-    //✅
-    setPriceState(e.target.value);
-  }
-
-  function handleCategoryChange(e) {
-    //✅
-    setCategoryState(e.target.value);
-  }
-
-  function handleIngredientsChange(e) { 
-    setIngredientsState(e.target.value);
-  }
-
-  function handleDescriptionChange(e) {
-    //✅
-    setDescriptionState(e.target.value);
-  }
-
-  function handleClick() {
-    console.log(timeState)
-  }
-
-  // function handleClick() {
-  //   const response = await fetch('api/', {
-  //     method: 'POST',
-  //     body: JSON.stringify({ /*comment*/ }),
-  //     headers: {
-  //       'Content-Type': 'application/json'
-  //     },
-  //   })
-  //   const data = await response.json()
-  //   console.log(data)
-  // }
-
-
-
-  //CODE BELOW IS FOR PREVIOUS INGREDIENTS INPUT?
-  // function AddIngredients(e) {
-  //   setIngredientList(e.target.value);
-  //   console.log(ingredientList);
-  // }
-
-  // function AddToChip() {
-  //   if (ingredientList.length === 0) {
-  //     return;
-  //   } else {
-  //     setChipList([...chipList, { id: nanoid(), label: ingredientList }]);
-  //     setIngredientList('');
-  //     console.log(chipList);
-  //   }
-  // }
-
-  // const handleDelete = (id) => {
-  //   const newList = chipList.filter((item) => item.id !== id);
-  //   setChipList(newList);
-  // };
 
   return (
     <div>
@@ -162,7 +66,8 @@ const createRecipe = () => {
         <TextField
           sx={{ borderRadius: '8px', width: ' 80%', ml: '30px' }}
           variant="outlined"
-          onChange={handleNameChange}
+          value={newRecipeSubmission.title}
+          onChange={handleChangeFor('title')}
           placeholder="Add Name"
           multiline
           rows={1}
@@ -192,14 +97,13 @@ const createRecipe = () => {
       </Box>
 
       {/* COOKING TIME */}
-      {/* on change = set state + handlechange (which console.logs an array of states) */}
       <Stack spacing={5} direction="row" mt="20px" ml="30px">
         <Stack direction="column">
           <Typography>Cooking Time: </Typography>
           <Select
             sx={{ width: '150px', height: '50px', borderRadius: '20px' }}
-            onChange={handleTimeChange}
-            value={timeState}
+            value={newRecipeSubmission.time}
+            onChange={handleChangeFor('time')}
             defaultValue=""
           >
             {cookingTime.map((item) => (
@@ -213,8 +117,8 @@ const createRecipe = () => {
           <Typography>Serves: </Typography>
           <Select
             sx={{ width: '150px', height: '50px', borderRadius: '20px' }}
-            onChange={handleServesChange}
-            value={servesState}
+            value={newRecipeSubmission.serves}
+            onChange={handleChangeFor('serves')}
             defaultValue=""
           >
             {serves.map((item) => (
@@ -230,8 +134,8 @@ const createRecipe = () => {
           <Typography>Estimated price per serving: </Typography>
           <Select
             sx={{ width: '150px', height: '50px', borderRadius: '20px' }}
-            onChange={handlePriceChange}
-            value={priceState}
+            value={newRecipeSubmission.cost}
+            onChange={handleChangeFor('cost')}
             defaultValue=""
           >
             {price.map((item) => (
@@ -244,8 +148,8 @@ const createRecipe = () => {
         <Typography>Nutrition category: </Typography>
         <Select
           sx={{ width: '150px', height: '50px', borderRadius: '20px' }}
-          onChange={handleCategoryChange}
-          value={categoryState}
+          value={newRecipeSubmission.nutrition}
+          onChange={handleChangeFor('nutrition')}
           defaultValue=""
         >
           {nutritionCat.map((item) => (
@@ -259,66 +163,22 @@ const createRecipe = () => {
       <TextField
         sx={{ borderRadius: '8px', width: ' 80%', ml: '30px' }}
         variant="outlined"
-        onChange={handleDescriptionChange}
-        placeholder="Add Description"
+        value={newRecipeSubmission.ingredients}
+        onChange={handleChangeFor('ingredients')}
+        placeholder="Add Ingredients"
         multiline
         rows={5}
         required
         label="Required"
       />
 
-      {/* FORMER INGREDIENTS INPUT (CODE BELOW) */}
-      {/* <Typography ml="30px" mt="10px">
-        Ingredients:
-      </Typography>
-      <Stack direction="row" mt="10px" ml="30px" spacing={3}>
-        <TextField
-          sx={{ borderRadius: '8px', width: '220px', ml: '5px' }}
-          variant="outlined"
-          onChange={handleIngredientsChange}
-          placeholder="Add Ingredients"
-          value={ingredientsState} //THIS MIGHT NOT BE WORKING
-          required
-          label="Required"
-        />
-        <Button
-          sx={{ border: 'solid', borderWidth: '1.5px', borderRadius: 3 }}
-          variant="outlined"
-          onClick={AddToChip}
-        >
-          Add
-        </Button>
-      </Stack>
-
-      ADD BUTTON FOR INGREDIENTS
-      <Stack
-        spacing={1}
-        sx={{
-          maxWidth: 345,
-          display: 'flex',
-          alignContent: 'flex-start',
-          flexWrap: 'wrap',
-          ml: '30px',
-          mt: '10px',
-        }}
-      >
-        {chipList.map((item) => (
-          <Chip
-            variant="outlined"
-            label={item.label}
-            onDelete={() => handleDelete(item.id)}
-            sx={{ borderColor: '#FCC62E', borderWidth: '1.5px' }}
-            key={item.id}
-          ></Chip>
-        ))}
-      </Stack> */}
-
       {/* DESCRIPTION */}
       <Typography ml="30px">Description</Typography>
       <TextField
         sx={{ borderRadius: '8px', width: ' 80%', ml: '30px' }}
         variant="outlined"
-        onChange={handleDescriptionChange}
+        value={newRecipeSubmission.description}
+        onChange={handleChangeFor('description')}
         placeholder="Add Description"
         multiline
         rows={5}

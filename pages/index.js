@@ -19,11 +19,21 @@ export async function getServerSideProps() {
   }
 }
 
-
-
 export default function Home({ payload }) {
-  const [search, setSearch] = useState("")
-  // console.log("XXX", payload)
+  const [search, setSearch] = useState('');
+  const [filtered, setFiltered] = useState([]);
+
+  function filterInput() {
+    const filter = payload.filter(
+      (r) =>
+        r.time?.toUpperCase().includes(search.toUpperCase()) ||
+        r.author?.toUpperCase().includes(search.toUpperCase()) ||
+        r.title?.toUpperCase().includes(search.toUpperCase())
+    );
+    setFiltered(filter);
+    console.log(filtered);
+  }
+
   return (
     <Box id="mainBox">
       <Head>
@@ -31,12 +41,27 @@ export default function Home({ payload }) {
       </Head>
 
       <main>
-        <Searchbar searchInput={search} setSearchInput={setSearch} />
+        <Searchbar
+          searchInput={search}
+          setSearchInput={setSearch}
+          trigger={filterInput}
+        />
         <Banners />
         <Typography mt="32px" ml="24px" fontWeight="600">
           Top recipes today
         </Typography>
-        <RecCard data={payload && payload.filter(r => r.title?.toUpperCase().includes(search.toUpperCase()))} />
+        {/* <RecCard
+          data={
+            payload &&
+            payload.filter(
+              (r) =>
+                r.time?.toUpperCase().includes(search.toUpperCase()) ||
+                r.author?.toUpperCase().includes(search.toUpperCase()) ||
+                r.title?.toUpperCase().includes(search.toUpperCase())
+            )
+          }
+        /> */}
+        <RecCard data={filtered} />
         <CreateRecipeButton text={'Create Recipe'} />
       </main>
     </Box>

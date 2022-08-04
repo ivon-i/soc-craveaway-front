@@ -3,18 +3,17 @@ import '../styles/globals.css'
 import { UserProvider } from '@auth0/nextjs-auth0';
 
 function MyApp({ Component, pageProps }) {
+  
+  const { user } = pageProps;
   return (
-
-   <UserProvider>
+   <UserProvider user={user}>
     <Layout>
       <Component {...pageProps} />
     </Layout>
      </UserProvider>
   )
 }
-
 export default MyApp
-
 // //if using the below code, error to do with fontFamily appears
 
 // import Layout from '../components/Layout'

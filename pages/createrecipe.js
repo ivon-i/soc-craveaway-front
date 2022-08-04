@@ -15,6 +15,15 @@ import {
 import { useState } from 'react';
 import { NavigateNextOutlined } from '@mui/icons-material';
 
+/*
+1. Check that all necessary components are rendered based on back end columns. 
+  Require:
+    - Author
+    - rating
+    - rating_entries
+2. 
+*/
+
 const createRecipe = () => {
   const cookingTime = ['15', '25', '35', '45', '60+'];
   const serves = ['1', '2', '3', '4+'];
@@ -22,7 +31,7 @@ const createRecipe = () => {
   const nutritionCat = ['Vegetarian', 'Vegan', 'Pescatarian', 'Keto'];
 
   const [ingredientList, setIngredientList] = useState('');
-  const [chipList, setChipList] = useState([]);
+  const [chipList, setChipList] = useState([]); //CHIP 1/3
   const [recipeSelects, setRecipeSelects] = useState([
     { cookingTime: '', serves: '', price: '', category: '' },
   ]);
@@ -37,7 +46,7 @@ const createRecipe = () => {
     console.log(ingredientList);
   }
 
-  function AddToChip() {
+  function AddToChip() { //CHIP 2/3
     if (ingredientList.length === 0) {
       return;
     } else {
@@ -193,6 +202,50 @@ const createRecipe = () => {
           required
           label="Required"
         />
+
+        <Button
+          sx={{ border: 'solid', borderWidth: '1.5px', borderRadius: 3 }}
+          variant="outlined"
+          onClick={AddToChip} /* */
+        >
+          Add
+        </Button>
+      </Stack>
+      <Stack
+        spacing={1}
+        sx={{
+          maxWidth: 345,
+          display: 'flex',
+          alignContent: 'flex-start',
+          flexWrap: 'wrap',
+          ml: '30px',
+          mt: '10px',
+        }}
+      >
+        {chipList.map((item) => (
+          <Chip
+            variant="outlined"
+            label={item.label}
+            onDelete={() => handleDelete(item.id)}
+            sx={{ borderColor: '#FCC62E', borderWidth: '1.5px' }}
+            key={item.id}
+          ></Chip>
+        ))}
+      </Stack>
+      <Typography ml="30px">Description</Typography>
+      <TextField
+        sx={{ borderRadius: '8px', width: ' 80%', ml: '30px' }}
+        variant="outlined"
+        // onChange={AddIngredients}
+        placeholder="Add Description"
+        multiline
+        rows={5}
+        required
+        label="Required"
+      />
+      <button className="submitRecipeButton">Submit Recipe</button>
+    </div>
+=======
         <button className="submitRecipeButton">Submit Recipe</button>
       </div>
     );
@@ -250,6 +303,7 @@ const createRecipe = () => {
         </div>
       }
     </>
+
   );
 };
 export default createRecipe;

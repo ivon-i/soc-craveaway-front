@@ -7,6 +7,7 @@ import { Box, Typography } from '@mui/material';
 import data from '../db/recipeData.js';
 import CreateRecipeButton from '../components/createRecipeButton';
 import { useState } from 'react';
+import Link from 'next/link';
 
 export async function getServerSideProps() {
   try {
@@ -21,7 +22,7 @@ export async function getServerSideProps() {
 
 export default function Home({ payload }) {
   const [search, setSearch] = useState('');
-  const [filtered, setFiltered] = useState([]);
+  const [filtered, setFiltered] = useState(payload);
 
   function filterInput() {
     const filter = payload.filter(
@@ -50,18 +51,7 @@ export default function Home({ payload }) {
         <Typography mt="32px" ml="24px" fontWeight="600">
           Top recipes today
         </Typography>
-        {/* <RecCard
-          data={
-            payload &&
-            payload.filter(
-              (r) =>
-                r.time?.toUpperCase().includes(search.toUpperCase()) ||
-                r.author?.toUpperCase().includes(search.toUpperCase()) ||
-                r.title?.toUpperCase().includes(search.toUpperCase())
-            )
-          }
-        /> */}
-        <RecCard data={filtered} />
+        <RecCard data={filtered} />;
         <CreateRecipeButton text={'Create Recipe'} />
       </main>
     </Box>

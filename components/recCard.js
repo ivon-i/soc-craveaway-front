@@ -67,7 +67,7 @@ export default function RecCard({ data }) {
                 <FavoriteBorder />
               </IconButton>
             </AspectRatio>
-            <Link href="/recipe">
+            <Link href={`/post/${item.recipe_id}`} key={item.recipe_id}>
               <CardContent>
                 {/* <Box sx={{ whiteSpace: 'nowrap' }}> */}
                 <Typography gutterBottom fontSize="14px" component="div">

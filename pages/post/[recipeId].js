@@ -1,5 +1,13 @@
-const Post = (props) => {
-  return <h3>{props.data.payload[0].ingredients}</h3>;
+import RecipeCards from '../recipe';
+const Post = ({ data }) => {
+  const separatedingredients = data.payload[0].ingredients.split(',');
+  console.log(separatedingredients);
+  return (
+    <RecipeCards
+      recipedata={data.payload}
+      separatedingredients={separatedingredients}
+    />
+  );
 };
 export default Post; // default export for the page and simple export for the server side function below
 

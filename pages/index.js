@@ -111,6 +111,7 @@ import { Box, Hidden, Typography } from '@mui/material';
 import AddRecipeButton from '../ThemeFolder/AddRecipeButton';
 import { useState } from 'react';
 import Input from '../ThemeFolder/Input';
+import Link from 'next/link';
 
 export async function getServerSideProps() {
   try {

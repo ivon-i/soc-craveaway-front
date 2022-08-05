@@ -10,6 +10,7 @@ import AddIcon from '@mui/icons-material/Add';
 import Image from 'next/image';
 // import CookingTeam from '../public/CookingTeamwork.svg';
 import AddRecipeButton from './AddRecipeButton';
+import Link from 'next/link';
 export const Hero = () => {
   return (
     // Container contains all elements for the Hero section of the homepage: this is under the Navbar

@@ -107,7 +107,7 @@ export default function SwipeableTemporaryDrawer() {
           <Link href="/api/auth/login" passHref>
             Login
           </Link>,
-          'Usage Policy', /*Needs to be a link*/
+          'Usage Policy' /*Needs to be a link*/,
           <Link href="/api/auth/login" passHref>
             Sign Up
           </Link>,

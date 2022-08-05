@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import { nanoid } from 'nanoid';
-import { useUser } from '@auth0/nextjs-auth0';
 
 import {
   Typography,
@@ -158,7 +157,7 @@ const createRecipe = () => {
           onChange={handleChangeFor('nutrition')}
           defaultValue=""
         >
-          {chipList.map((item) => (
+          {/* {chipList.map((item) => (
             <Chip
               variant="outlined"
               label={item.label}
@@ -166,7 +165,7 @@ const createRecipe = () => {
               sx={{ borderColor: '#FCC62E', borderWidth: '1.5px' }}
               key={item.id}
             ></Chip>
-          ))}
+          ))} */}
         </Select>
       </Stack>
 

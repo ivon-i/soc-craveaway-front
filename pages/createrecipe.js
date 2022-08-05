@@ -14,135 +14,134 @@ import {
 } from '@mui/material';
 import { useState } from 'react';
 import { NavigateNextOutlined } from '@mui/icons-material';
-
-/*
-1. Check that all necessary components are rendered based on back end columns. 
-  Require:
-    - Author
-    - rating
-    - rating_entries
-2. 
-*/
+import { useUser } from '@auth0/nextjs-auth0';
 
 const createRecipe = () => {
   const cookingTime = ['15', '25', '35', '45', '60+'];
   const serves = ['1', '2', '3', '4+'];
   const price = ['£5', '£10', '£15', '£20+'];
   const nutritionCat = ['Vegetarian', 'Vegan', 'Pescatarian', 'Keto'];
+  const { user } = useUser();
 
-  const [ingredientList, setIngredientList] = useState('');
-  const [chipList, setChipList] = useState([]); //CHIP 1/3
-  const [recipeSelects, setRecipeSelects] = useState([
-    { cookingTime: '', serves: '', price: '', category: '' },
-  ]);
-  const { user, error, isLoading } = useUser();
-
-  function handleChangeee(e) {
-    console.info(e.target.value);
-  }
-
-  function AddIngredients(e) {
-    setIngredientList(e.target.value);
-    console.log(ingredientList);
-  }
-
-  function AddToChip() {
-    //CHIP 2/3
-    if (ingredientList.length === 0) {
-      return;
-    } else {
-      setChipList([...chipList, { id: nanoid(), label: ingredientList }]);
-      setIngredientList('');
-      console.log(chipList);
-    }
-  }
-
-  const handleDelete = (id) => {
-    const newList = chipList.filter((item) => item.id !== id);
-    setChipList(newList);
+  const newRecipe = {
+    title: '',
+    author: /*`${user}`*/ 'ME',
+    description: '',
+    time: '',
+    cost: '',
+    nutrition: '',
+    ingredients: '',
+    image: 'ngf',
+    serves: '',
   };
-  if (user) {
-    return (
-      <div>
-        <Link href="/">Home</Link>
-        <Typography mt="20px">Create your recipe</Typography>
-        <Stack spacing={1} sx={{ ml: '10px', mt: '24px' }}>
-          <Typography>Name:</Typography>
-          <TextField
-            sx={{ borderRadius: '8px', width: '95%', ml: '5px' }}
-            variant="outlined"
-            required
-            label="Required"
-          />
+
+  const [newRecipeSubmission, setNewRecipeSubmission] = useState(newRecipe);
+
+  const handleChangeFor = (propertyName) => (e) => {
+    setNewRecipeSubmission((newRecipeSubmission) => ({
+      ...newRecipeSubmission,
+      [propertyName]: e.target.value,
+    }));
+    console.log(newRecipeSubmission);
+  };
+
+  const handleClick = async () => {
+    const response = await fetch(
+      'http://craveaway.herokuapp.com/recipes/create/',
+      {
+        method: 'POST',
+        body: JSON.stringify(newRecipeSubmission),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }
+    );
+    const data = await response.json();
+    setNewRecipeSubmission(newRecipe);
+    console.log(data);
+  };
+
+ if(user) { return (
+    <div>
+      <Link href="/">Home</Link>
+      <Typography mt="20px">Create your recipe</Typography>
+      <Stack spacing={1} sx={{ ml: '10px', mt: '24px' }}>
+        <Typography ml="10px">Recipe Name:</Typography>
+        <TextField
+          sx={{ borderRadius: '8px', width: ' 80%', ml: '30px' }}
+          variant="outlined"
+          value={newRecipeSubmission.title}
+          onChange={handleChangeFor('title')}
+          placeholder="Add Name"
+          multiline
+          rows={1}
+          required
+          label="Required"
+        />
+      </Stack>
+      {/* IMAGE */}
+      <Box
+        sx={{
+          width: '95%',
+          ml: '5px',
+          height: '150px',
+          mt: '24px',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          border: 'solid',
+          borderWidth: '1px',
+          borderRadius: 3,
+        }}
+      >
+        <Button variant="text" component="label">
+          + Upload Image
+          <input hidden accept="image/*" multiple type="file" />
+        </Button>
+      </Box>
+
+      {/* COOKING TIME */}
+      <Stack spacing={5} direction="row" mt="20px" ml="30px">
+        <Stack direction="column">
+          <Typography>Cooking Time: </Typography>
+          <Select
+            sx={{ width: '150px', height: '50px', borderRadius: '20px' }}
+            value={newRecipeSubmission.time}
+            onChange={handleChangeFor('time')}
+            defaultValue=""
+          >
+            {cookingTime.map((item) => (
+              <MenuItem value={item}>{item}</MenuItem>
+            ))}
+          </Select>
         </Stack>
-        <Box
-          sx={{
-            width: '95%',
-            ml: '5px',
-            height: '150px',
-            mt: '24px',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            border: 'solid',
-            borderWidth: '1px',
-            borderRadius: 3,
-          }}
-        >
-          <Button variant="text" component="label">
-            + Upload Image
-            <input hidden accept="image/*" multiple type="file" />
-          </Button>
-        </Box>
-        <Stack spacing={5} direction="row" mt="20px" ml="30px">
-          <Stack direction="column">
-            <Typography>Cooking Time: </Typography>
-            <Select
-              sx={{ width: '150px', height: '50px', borderRadius: '20px' }}
-              onChange={handleChangeee}
-              value={recipeSelects.cookingTime}
-              defaultValue=""
-            >
-              {cookingTime.map((item) => (
-                <MenuItem value={item}>{item}</MenuItem>
-              ))}
-            </Select>
-          </Stack>
-          <Stack direction="column">
-            <Typography>Serves: </Typography>
-            <Select
-              sx={{ width: '150px', height: '50px', borderRadius: '20px' }}
-              onChange={handleChangeee}
-              value={recipeSelects.serves}
-              defaultValue=""
-            >
-              {serves.map((item) => (
-                <MenuItem value={item}>{item}</MenuItem>
-              ))}
-            </Select>
-          </Stack>
+
+        {/* SERVES */}
+        <Stack direction="column">
+          <Typography>Serves: </Typography>
+          <Select
+            sx={{ width: '150px', height: '50px', borderRadius: '20px' }}
+            value={newRecipeSubmission.serves}
+            onChange={handleChangeFor('serves')}
+            defaultValue=""
+          >
+            {serves.map((item) => (
+              <MenuItem value={item}>{item}</MenuItem>
+            ))}
+          </Select>
         </Stack>
-        <Box sx={{ width: '100%' }}>
-          <Stack direction="column" mt="20px" ml="30px">
-            <Typography>Estimated price per serving: </Typography>
-            <Select
-              sx={{ width: '150px', height: '50px', borderRadius: '20px' }}
-              onChange={handleChangeee}
-              value={recipeSelects.price}
-              defaultValue=""
-            >
-              {price.map((item) => (
-                <MenuItem value={item}>{item}</MenuItem>
-              ))}
-            </Select>
-          </Stack>
-        </Box>
+      </Stack>
+
+      <Box sx={{ width: '100%' }}>
+        {/* PRICE PER SERVING */}
+
         <Stack direction="column" mt="20px" ml="30px">
           <Typography>Nutrition category: </Typography>
           <Select
             sx={{ width: '150px', height: '50px', borderRadius: '20px' }}
-            onChange={handleChangeee}
-            value={recipeSelects.category}
+            value={newRecipeSubmission.cost}
+            onChange={handleChangeFor('cost')}
+
             defaultValue=""
           >
             {nutritionCat.map((item) => (
@@ -150,37 +149,14 @@ const createRecipe = () => {
             ))}
           </Select>
         </Stack>
-        <Typography ml="30px" mt="10px">
-          Ingredients:
-        </Typography>
-        <Stack direction="row" mt="10px" ml="30px" spacing={3}>
-          <TextField
-            sx={{ borderRadius: '8px', width: '220px', ml: '5px' }}
-            variant="outlined"
-            onChange={AddIngredients}
-            placeholder="Add Ingredients"
-            value={ingredientList}
-            required
-            label="Required"
-          />
-          <Button
-            sx={{ border: 'solid', borderWidth: '1.5px', borderRadius: 3 }}
-            variant="outlined"
-            onClick={AddToChip}
-          >
-            Add
-          </Button>
-        </Stack>
-        <Stack
-          spacing={1}
-          sx={{
-            maxWidth: 345,
-            display: 'flex',
-            alignContent: 'flex-start',
-            flexWrap: 'wrap',
-            ml: '30px',
-            mt: '10px',
-          }}
+      </Box>
+      <Stack direction="column" mt="20px" ml="30px">
+        <Typography>Nutrition category: </Typography>
+        <Select
+          sx={{ width: '150px', height: '50px', borderRadius: '20px' }}
+          value={newRecipeSubmission.nutrition}
+          onChange={handleChangeFor('nutrition')}
+          defaultValue=""
         >
           {chipList.map((item) => (
             <Chip
@@ -191,62 +167,42 @@ const createRecipe = () => {
               key={item.id}
             ></Chip>
           ))}
-        </Stack>
-        <Typography ml="30px">Description</Typography>
-        <TextField
-          sx={{ borderRadius: '8px', width: ' 80%', ml: '30px' }}
-          variant="outlined"
-          // onChange={AddIngredients}
-          placeholder="Add Description"
-          multiline
-          rows={5}
-          required
-          label="Required"
-        />
+        </Select>
+      </Stack>
 
-        <Button
-          sx={{ border: 'solid', borderWidth: '1.5px', borderRadius: 3 }}
-          variant="outlined"
-          onClick={AddToChip} /* */
-        >
-          Add
-        </Button>
-        {/* </Stack> */}
-        <Stack
-          spacing={1}
-          sx={{
-            maxWidth: 345,
-            display: 'flex',
-            alignContent: 'flex-start',
-            flexWrap: 'wrap',
-            ml: '30px',
-            mt: '10px',
-          }}
-        >
-          {chipList.map((item) => (
-            <Chip
-              variant="outlined"
-              label={item.label}
-              onDelete={() => handleDelete(item.id)}
-              sx={{ borderColor: '#FCC62E', borderWidth: '1.5px' }}
-              key={item.id}
-            ></Chip>
-          ))}
-        </Stack>
-        <Typography ml="30px">Description</Typography>
-        <TextField
-          sx={{ borderRadius: '8px', width: ' 80%', ml: '30px' }}
-          variant="outlined"
-          // onChange={AddIngredients}
-          placeholder="Add Description"
-          multiline
-          rows={5}
-          required
-          label="Required"
-        />
-        <button className="submitRecipeButton">Submit Recipe</button>
-      </div>
-    );
+      {/* INGREDIENTS */}
+      <Typography ml="30px">Ingredients</Typography>
+      <TextField
+        sx={{ borderRadius: '8px', width: ' 80%', ml: '30px' }}
+        variant="outlined"
+        value={newRecipeSubmission.ingredients}
+        onChange={handleChangeFor('ingredients')}
+        placeholder="Add Ingredients"
+        multiline
+        rows={5}
+        required
+        label="Required"
+      />
+
+      {/* DESCRIPTION */}
+      <Typography ml="30px">Description</Typography>
+      <TextField
+        sx={{ borderRadius: '8px', width: ' 80%', ml: '30px' }}
+        variant="outlined"
+        value={newRecipeSubmission.description}
+        onChange={handleChangeFor('description')}
+        placeholder="Add Description"
+        multiline
+        rows={5}
+        required
+        label="Required"
+      />
+
+      <button className="submitRecipeButton" onClick={handleClick}>
+        Submit Recipe
+      </button>
+    </div>
+  );
   } else {
     return (
       <>

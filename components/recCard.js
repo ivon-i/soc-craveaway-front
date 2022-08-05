@@ -24,7 +24,7 @@ import Link from 'next/link';
 export default function RecCard({ data }) {
   function HeartFav() {
     // POST REQUEST HERE
-    console.log('milfs');
+    console.log('dd');
   }
 
   return (
@@ -67,7 +67,7 @@ export default function RecCard({ data }) {
                 <FavoriteBorder />
               </IconButton>
             </AspectRatio>
-            <Link href="/recipe">
+            <Link href={`/post/${item.recipe_id}`} key={item.recipe_id}>
               <CardContent>
                 {/* <Box sx={{ whiteSpace: 'nowrap' }}> */}
                 <Typography gutterBottom fontSize="14px" component="div">
@@ -82,7 +82,7 @@ export default function RecCard({ data }) {
                     sx={{ mt: 2, border: 'none' }}
                   />
                   <Chip
-                    label={item.timeToCreate}
+                    label={item.time}
                     icon={<AccessTimeIcon />}
                     variant="outlined"
                     size="small"

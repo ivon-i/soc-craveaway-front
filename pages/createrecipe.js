@@ -1,5 +1,6 @@
 import Link from 'next/link';
-// import { nanoid } from 'nanoid';
+import { nanoid } from 'nanoid';
+import { useUser } from '@auth0/nextjs-auth0';
 
 import {
   Typography,
@@ -60,7 +61,7 @@ const createRecipe = () => {
     console.log(data);
   };
 
-  return (
+ if(user) { return (
     <div>
       <Link href="/">Home</Link>
       <Typography mt="20px">Create your recipe</Typography>
@@ -133,15 +134,17 @@ const createRecipe = () => {
 
       <Box sx={{ width: '100%' }}>
         {/* PRICE PER SERVING */}
+
         <Stack direction="column" mt="20px" ml="30px">
-          <Typography>Estimated price per serving: </Typography>
+          <Typography>Nutrition category: </Typography>
           <Select
             sx={{ width: '150px', height: '50px', borderRadius: '20px' }}
             value={newRecipeSubmission.cost}
             onChange={handleChangeFor('cost')}
+
             defaultValue=""
           >
-            {price.map((item) => (
+            {nutritionCat.map((item) => (
               <MenuItem value={item}>{item}</MenuItem>
             ))}
           </Select>
@@ -155,8 +158,14 @@ const createRecipe = () => {
           onChange={handleChangeFor('nutrition')}
           defaultValue=""
         >
-          {nutritionCat.map((item) => (
-            <MenuItem value={item}>{item}</MenuItem>
+          {chipList.map((item) => (
+            <Chip
+              variant="outlined"
+              label={item.label}
+              onDelete={() => handleDelete(item.id)}
+              sx={{ borderColor: '#FCC62E', borderWidth: '1.5px' }}
+              key={item.id}
+            ></Chip>
           ))}
         </Select>
       </Stack>
@@ -194,6 +203,62 @@ const createRecipe = () => {
       </button>
     </div>
   );
+  } else {
+    return (
+      <>
+        {user && (
+          <div>
+            <h6> Hello </h6>
+          </div>
+        )}
+        :{' '}
+        {
+          <div>
+            <Typography
+              sx={{
+                fontWeight: '900',
+                marginTop: 15,
+                alignItems: 'center',
+                display: 'flex',
+                justifyContent: 'center',
+              }}
+            >
+              You must login to create a recipe!
+            </Typography>
+            <>
+              <img
+                alt="Loading..."
+                className="fryingpan"
+                width="432"
+                height="250"
+                data-id="14475354"
+                data-animated-url="https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif"
+                skip_resize="true"
+                srcset="https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 320w,
+          https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 400w,
+          https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 450w,
+          https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 640w,
+          https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 700w,
+          https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 800w,
+          https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 840w,
+          https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 1000w,
+          https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 1200w,
+          https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 768w,
+          https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 1600w"
+                sizes="(max-width: 919px) 100vw, max(768px, 98vh)"
+                src="https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif"
+              ></img>
+            </>
+            <Link href="/api/auth/login" passHref>
+              <button variant="outlined" className="fixedLoginButton">
+                Login
+              </button>
+            </Link>
+          </div>
+        }
+      </>
+    );
+  }
 };
 
 export default createRecipe;

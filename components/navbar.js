@@ -1,15 +1,15 @@
-import { Typography, Stack} from "@mui/material"
-import { HiMenu } from 'react-icons/hi'
+import { Typography, Stack } from '@mui/material';
+import { HiMenu } from 'react-icons/hi';
 import * as React from 'react';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import Link from "next/link";
-import Image from "next/image";
-import logo from '../extras/craveawaylogo.png'
-import { margin } from "@mui/system";
-import text from '../extras/craveawaytext.png'
-import SwipeableTemporaryDrawer from "./navbar drawer";
+import Link from 'next/link';
+import Image from 'next/image';
+import CravLogo from '../extras/crawaaa-removebg-preview.png';
+import { margin } from '@mui/system';
+import text from '../extras/Text.png';
+import SwipeableTemporaryDrawer from './navbar drawer';
 
 const Navbar = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -22,22 +22,22 @@ const Navbar = () => {
   };
 
   return (
-
-
-    <Stack direction='row' spacing={10} width= '110vw' backgroundColor="#F5BE6B" justifyContent="space-around"
+    <Stack
+      direction="row"
+      spacing={10}
+      width="110vw"
+      justifyContent="space-around"
       sx={{
-         position: 'sticky', top:"2%", padding: "6px"
-    }}>
+        position: 'sticky',
+        padding: '6px',
+      }}
+      backgroundColor="#D7D7D7"
+    >
       <>
-        <Image src={logo} alt='icon'
-          width="60vw" height="60vh" sx={{
-          }} />
-        </>
-        <>
-          <Image src={text} alt='text'
-          width="190vw" height="40vh"
-          sx={{
-            }} />
+        <Image src={CravLogo} alt="icon" width="80px" height="60px" />
+      </>
+      <>
+        <Image src={text} alt="text" width="150px" height="20px" />
       </>
       {/* <Typography sx={{
         fontSize: "x-large",
@@ -45,7 +45,7 @@ const Navbar = () => {
         display: "center",
         color: "#FE724C",
   }}>CraveAway</Typography> */}
-    {/* <div>
+      {/* <div>
     <Button
       id="basic-button"
       aria-controls={open ? 'basic-menu' : undefined}
@@ -84,10 +84,9 @@ const Navbar = () => {
         
 
       </div> */}
-      <SwipeableTemporaryDrawer/>
+      <SwipeableTemporaryDrawer />
     </Stack>
+  );
+};
 
-);
-}
-
-export default Navbar
+export default Navbar;

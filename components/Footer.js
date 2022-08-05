@@ -2,7 +2,7 @@
 
 const Footer = () => {
     return (<div>
-        <h6> CraveAway ™ </h6>
+        {/* <h6> CraveAway ™ </h6> */}
     </div>
     );
 }

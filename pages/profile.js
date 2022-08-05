@@ -7,6 +7,8 @@ import RecCard from '../components/recCard';
 import data from '../db/recipeData.js';
 import { useState } from 'react';
 import { Box } from '@mui/system';
+
+
 export default function Profile() {
   const { user, error, isLoading } = useUser();
   const [list2, setList2] = useState([]);

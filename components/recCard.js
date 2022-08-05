@@ -1,8 +1,8 @@
 import * as React from 'react';
-// import Card from '@mui/material/Card';
+import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-// import Typography from '@mui/material/Typography';
+import Typography from '@mui/material/Typography';
 import {
   IconButton,
   CardActionArea,
@@ -11,14 +11,15 @@ import {
   Chip,
   Button,
   Grid,
+  Box,
 } from '@mui/material';
 import FavoriteBorder from '@mui/icons-material/FavoriteBorder';
 import GradeIcon from '@mui/icons-material/Grade';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
-import Box from '@mui/joy/Box';
-import AspectRatio from '@mui/joy/AspectRatio';
-import Card from '@mui/joy/Card';
-import Typography from '@mui/joy/Typography';
+// import Box from '@mui/joy/Box';
+// import AspectRatio from '@mui/joy/AspectRatio';
+// import Card from '@mui/joy/Card';
+// import Typography from '@mui/joy/Typography';
 import Link from 'next/link';
 
 export default function RecCard({ data }) {
@@ -56,7 +57,7 @@ export default function RecCard({ data }) {
             elevation={3}
             width="700px"
           >
-            <AspectRatio ratio="0.75" sx={{ minWidth: 140, overflow: 'auto' }}>
+            {/* <AspectRatio ratio="0.75" sx={{ minWidth: 140, overflow: 'auto' }}>
               <CardMedia
                 component="img"
                 height="107.5"
@@ -66,7 +67,8 @@ export default function RecCard({ data }) {
               <IconButton variant="plain" id="heart-icon" onClick={HeartFav}>
                 <FavoriteBorder />
               </IconButton>
-            </AspectRatio>
+            </AspectRatio> */}
+
             <Link href={`/post/${item.recipe_id}`} key={item.recipe_id}>
               <CardContent>
                 {/* <Box sx={{ whiteSpace: 'nowrap' }}> */}

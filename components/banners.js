@@ -24,14 +24,14 @@ export default function Banners() {
         alignItems="center"
         ml="6px"
       >
-        <Item>Pizza</Item>
-        <Item>Later</Item>
-        <Item>Hamb</Item>
+        <Item>Example</Item>
+        <Item>Example</Item>
+        <Item>Template</Item>
+        <Item>Example</Item>
+        <Item>Example</Item>
         <Item>Halal</Item>
-        <Item>Halal</Item>
-        <Item>Halal</Item>
-        <Item>Halal</Item>
-        <Item>Halal</Item>
+        <Item>Example</Item>
+        <Item>Example</Item>
       </Stack>
       <Box
         sx={{

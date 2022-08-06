@@ -18,13 +18,16 @@ import { useState, useEffect } from 'react';
 export default function RecipeCards({ recipedata, separatedingredients }) {
   const [value, setValue] = useState(0);
 
-  async function handleClick() {
+  async function handleClick(id) {
     try {
-      const patch = await fetch(`https://craveaway.herokuapp.com/recipes/18`, {
-        method: 'PATCH',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ rating: value }),
-      });
+      const patch = await fetch(
+        `https://craveaway.herokuapp.com/recipes/${id}`,
+        {
+          method: 'PATCH',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ rating: value }),
+        }
+      );
       const res = await patch.json();
       console.log(res);
     } catch (error) {
@@ -77,15 +80,17 @@ export default function RecipeCards({ recipedata, separatedingredients }) {
             Ingredients
           </Typography>
           {separatedingredients.map((item) => (
-            <Chip
-              label={item}
-              variant="outlined"
-              sx={{
-                borderColor: '#FCC62E',
-                borderWidth: '1.5px',
-                mt: '10px',
-              }}
-            ></Chip>
+            <Stack direction="column" width="150px">
+              <Chip
+                label={item}
+                variant="outlined"
+                sx={{
+                  borderColor: '#FCC62E',
+                  borderWidth: '1.5px',
+                  mt: '10px',
+                }}
+              ></Chip>
+            </Stack>
           ))}
           <Typography fontWeight={700} mt="20px">
             Description
@@ -110,9 +115,15 @@ export default function RecipeCards({ recipedata, separatedingredients }) {
             }}
             value={value}
           />
+          <Button
+            onClick={() => {
+              handleClick(item.recipe_id);
+            }}
+          >
+            Submit Rating
+          </Button>
         </Box>
       ))}
-      <Button onClick={handleClick}>Submit Rating</Button>
     </div>
   );
 }

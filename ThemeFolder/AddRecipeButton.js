@@ -14,7 +14,7 @@ function AddRecipeButton(props) {
           fontWeight: '600',
         }}
       >
-        Create Recipe
+        {props.text}
       </Button>
     </Link>
   );

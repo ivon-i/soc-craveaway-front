@@ -16,6 +16,8 @@ import { useState } from 'react';
 import Image from 'next/image';
 // import logo from '../public/logo.svg';
 import Input from './Input';
+import SwipeableTemporaryDrawer from '../components/navbar drawer';
+
 export const Navbar = () => {
   const [el, setEl] = useState(null);
   // this state captures the value from two inputs because the visibility of each input changes depending on viewport size
@@ -72,7 +74,8 @@ export const Navbar = () => {
                 <Link href="/">About</Link>
                 <Link href="/">All Recipes</Link>
               </Box>
-              <AccountCircleIcon />
+              {/* <AccountCircleIcon /> */}
+          <SwipeableTemporaryDrawer />
             </Hidden>
           </Toolbar>
         </Container>

@@ -37,43 +37,43 @@ const Cards = ({ data }) => {
         }}
       >
         {data.map((item) => (
-          <Link href={`/post/${item.recipe_id}`} key={item.recipe_id}>
-            <Paper sx={{ overflow: 'hidden' }}>
-              <Box
+          <Paper sx={{ overflow: 'hidden' }}>
+            <Box
+              sx={{
+                height: '200px',
+                position: 'relative',
+              }}
+            >
+              <Image src="/test.jpg" layout="fill" />
+              <Chip
+                color="success"
+                label={item.nutrition}
                 sx={{
-                  height: '200px',
-                  position: 'relative',
+                  zIndex: 100,
+                  position: 'absolute',
+                  top: '16px',
+                  right: '16px',
+                }}
+              />
+
+              <IconButton
+                onClick={HeartFav}
+                sx={{
+                  zIndex: 101,
+                  position: 'absolute',
+                  bottom: '16px',
+                  right: '16px',
+                  backgroundColor: '#fff',
+                  borderRadius: '100%',
+                  padding: '8px',
+                  fontSize: '40px',
+                  color: '#FF6B6B',
                 }}
               >
-                <Image src="/test.jpg" layout="fill" />
-                <Chip
-                  color="success"
-                  label={item.nutrition}
-                  sx={{
-                    zIndex: 100,
-                    position: 'absolute',
-                    top: '16px',
-                    right: '16px',
-                  }}
-                />
-
-                <IconButton
-                  onClick={HeartFav}
-                  sx={{
-                    zIndex: 101,
-                    position: 'absolute',
-                    bottom: '16px',
-                    right: '16px',
-                    backgroundColor: '#fff',
-                    borderRadius: '100%',
-                    padding: '8px',
-                    fontSize: '40px',
-                    color: '#FF6B6B',
-                  }}
-                >
-                  <FavoriteBorderOutlinedIcon />
-                </IconButton>
-              </Box>
+                <FavoriteBorderOutlinedIcon />
+              </IconButton>
+            </Box>
+            <Link href={`/post/${item.recipe_id}`} key={item.recipe_id}>
               <Box padding="16px">
                 <Typography
                   variant="h6"
@@ -97,8 +97,8 @@ const Cards = ({ data }) => {
                   {item.time}
                 </Box>
               </Box>
-            </Paper>
-          </Link>
+            </Link>
+          </Paper>
         ))}
       </Box>
       {/* ))} */}

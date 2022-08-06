@@ -37,7 +37,10 @@ export const Hero = () => {
               Choose and create healthy alternatives to fast food!
             </Typography>
             <Hidden smDown>
-              <AddRecipeButton sx={{ marginTop: '24px', fontSize: '20px' }} />
+              <AddRecipeButton
+                sx={{ marginTop: '24px', fontSize: '20px' }}
+                text={'Create Recipe'}
+              />
             </Hidden>
           </Grid>
           <Grid item md={5} xs={4}>

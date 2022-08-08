@@ -313,8 +313,9 @@ export default function createRecipe() {
     );
   } else {
     return (
-      <>
+      <>        
         <div>
+          <Navbar />
           <Box
             sx={{
               backgroundImage: 'url(/food_illustration.png)',
@@ -326,28 +327,32 @@ export default function createRecipe() {
               },
             }}
           >
+            <br>
+            </br>
+            <br>
+          </br>
             <Box
               sx={{
-                mt: 1,
-                backgroundColor: 'white',
-                paddingBottom: 10,
-                display: 'fixed',
-                width: '43%',
-                m: 'auto',
+                mt:1,
+                backgroundColor: "white",
+                paddingBottom:10,
                 alignItems: 'center',
+                display: 'flex',
                 justifyContent: 'center',
+                width: "43%",
+                height: 10,
+                m:'auto',
               }}
             >
-              {' '}
               <Typography
                 sx={{
                   fontWeight: '900',
-                  marginTop: 1,
-                  paddingTop: 10,
-                  alignItems: 'center',
-                  display: 'flex',
-                  m: 'auto',
-                  justifyContent: 'center',
+                  fontSize:20,
+              marginTop: 15,
+              marginLeft: 3,
+              alignItems: 'center',
+              display: 'flex',
+              justifyContent: 'center',
                 }}
               >
                 You must login to create a recipe!
@@ -366,7 +371,6 @@ export default function createRecipe() {
               >
                 <img
                   alt="Loading..."
-                  backgroundImage="url(/food_illustration.png)"
                   className="fryingpan"
                   width="400"
                   height="250"

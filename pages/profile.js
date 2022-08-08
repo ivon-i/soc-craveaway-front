@@ -9,6 +9,7 @@ import { useState } from 'react';
 import { Box } from '@mui/system';
 import Cards from '../ThemeFolder/Cards';
 import { Button } from '@mui/material';
+import { Navbar } from '../ThemeFolder/Navbar';
 
 
 export default function Profile() {
@@ -87,6 +88,7 @@ export default function Profile() {
     <>
       {
         <div>
+          <Navbar/>
           <Box
           sx={{
             backgroundImage: 'url(/food_illustration.png)',
@@ -97,7 +99,11 @@ export default function Profile() {
               md: '40px',
             },
           }}
-        >
+          >
+            <br>
+            </br>
+            <br>
+          </br>
             <Box sx={{
               mt:1,
               backgroundColor: "white",
@@ -106,11 +112,13 @@ export default function Profile() {
               display: 'flex',
               justifyContent: 'center',
               width: "43%",
+              height: 10,
               m:'auto',
             }}>  
           <Typography
             sx={{
-              fontWeight: '900',
+                  fontWeight: '900',
+                  fontSize:20,
               marginTop: 15,
               marginLeft: 3,
               alignItems: 'center',
@@ -122,15 +130,6 @@ export default function Profile() {
               </Typography>
               </Box>
           <>
-            {/* <LockOpenIcon sx={{
-             fontSize:"120px",
-            fontWeight:"1000",
-              margin: 10,
-            marginLeft:18,
-            alignItems: "center",
-            display: "flex",
-            justifyContent: "center",
-          }}/> */}
             <Box
           sx={{
                 backgroundColor: "white",

@@ -313,37 +313,55 @@ export default function createRecipe() {
   } else {
     return (
       <>
-        {user && (
-          <div>
-            <h6> Hello </h6>
-          </div>
-        )}
-        {' '}
-        {
-          <div>
-            <Typography
+        <div>
+        <Box
+          sx={{
+            backgroundImage: 'url(/food_illustration.png)',
+            minHeight: '100vh',
+            paddingBottom: {
+              xs: '0',
+              sm: '40px',
+              md: '40px',
+            },
+          }}
+        >
+            <Box sx={{
+              mt:1,
+              backgroundColor: "white",
+              paddingBottom:10,
+              display: 'fixed',
+              width: "43%",
+              m: 'auto',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}>   <Typography
               sx={{
                 fontWeight: '900',
-                marginTop: 15,
+                marginTop: 1,
+                paddingTop: 10,
                 alignItems: 'center',
-                display: 'flex',
+                  display: 'flex',
+                m:'auto',
                 justifyContent: 'center',
               }}
             >
               You must login to create a recipe!
-            </Typography>
+              </Typography>
+              </Box>
             <>
               <Box
-              sx={{
-                fontWeight: '900',
-                marginTop: 8,
-                alignItems: 'center',
-                display: 'flex',
-                justifyContent: 'center',
+                sx={{
+                  backgroundColor: "white",
+              display: 'fixed',
+              width: "43%",
+              m: 'auto',
+              alignItems: 'center',
+              justifyContent: 'center',
               }}
               >
               <img
                 alt="Loading..."
+                backgroundImage= 'url(/food_illustration.png)'
                 className="fryingpan"
                 width="400"
                 height="250"
@@ -366,6 +384,15 @@ export default function createRecipe() {
                 ></img>
                 </Box>
             </>
+            <Box sx={{
+              backgroundColor: "white",
+              paddingBottom:5,
+              alignItems: 'center',
+              display: 'flex',
+              justifyContent: 'center',
+              width: "43%",
+              m:'auto',
+            }}>
             <Link href="/api/auth/login" passHref>
               <Button variant="contained" className="fixedLoginButton" sx={{
                 fontWeight: '900',
@@ -378,9 +405,10 @@ export default function createRecipe() {
               }}>
                 Login
               </Button>
-            </Link>
+              </Link>
+              </Box>
+              </Box>
           </div>
-        }
       </>
     );
   }

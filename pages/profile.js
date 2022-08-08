@@ -87,6 +87,27 @@ export default function Profile() {
     <>
       {
         <div>
+          <Box
+          sx={{
+            backgroundImage: 'url(/food_illustration.png)',
+            minHeight: '100vh',
+            paddingBottom: {
+              xs: '0',
+              sm: '40px',
+              md: '40px',
+            },
+          }}
+        >
+            <Box sx={{
+              mt:1,
+              backgroundColor: "white",
+              paddingBottom:10,
+              alignItems: 'center',
+              display: 'flex',
+              justifyContent: 'center',
+              width: "43%",
+              m:'auto',
+            }}>  
           <Typography
             sx={{
               fontWeight: '900',
@@ -98,7 +119,8 @@ export default function Profile() {
             }}
           >
             You must login to access your profile!
-          </Typography>
+              </Typography>
+              </Box>
           <>
             {/* <LockOpenIcon sx={{
              fontSize:"120px",
@@ -110,13 +132,14 @@ export default function Profile() {
             justifyContent: "center",
           }}/> */}
             <Box
-              sx={{
-                fontWeight: '900',
-                marginTop: 8,
-                alignItems: 'center',
-                display: 'flex',
-                justifyContent: 'center',
-              }}
+          sx={{
+                backgroundColor: "white",
+            display: 'fixed',
+            width: "43%",
+            m: 'auto',
+            alignItems: 'center',
+            justifyContent: 'center',
+            }}
               >
             <img
               className="fryingpan"
@@ -141,7 +164,16 @@ export default function Profile() {
               src="https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif"
               ></img>
               </Box>
-          </>
+            </>
+            <Box sx={{
+              backgroundColor: "white",
+              paddingBottom:5,
+              alignItems: 'center',
+              display: 'flex',
+              justifyContent: 'center',
+              width: "43%",
+              m:'auto',
+            }}>
           <Link href="/api/auth/login" passHref>
           <Button variant="contained" className="fixedLoginButton" sx={{
                 fontWeight: '900',
@@ -154,7 +186,9 @@ export default function Profile() {
               }}>
               Login
             </Button>
-          </Link>
+            </Link>
+            </Box>
+              </Box>
         </div>
       }
     </>

@@ -1,4 +1,5 @@
-import RecipeCards from '../recipe';
+// import RecipeCards from '../recipe';
+import RecipeCards from '../../ThemeFolder/recipepage';
 const Post = ({ data }) => {
   const separatedingredients = data.payload[0].ingredients.split(',');
   console.log(separatedingredients);

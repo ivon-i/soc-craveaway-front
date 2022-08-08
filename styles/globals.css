@@ -115,7 +115,7 @@ a {
   color: #fff;
 }
 
-.fixedLoginButton{
+.fixedLoginButton {
   position: fixed;
   top: 500px;
   left: 51%;
@@ -264,7 +264,7 @@ textarea {
   flex-direction: column;
 }
 
-.fryingpan{
+.fryingpan {
   display: block;
   margin-left: auto;
   margin-right: auto;

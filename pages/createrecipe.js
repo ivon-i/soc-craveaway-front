@@ -352,7 +352,11 @@ export default function createRecipe() {
               ></img>
             </>
             <Link href="/api/auth/login" passHref>
-              <button variant="outlined" className="fixedLoginButton">
+              <button
+                variant="contained"
+                sx={{ justifyContent: 'center' }}
+                className="fixedLoginButton"
+              >
                 Login
               </button>
             </Link>

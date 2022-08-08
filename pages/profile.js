@@ -9,6 +9,10 @@ import { useState } from 'react';
 import { Box } from '@mui/system';
 import Cards from '../ThemeFolder/Cards';
 import { Navbar } from '../ThemeFolder/Navbar';
+import { Container } from '@mui/material';
+import { Image } from 'next/image';
+
+import { Image as MUI } from '@mui/icons-material';
 
 export default function Profile() {
   const { user, error, isLoading } = useUser();
@@ -46,42 +50,75 @@ export default function Profile() {
     return (
       <>
         <Navbar />
-        <Box ml="15px">
-          <Typography variant="h4" mt="50px">
-            {user.name}'s Profile
-          </Typography>
-          <Typography mt="30px" fontWeight={700}>
-            Favourite
-          </Typography>
-          <Cards data={data} />
-          <Stack
-            direction="column"
-            spacing={2}
-            mt="15px"
-            sx={{
-              maxWidth: 345,
-              display: 'flex',
-              alignContent: 'flex-start',
-              flexWrap: 'wrap',
-            }}
+        <Container maxWidth="lg">
+          <Box
+            ml="15px"
+            sx={
+              {
+                // backgroundColor: 'red',
+              }
+            }
           >
-            <Typography fontWeight={700}>Shopping List</Typography>
-            {list2.length === 4
-              ? setShopEmp(true) && (
-                  <Typography fontWeight={700}>Add smt</Typography>
-                )
-              : null}
-            {list.map((item) => (
-              <Chip
-                variant="outlined"
-                label={item.label}
-                onClick={handleClick}
-                onDelete={() => handleDelete(item.id)}
-                sx={{ borderColor: '#FCC62E', borderWidth: '1.5px' }}
-              ></Chip>
-            ))}
-          </Stack>
-        </Box>
+            <Typography
+              variant="h4"
+              mt="50px"
+              sx={{
+                fontWeight: '700',
+                textAlign: 'center',
+              }}
+            >
+              {user.name}'s Profile
+            </Typography>
+            <Box
+              sx={{
+                display: 'flex',
+                justifyContent: 'center',
+                flexDirection: 'column',
+                alignItems: 'center',
+              }}
+            >
+              <img
+                src={user.picture}
+                style={{
+                  borderRadius: '100%',
+                  width: '108px',
+                  height: '108px',
+                }}
+              />
+            </Box>
+            <Typography mt="30px" fontWeight={700}>
+              Favourite
+            </Typography>
+            <Cards data={data} />
+            <Stack
+              direction="column"
+              spacing={2}
+              mt="15px"
+              sx={{
+                maxWidth: 345,
+                display: 'flex',
+                alignContent: 'flex-start',
+                flexWrap: 'wrap',
+              }}
+            >
+              <Typography fontWeight={700}>Shopping List</Typography>
+              {list2.length === 4
+                ? setShopEmp(true) && (
+                    <Typography fontWeight={700}>Add smt</Typography>
+                  )
+                : null}
+              {list.map((item) => (
+                <Chip
+                  variant="outlined"
+                  label={item.label}
+                  onClick={handleClick}
+                  onDelete={() => handleDelete(item.id)}
+                  sx={{ borderColor: '#FCC62E', borderWidth: '1.5px' }}
+                ></Chip>
+              ))}
+            </Stack>
+          </Box>
+        </Container>
       </>
     );
   }

@@ -11,6 +11,7 @@ import Cards from '../ThemeFolder/Cards';
 import { Navbar } from '../ThemeFolder/Navbar';
 import { Container } from '@mui/material';
 import { Image } from 'next/image';
+import { Grid } from '@mui/material';
 
 export default function Profile() {
   const { user, error, isLoading } = useUser();
@@ -22,6 +23,14 @@ export default function Profile() {
     { id: 3, label: 'Clickable Deletable' },
     { id: 4, label: 'Clickable Deletable' },
     { id: 5, label: 'Clickable Deletable' },
+    { id: 6, label: 'Clickable Deletable' },
+    { id: 7, label: 'Clickable Deletable' },
+    { id: 8, label: 'Clickable Deletable' },
+    { id: 9, label: 'Clickable Deletable' },
+    { id: 10, label: 'Clickable Deletable' },
+    { id: 11, label: 'Clickable Deletable' },
+    { id: 12, label: 'Clickable Deletable' },
+    { id: 13, label: 'Clickable Deletable' },
   ]);
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>{error.message}</div>;
@@ -48,7 +57,7 @@ export default function Profile() {
     return (
       <>
         <Navbar />
-        <Container maxWidth="lg">
+        <Container maxWidth="lg" sx={{ marginBottom: '88px' }}>
           <Box
             ml="15px"
             sx={
@@ -116,23 +125,27 @@ export default function Profile() {
               >
                 Shopping List
               </Typography>
-              <Box sx={{ backgroundColor: 'yellowd  ' }}>
-                {list2.length === 4
-                  ? setShopEmp(true) && (
-                      <Typography fontWeight={700}>Add smt</Typography>
-                    )
-                  : null}
-                {list.map((item) => (
-                  <Chip
-                    variant="outlined"
-                    label={item.label}
-                    onClick={handleClick}
-                    onDelete={() => handleDelete(item.id)}
-                    sx={{ borderColor: '#FCC62E', borderWidth: '1.5px' }}
-                  ></Chip>
-                ))}
-              </Box>
             </Stack>
+
+            <Container maxWidth="lg" sx={{ backgroundColor: 'red' }}>
+              {list2.length === 4
+                ? setShopEmp(true) && (
+                    <Typography fontWeight={700}>Add smt</Typography>
+                  )
+                : null}
+              {list.map((item) => (
+                <Chip
+                  variant="outlined"
+                  label={item.label}
+                  onClick={handleClick}
+                  onDelete={() => handleDelete(item.id)}
+                  sx={{
+                    borderColor: '#FCC62E',
+                    borderWidth: '1.5px',
+                  }}
+                ></Chip>
+              ))}
+            </Container>
           </Box>
         </Container>
       </>

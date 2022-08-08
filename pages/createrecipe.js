@@ -35,12 +35,13 @@ export default function createRecipe() {
     cost: '',
     nutrition: '',
     ingredients: '',
-    image: 'ngf',
+    image: 'hi',
     serves: '',
+    imagestring: '',
   };
   const [newRecipeSubmission, setNewRecipeSubmission] = useState(newRecipe);
   const [newImage, setNewImage] = useState('');
-  const [selectedFile, setSelectedFile] = useState('');
+  // const [selectedFile, setSelectedFile] = useState('');
   const [previewSource, setPreviewSource] = useState();
 
   const handleChangeFor = (propertyName) => (e) => {
@@ -51,7 +52,11 @@ export default function createRecipe() {
     }));
     console.log(newRecipeSubmission);
   };
-  const handleClick = async () => {
+  const handleClick = async (x) => {
+    // setNewRecipeSubmission((newRecipeSubmission) => ({
+    //   ...newRecipeSubmission,
+    //   ['imagestring']: x,
+    // }));
     const response = await fetch(
       'http://craveaway.herokuapp.com/recipes/create/',
       {
@@ -63,39 +68,27 @@ export default function createRecipe() {
       }
     );
     const data = await response.json();
-    setNewRecipeSubmission(newRecipe);
+    // setNewRecipeSubmission(newRecipe);
     console.log(data);
   };
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
-    previewFile(file);
-  };
-  const previewFile = (file) => {
+    console.log('file', file);
     const reader = new FileReader();
+    console.log('READER', reader);
     reader.readAsDataURL(file);
     reader.onloadend = () => {
       setPreviewSource(reader.result);
+      setNewRecipeSubmission((newRecipeSubmission) => ({
+        ...newRecipeSubmission,
+        ['imagestring']: reader.result,
+      }));
     };
   };
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!previewSource) return;
-    uploadImage(previewSource);
-  };
-  const uploadImage = async (imageString) => {
-    console.log(imageString);
-    try {
-      const data = await fetch('http://localhost:3001/images/retrieve-image', {
-        method: 'POST',
-        body: JSON.stringify({ title: 'Leon', data: imageString }),
-        headers: { 'Content-type': 'application/JSON' },
-      });
-      const response = await data.json();
-      console.log(response);
-    } catch (error) {
-      console.error(error);
-    }
+
+  const updateImageString = () => {
+    handleClick(previewSource);
   };
 
   if (user) {
@@ -160,6 +153,13 @@ export default function createRecipe() {
                   borderRadius: 3,
                 }}
               >
+                {previewSource && (
+                  <img
+                    src={previewSource}
+                    alt="chosen"
+                    style={{ height: '100px' }}
+                  />
+                )}
                 <Button variant="text" component="label">
                   + Upload Image
                   <input
@@ -172,8 +172,10 @@ export default function createRecipe() {
                     value={newImage}
                   />
                 </Button>
-                <Button onClick={handleSubmit}> Submit</Button>
+                {/* <Button onClick={updateImageString}> SHOW ME </Button> */}
+                {/* <Button onClick={handleSubmit}> Submit</Button> */}
               </Box>
+
               {/* COOKING TIME */}
               <Grid container spacing={3}>
                 <Grid item sm={6} xs={12}>
@@ -286,7 +288,7 @@ export default function createRecipe() {
                 size="large"
                 variant="contained"
                 className="submitRecipeButton"
-                onClick={handleClick}
+                onClick={updateImageString}
                 sx={{
                   display: 'block',
                   marginTop: '40px',
@@ -362,3 +364,14 @@ export default function createRecipe() {
     );
   }
 }
+
+// <div>
+//   <Typography ml="10px">Upload an Image:</Typography>
+//   <form onSubmit={handleSubmit}>
+//     <input type="file" name="image" onChange={handleImageChange} value={newImage} />
+//     <button type="submit">Add/Submit image</button>
+//   </form>
+//   {previewSource && (
+//     <img src={previewSource} alt="chosen" style={{ height: '100px' }} />
+//   )}
+// </div>

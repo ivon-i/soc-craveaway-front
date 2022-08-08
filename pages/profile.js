@@ -11,9 +11,6 @@ import Cards from '../ThemeFolder/Cards';
 import { Navbar } from '../ThemeFolder/Navbar';
 import { Container } from '@mui/material';
 import { Image } from 'next/image';
-import { Grid } from '@mui/material';
-
-import { Image as MUI } from '@mui/icons-material';
 
 export default function Profile() {
   const { user, error, isLoading } = useUser();
@@ -90,6 +87,7 @@ export default function Profile() {
               />
               {user.name}
             </Box>
+
             <Typography
               variant="h4"
               mt="40px"
@@ -99,7 +97,7 @@ export default function Profile() {
               Favourite
             </Typography>
             <Cards data={data} />
-            {/* <Stack
+            <Stack
               direction="column"
               spacing={2}
               mt="15px"
@@ -109,25 +107,32 @@ export default function Profile() {
                 alignContent: 'flex-start',
                 flexWrap: 'wrap',
               }}
-            > */}
-            <Grid Container>
-              <Typography fontWeight={700}>Shopping List</Typography>
-              {list2.length === 4
-                ? setShopEmp(true) && (
-                    <Typography fontWeight={700}>Add smt</Typography>
-                  )
-                : null}
-              {list.map((item) => (
-                <Chip
-                  variant="outlined"
-                  label={item.label}
-                  onClick={handleClick}
-                  onDelete={() => handleDelete(item.id)}
-                  sx={{ borderColor: '#FCC62E', borderWidth: '1.5px' }}
-                ></Chip>
-              ))}
-              {/* </Stack> */}
-            </Grid>
+            >
+              <Typography
+                variant="h4"
+                mt="40px"
+                fontWeight={600}
+                fontSize={'25px'}
+              >
+                Shopping List
+              </Typography>
+              <Box sx={{ backgroundColor: 'yellowd  ' }}>
+                {list2.length === 4
+                  ? setShopEmp(true) && (
+                      <Typography fontWeight={700}>Add smt</Typography>
+                    )
+                  : null}
+                {list.map((item) => (
+                  <Chip
+                    variant="outlined"
+                    label={item.label}
+                    onClick={handleClick}
+                    onDelete={() => handleDelete(item.id)}
+                    sx={{ borderColor: '#FCC62E', borderWidth: '1.5px' }}
+                  ></Chip>
+                ))}
+              </Box>
+            </Stack>
           </Box>
         </Container>
       </>

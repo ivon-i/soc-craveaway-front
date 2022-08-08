@@ -12,7 +12,7 @@ import StarIcon from '@mui/icons-material/Star';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import Link from 'next/link';
-const Cards = ({ data }) => {
+const Cards = ({ data, sx }) => {
   function HeartFav() {
     // POST REQUEST HERE
     console.log('milfs');

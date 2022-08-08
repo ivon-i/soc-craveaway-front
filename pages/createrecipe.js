@@ -14,6 +14,7 @@ import {
   FormControl,
   Grid,
   Paper,
+  Alert
 } from '@mui/material';
 import { useState } from 'react';
 import { NavigateNextOutlined } from '@mui/icons-material';
@@ -172,7 +173,9 @@ export default function createRecipe() {
                     value={newImage}
                   />
                 </Button>
+               
                 <Button onClick={handleSubmit}> Submit</Button>
+              
               </Box>
               {/* COOKING TIME */}
               <Grid container spacing={3}>
@@ -282,24 +285,27 @@ export default function createRecipe() {
               width: { xs: '100%', sm: 'auto' },
             }}
           /> */}
-              <Button
-                size="large"
-                variant="contained"
-                className="submitRecipeButton"
-                onClick={handleClick}
-                sx={{
-                  display: 'block',
-                  marginTop: '40px',
-                  width: {
-                    xs: '100%',
-                    md: 'auto',
-                  },
-                }}
-              >
-                <Typography sx={{ fontWeight: '700' }}>
-                  Submit Recipe
-                </Typography>
-              </Button>
+               <Button
+                    onClick={() => {
+                      handleClick();
+                      alert("Thank you! Your recipe has been submitted!");
+                    }}
+                    size="large"
+                    variant="contained"
+                    className="submitRecipeButton"
+                    sx={{
+                      display: 'block',
+                      marginTop: '40px',
+                      width: {
+                        xs: '100%',
+                        md: 'auto',
+                      },
+                    }}
+                  >
+                    <Typography sx={{ fontWeight: '700' }}>
+                      Submit Recipe
+                    </Typography>
+                  </Button>
             </Box>
           </Container>
         </Box>

@@ -133,8 +133,13 @@ export default function createRecipe() {
                 Create your recipe
               </Typography>
               <Typography sx={{ mb: 1, mt: 4 }}>Recipe Name:</Typography>
+
               <TextField
-                sx={{ borderRadius: '8px' }}
+                sx={{
+                  backgroundColor: '',
+                  borderRadius: '100px',
+                  border: '',
+                }}
                 variant="outlined"
                 value={newRecipeSubmission.title}
                 onChange={handleChangeFor('title')}
@@ -148,16 +153,15 @@ export default function createRecipe() {
               {/* IMAGE */}
               <Box
                 sx={{
-                  width: '95%',
                   ml: '5px',
                   height: '150px',
                   mt: '24px',
                   display: 'flex',
                   justifyContent: 'center',
                   alignItems: 'center',
-                  border: 'solid',
-                  borderWidth: '1px',
-                  borderRadius: 3,
+                  border: '0.5px solid rgba(0,0,0,0.5)',
+
+                  borderRadius: '8px',
                 }}
               >
                 <Button variant="text" component="label">

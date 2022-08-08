@@ -1,13 +1,24 @@
 // import RecipeCards from '../recipe';
+import { Navbar } from '../../ThemeFolder/Navbar';
 import RecipeCards from '../../ThemeFolder/recipepage';
+import { Box } from '@mui/material';
 const Post = ({ data }) => {
   const separatedingredients = data.payload[0].ingredients.split(',');
   console.log(separatedingredients);
   return (
-    <RecipeCards
-      recipedata={data.payload}
-      separatedingredients={separatedingredients}
-    />
+    <>
+      <Box
+        sx={{
+          backgroundImage: `url(${'static/public/food_illustration.png'})`,
+        }}
+      >
+        <Navbar />
+        <RecipeCards
+          recipedata={data.payload}
+          separatedingredients={separatedingredients}
+        />
+      </Box>
+    </>
   );
 };
 export default Post; // default export for the page and simple export for the server side function below

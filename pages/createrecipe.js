@@ -13,8 +13,7 @@ import {
   FormLabel,
   FormControl,
   Grid,
-  Paper,
-  Alert
+  Paper,  
 } from '@mui/material';
 import { useState } from 'react';
 import { NavigateNextOutlined } from '@mui/icons-material';
@@ -319,7 +318,7 @@ export default function createRecipe() {
             <h6> Hello </h6>
           </div>
         )}
-        :{' '}
+        {' '}
         {
           <div>
             <Typography
@@ -334,10 +333,19 @@ export default function createRecipe() {
               You must login to create a recipe!
             </Typography>
             <>
+              <Box
+              sx={{
+                fontWeight: '900',
+                marginTop: 8,
+                alignItems: 'center',
+                display: 'flex',
+                justifyContent: 'center',
+              }}
+              >
               <img
                 alt="Loading..."
                 className="fryingpan"
-                width="432"
+                width="400"
                 height="250"
                 data-id="14475354"
                 data-animated-url="https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif"
@@ -355,12 +363,21 @@ export default function createRecipe() {
           https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 1600w"
                 sizes="(max-width: 919px) 100vw, max(768px, 98vh)"
                 src="https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif"
-              ></img>
+                ></img>
+                </Box>
             </>
             <Link href="/api/auth/login" passHref>
-              <button variant="outlined" className="fixedLoginButton">
+              <Button variant="contained" className="fixedLoginButton" sx={{
+                fontWeight: '900',
+                marginTop: 15,
+                alignItems: 'center',
+                display: 'flex',
+                justifyContent: 'center',
+                width: "10%",
+                m:'auto',
+              }}>
                 Login
-              </button>
+              </Button>
             </Link>
           </div>
         }

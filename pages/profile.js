@@ -7,7 +7,7 @@ import RecCard from '../components/recCard';
 import data from '../db/recipeData.js';
 import { useState } from 'react';
 import { Box } from '@mui/system';
-
+import Cards from '../ThemeFolder/Cards';
 
 export default function Profile() {
   const { user, error, isLoading } = useUser();
@@ -26,14 +26,14 @@ export default function Profile() {
   // // BACKEND!!!
   // // HAVE A EMPTY TABLE, ONCE THE HEART IS CLICKED, POST REQUEST TO THIS TABLE, POPULATE THIS DATA WITH THAT TABLE'S DATA
   // // TO GET DATA, GET REQUEST FROM THAT TABLE
-    const handleClick = (e) => {
-      console.info(e.currentTarget.innerText);
-    };
-    const handleDelete = (id) => {
-      const newList = list.filter((item) => item.id !== id);
-      setList(newList);
-    };
-          /* {user && (
+  const handleClick = (e) => {
+    console.info(e.currentTarget.innerText);
+  };
+  const handleDelete = (id) => {
+    const newList = list.filter((item) => item.id !== id);
+    setList(newList);
+  };
+  /* {user && (
         <div>
           <img src={user.picture} alt={user.name} />
           <h2>{user.name}</h2>
@@ -44,19 +44,19 @@ export default function Profile() {
   if (user) {
     return (
       <Box ml="15px">
-         <Typography variant="h4" mt="50px">
+        <Typography variant="h4" mt="50px">
           {user.name}'s Profile
-         </Typography>
-         <Typography mt="30px" fontWeight={700}>
-           Favourite
-         </Typography>
-         <RecCard data={data} />
-         <Stack
-           direction="column"
-           spacing={2}
-           mt="15px"
-           sx={{
-             maxWidth: 345,
+        </Typography>
+        <Typography mt="30px" fontWeight={700}>
+          Favourite
+        </Typography>
+        <Cards data={data} />
+        <Stack
+          direction="column"
+          spacing={2}
+          mt="15px"
+          sx={{
+            maxWidth: 345,
             display: 'flex',
             alignContent: 'flex-start',
             flexWrap: 'wrap',
@@ -108,7 +108,7 @@ export default function Profile() {
             justifyContent: "center",
           }}/> */}
             <img
-              className='fryingpan'
+              className="fryingpan"
               alt="Loading..."
               width="432"
               height="250"
@@ -139,4 +139,4 @@ export default function Profile() {
       }
     </>
   );
-};
+}

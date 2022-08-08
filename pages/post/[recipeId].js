@@ -9,7 +9,13 @@ const Post = ({ data }) => {
     <>
       <Box
         sx={{
-          backgroundImage: `url(${'static/public/food_illustration.png'})`,
+          backgroundImage: 'url(/illustration.png)',
+          minHeight: '100vh',
+          paddingBottom: {
+            xs: '0',
+            sm: '40px',
+            md: '40px',
+          },
         }}
       >
         <Navbar />

@@ -8,6 +8,7 @@ import data from '../db/recipeData.js';
 import { useState } from 'react';
 import { Box } from '@mui/system';
 import Cards from '../ThemeFolder/Cards';
+import { Navbar } from '../ThemeFolder/Navbar';
 
 export default function Profile() {
   const { user, error, isLoading } = useUser();
@@ -43,42 +44,45 @@ export default function Profile() {
       :{' '} */
   if (user) {
     return (
-      <Box ml="15px">
-        <Typography variant="h4" mt="50px">
-          {user.name}'s Profile
-        </Typography>
-        <Typography mt="30px" fontWeight={700}>
-          Favourite
-        </Typography>
-        <Cards data={data} />
-        <Stack
-          direction="column"
-          spacing={2}
-          mt="15px"
-          sx={{
-            maxWidth: 345,
-            display: 'flex',
-            alignContent: 'flex-start',
-            flexWrap: 'wrap',
-          }}
-        >
-          <Typography fontWeight={700}>Shopping List</Typography>
-          {list2.length === 4
-            ? setShopEmp(true) && (
-                <Typography fontWeight={700}>Add smt</Typography>
-              )
-            : null}
-          {list.map((item) => (
-            <Chip
-              variant="outlined"
-              label={item.label}
-              onClick={handleClick}
-              onDelete={() => handleDelete(item.id)}
-              sx={{ borderColor: '#FCC62E', borderWidth: '1.5px' }}
-            ></Chip>
-          ))}
-        </Stack>
-      </Box>
+      <>
+        <Navbar />
+        <Box ml="15px">
+          <Typography variant="h4" mt="50px">
+            {user.name}'s Profile
+          </Typography>
+          <Typography mt="30px" fontWeight={700}>
+            Favourite
+          </Typography>
+          <Cards data={data} />
+          <Stack
+            direction="column"
+            spacing={2}
+            mt="15px"
+            sx={{
+              maxWidth: 345,
+              display: 'flex',
+              alignContent: 'flex-start',
+              flexWrap: 'wrap',
+            }}
+          >
+            <Typography fontWeight={700}>Shopping List</Typography>
+            {list2.length === 4
+              ? setShopEmp(true) && (
+                  <Typography fontWeight={700}>Add smt</Typography>
+                )
+              : null}
+            {list.map((item) => (
+              <Chip
+                variant="outlined"
+                label={item.label}
+                onClick={handleClick}
+                onDelete={() => handleDelete(item.id)}
+                sx={{ borderColor: '#FCC62E', borderWidth: '1.5px' }}
+              ></Chip>
+            ))}
+          </Stack>
+        </Box>
+      </>
     );
   }
   return (

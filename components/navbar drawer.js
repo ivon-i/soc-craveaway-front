@@ -107,7 +107,7 @@ export default function SwipeableTemporaryDrawer() {
           <Link href="/api/auth/login" passHref>
             Login
           </Link>,
-          'Usage Policy', /*Needs to be a link*/
+          'Usage Policy' /*Needs to be a link*/,
           <Link href="/api/auth/login" passHref>
             Sign Up
           </Link>,
@@ -253,11 +253,7 @@ export default function SwipeableTemporaryDrawer() {
         {['right'].map((anchor) => (
           <React.Fragment key={anchor}>
             <Button onClick={toggleDrawer(anchor, true)}>
-              <HiMenu
-                className="burger-menu"
-                fontSize="xxx-large"
-                color="#FE724C"
-              />
+              <HiMenu fontSize="32px" color="#FE724C" />
             </Button>
             <SwipeableDrawer
               anchor={anchor}
@@ -277,11 +273,7 @@ export default function SwipeableTemporaryDrawer() {
         {['right'].map((anchor) => (
           <React.Fragment key={anchor}>
             <Button onClick={toggleDrawer(anchor, true)}>
-              <HiMenu
-                className="burger-menu"
-                fontSize="xxx-large"
-                color="#FE724C"
-              />
+              <HiMenu className="burger-menu" fontSize="32px" color="#FE724C" />
             </Button>
             <SwipeableDrawer
               anchor={anchor}

@@ -52,7 +52,11 @@ export default function createRecipe() {
     }));
     console.log(newRecipeSubmission);
   };
-  const handleClick = async () => {
+  const handleClick = async (x) => {
+    // setNewRecipeSubmission((newRecipeSubmission) => ({
+    //   ...newRecipeSubmission,
+    //   ['imagestring']: x,
+    // }));
     const response = await fetch(
       'http://localhost:3001/recipes/create',
       /*'http://craveaway.herokuapp.com/recipes/create/',*/
@@ -65,61 +69,28 @@ export default function createRecipe() {
       }
     );
     const data = await response.json();
-    setNewRecipeSubmission(newRecipe);
+    // setNewRecipeSubmission(newRecipe);
     console.log(data);
   };
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
-    console.log('file', file)
+    console.log('file', file);
     const reader = new FileReader();
-    console.log('READER', reader)
+    console.log('READER', reader);
     reader.readAsDataURL(file);
     reader.onloadend = () => {
       setPreviewSource(reader.result);
+      setNewRecipeSubmission((newRecipeSubmission) => ({
+        ...newRecipeSubmission,
+        ['imagestring']: reader.result,
+      }));
     };
-    console.log(previewSource) /*updateImageString()*/;
-  };  
-  
+  };
+
   const updateImageString = () => {
-    console.log('dilfs', previewSource)
-    if (!previewSource) return;
-    console.log('milfs', previewSource)
-    setNewRecipeSubmission((newRecipeSubmission) => ({
-      ...newRecipeSubmission,
-      ['imagestring']: previewSource,
-    }));
-  }
-
-
-
-
-
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   if (!previewSource) return;
-  //   setNewRecipeSubmission((newRecipeSubmission) => ({
-  //     ...newRecipeSubmission,
-  //     ['imagestring']: previewSource,
-  //   }));
-  //   // uploadImage(previewSource);
-  // };
-
-  // ORIGINAL IMAGE POST
-  // const uploadImage = async (imageString) => {
-  //   console.log(imageString);
-  //   try {
-  //     const data = await fetch('http://localhost:3001/images/retrieve-image', {
-  //       method: 'POST',
-  //       body: JSON.stringify({ data: imageString }),
-  //       headers: { 'Content-type': 'application/JSON' },
-  //     });
-  //     const response = await data.json();
-  //     console.log(response);
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
+    handleClick(previewSource);
+  };
 
   if (user) {
     return (
@@ -184,7 +155,11 @@ export default function createRecipe() {
                 }}
               >
                 {previewSource && (
-                  <img src={previewSource} alt="chosen" style={{ height: '100px' }} />
+                  <img
+                    src={previewSource}
+                    alt="chosen"
+                    style={{ height: '100px' }}
+                  />
                 )}
                 <Button variant="text" component="label">
                   + Upload Image
@@ -198,6 +173,7 @@ export default function createRecipe() {
                     value={newImage}
                   />
                 </Button>
+                <Button onClick={updateImageString}> SHOW ME </Button>
                 {/* <Button onClick={handleSubmit}> Submit</Button> */}
               </Box>
 
@@ -313,7 +289,7 @@ export default function createRecipe() {
                 size="large"
                 variant="contained"
                 className="submitRecipeButton"
-                onClick={handleClick}
+                onClick={updateImageString}
                 sx={{
                   display: 'block',
                   marginTop: '40px',

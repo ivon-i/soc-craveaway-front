@@ -45,14 +45,7 @@ export default function Profile() {
     const newList = list.filter((item) => item.id !== id);
     setList(newList);
   };
-  /* {user && (
-        <div>
-          <img src={user.picture} alt={user.name} />
-          <h2>{user.name}</h2>
-          <p>{user.email}</p>
-        </div>
-      )}
-      :{' '} */
+
   if (user) {
     return (
       <>
@@ -86,6 +79,7 @@ export default function Profile() {
             >
               <img
                 src={user.picture}
+                alt={user.name}
                 style={{
                   borderRadius: '100%',
                   width: '108px',
@@ -97,6 +91,7 @@ export default function Profile() {
               {user.name}
             </Box>
 
+            {/* favourite list */}
             <Typography
               variant="h4"
               mt="40px"
@@ -117,6 +112,8 @@ export default function Profile() {
                 flexWrap: 'wrap',
               }}
             >
+            
+              {/* shopping list */}
               <Typography
                 variant="h4"
                 mt="40px"
@@ -127,7 +124,14 @@ export default function Profile() {
               </Typography>
             </Stack>
 
-            <Container maxWidth="lg" sx={{ backgroundColor: 'red' }}>
+            <Container
+              maxWidth="lg"
+              sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignContent: 'space-evenly',
+              }}
+            >
               {list2.length === 4
                 ? setShopEmp(true) && (
                     <Typography fontWeight={700}>Add smt</Typography>

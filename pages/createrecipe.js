@@ -35,8 +35,9 @@ export default function createRecipe() {
     cost: '',
     nutrition: '',
     ingredients: '',
-    image: 'ngf',
+    image: 'hi',
     serves: '',
+    imagestring: '',
   };
   const [newRecipeSubmission, setNewRecipeSubmission] = useState(newRecipe);
   const [newImage, setNewImage] = useState('');
@@ -53,7 +54,8 @@ export default function createRecipe() {
   };
   const handleClick = async () => {
     const response = await fetch(
-      'http://craveaway.herokuapp.com/recipes/create/',
+      'http://localhost:3001/recipes/create',
+      /*'http://craveaway.herokuapp.com/recipes/create/',*/
       {
         method: 'POST',
         body: JSON.stringify(newRecipeSubmission),
@@ -69,34 +71,55 @@ export default function createRecipe() {
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
-    previewFile(file);
-  };
-  const previewFile = (file) => {
+    console.log('file', file)
     const reader = new FileReader();
+    console.log('READER', reader)
     reader.readAsDataURL(file);
     reader.onloadend = () => {
       setPreviewSource(reader.result);
     };
-  };
-  const handleSubmit = (e) => {
-    e.preventDefault();
+    console.log(previewSource) /*updateImageString()*/;
+  };  
+  
+  const updateImageString = () => {
+    console.log('dilfs', previewSource)
     if (!previewSource) return;
-    uploadImage(previewSource);
-  };
-  const uploadImage = async (imageString) => {
-    console.log(imageString);
-    try {
-      const data = await fetch('http://localhost:3001/images/retrieve-image', {
-        method: 'POST',
-        body: JSON.stringify({ title: 'Leon', data: imageString }),
-        headers: { 'Content-type': 'application/JSON' },
-      });
-      const response = await data.json();
-      console.log(response);
-    } catch (error) {
-      console.error(error);
-    }
-  };
+    console.log('milfs', previewSource)
+    setNewRecipeSubmission((newRecipeSubmission) => ({
+      ...newRecipeSubmission,
+      ['imagestring']: previewSource,
+    }));
+  }
+
+
+
+
+
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   if (!previewSource) return;
+  //   setNewRecipeSubmission((newRecipeSubmission) => ({
+  //     ...newRecipeSubmission,
+  //     ['imagestring']: previewSource,
+  //   }));
+  //   // uploadImage(previewSource);
+  // };
+
+  // ORIGINAL IMAGE POST
+  // const uploadImage = async (imageString) => {
+  //   console.log(imageString);
+  //   try {
+  //     const data = await fetch('http://localhost:3001/images/retrieve-image', {
+  //       method: 'POST',
+  //       body: JSON.stringify({ data: imageString }),
+  //       headers: { 'Content-type': 'application/JSON' },
+  //     });
+  //     const response = await data.json();
+  //     console.log(response);
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
 
   if (user) {
     return (
@@ -160,6 +183,9 @@ export default function createRecipe() {
                   borderRadius: 3,
                 }}
               >
+                {previewSource && (
+                  <img src={previewSource} alt="chosen" style={{ height: '100px' }} />
+                )}
                 <Button variant="text" component="label">
                   + Upload Image
                   <input
@@ -172,8 +198,9 @@ export default function createRecipe() {
                     value={newImage}
                   />
                 </Button>
-                <Button onClick={handleSubmit}> Submit</Button>
+                {/* <Button onClick={handleSubmit}> Submit</Button> */}
               </Box>
+
               {/* COOKING TIME */}
               <Grid container spacing={3}>
                 <Grid item sm={6} xs={12}>
@@ -363,4 +390,13 @@ export default function createRecipe() {
   }
 }
 
-// HI
+// <div>
+//   <Typography ml="10px">Upload an Image:</Typography>
+//   <form onSubmit={handleSubmit}>
+//     <input type="file" name="image" onChange={handleImageChange} value={newImage} />
+//     <button type="submit">Add/Submit image</button>
+//   </form>
+//   {previewSource && (
+//     <img src={previewSource} alt="chosen" style={{ height: '100px' }} />
+//   )}
+// </div>

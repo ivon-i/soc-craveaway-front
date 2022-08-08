@@ -8,12 +8,12 @@ function AddRecipeButton(props) {
       <Button
         variant="contained"
         size="large"
-        startIcon={<AddIcon />}
         sx={{
           ...props.sx,
           fontWeight: '600',
         }}
       >
+        {props.icon}
         {props.text}
       </Button>
     </Link>

@@ -11,6 +11,7 @@ import Cards from '../ThemeFolder/Cards';
 import { Navbar } from '../ThemeFolder/Navbar';
 import { Container } from '@mui/material';
 import { Image } from 'next/image';
+import { Grid } from '@mui/material';
 
 import { Image as MUI } from '@mui/icons-material';
 
@@ -67,7 +68,7 @@ export default function Profile() {
                 textAlign: 'center',
               }}
             >
-              {user.name}'s Profile
+              Profile
             </Typography>
             <Box
               sx={{
@@ -83,14 +84,22 @@ export default function Profile() {
                   borderRadius: '100%',
                   width: '108px',
                   height: '108px',
+                  marginBottom: '16px',
+                  marginTop: '32px',
                 }}
               />
+              {user.name}
             </Box>
-            <Typography mt="30px" fontWeight={700}>
+            <Typography
+              variant="h4"
+              mt="40px"
+              fontWeight={600}
+              fontSize={'25px'}
+            >
               Favourite
             </Typography>
             <Cards data={data} />
-            <Stack
+            {/* <Stack
               direction="column"
               spacing={2}
               mt="15px"
@@ -100,7 +109,8 @@ export default function Profile() {
                 alignContent: 'flex-start',
                 flexWrap: 'wrap',
               }}
-            >
+            > */}
+            <Grid Container>
               <Typography fontWeight={700}>Shopping List</Typography>
               {list2.length === 4
                 ? setShopEmp(true) && (
@@ -116,7 +126,8 @@ export default function Profile() {
                   sx={{ borderColor: '#FCC62E', borderWidth: '1.5px' }}
                 ></Chip>
               ))}
-            </Stack>
+              {/* </Stack> */}
+            </Grid>
           </Box>
         </Container>
       </>

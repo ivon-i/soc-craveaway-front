@@ -41,7 +41,7 @@ export default function createRecipe() {
   };
   const [newRecipeSubmission, setNewRecipeSubmission] = useState(newRecipe);
   const [newImage, setNewImage] = useState('');
-  const [selectedFile, setSelectedFile] = useState('');
+  // const [selectedFile, setSelectedFile] = useState('');
   const [previewSource, setPreviewSource] = useState();
 
   const handleChangeFor = (propertyName) => (e) => {
@@ -58,8 +58,7 @@ export default function createRecipe() {
     //   ['imagestring']: x,
     // }));
     const response = await fetch(
-      'http://localhost:3001/recipes/create',
-      /*'http://craveaway.herokuapp.com/recipes/create/',*/
+      'http://craveaway.herokuapp.com/recipes/create/',
       {
         method: 'POST',
         body: JSON.stringify(newRecipeSubmission),
@@ -173,7 +172,7 @@ export default function createRecipe() {
                     value={newImage}
                   />
                 </Button>
-                <Button onClick={updateImageString}> SHOW ME </Button>
+                {/* <Button onClick={updateImageString}> SHOW ME </Button> */}
                 {/* <Button onClick={handleSubmit}> Submit</Button> */}
               </Box>
 

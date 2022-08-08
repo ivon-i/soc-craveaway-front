@@ -112,7 +112,6 @@ export default function Profile() {
                 flexWrap: 'wrap',
               }}
             >
-            
               {/* shopping list */}
               <Typography
                 variant="h4"
@@ -129,7 +128,9 @@ export default function Profile() {
               sx={{
                 display: 'flex',
                 flexDirection: 'column',
-                alignContent: 'space-evenly',
+                marginLeft: -2,
+                justifyContent: 'flex-start',
+                alignContent: 'space-between',
               }}
             >
               {list2.length === 4

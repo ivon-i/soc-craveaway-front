@@ -13,7 +13,7 @@ import {
   FormLabel,
   FormControl,
   Grid,
-  Paper,
+  Paper,  
 } from '@mui/material';
 import { useState } from 'react';
 import { NavigateNextOutlined } from '@mui/icons-material';
@@ -90,6 +90,7 @@ export default function createRecipe() {
   const updateImageString = () => {
     handleClick(previewSource);
     setNewRecipeSubmission(newRecipe);
+    alert("Thank you! Your recipe has been submitted!");
   };
 
   if (user) {
@@ -173,8 +174,11 @@ export default function createRecipe() {
                     value={newImage}
                   />
                 </Button>
-                {/* <Button onClick={updateImageString}> SHOW ME </Button> */}
-                {/* <Button onClick={handleSubmit}> Submit</Button> */}
+
+               
+                <Button onClick={handleSubmit}> Submit</Button>
+              
+
               </Box>
 
               {/* COOKING TIME */}
@@ -285,6 +289,8 @@ export default function createRecipe() {
               width: { xs: '100%', sm: 'auto' },
             }}
           /> */}
+
+
               <Button
                 size="large"
                 variant="contained"
@@ -303,6 +309,7 @@ export default function createRecipe() {
                   Submit Recipe
                 </Typography>
               </Button>
+
             </Box>
           </Container>
         </Box>
@@ -311,30 +318,57 @@ export default function createRecipe() {
   } else {
     return (
       <>
-        {user && (
-          <div>
-            <h6> Hello </h6>
-          </div>
-        )}
-        :{' '}
-        {
-          <div>
-            <Typography
+        <div>
+        <Box
+          sx={{
+            backgroundImage: 'url(/food_illustration.png)',
+            minHeight: '100vh',
+            paddingBottom: {
+              xs: '0',
+              sm: '40px',
+              md: '40px',
+            },
+          }}
+        >
+            <Box sx={{
+              mt:1,
+              backgroundColor: "white",
+              paddingBottom:10,
+              display: 'fixed',
+              width: "43%",
+              m: 'auto',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}>   <Typography
               sx={{
                 fontWeight: '900',
-                marginTop: 15,
+                marginTop: 1,
+                paddingTop: 10,
                 alignItems: 'center',
-                display: 'flex',
+                  display: 'flex',
+                m:'auto',
                 justifyContent: 'center',
               }}
             >
               You must login to create a recipe!
-            </Typography>
+              </Typography>
+              </Box>
             <>
+              <Box
+                sx={{
+                  backgroundColor: "white",
+              display: 'fixed',
+              width: "43%",
+              m: 'auto',
+              alignItems: 'center',
+              justifyContent: 'center',
+              }}
+              >
               <img
                 alt="Loading..."
+                backgroundImage= 'url(/food_illustration.png)'
                 className="fryingpan"
-                width="432"
+                width="400"
                 height="250"
                 data-id="14475354"
                 data-animated-url="https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif"
@@ -352,15 +386,34 @@ export default function createRecipe() {
           https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 1600w"
                 sizes="(max-width: 919px) 100vw, max(768px, 98vh)"
                 src="https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif"
-              ></img>
+                ></img>
+                </Box>
             </>
+            <Box sx={{
+              backgroundColor: "white",
+              paddingBottom:5,
+              alignItems: 'center',
+              display: 'flex',
+              justifyContent: 'center',
+              width: "43%",
+              m:'auto',
+            }}>
             <Link href="/api/auth/login" passHref>
-              <button variant="outlined" className="fixedLoginButton">
+              <Button variant="contained" className="fixedLoginButton" sx={{
+                fontWeight: '900',
+                marginTop: 15,
+                alignItems: 'center',
+                display: 'flex',
+                justifyContent: 'center',
+                width: "10%",
+                m:'auto',
+              }}>
                 Login
-              </button>
-            </Link>
+              </Button>
+              </Link>
+              </Box>
+              </Box>
           </div>
-        }
       </>
     );
   }

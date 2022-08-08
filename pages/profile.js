@@ -8,6 +8,8 @@ import data from '../db/recipeData.js';
 import { useState } from 'react';
 import { Box } from '@mui/system';
 import Cards from '../ThemeFolder/Cards';
+import { Button } from '@mui/material';
+
 
 export default function Profile() {
   const { user, error, isLoading } = useUser();
@@ -85,6 +87,27 @@ export default function Profile() {
     <>
       {
         <div>
+          <Box
+          sx={{
+            backgroundImage: 'url(/food_illustration.png)',
+            minHeight: '100vh',
+            paddingBottom: {
+              xs: '0',
+              sm: '40px',
+              md: '40px',
+            },
+          }}
+        >
+            <Box sx={{
+              mt:1,
+              backgroundColor: "white",
+              paddingBottom:10,
+              alignItems: 'center',
+              display: 'flex',
+              justifyContent: 'center',
+              width: "43%",
+              m:'auto',
+            }}>  
           <Typography
             sx={{
               fontWeight: '900',
@@ -96,7 +119,8 @@ export default function Profile() {
             }}
           >
             You must login to access your profile!
-          </Typography>
+              </Typography>
+              </Box>
           <>
             {/* <LockOpenIcon sx={{
              fontSize:"120px",
@@ -107,10 +131,20 @@ export default function Profile() {
             display: "flex",
             justifyContent: "center",
           }}/> */}
+            <Box
+          sx={{
+                backgroundColor: "white",
+            display: 'fixed',
+            width: "43%",
+            m: 'auto',
+            alignItems: 'center',
+            justifyContent: 'center',
+            }}
+              >
             <img
               className="fryingpan"
               alt="Loading..."
-              width="432"
+              width="400"
               height="250"
               data-id="14475354"
               data-animated-url="https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif"
@@ -128,13 +162,33 @@ export default function Profile() {
             https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 1600w"
               sizes="(max-width: 919px) 100vw, max(768px, 98vh)"
               src="https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif"
-            ></img>
-          </>
+              ></img>
+              </Box>
+            </>
+            <Box sx={{
+              backgroundColor: "white",
+              paddingBottom:5,
+              alignItems: 'center',
+              display: 'flex',
+              justifyContent: 'center',
+              width: "43%",
+              m:'auto',
+            }}>
           <Link href="/api/auth/login" passHref>
-            <button variant="outlined" className="fixedLoginButton">
+          <Button variant="contained" className="fixedLoginButton" sx={{
+                fontWeight: '900',
+                marginTop: 15,
+                alignItems: 'center',
+                display: 'flex',
+                justifyContent: 'center',
+                width: "10%",
+                m:'auto',
+              }}>
               Login
-            </button>
-          </Link>
+            </Button>
+            </Link>
+            </Box>
+              </Box>
         </div>
       }
     </>

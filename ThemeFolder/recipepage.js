@@ -191,8 +191,8 @@ export default function RecipeCards({ recipedata, separatedingredients }) {
           <Box
             sx={{
               display: 'flex',
-              flexDirection: 'row',
-              alignItems: 'center',
+              flexDirection: 'column',
+              alignItems: 'left',
               gap: '16px',
               marginTop: '32px',
             }}
@@ -200,19 +200,34 @@ export default function RecipeCards({ recipedata, separatedingredients }) {
             <Typography sx={{ fontWeight: '700' }}>
               Rate this recipe:{' '}
             </Typography>
-            <Rating
-              onChange={(event, newValue) => {
-                setValue(newValue);
-              }}
-              value={value}
-            />
-            <Button
-              onClick={() => {
-                handleClick(item.recipe_id);
+            <Box
+              sx={{
+                display: 'flex',
+                flexdirection: 'row',
+                alignItems: 'center',
               }}
             >
-              Submit Rating
-            </Button>
+              <Rating
+                onChange={(event, newValue) => {
+                  setValue(newValue);
+                }}
+                value={value}
+              />
+              <Button
+                variant="contained"
+                sx={{
+                  borderRadius: '40px',
+                  display: 'block',
+                  alignItems: 'center',
+                  ml: 2,
+                }}
+                onClick={() => {
+                  handleClick(item.recipe_id);
+                }}
+              >
+                Submit Rating
+              </Button>
+            </Box>
           </Box>
           {/* CREATOR */}
           <Box

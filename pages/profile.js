@@ -107,7 +107,8 @@ export default function Profile() {
                 textAlign: 'center',
               }}
             >
-              {user.name}'s Profile
+              {/* {user.name}'s  */}
+              Profile
             </Typography>
             <Box
               sx={{
@@ -145,15 +146,18 @@ export default function Profile() {
             >
               <Link href="#">Edit profile</Link>
             </Typography>
-            <Container maxWidth="lg">
+            <Container
+              maxWidth="lg"
+              sx={{ backgroundColor: '', marginTop: '80px' }}
+            >
               <Typography
                 variant="h4"
                 mt="40px"
                 mb="16px"
                 fontWeight={600}
-                fontSize={'25px'}
+                fontSize={'20px'}
               >
-                Favourite
+                Favourites
               </Typography>
             </Container>
             <Cards data={favCard} />
@@ -174,7 +178,7 @@ export default function Profile() {
                 mt="40px"
                 mb="16px"
                 fontWeight={600}
-                fontSize={'25px'}
+                fontSize={'20px'}
               >
                 Shopping List
               </Typography>

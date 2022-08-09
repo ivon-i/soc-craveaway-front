@@ -66,9 +66,10 @@ export default function RecipeCards({ recipedata, separatedingredients }) {
               position: 'relative',
               backgroundColor: '#343A40',
               borderRadius: '16px',
+              overflow: 'hidDen',
             }}
           >
-            <img src={item.image_url} layout="fill" objectFit="contain" />
+            <img src={item.image_url} layout="fill" objectFit="fill" />
             <Chip
               color="success"
               label={item.nutrition}

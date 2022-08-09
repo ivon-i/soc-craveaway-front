@@ -182,6 +182,7 @@ export default function RecipeCards({ recipedata, separatedingredients }) {
               value={value}
             />
             <Button
+              variant="contained"
               onClick={() => {
                 handleClick(item.recipe_id);
               }}

@@ -105,7 +105,7 @@ export default function Profile() {
                 opacity: '70%',
               }}
             >
-              Edit profile
+              <Link href="#">Edit profile</Link>
             </Typography>
 
             {/* favourite list */}
@@ -117,7 +117,7 @@ export default function Profile() {
                 fontWeight={600}
                 fontSize={'25px'}
               >
-                Favourite
+                Favourites
               </Typography>
             </Container>
 

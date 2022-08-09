@@ -309,6 +309,8 @@ import { useState } from 'react';
 import Input from '../ThemeFolder/Input';
 import Link from 'next/link';
 import AddIcon from '@mui/icons-material/Add';
+import MobileHero from '../components/MobileHero';
+
 export async function getServerSideProps() {
   try {
     const response = await fetch(`http://craveaway.herokuapp.com/recipes`);
@@ -362,10 +364,17 @@ export default function Home({ payload }) {
         </Container>
       </Hidden>
       <Box>
-        <Hero />
+        <Hidden smDown>
+          <Hero />
+        </Hidden>
       </Box>
       {/* </Box> */}
       <Categories />
+      <Hidden smUp>
+        <Container maxWidth="lg">
+          <MobileHero />
+        </Container>
+      </Hidden>
       <Container maxWidth="lg">
         <Typography
           variant="h5"

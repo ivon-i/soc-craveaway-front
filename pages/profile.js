@@ -8,7 +8,15 @@ import data from '../db/recipeData.js';
 import { useState, useEffect } from 'react';
 import { Box } from '@mui/system';
 import Cards from '../ThemeFolder/Cards';
+import { Navbar } from '../ThemeFolder/Navbar';
+import { Container } from '@mui/material';
+import { Image } from 'next/image';
+import { Grid } from '@mui/material';
+
+
+
 import { Button } from '@mui/material';
+
 
 export default function Profile() {
   const { user, error, isLoading } = useUser();
@@ -16,13 +24,7 @@ export default function Profile() {
   const [chipData, setChipData] = useState([]);
   const [favCard, setFavCard] = useState([]);
   const [shopEmp, setShopEmp] = useState(false);
-  // const [list, setList] = useState([
-  //   { id: 1, label: 'Clickable Deletable' },
-  //   { id: 2, label: 'Clickable Deletable' },
-  //   { id: 3, label: 'Clickable Deletable' },
-  //   { id: 4, label: 'Clickable Deletable' },
-  //   { id: 5, label: 'Clickable Deletable' },
-  // ]);
+
 
   useEffect(() => {
     async function fetchData() {
@@ -46,6 +48,23 @@ export default function Profile() {
       console.log(error.message);
     }
   }, [chipData, favCard]);
+
+
+  const [list, setList] = useState([
+    { id: 1, label: 'Clickable Deletable' },
+    { id: 2, label: 'Clickable Deletable' },
+    { id: 3, label: 'Clickable Deletable' },
+    { id: 4, label: 'Clickable Deletable' },
+    { id: 5, label: 'Clickable Deletable' },
+    { id: 6, label: 'Clickable Deletable' },
+    { id: 7, label: 'Clickable Deletable' },
+    { id: 8, label: 'Clickable Deletable' },
+    { id: 9, label: 'Clickable Deletable' },
+    { id: 10, label: 'Clickable Deletable' },
+    { id: 11, label: 'Clickable Deletable' },
+    { id: 12, label: 'Clickable Deletable' },
+    { id: 13, label: 'Clickable Deletable' },
+  ]);
 
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>{error.message}</div>;
@@ -79,7 +98,7 @@ export default function Profile() {
 
   if (user) {
     return (
-      <Box ml="15px">
+    <Box ml="15px">
         <Typography variant="h4" mt="50px">
           {user.name}'s Profile
         </Typography>
@@ -126,7 +145,8 @@ export default function Profile() {
         </Stack>
       </Box>
     );
-  } else {
+  }
+ else {
     return (
       <>
         {

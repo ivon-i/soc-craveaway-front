@@ -140,8 +140,13 @@ export default function createRecipe() {
                 Create your recipe
               </Typography>
               <Typography sx={{ mb: 1, mt: 4 }}>Recipe Name:</Typography>
+
               <TextField
-                sx={{ borderRadius: '8px' }}
+                sx={{
+                  backgroundColor: '',
+                  borderRadius: '100px',
+                  border: '',
+                }}
                 variant="outlined"
                 value={newRecipeSubmission.title}
                 onChange={handleChangeFor('title')}
@@ -155,16 +160,15 @@ export default function createRecipe() {
               {/* IMAGE */}
               <Box
                 sx={{
-                  width: '95%',
                   ml: '5px',
                   height: '150px',
                   mt: '24px',
                   display: 'flex',
                   justifyContent: 'center',
                   alignItems: 'center',
-                  border: 'solid',
-                  borderWidth: '1px',
-                  borderRadius: 3,
+                  border: '0.5px solid rgba(0,0,0,0.5)',
+
+                  borderRadius: '8px',
                 }}
               >
                 {previewSource && (
@@ -325,6 +329,7 @@ export default function createRecipe() {
     return (
       <>
         <div>
+          <Navbar />
           <Box
             sx={{
               backgroundImage: 'url(/food_illustration.png)',
@@ -336,27 +341,32 @@ export default function createRecipe() {
               },
             }}
           >
+            <br></br>
+            <br></br>
             <Box
               sx={{
-                mt: 1,
+                borderRadius: 7,
                 backgroundColor: 'white',
-                paddingBottom: 10,
-                display: 'fixed',
-                width: '43%',
-                m: 'auto',
+                paddingBottom: 8,
                 alignItems: 'center',
+                display: 'flex',
                 justifyContent: 'center',
+                width: 300,
+                height: 10,
+                m: 'auto',
               }}
             >
-              {' '}
               <Typography
+                font-align="center"
                 sx={{
-                  fontWeight: '900',
-                  marginTop: 1,
-                  paddingTop: 10,
+                  fontWeight: '800',
+                  fontSize: 15,
+                  paddingTop: 2,
+                  paddingBottom: 4,
+                  textAlign: 'center',
+                  m: 'auto',
                   alignItems: 'center',
                   display: 'flex',
-                  m: 'auto',
                   justifyContent: 'center',
                 }}
               >
@@ -367,8 +377,9 @@ export default function createRecipe() {
               <Box
                 sx={{
                   backgroundColor: 'white',
-                  display: 'fixed',
-                  width: '43%',
+                  borderRadius: 1000,
+                  display: 'flex',
+                  width: '33%',
                   m: 'auto',
                   alignItems: 'center',
                   justifyContent: 'center',
@@ -376,24 +387,24 @@ export default function createRecipe() {
               >
                 <img
                   alt="Loading..."
-                  backgroundImage="url(/food_illustration.png)"
                   className="fryingpan"
+                  margin="auto"
                   width="400"
                   height="250"
                   data-id="14475354"
                   data-animated-url="https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif"
-                  skip_resize="true"
+                  skip_resize="false"
                   srcset="https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 320w,
-          https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 400w,
-          https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 450w,
-          https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 640w,
-          https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 700w,
-          https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 800w,
-          https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 840w,
-          https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 1000w,
-          https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 1200w,
-          https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 768w,
-          https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 1600w"
+  https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 400w,
+  https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 450w,
+  https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 640w,
+  https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 700w,
+  https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 800w,
+  https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 840w,
+  https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 1000w,
+  https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 1200w,
+  https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 768w,
+  https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 1600w"
                   sizes="(max-width: 919px) 100vw, max(768px, 98vh)"
                   src="https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif"
                 ></img>
@@ -402,11 +413,13 @@ export default function createRecipe() {
             <Box
               sx={{
                 backgroundColor: 'white',
-                paddingBottom: 5,
+                borderRadius: 10,
+                paddingBottom: 3,
+                paddingTop: 3,
                 alignItems: 'center',
                 display: 'flex',
                 justifyContent: 'center',
-                width: '43%',
+                width: '18%',
                 m: 'auto',
               }}
             >
@@ -420,7 +433,7 @@ export default function createRecipe() {
                     alignItems: 'center',
                     display: 'flex',
                     justifyContent: 'center',
-                    width: '10%',
+                    // width: '10%',
                     m: 'auto',
                   }}
                 >
@@ -434,14 +447,3 @@ export default function createRecipe() {
     );
   }
 }
-
-// <div>
-//   <Typography ml="10px">Upload an Image:</Typography>
-//   <form onSubmit={handleSubmit}>
-//     <input type="file" name="image" onChange={handleImageChange} value={newImage} />
-//     <button type="submit">Add/Submit image</button>
-//   </form>
-//   {previewSource && (
-//     <img src={previewSource} alt="chosen" style={{ height: '100px' }} />
-//   )}
-// </div>

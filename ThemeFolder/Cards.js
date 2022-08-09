@@ -13,21 +13,10 @@ import StarIcon from '@mui/icons-material/Star';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import Link from 'next/link';
+
 import { useState } from 'react';
 const Cards = ({ data }) => {
-  const [list, setList] = useState([
-    { id: 1, label: 'Clickable Deletable' },
-    { id: 2, label: 'Clickable Deletable' },
-    { id: 3, label: 'Clickable Deletable' },
-    { id: 4, label: 'Clickable Deletable' },
-    { id: 5, label: ' Clickable Deletable' },
-  ]);
-
-  function handleFavClick(e, id) {
-    setList([...list, { id: id, label: !e.currentTarget.disabled }]);
-    // let x = !e.currentTarget.disabled;
-    console.log(list);
-  }
+  
 
   async function HeartFav(cardInfo) {
     console.log(cardInfo);
@@ -49,20 +38,23 @@ const Cards = ({ data }) => {
       {/* {data.map((item) => ( */}
       <Box
         sx={{
-          display: 'flex',
+          display: { sm: 'grid', xs: 'flex' },
+          gap: '20px',
           alignItems: 'flex-start',
           flexWrap: {
             xs: 'nowrap',
-            md: 'wrap',
+          },
+          gridTemplateColumns: {
+            sm: 'repeat(auto-fill, minmax(250px, 1fr))',
           },
           '& > div': {
             marginBottom: '24px',
             minWidth: '250px',
             borderRadius: '16px',
-            '&:not(:last-child)': { marginRight: '24px' },
+            // '&:not(:last-child)': { marginRight: '0px' },
           },
           overflowX: 'auto',
-          padding: '20px 20px 20px 0',
+          // padding: '20px',
         }}
       >
         {data.map((item) => (

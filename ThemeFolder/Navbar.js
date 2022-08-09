@@ -14,7 +14,7 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import MenuIcon from '@mui/icons-material/Menu';
 import { useState } from 'react';
 import Image from 'next/image';
-// import logoNewCaps from '/public/logoNewCaps.svg';
+import logoNewCaps from '/public/logoNewCaps.svg';
 import Input from './Input';
 import SwipeableTemporaryDrawer from '../components/navbar drawer';
 
@@ -42,9 +42,9 @@ export const Navbar = ({ searchInput, setSearchInput, trigger }) => {
             <Box
               sx={{ cursor: 'pointer', display: 'flex', alignItems: 'center' }}
             >
-              {/* <Link href="/">
+              <Link href="/">
                 <Image src={logoNewCaps} width={220} height={48} />
-              </Link> */}
+              </Link>
             </Box>
             <Hidden mdDown>
               <Input
@@ -53,9 +53,9 @@ export const Navbar = ({ searchInput, setSearchInput, trigger }) => {
                 trigger={trigger}
               />
             </Hidden>
-            <Hidden mdUp>
+            {/* <Hidden mdUp>
               <MenuIcon onClick={openMenu} />
-            </Hidden>
+            </Hidden> */}
             {/* <Menu
               sx={{ '& a': { color: 'black' } }}
               anchorEl={el}
@@ -70,23 +70,8 @@ export const Navbar = ({ searchInput, setSearchInput, trigger }) => {
               </MenuItem>
             </Menu> */}
             {/* On Medium screen sizes and below the search bar input is hidden: It needs to be positioned below the Navbar instead of being hidden */}
-            <Hidden mdDown>
-              <Box
-                sx={{
-                  '& a': {
-                    marginLeft: '16px',
-                    textDecoration: 'none',
-                    color: '#34393C',
-                  },
-                }}
-              >
-                {/* <Link href="/">Home</Link>
-                <Link href="/">About</Link>
-                <Link href="/">All Recipes</Link> */}
-              </Box>
               {/* <AccountCircleIcon /> */}
               <SwipeableTemporaryDrawer />
-            </Hidden>
           </Toolbar>
         </Container>
       </AppBar>

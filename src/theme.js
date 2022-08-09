@@ -22,6 +22,7 @@ import { red } from '@mui/material/colors';
 const theme = createTheme({
   typography: {
     fontFamily: [
+      'Poppins',
       'Inter',
       '-apple-system',
       'BlinkMacSystemFont',

@@ -8,7 +8,7 @@ function MobileHero() {
     <Paper
       sx={{
         backgroundColor: '#34393C',
-        marginTop: '24px',
+        marginTop: '32px',
         position: 'relative',
         borderRadius: '16px',
       }}

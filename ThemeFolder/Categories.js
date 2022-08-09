@@ -43,6 +43,13 @@ const Categories = () => {
             },
           }}
         >
+          <Chip
+            label="What's your craving :"
+            sx={{
+              backgroundColor: 'transparent',
+              position: 'fixd',
+            }}
+          />
           <Chip label="🍕 Pizza" variant="outlined" onClick={handleChip} />
           <Chip label="🍔 Burgers" variant="outlined" onClick={handleChip} />
           <Chip label="🥡 Chinese" variant="outlined" onClick={handleChip} />
@@ -50,7 +57,7 @@ const Categories = () => {
           <Chip label="🍖 BBQ" variant="outlined" onClick={handleChip} />
           <Chip label="🍰 Desserts" variant="outlined" onClick={handleChip} />
           <Chip label="🥤 Drinks" variant="outlined" onClick={handleChip} />
-          <Chip label="🥓 Greasy" variant="outlined" onClick={handleChip} />
+          {/* <Chip label="🥓 Greasy" variant="outlined" onClick={handleChip} /> */}
         </Box>
       </Container>
     </>

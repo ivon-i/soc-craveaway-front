@@ -18,6 +18,7 @@ import PeopleIcon from '@mui/icons-material/People';
 import PaymentIcon from '@mui/icons-material/Payment';
 import { useState, useEffect } from 'react';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import IconButton from '@mui/material';
 
 export default function RecipeCards({ recipedata, separatedingredients }) {
   const [value, setValue] = useState(0);
@@ -59,14 +60,40 @@ export default function RecipeCards({ recipedata, separatedingredients }) {
             {item.title}
           </Typography>
           <Box
-            height="240px"
-            backgroundColor="#34393C"
-            mt="20px"
-            borderRadius="8px"
-            postion="relative"
-            overflow="hidden"
+            sx={{
+              height: '200px',
+              position: 'relative',
+              backgroundColor: '#343A40',
+            }}
           >
             <img src={item.image_url} layout="fill" objectFit="contain" />
+            <Chip
+              color="success"
+              label={item.nutrition}
+              sx={{
+                zIndex: 100,
+                position: 'absolute',
+                top: '16px',
+                right: '16px',
+              }}
+            />
+            ​
+            <IconButton
+              onClick={HeartFav}
+              sx={{
+                zIndex: 101,
+                position: 'absolute',
+                bottom: '16px',
+                right: '16px',
+                backgroundColor: '#fff',
+                borderRadius: '100%',
+                padding: '8px',
+                fontSize: '40px',
+                color: '#FF6B6B',
+              }}
+            >
+              <FavoriteBorderOutlinedIcon />
+            </IconButton>
           </Box>
           <Grid container maxWidth="xl">
             <Grid item xs={3}>

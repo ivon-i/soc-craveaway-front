@@ -310,12 +310,11 @@ export default function createRecipe() {
                 onClick={updateImageString}
                 sx={{
                   // display: 'block',
+                  borderRadius: '40px',
                   marginTop: '40px',
-
                   width: {
                     xs: '100%',
                     md: 'auto',
-                    borderRadius: '40px',
                   },
                 }}
               >

@@ -285,7 +285,10 @@ export default function RecipeCards({ recipedata, separatedingredients }) {
             ))}
           </Grid>
           {/* DESCRIPTION */}
-          <Typography fontWeight={700} mt="24px">
+          <Typography
+            variant="h6"
+            sx={{ fontWeight: '600', fontSize: '20px', marginTop: '32px' }}
+          >
             Description
           </Typography>
           <Typography
@@ -310,49 +313,56 @@ export default function RecipeCards({ recipedata, separatedingredients }) {
               marginTop: '32px',
             }}
           >
-            <Typography sx={{ fontWeight: '700' }}>
+            <Typography
+              variant="h6"
+              sx={{ fontWeight: '600', fontSize: '20px' }}
+            >
               Rate this recipe:{' '}
             </Typography>
             <Box
               sx={{
                 display: 'flex',
-                flexdirection: 'row',
+                flexdirection: 'column',
                 alignItems: 'center',
               }}
             >
               <Rating
+                size="large"
                 onChange={(event, newValue) => {
                   setValue(newValue);
                 }}
                 value={value}
               />
-              <Button
-                variant="contained"
+            </Box>
+            <Button
+              variant="contained"
+              size="large"
+              sx={{
+                borderRadius: '40px',
+                marginTop: '40px',
+                width: {
+                  xs: '100%',
+                  md: 'auto',
+                },
+              }}
+              onClick={() => {
+                handleClick(item.recipe_id);
+              }}
+            >
+              {' '}
+              <SendIcon
+                sx={{ width: '16px', height: '16px', opacity: '75%' }}
+              />
+              <Typography
                 sx={{
-                  borderRadius: '40px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  ml: 2,
-                }}
-                onClick={() => {
-                  handleClick(item.recipe_id);
+                  fontWeight: '600',
+                  marginLeft: '8px',
+                  textTransform: 'none',
                 }}
               >
-                {' '}
-                <SendIcon
-                  sx={{ width: '16px', height: '16px', opacity: '75%' }}
-                />
-                <Typography
-                  sx={{
-                    fontWeight: '600',
-                    marginLeft: '8px',
-                    textTransform: 'none',
-                  }}
-                >
-                  Submit rating
-                </Typography>
-              </Button>
-            </Box>
+                Submit rating
+              </Typography>
+            </Button>
           </Box>
         </Box>
       ))}

@@ -14,7 +14,7 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import MenuIcon from '@mui/icons-material/Menu';
 import { useState } from 'react';
 import Image from 'next/image';
-// import logoNewCaps from '/public/logoNewCaps.svg';
+import logoNewCaps from '/public/logoNewCaps.svg';
 import Input from './Input';
 import SwipeableTemporaryDrawer from '../components/navbar drawer';
 
@@ -42,9 +42,9 @@ export const Navbar = ({ searchInput, setSearchInput, trigger }) => {
             <Box
               sx={{ cursor: 'pointer', display: 'flex', alignItems: 'center' }}
             >
-              {/* <Link href="/">
+              <Link href="/">
                 <Image src={logoNewCaps} width={220} height={48} />
-              </Link> */}
+              </Link>
             </Box>
             <Hidden mdDown>
               <Input

@@ -12,7 +12,7 @@ import StarIcon from '@mui/icons-material/Star';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import Link from 'next/link';
-const Cards = ({ data }) => {
+const Cards = ({ data, sx }) => {
   function HeartFav() {
     // POST REQUEST HERE
     console.log('milfs');
@@ -24,20 +24,23 @@ const Cards = ({ data }) => {
       {/* {data.map((item) => ( */}
       <Box
         sx={{
-          display: 'flex',
+          display: { sm: 'grid', xs: 'flex' },
+          gap: '20px',
           alignItems: 'flex-start',
           flexWrap: {
             xs: 'nowrap',
-            md: 'wrap',
+          },
+          gridTemplateColumns: {
+            sm: 'repeat(auto-fill, minmax(250px, 1fr))',
           },
           '& > div': {
             marginBottom: '24px',
             minWidth: '250px',
             borderRadius: '16px',
-            '&:not(:last-child)': { marginRight: '24px' },
+            // '&:not(:last-child)': { marginRight: '0px' },
           },
           overflowX: 'auto',
-          padding: '20px 20px 20px 0',
+          // padding: '20px',
         }}
       >
         {data.map((item) => (

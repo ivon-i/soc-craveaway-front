@@ -94,14 +94,18 @@ export default function Profile() {
             </Box>
 
             {/* favourite list */}
-            <Typography
-              variant="h4"
-              mt="40px"
-              fontWeight={600}
-              fontSize={'25px'}
-            >
-              Favourite
-            </Typography>
+            <Container maxWidth="lg">
+              <Typography
+                variant="h4"
+                mt="40px"
+                mb="16px"
+                fontWeight={600}
+                fontSize={'25px'}
+              >
+                Favourite
+              </Typography>
+            </Container>
+
             <Cards data={data} />
             <Stack
               direction="column"
@@ -118,6 +122,7 @@ export default function Profile() {
               <Typography
                 variant="h4"
                 mt="40px"
+                mb="16px"
                 fontWeight={600}
                 fontSize={'25px'}
               >
@@ -125,7 +130,7 @@ export default function Profile() {
               </Typography>
             </Stack>
 
-            <Container
+            {/* <Container
               maxWidth="lg"
               sx={{
                 display: 'flex',
@@ -134,25 +139,39 @@ export default function Profile() {
                 justifyContent: 'flex-start',
                 alignContent: 'space-between',
               }}
-            >
-              {list2.length === 4
-                ? setShopEmp(true) && (
-                    <Typography fontWeight={700}>Add smt</Typography>
-                  )
-                : null}
+            > */}
+
+            {list2.length === 4
+              ? setShopEmp(true) && (
+                  <Typography fontWeight={700}>Add smt</Typography>
+                )
+              : null}
+            <Grid container spacing={2}>
               {list.map((item) => (
-                <Chip
-                  variant="outlined"
-                  label={item.label}
-                  onClick={handleClick}
-                  onDelete={() => handleDelete(item.id)}
-                  sx={{
-                    borderColor: '#FCC62E',
-                    borderWidth: '1.5px',
-                  }}
-                ></Chip>
+                <Grid item xs={6} sm={4} md={3}>
+                  <Chip
+                    variant="outlined"
+                    label={item.label}
+                    onClick={handleClick}
+                    onDelete={() => handleDelete(item.id)}
+                    sx={{
+                      borderColor: '#FCC62E',
+                      borderWidth: '1.5px',
+                      display: 'flex',
+                      width: '100%',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      paddingTop: '16px',
+                      paddingBottom: '16px',
+                      padding: '24px 8px',
+                      borderRadius: '40px',
+                      fontSize: '14px',
+                    }}
+                  ></Chip>
+                </Grid>
               ))}
-            </Container>
+            </Grid>
+            {/* </Container> */}
           </Box>
         </Container>
       </>

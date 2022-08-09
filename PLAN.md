@@ -26,7 +26,7 @@ tuesday 9th august
 \*\*\*\* Create recipe page
 
 - space the icon strip centrally ✅
-- size the icons and the text to be slightly larger
+- size the icons and the text to be slightly larger ✅
 - make sure ingredients are contained within the width of the box and they wrap to a new line no matter how many ingredients added
 - see the Creator on a seperate line from the icon and author name
 - see if an icon or illustration looks better before the page title inline with the title (something food related to add approachability)

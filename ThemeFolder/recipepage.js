@@ -12,6 +12,8 @@ import {
 import { Box } from '@mui/system';
 import Image from 'next/image';
 import GradeIcon from '@mui/icons-material/Grade';
+import IconButton from '@mui/material';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import Rating from '@mui/material/Rating';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import PeopleIcon from '@mui/icons-material/People';
@@ -92,63 +94,132 @@ export default function RecipeCards({ recipedata, separatedingredients }) {
             overflow="hidden"
           >
             <Image src={item.image_url} layout="fill" objectFit="contain" />
+            <Chip
+              color="success"
+              label={item.nutrition}
+              sx={{
+                zIndex: 100,
+                position: 'absolute',
+                top: '16px',
+                right: '16px',
+              }}
+            />
+            {/* <IconButton
+              onClick={() => {
+                HeartFav(item);
+              }}
+            > */}
+            <FavoriteBorderIcon
+              sx={{
+                zIndex: 101,
+                position: 'absolute',
+                bottom: '16px',
+                right: '16px',
+                backgroundColor: '#fff',
+                borderRadius: '100%',
+                padding: '8px',
+                fontSize: '40px',
+                color: '#FF6B6B',
+              }}
+            />
+            {/* </IconButton> */}
           </Box>
-          <Grid container maxWidth="xl">
+          <Grid container maxWidth="xl" sx={{ alignSelf: 'right' }}>
             <Grid item xs={3}>
               <Chip
-                label={item.rating}
+                label={`${item.rating} ${'Rating'}`}
                 // PUT AVARAGE INSTEAD OF RATING
-                icon={<GradeIcon />}
+                icon={
+                  <GradeIcon
+                    style={{
+                      color: '#FCC62E',
+                      backgroundColor: '#34393C',
+                      padding: '4px',
+                      borderRadius: '20px',
+                    }}
+                  />
+                }
                 variant="outlined"
-                size="small"
+                size="large"
                 sx={{
                   display: 'flex',
                   justifyContent: 'center',
                   mt: 2,
                   border: 'none',
+                  opacity: '90%',
                 }}
               />
             </Grid>
             <Grid item xs={3}>
               <Chip
-                label={item.time}
-                icon={<AccessTimeIcon />}
+                label={`${item.time} ${'Minutes'}`}
+                icon={
+                  <AccessTimeIcon
+                    style={{
+                      color: '#FCC62E',
+                      backgroundColor: '#34393C',
+                      padding: '4px',
+                      borderRadius: '20px',
+                    }}
+                  />
+                }
                 variant="outlined"
-                size="small"
+                size="large"
                 sx={{
                   display: 'flex',
                   justifyContent: 'center',
                   mt: 2,
                   border: 'none',
                   ml: '4px',
+                  opacity: '90%',
                 }}
               />
             </Grid>
             <Grid item xs={3}>
               <Chip
-                label="2"
-                icon={<PeopleIcon />}
+                label={`${2} Servings`}
+                icon={
+                  <PeopleIcon
+                    style={{
+                      color: '#FCC62E',
+                      backgroundColor: '#34393C',
+                      padding: '4px',
+                      borderRadius: '20px',
+                    }}
+                  />
+                }
                 variant="outlined"
-                size="small"
+                size="large"
                 sx={{
                   mt: 2,
                   border: 'none',
                   display: 'flex',
                   justifyContent: 'center',
+                  opacity: '90%',
                 }}
               />
             </Grid>
             <Grid item xs={3}>
               <Chip
-                label="£5pp"
-                icon={<PaymentIcon />}
+                label={`£${5}pp`}
+                icon={
+                  <PaymentIcon
+                    style={{
+                      color: '#FCC62E',
+                      backgroundColor: '#34393C',
+                      padding: '4px',
+                      borderRadius: '20px',
+                    }}
+                  />
+                }
                 variant="outlined"
-                size="small"
+                size="large"
                 sx={{
                   mt: 2,
                   border: 'none',
                   display: 'flex',
                   justifyContent: 'center',
+                  opacity: '90%',
                 }}
               />
             </Grid>

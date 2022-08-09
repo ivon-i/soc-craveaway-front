@@ -90,9 +90,23 @@ export default function Profile() {
                   marginTop: '32px',
                 }}
               />
-              {user.name}
+              <Typography variant="h5" fontWeight="600">
+                {user.name}
+              </Typography>
             </Box>
-            <Typography variant="h6">Edit profile</Typography>
+            <Typography
+              variant="h6"
+              sx={{
+                fontSize: '14px',
+                textAlign: 'center',
+                textDecoration: 'underline',
+                textTransform: 'capitalize',
+                mt: '8px',
+                opacity: '70%',
+              }}
+            >
+              Edit profile
+            </Typography>
 
             {/* favourite list */}
             <Container maxWidth="lg">
@@ -108,17 +122,7 @@ export default function Profile() {
             </Container>
 
             <Cards data={data} />
-            <Stack
-              direction="column"
-              spacing={2}
-              mt="15px"
-              sx={{
-                maxWidth: 345,
-                display: 'flex',
-                alignContent: 'flex-start',
-                flexWrap: 'wrap',
-              }}
-            >
+            <Container maxWidth="lg">
               {/* shopping list */}
               <Typography
                 variant="h4"
@@ -129,7 +133,7 @@ export default function Profile() {
               >
                 Shopping List
               </Typography>
-            </Stack>
+            </Container>
 
             {/* <Container
               maxWidth="lg"
@@ -147,7 +151,7 @@ export default function Profile() {
                   <Typography fontWeight={700}>Add smt</Typography>
                 )
               : null}
-            <Grid container spacing={2}>
+            <Grid container spacing={2} sx={{ padding: '16px' }}>
               {list.map((item) => (
                 <Grid item xs={6} sm={4} md={3}>
                   <Chip

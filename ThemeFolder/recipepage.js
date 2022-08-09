@@ -18,13 +18,8 @@ import PeopleIcon from '@mui/icons-material/People';
 import PaymentIcon from '@mui/icons-material/Payment';
 import { useState, useEffect } from 'react';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-
-import IconButton from '@mui/material';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-
 import AddIcon from '@mui/icons-material/Add';
 import { useUser } from '@auth0/nextjs-auth0';
-
 
 export default function RecipeCards({ recipedata, separatedingredients }) {
   const [value, setValue] = useState(0);
@@ -75,7 +70,7 @@ export default function RecipeCards({ recipedata, separatedingredients }) {
         padding: '24px 24px 40px 24px',
         borderRadius: '8px',
         direction: 'row',
-        // backgroundColor: '#FEF9EB',
+        backgroundColor: '#FEF9EB',
       }}
     >
       {recipedata.map((item) => (
@@ -88,37 +83,12 @@ export default function RecipeCards({ recipedata, separatedingredients }) {
             {item.title}
           </Typography>
           <Box
-            sx={{
-              height: '200px',
-              position: 'relative',
-              backgroundColor: '#343A40',
-              borderRadius: '16px',
-              overflow: 'hidDen',
-            }}
+            height="240px"
+            backgroundColor="#fff"
+            mt="20px"
+            borderRadius="8px"
           >
-            <img src={item.image_url} layout="fill" objectFit="fill" />
-            <Chip
-              color="success"
-              label={item.nutrition}
-              sx={{
-                zIndex: 100,
-                position: 'absolute',
-                top: '16px',
-                right: '16px',
-              }}
-            />
-            <FavoriteBorderIcon
-              sx={{
-                position: 'absolute',
-                bottom: '16px',
-                right: '16px',
-                backgroundColor: '#fff',
-                borderRadius: '100%',
-                padding: '8px',
-                fontSize: '40px',
-                color: '#FF6B6B',
-              }}
-            />
+            {item.image}
           </Box>
           <Grid container maxWidth="xl">
             <Grid item xs={3}>
@@ -237,7 +207,6 @@ export default function RecipeCards({ recipedata, separatedingredients }) {
               value={value}
             />
             <Button
-              variant="contained"
               onClick={() => {
                 handleClick(item.recipe_id);
               }}

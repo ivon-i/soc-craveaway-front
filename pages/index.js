@@ -378,14 +378,7 @@ export default function Home({ payload }) {
       <Container maxWidth="lg">
         <Typography
           variant="h5"
-          sx={{
-            fontWeight: '600',
-            marginTop: {
-              xs: '40px',
-              md: '80px',
-            },
-            marginBottom: '16px',
-          }}
+          sx={{ fontWeight: '600', marginTop: '80px', marginBottom: '16px' }}
         >
           Top recipes
         </Typography>

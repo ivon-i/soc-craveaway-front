@@ -46,7 +46,7 @@ export default function RecipeCards({ recipedata, separatedingredients }) {
         padding: '24px 24px 40px 24px',
         borderRadius: '8px',
         direction: 'row',
-        backgroundColor: '#FEF9EB',
+        // backgroundColor: '#FEF9EB',
       }}
     >
       {recipedata.map((item) => (
@@ -60,7 +60,7 @@ export default function RecipeCards({ recipedata, separatedingredients }) {
           </Typography>
           <Box
             height="240px"
-            backgroundColor="#fff"
+            backgroundColor="#34393C"
             mt="20px"
             borderRadius="8px"
             postion="relative"

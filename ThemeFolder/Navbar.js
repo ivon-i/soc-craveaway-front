@@ -59,9 +59,9 @@ export const Navbar = ({ searchInput, setSearchInput, trigger }) => {
                 />
               ) : null}
             </Hidden>
-            <Hidden mdUp>
+            {/* <Hidden mdUp>
               <MenuIcon onClick={openMenu} />
-            </Hidden>
+            </Hidden> */}
             {/* <Menu
               sx={{ '& a': { color: 'black' } }}
               anchorEl={el}

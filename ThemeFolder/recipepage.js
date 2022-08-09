@@ -18,6 +18,7 @@ import PeopleIcon from '@mui/icons-material/People';
 import PaymentIcon from '@mui/icons-material/Payment';
 import { useState, useEffect } from 'react';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+
 export default function RecipeCards({ recipedata, separatedingredients }) {
   const [value, setValue] = useState(0);
   async function handleClick(id) {
@@ -62,8 +63,10 @@ export default function RecipeCards({ recipedata, separatedingredients }) {
             backgroundColor="#fff"
             mt="20px"
             borderRadius="8px"
+            postion="relative"
+            overflow="hidden"
           >
-            {item.image}
+            <img src={item.image_url} layout="fill" objectFit="contain" />
           </Box>
           <Grid container maxWidth="xl">
             <Grid item xs={3}>

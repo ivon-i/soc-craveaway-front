@@ -50,9 +50,10 @@ const Cards = ({ data, sx }) => {
                 sx={{
                   height: '200px',
                   position: 'relative',
+                  backgroundColor: '#343A40',
                 }}
               >
-                <Image src={item.image_url} layout="fill" objectFit="cover" />
+                <Image src={item.image_url} layout="fill" objectFit="contain" />
                 <Chip
                   color="success"
                   label={item.nutrition}

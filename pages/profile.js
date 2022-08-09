@@ -13,23 +13,20 @@ import { Container } from '@mui/material';
 import { Image } from 'next/image';
 import { Grid } from '@mui/material';
 
-
-
 import { Button } from '@mui/material';
-
 
 export default function Profile() {
   const { user, error, isLoading } = useUser();
   const [list2, setList2] = useState([]);
   const [chipData, setChipData] = useState([]);
   const [favCard, setFavCard] = useState([]);
+  const [state, setState] = useState(false);
   const [shopEmp, setShopEmp] = useState(false);
-
 
   useEffect(() => {
     async function fetchData() {
       const response = await fetch(
-        `https://craveaway.herokuapp.com/shop?username=${user}`
+        `https://craveaway.herokuapp.com/shop?username=Yoshi Natsu`
       );
       const data = await response.json();
       const { payload } = data;
@@ -47,8 +44,7 @@ export default function Profile() {
     } catch (error) {
       console.log(error.message);
     }
-  }, [chipData, favCard]);
-
+  }, [state]);
 
   const [list, setList] = useState([
     { id: 1, label: 'Clickable Deletable' },
@@ -90,6 +86,7 @@ export default function Profile() {
       );
       const data = await response.json();
       console.log(data);
+      setState(!state);
     } catch (error) {
       console.log(error.message);
     }
@@ -98,7 +95,7 @@ export default function Profile() {
 
   if (user) {
     return (
-    <Box ml="15px">
+      <Box ml="15px">
         <Typography variant="h4" mt="50px">
           {user.name}'s Profile
         </Typography>
@@ -145,8 +142,7 @@ export default function Profile() {
         </Stack>
       </Box>
     );
-  }
- else {
+  } else {
     return (
       <>
         {

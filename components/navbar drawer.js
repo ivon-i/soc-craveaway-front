@@ -17,6 +17,7 @@ import PolicyIcon from '@mui/icons-material/Policy';
 import Link from 'next/link';
 import { useUser } from '@auth0/nextjs-auth0';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
+import Typography from '@mui/material/Typography';
 export default function SwipeableTemporaryDrawer() {
   const [state, setState] = React.useState({
     top: false,
@@ -54,13 +55,13 @@ export default function SwipeableTemporaryDrawer() {
       >
         {[
           <Link href="/" passHref>
-            Home
+          <Typography variant="body1">Home</Typography>
           </Link>,
           <Link href="/profile" passHref>
-            My profile
+          <Typography variant="body1">My Profile</Typography>
           </Link>,
           <Link href="/createrecipe" passHref>
-            Create a recipe
+          <Typography variant="body1">Create a recipe</Typography>
           </Link>,
         ].map((text, index) => (
           <ListItem key={text} disablePadding>
@@ -105,11 +106,11 @@ export default function SwipeableTemporaryDrawer() {
       >
         {[
           <Link href="/api/auth/login" passHref>
-            Login
+          <Typography variant="body1">Login</Typography>
           </Link>,
           'Usage Policy' /*Needs to be a link*/,
           <Link href="/api/auth/login" passHref>
-            Sign Up
+          <Typography variant="body1">Sign Up</Typography>
           </Link>,
         ].map((text, index) => (
           <ListItem key={text} disablePadding>
@@ -162,13 +163,13 @@ export default function SwipeableTemporaryDrawer() {
       >
         {[
           <Link href="/" passHref>
-            Home
+          <Typography variant="body1">Home</Typography>
           </Link>,
           <Link href="/profile" passHref>
-            My profile
+          <Typography variant="body1">My Profile</Typography>
           </Link>,
           <Link href="/createrecipe" passHref>
-            Create a recipe
+          <Typography variant="body1">Create a recipe</Typography>
           </Link>,
         ].map((text, index) => (
           <ListItem key={text} disablePadding>
@@ -213,7 +214,7 @@ export default function SwipeableTemporaryDrawer() {
       >
         {[
           <Link href="/api/auth/logout" passHref>
-            Logout
+          <Typography variant="body1">Logout</Typography>
           </Link>,
           'Usage Policy' /*Needs to be a link*/,
         ].map((text, index) => (

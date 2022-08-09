@@ -93,7 +93,7 @@ export default function RecipeCards({ recipedata, separatedingredients }) {
             position="relative"
             overflow="hidden"
           >
-            <Image src={item.image_url} layout="fill" objectFit="contain" />
+            <Image src={item.image_url} layout="fill" objectFit="cover" />
             <Chip
               color="success"
               label={item.nutrition}
@@ -326,8 +326,16 @@ export default function RecipeCards({ recipedata, separatedingredients }) {
             }}
           >
             <Typography sx={{ fontWeight: '700' }}>Creator:</Typography>
+          </Box>
+          <Box
+            sx={{
+              display: 'flex',
+              flexdirection: 'row',
+              alignItems: 'center',
+            }}
+          >
             <AccountCircleIcon />
-            <Typography sx={{ margin: '-8px' }}> {item.author}</Typography>
+            <Typography sx={{ margin: '8px' }}> {item.author}</Typography>
           </Box>
         </Box>
       ))}

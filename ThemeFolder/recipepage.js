@@ -18,6 +18,8 @@ import PeopleIcon from '@mui/icons-material/People';
 import PaymentIcon from '@mui/icons-material/Payment';
 import { useState, useEffect } from 'react';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import AddIcon from '@mui/icons-material/Add';
+
 export default function RecipeCards({ recipedata, separatedingredients }) {
   const [value, setValue] = useState(0);
   async function handleClick(id) {
@@ -36,6 +38,14 @@ export default function RecipeCards({ recipedata, separatedingredients }) {
       console.log(error.message);
     }
   }
+
+  const getChipInfo = (e) => {
+    console.info(e.currentTarget.innerText);
+  };
+  const handleDelete = (e) => {
+    console.info('You clicked the delete icon.');
+  };
+
   return (
     <Container
       maxWidth="sm"
@@ -140,6 +150,9 @@ export default function RecipeCards({ recipedata, separatedingredients }) {
                   mt: '8px',
                   mb: '32px',
                 }}
+                onClick={getChipInfo}
+                deleteIcon={<AddIcon />}
+                onDelete={handleDelete}
               ></Chip>
             ))}
           </Box>

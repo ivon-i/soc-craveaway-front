@@ -158,6 +158,7 @@ export default function SwipeableTemporaryDrawer() {
         sx={{
           background: '#FFC529',
           color: 'white',
+          textDecoration: 'none',
         }}
       >
         {[

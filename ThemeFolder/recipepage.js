@@ -103,7 +103,7 @@ export default function RecipeCards({ recipedata, separatedingredients }) {
                 size="small"
                 sx={{
                   display: 'flex',
-                  justifyContent: 'left',
+                  justifyContent: 'center',
                   mt: 2,
                   border: 'none',
                 }}
@@ -117,7 +117,7 @@ export default function RecipeCards({ recipedata, separatedingredients }) {
                 size="small"
                 sx={{
                   display: 'flex',
-                  justifyContent: 'left',
+                  justifyContent: 'center',
                   mt: 2,
                   border: 'none',
                   ml: '4px',
@@ -134,13 +134,13 @@ export default function RecipeCards({ recipedata, separatedingredients }) {
                   mt: 2,
                   border: 'none',
                   display: 'flex',
-                  justifyContent: 'left',
+                  justifyContent: 'center',
                 }}
               />
             </Grid>
             <Grid item xs={3}>
               <Chip
-                label="£5 (pp)"
+                label="£5pp"
                 icon={<PaymentIcon />}
                 variant="outlined"
                 size="small"
@@ -148,7 +148,7 @@ export default function RecipeCards({ recipedata, separatedingredients }) {
                   mt: 2,
                   border: 'none',
                   display: 'flex',
-                  justifyContent: 'left',
+                  justifyContent: 'center',
                 }}
               />
             </Grid>

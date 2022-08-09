@@ -92,6 +92,7 @@ export default function Profile() {
               />
               {user.name}
             </Box>
+            <Typography variant="h6">Edit profile</Typography>
 
             {/* favourite list */}
             <Container maxWidth="lg">

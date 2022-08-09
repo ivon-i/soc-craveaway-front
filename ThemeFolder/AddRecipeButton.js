@@ -11,6 +11,7 @@ function AddRecipeButton(props) {
         sx={{
           ...props.sx,
           fontWeight: '600',
+          borderRadius: '40px',
         }}
       >
         {props.icon}

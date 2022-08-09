@@ -11,7 +11,10 @@
 
 ---
 
-added background color to box on recipe cards on home page
-added image to recipe page using image_url
-added overflow: hidden to box containing image
-layout="fill"
+tuesday 9th august
+
+- change +create recipe button and submit recipe button on all instances:
+  - AddRecipeButton component
+    - Hero component: Up & Down
+  - create recipe page
+  - to have rounded border-radius at least 50% of the height of the element. This is to be consistent with the tone of voice of the app: welcoming, appetising and quality and all other elements have rounded corners. ✅

@@ -313,6 +313,7 @@ export default function createRecipe() {
                   width: {
                     xs: '100%',
                     md: 'auto',
+                    borderRadius: '40px',
                   },
                 }}
               >

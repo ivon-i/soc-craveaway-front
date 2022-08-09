@@ -22,10 +22,10 @@ import AddRecipeButton from '../ThemeFolder/AddRecipeButton';
 import { Navbar } from '../ThemeFolder/Navbar';
 
 export default function createRecipe() {
-  const cookingTime = ['15', '25', '35', '45', '60+'];
+  const cookingTime = ['10-20 mins', '21-30 mins', '31-40 mins', '41-50 mins', '51-60 mins', '60+ mins'];
   const serves = ['1', '2', '3', '4+'];
-  const price = ['£5', '£10', '£15', '£20+'];
-  const nutritionCat = ['Vegetarian', 'Vegan', 'Pescatarian', 'Keto'];
+  const price = ['£5-15', '£16-25', '£26-35', '£36-45', '£45+'];
+  const nutritionCat = ['Vegetarian', 'Vegan', 'Pescetarian', 'Keto', 'Gluten-free', 'Low-sugar', 'Dairy-free', 'Low-sodium', 'Low-carb'];
   const { user, error, isLoading } = useUser();
   const newRecipe = {
     title: '',
@@ -230,7 +230,7 @@ export default function createRecipe() {
                 {/* PRICE PER SERVING */}
                 <Grid item sm={6} xs={12}>
                   <Typography sx={{ mb: 1, mt: 2 }}>
-                    Price per serving:{' '}
+                    Price:{' '}
                   </Typography>
                   <Select
                     sx={{ height: '50px', borderRadius: '8px' }}

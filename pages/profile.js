@@ -15,10 +15,33 @@ import { Grid } from '@mui/material';
 
 import { Button } from '@mui/material';
 
-export default function Profile() {
+export async function getServerSideProps() {
+  try {
+    const response = await fetch(`http://craveaway.herokuapp.com/recipes`);
+    const data = await response.json();
+    const { payload } = data;
+    return { props: { payload } };
+  } catch (error) {
+    console.log(error.message);
+  }
+}
+
+export default function Profile({payload}) {
   const { user, error, isLoading } = useUser();
   const [list2, setList2] = useState([]);
   const [shopEmp, setShopEmp] = useState(false);
+  const [search, setSearch] = useState('');
+  const [filtered, setFiltered] = useState(payload);
+  function filterInput() {
+    const filter = payload.filter(
+      (r) =>
+        r.time?.toUpperCase().includes(search.toUpperCase()) ||
+        r.author?.toUpperCase().includes(search.toUpperCase()) ||
+        r.title?.toUpperCase().includes(search.toUpperCase())
+    );
+    setFiltered(filter);
+    console.log(filtered);
+  }
   const [list, setList] = useState([
     { id: 1, label: 'Clickable Deletable' },
     { id: 2, label: 'Clickable Deletable' },
@@ -51,7 +74,11 @@ export default function Profile() {
   if (user) {
     return (
       <>
-        <Navbar />
+        <Navbar
+        searchInput={search}
+        setSearchInput={setSearch}
+        trigger={filterInput}
+        />
         <Container maxWidth="lg" sx={{ marginBottom: '88px' }}>
           <Box
             ml="15px"

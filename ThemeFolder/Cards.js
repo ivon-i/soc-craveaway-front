@@ -16,8 +16,6 @@ import Link from 'next/link';
 
 import { useState } from 'react';
 const Cards = ({ data }) => {
-  
-
   async function HeartFav(cardInfo) {
     console.log(cardInfo);
     const response = await fetch('http://craveaway.herokuapp.com/fav/create/', {
@@ -63,6 +61,7 @@ const Cards = ({ data }) => {
               sx={{
                 height: '200px',
                 position: 'relative',
+                backgroundColor: '#34393C',
               }}
             >
               <Image src={item.image_url} layout="fill" objectFit="cover" />

@@ -95,32 +95,34 @@ export default function Profile() {
 
   if (user) {
     return (
-      <Box ml="15px">
-        <Typography variant="h4" mt="50px">
-          {user.name}'s Profile
-        </Typography>
-        <Typography mt="30px" fontWeight={700}>
-          Favourite
-        </Typography>
-        <Cards data={favCard} />
-        <Stack
-          direction="column"
-          spacing={2}
-          mt="15px"
-          sx={{
-            maxWidth: 345,
-            display: 'flex',
-            alignContent: 'flex-start',
-            flexWrap: 'wrap',
-          }}
-        >
-          <Typography fontWeight={700}>Shopping List</Typography>
-          {list2.length === 4
-            ? setShopEmp(true) && (
-                <Typography fontWeight={700}>Add smt</Typography>
-              )
-            : null}
-          {/* {list.map((item) => (
+      <>
+        <Navbar />
+        <Box ml="15px">
+          <Typography variant="h4" mt="50px">
+            {user.name}'s Profile
+          </Typography>
+          <Typography mt="30px" fontWeight={700}>
+            Favourite
+          </Typography>
+          <Cards data={favCard} />
+          <Stack
+            direction="column"
+            spacing={2}
+            mt="15px"
+            sx={{
+              maxWidth: 345,
+              display: 'flex',
+              alignContent: 'flex-start',
+              flexWrap: 'wrap',
+            }}
+          >
+            <Typography fontWeight={700}>Shopping List</Typography>
+            {list2.length === 4
+              ? setShopEmp(true) && (
+                  <Typography fontWeight={700}>Add smt</Typography>
+                )
+              : null}
+            {/* {list.map((item) => (
             <Chip
               variant="outlined"
               label={item.label}
@@ -129,18 +131,19 @@ export default function Profile() {
               sx={{ borderColor: '#FCC62E', borderWidth: '1.5px' }}
             ></Chip>
           ))} */}
-          {chipData.map((item) => (
-            <Chip
-              key={item.item_id}
-              variant="outlined"
-              label={item.item}
-              onClick={handleClick}
-              onDelete={() => handleDeleteShopList(item.item_id)}
-              sx={{ borderColor: '#FCC62E', borderWidth: '1.5px' }}
-            ></Chip>
-          ))}
-        </Stack>
-      </Box>
+            {chipData.map((item) => (
+              <Chip
+                key={item.item_id}
+                variant="outlined"
+                label={item.item}
+                onClick={handleClick}
+                onDelete={() => handleDeleteShopList(item.item_id)}
+                sx={{ borderColor: '#FCC62E', borderWidth: '1.5px' }}
+              ></Chip>
+            ))}
+          </Stack>
+        </Box>
+      </>
     );
   } else {
     return (

@@ -32,7 +32,7 @@ const Categories = () => {
             '& > *:not(:last-child)': { marginRight: '16px' },
             // All the chips
             '& > div': {
-              border: 1,
+              border: ' 0.75px solid rgba(114, 117, 118, 1)',
               padding: {
                 xs: '16px 16px',
                 sm: '16px 8px',

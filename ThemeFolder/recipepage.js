@@ -16,6 +16,7 @@ import Rating from '@mui/material/Rating';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import PeopleIcon from '@mui/icons-material/People';
 import PaymentIcon from '@mui/icons-material/Payment';
+import SendIcon from '@mui/icons-material/Send';
 import { useState, useEffect } from 'react';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import AddIcon from '@mui/icons-material/Add';
@@ -217,7 +218,7 @@ export default function RecipeCards({ recipedata, separatedingredients }) {
                 variant="contained"
                 sx={{
                   borderRadius: '40px',
-                  display: 'block',
+                  display: 'flex',
                   alignItems: 'center',
                   ml: 2,
                 }}
@@ -225,7 +226,19 @@ export default function RecipeCards({ recipedata, separatedingredients }) {
                   handleClick(item.recipe_id);
                 }}
               >
-                Submit Rating
+                {' '}
+                <SendIcon
+                  sx={{ width: '16px', height: '16px', opacity: '75%' }}
+                />
+                <Typography
+                  sx={{
+                    fontWeight: '600',
+                    marginLeft: '8px',
+                    textTransform: 'none',
+                  }}
+                >
+                  Submit rating
+                </Typography>
               </Button>
             </Box>
           </Box>

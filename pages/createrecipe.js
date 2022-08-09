@@ -17,6 +17,7 @@ import {
 } from '@mui/material';
 import { useState } from 'react';
 import { NavigateNextOutlined } from '@mui/icons-material';
+import SendIcon from '@mui/icons-material/Send';
 import { useUser } from '@auth0/nextjs-auth0';
 import AddRecipeButton from '../ThemeFolder/AddRecipeButton';
 import { Navbar } from '../ThemeFolder/Navbar';
@@ -308,8 +309,9 @@ export default function createRecipe() {
                 className="submitRecipeButton"
                 onClick={updateImageString}
                 sx={{
-                  display: 'block',
+                  // display: 'block',
                   marginTop: '40px',
+
                   width: {
                     xs: '100%',
                     md: 'auto',
@@ -317,8 +319,27 @@ export default function createRecipe() {
                   },
                 }}
               >
-                <Typography sx={{ fontWeight: '700' }}>
-                  Submit Recipe
+                {/* <Button
+        variant="contained"
+        size="large"
+        sx={{
+          ...props.sx,
+          fontWeight: '600',
+          borderRadius: '40px',
+          textTransform: 'none',
+          fontWeight: 500,
+        }} */}
+                <SendIcon
+                  sx={{ width: '16px', height: '16px', opacity: '75%' }}
+                />
+                <Typography
+                  sx={{
+                    fontWeight: '600',
+                    marginLeft: '8px',
+                    textTransform: 'none',
+                  }}
+                >
+                  Submit recipe
                 </Typography>
               </Button>
             </Box>

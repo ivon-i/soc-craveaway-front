@@ -18,8 +18,13 @@ import PeopleIcon from '@mui/icons-material/People';
 import PaymentIcon from '@mui/icons-material/Payment';
 import { useState, useEffect } from 'react';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import AddIcon from '@mui/icons-material/Add';
+import { useUser } from '@auth0/nextjs-auth0';
+
 export default function RecipeCards({ recipedata, separatedingredients }) {
   const [value, setValue] = useState(0);
+  const { user } = useUser();
+
   async function handleClick(id) {
     try {
       const patch = await fetch(
@@ -36,6 +41,26 @@ export default function RecipeCards({ recipedata, separatedingredients }) {
       console.log(error.message);
     }
   }
+
+  const getChipInfo = async (e) => {
+    // console.info(e.currentTarget.innerText);
+    const response = await fetch('https://craveaway.herokuapp.com/shop/list', {
+      method: 'POST',
+      body: JSON.stringify({
+        username: user.name,
+        item: e.currentTarget.innerText,
+      }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    const data = await response.json();
+    console.log(data);
+  };
+  const handleDelete = async (e) => {
+    console.log('sure thing');
+  };
+
   return (
     <Container
       maxWidth="sm"
@@ -140,6 +165,9 @@ export default function RecipeCards({ recipedata, separatedingredients }) {
                   mt: '8px',
                   mb: '32px',
                 }}
+                onClick={getChipInfo}
+                deleteIcon={<AddIcon />}
+                onDelete={handleDelete}
               ></Chip>
             ))}
           </Box>

@@ -6,17 +6,31 @@ import {
   Typography,
   Chip,
   IconButton,
+  Button,
 } from '@mui/material';
 import Image from 'next/image';
 import StarIcon from '@mui/icons-material/Star';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import Link from 'next/link';
-const Cards = ({ data, sx }) => {
-  function HeartFav() {
-    // POST REQUEST HERE
-    console.log('milfs');
+
+import { useState } from 'react';
+const Cards = ({ data }) => {
+  
+
+  async function HeartFav(cardInfo) {
+    console.log(cardInfo);
+    const response = await fetch('http://craveaway.herokuapp.com/fav/create/', {
+      method: 'POST',
+      body: JSON.stringify(cardInfo),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    const data = await response.json();
+    console.log(data);
   }
+
   return (
     <Container maxWidth="lg" sx={{ mb: 10 }}>
       {/* <Grid container spacing={5}> */}
@@ -44,43 +58,46 @@ const Cards = ({ data, sx }) => {
         }}
       >
         {data.map((item) => (
-          <Link href={`/post/${item.recipe_id}`} key={item.recipe_id}>
-            <Paper sx={{ overflow: 'hidden' }}>
-              <Box
+          <Paper sx={{ overflow: 'hidden' }}>
+            <Box
+              sx={{
+                height: '200px',
+                position: 'relative',
+              }}
+            >
+              <Image src={item.image_url} layout="fill" objectFit="cover" />
+              <Chip
+                color="success"
+                label={item.nutrition}
                 sx={{
-                  height: '200px',
-                  position: 'relative',
+                  zIndex: 100,
+                  position: 'absolute',
+                  top: '16px',
+                  right: '16px',
                 }}
+              />
+              <IconButton
+                onClick={() => {
+                  HeartFav(item);
+                  // handleFavClick(e, item.recipe_id);
+                }}
+                sx={{
+                  zIndex: 101,
+                  position: 'absolute',
+                  bottom: '16px',
+                  right: '16px',
+                  backgroundColor: '#fff',
+                  borderRadius: '100%',
+                  padding: '8px',
+                  fontSize: '40px',
+                  color: '#FF6B6B',
+                }}
+                // disabled={heartDisable}
               >
-                <Image src={item.image_url} layout="fill" objectFit="cover" />
-                <Chip
-                  color="success"
-                  label={item.nutrition}
-                  sx={{
-                    zIndex: 100,
-                    position: 'absolute',
-                    top: '16px',
-                    right: '16px',
-                  }}
-                />
-                ​
-                <IconButton
-                  onClick={HeartFav}
-                  sx={{
-                    zIndex: 101,
-                    position: 'absolute',
-                    bottom: '16px',
-                    right: '16px',
-                    backgroundColor: '#fff',
-                    borderRadius: '100%',
-                    padding: '8px',
-                    fontSize: '40px',
-                    color: '#FF6B6B',
-                  }}
-                >
-                  <FavoriteBorderOutlinedIcon />
-                </IconButton>
-              </Box>
+                <FavoriteBorderOutlinedIcon />
+              </IconButton>
+            </Box>
+            <Link href={`/post/${item.recipe_id}`} key={item.recipe_id}>
               <Box padding="16px">
                 <Typography
                   variant="h6"
@@ -104,8 +121,8 @@ const Cards = ({ data, sx }) => {
                   {item.time}
                 </Box>
               </Box>
-            </Paper>
-          </Link>
+            </Link>
+          </Paper>
         ))}
       </Box>
       {/* ))} */}
@@ -114,4 +131,5 @@ const Cards = ({ data, sx }) => {
     </Container>
   );
 };
+
 export default Cards;

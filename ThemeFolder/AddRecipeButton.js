@@ -12,7 +12,7 @@ function AddRecipeButton(props) {
           ...props.sx,
           fontWeight: '600',
           borderRadius: '40px',
-          padding: '8px 16px',
+          padding: '8px 24px',
         }}
       >
         {props.icon}

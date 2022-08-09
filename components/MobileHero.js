@@ -10,6 +10,7 @@ function MobileHero() {
         backgroundColor: '#34393C',
         marginTop: '24px',
         position: 'relative',
+        borderRadius: '16px',
       }}
     >
       <Box
@@ -18,8 +19,8 @@ function MobileHero() {
           justifyContent: 'space-between',
         }}
       >
-        <Box sx={{ padding: '16px' }}>
-          <Typography variant="h4" sx={{ fontWeight: 600, color: '#fff' }}>
+        <Box sx={{ padding: '16px', alignSelf: 'center' }}>
+          <Typography variant="h5" sx={{ fontWeight: 600, color: '#fff' }}>
             Choose the healthy alternative to fast food
           </Typography>
         </Box>

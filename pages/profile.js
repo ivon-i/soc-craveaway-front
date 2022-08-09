@@ -5,7 +5,7 @@ import LockOpenIcon from '@mui/icons-material/LockOpen';
 import { Typography, Chip, Stack } from '@mui/material';
 import RecCard from '../components/recCard';
 import data from '../db/recipeData.js';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Box } from '@mui/system';
 import Cards from '../ThemeFolder/Cards';
 import { Navbar } from '../ThemeFolder/Navbar';
@@ -13,12 +13,43 @@ import { Container } from '@mui/material';
 import { Image } from 'next/image';
 import { Grid } from '@mui/material';
 
+
+
 import { Button } from '@mui/material';
+
 
 export default function Profile() {
   const { user, error, isLoading } = useUser();
   const [list2, setList2] = useState([]);
+  const [chipData, setChipData] = useState([]);
+  const [favCard, setFavCard] = useState([]);
   const [shopEmp, setShopEmp] = useState(false);
+
+
+  useEffect(() => {
+    async function fetchData() {
+      const response = await fetch(
+        `https://craveaway.herokuapp.com/shop?username=${user}`
+      );
+      const data = await response.json();
+      const { payload } = data;
+      setChipData(payload);
+    }
+    async function fetchFavCards() {
+      const response = await fetch(`https://craveaway.herokuapp.com/fav`);
+      const data = await response.json();
+      const { payload } = data;
+      setFavCard(payload);
+    }
+    try {
+      fetchData();
+      fetchFavCards();
+    } catch (error) {
+      console.log(error.message);
+    }
+  }, [chipData, favCard]);
+
+
   const [list, setList] = useState([
     { id: 1, label: 'Clickable Deletable' },
     { id: 2, label: 'Clickable Deletable' },
@@ -34,6 +65,7 @@ export default function Profile() {
     { id: 12, label: 'Clickable Deletable' },
     { id: 13, label: 'Clickable Deletable' },
   ]);
+
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>{error.message}</div>;
   // // CHANGE THIS DATA TO BE THE CARD THAT YOU HAVE CLICKED , HEART
@@ -43,52 +75,105 @@ export default function Profile() {
   const handleClick = (e) => {
     console.info(e.currentTarget.innerText);
   };
-  const handleDelete = (id) => {
-    const newList = list.filter((item) => item.id !== id);
-    setList(newList);
+  const handleDeleteShopList = async (id) => {
+    // const newList = list.filter((item) => item.id !== id);
+    // setList(newList);
+    try {
+      const response = await fetch(
+        `http://craveaway.herokuapp.com/shop/${id}`,
+        {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        }
+      );
+      const data = await response.json();
+      console.log(data);
+    } catch (error) {
+      console.log(error.message);
+    }
+    console.log(id);
   };
 
   if (user) {
     return (
+    <Box ml="15px">
+        <Typography variant="h4" mt="50px">
+          {user.name}'s Profile
+        </Typography>
+        <Typography mt="30px" fontWeight={700}>
+          Favourite
+        </Typography>
+        <Cards data={favCard} />
+        <Stack
+          direction="column"
+          spacing={2}
+          mt="15px"
+          sx={{
+            maxWidth: 345,
+            display: 'flex',
+            alignContent: 'flex-start',
+            flexWrap: 'wrap',
+          }}
+        >
+          <Typography fontWeight={700}>Shopping List</Typography>
+          {list2.length === 4
+            ? setShopEmp(true) && (
+                <Typography fontWeight={700}>Add smt</Typography>
+              )
+            : null}
+          {/* {list.map((item) => (
+            <Chip
+              variant="outlined"
+              label={item.label}
+              onClick={handleClick}
+              onDelete={() => handleDelete(item.id)}
+              sx={{ borderColor: '#FCC62E', borderWidth: '1.5px' }}
+            ></Chip>
+          ))} */}
+          {chipData.map((item) => (
+            <Chip
+              key={item.item_id}
+              variant="outlined"
+              label={item.item}
+              onClick={handleClick}
+              onDelete={() => handleDeleteShopList(item.item_id)}
+              sx={{ borderColor: '#FCC62E', borderWidth: '1.5px' }}
+            ></Chip>
+          ))}
+        </Stack>
+      </Box>
+    );
+  }
+ else {
+    return (
       <>
-        <Navbar />
-        <Container maxWidth="lg" sx={{ marginBottom: '88px' }}>
-          <Box
-            ml="15px"
-            sx={
-              {
-                // backgroundColor: 'red',
-              }
-            }
-          >
-            <Typography
-              variant="h4"
-              mt="50px"
-              sx={{
-                fontWeight: '700',
-                textAlign: 'center',
-              }}
-            >
-              Profile
-            </Typography>
+        {
+          <div>
             <Box
               sx={{
-                display: 'flex',
-                justifyContent: 'center',
-                flexDirection: 'column',
-                alignItems: 'center',
+                backgroundImage: 'url(/food_illustration.png)',
+                minHeight: '100vh',
+                paddingBottom: {
+                  xs: '0',
+                  sm: '40px',
+                  md: '40px',
+                },
               }}
             >
-              <img
-                src={user.picture}
-                alt={user.name}
-                style={{
-                  borderRadius: '100%',
-                  width: '108px',
-                  height: '108px',
-                  marginBottom: '16px',
-                  marginTop: '32px',
+              <Box
+                sx={{
+                  mt: 1,
+                  backgroundColor: 'white',
+                  paddingBottom: 10,
+                  alignItems: 'center',
+                  display: 'flex',
+                  justifyContent: 'center',
+                  width: '43%',
+                  m: 'auto',
                 }}
+
               />
               <Typography variant="h5" fontWeight="600">
                 {user.name}
@@ -283,22 +368,39 @@ export default function Profile() {
               <Button
                 variant="contained"
                 className="fixedLoginButton"
+
                 sx={{
-                  fontWeight: '900',
-                  marginTop: 15,
+                  backgroundColor: 'white',
+                  paddingBottom: 5,
                   alignItems: 'center',
                   display: 'flex',
                   justifyContent: 'center',
-                  // width: '10%',
+                  width: '43%',
                   m: 'auto',
                 }}
               >
-                Login
-              </Button>
-            </Link>
-          </Box>
-        </Box>
-      </div>
-    </>
-  );
+                <Link href="/api/auth/login" passHref>
+                  <Button
+                    variant="contained"
+                    className="fixedLoginButton"
+                    sx={{
+                      fontWeight: '900',
+                      marginTop: 15,
+                      alignItems: 'center',
+                      display: 'flex',
+                      justifyContent: 'center',
+                      width: '10%',
+                      m: 'auto',
+                    }}
+                  >
+                    Login
+                  </Button>
+                </Link>
+              </Box>
+            </Box>
+          </div>
+        }
+      </>
+    );
+  }
 }

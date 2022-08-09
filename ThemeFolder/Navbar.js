@@ -76,23 +76,8 @@ export const Navbar = ({ searchInput, setSearchInput, trigger }) => {
               </MenuItem>
             </Menu> */}
             {/* On Medium screen sizes and below the search bar input is hidden: It needs to be positioned below the Navbar instead of being hidden */}
-            <Hidden mdDown>
-              <Box
-                sx={{
-                  '& a': {
-                    marginLeft: '16px',
-                    textDecoration: 'none',
-                    color: '#34393C',
-                  },
-                }}
-              >
-                {/* <Link href="/">Home</Link>
-                <Link href="/">About</Link>
-                <Link href="/">All Recipes</Link> */}
-              </Box>
               {/* <AccountCircleIcon /> */}
               <SwipeableTemporaryDrawer />
-            </Hidden>
           </Toolbar>
         </Container>
       </AppBar>

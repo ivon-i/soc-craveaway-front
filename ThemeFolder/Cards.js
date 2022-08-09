@@ -16,9 +16,13 @@ import { useState } from 'react';
 const Cards = ({ data }) => {
   const [heartDisable, setHeartDisable] = useState(false);
 
-  async function HeartFav(cardInfo) {
-    setHeartDisable(true);
+ function handleFavClick(e) {
+   e.currentTarget.disabled = true; 
+   }
+      
+  async function HeartFav(cardInfo, e) {
     console.log(cardInfo);
+    handleFavClick(e);
     const response = await fetch('http://craveaway.herokuapp.com/fav/create/', {
       method: 'POST',
       body: JSON.stringify(cardInfo),
@@ -29,6 +33,7 @@ const Cards = ({ data }) => {
     const data = await response.json();
     console.log(data);
   }
+
 
   return (
     <Container maxWidth="lg" sx={{ mb: 10 }}>
@@ -73,8 +78,8 @@ const Cards = ({ data }) => {
                 }}
               />
               <IconButton
-                onClick={() => {
-                  HeartFav(item);
+                onClick={(e) => {
+                  HeartFav(item, e);
                 }}
                 sx={{
                   zIndex: 101,
@@ -87,7 +92,7 @@ const Cards = ({ data }) => {
                   fontSize: '40px',
                   color: '#FF6B6B',
                 }}
-                disabled={heartDisable}
+                // disabled={heartDisable}
               >
                 <FavoriteBorderOutlinedIcon />
               </IconButton>

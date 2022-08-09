@@ -56,7 +56,7 @@ export const Hero = () => {
           <Hidden smDown>
             <AddRecipeButton
               icon={<AddIcon sx={{ marginRight: '4px' }} />}
-              sx={{ marginTop: '40px', fontSize: '20px' }}
+              sx={{ marginTop: '24px', fontSize: '20px' }}
               text="Create Recipe"
             />
           </Hidden>

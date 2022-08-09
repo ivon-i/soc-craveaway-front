@@ -35,12 +35,13 @@ export default function createRecipe() {
     cost: '',
     nutrition: '',
     ingredients: '',
-    image: 'ngf',
+    image: 'hi',
     serves: '',
+    imagestring: '',
   };
   const [newRecipeSubmission, setNewRecipeSubmission] = useState(newRecipe);
   const [newImage, setNewImage] = useState('');
-  const [selectedFile, setSelectedFile] = useState('');
+  // const [selectedFile, setSelectedFile] = useState('');
   const [previewSource, setPreviewSource] = useState();
 
   const handleChangeFor = (propertyName) => (e) => {
@@ -51,7 +52,11 @@ export default function createRecipe() {
     }));
     console.log(newRecipeSubmission);
   };
-  const handleClick = async () => {
+  const handleClick = async (x) => {
+    // setNewRecipeSubmission((newRecipeSubmission) => ({
+    //   ...newRecipeSubmission,
+    //   ['imagestring']: x,
+    // }));
     const response = await fetch(
       'http://craveaway.herokuapp.com/recipes/create/',
       {
@@ -63,39 +68,29 @@ export default function createRecipe() {
       }
     );
     const data = await response.json();
-    setNewRecipeSubmission(newRecipe);
+    // setNewRecipeSubmission(newRecipe);
     console.log(data);
   };
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
-    previewFile(file);
-  };
-  const previewFile = (file) => {
+    console.log('file', file);
     const reader = new FileReader();
+    console.log('READER', reader);
     reader.readAsDataURL(file);
     reader.onloadend = () => {
       setPreviewSource(reader.result);
+      setNewRecipeSubmission((newRecipeSubmission) => ({
+        ...newRecipeSubmission,
+        ['imagestring']: reader.result,
+      }));
     };
   };
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!previewSource) return;
-    uploadImage(previewSource);
-  };
-  const uploadImage = async (imageString) => {
-    console.log(imageString);
-    try {
-      const data = await fetch('http://localhost:3001/images/retrieve-image', {
-        method: 'POST',
-        body: JSON.stringify({ title: 'Leon', data: imageString }),
-        headers: { 'Content-type': 'application/JSON' },
-      });
-      const response = await data.json();
-      console.log(response);
-    } catch (error) {
-      console.error(error);
-    }
+
+  const updateImageString = () => {
+    handleClick(previewSource);
+    setNewRecipeSubmission(newRecipe);
+    alert('Thank you! Your recipe has been submitted!');
   };
 
   if (user) {
@@ -164,6 +159,13 @@ export default function createRecipe() {
                   borderRadius: '8px',
                 }}
               >
+                {previewSource && (
+                  <img
+                    src={previewSource}
+                    alt="chosen"
+                    style={{ height: '100px' }}
+                  />
+                )}
                 <Button variant="text" component="label">
                   + Upload Image
                   <input
@@ -176,8 +178,11 @@ export default function createRecipe() {
                     value={newImage}
                   />
                 </Button>
-                <Button onClick={handleSubmit}> Submit</Button>
+
+                {/* <Button onClick={handleSubmit}> Submit</Button>
+                 */}
               </Box>
+
               {/* COOKING TIME */}
               <Grid container spacing={3}>
                 <Grid item sm={6} xs={12}>
@@ -286,11 +291,12 @@ export default function createRecipe() {
               width: { xs: '100%', sm: 'auto' },
             }}
           /> */}
+
               <Button
                 size="large"
                 variant="contained"
                 className="submitRecipeButton"
-                onClick={handleClick}
+                onClick={updateImageString}
                 sx={{
                   display: 'block',
                   marginTop: '40px',
@@ -312,60 +318,121 @@ export default function createRecipe() {
   } else {
     return (
       <>
-        {user && (
-          <div>
-            <h6> Hello </h6>
-          </div>
-        )}
-        :{' '}
-        {
-          <div>
-            <Typography
+        <div>
+          <Navbar />
+          <Box
+            sx={{
+              backgroundImage: 'url(/food_illustration.png)',
+              minHeight: '100vh',
+              paddingBottom: {
+                xs: '0',
+                sm: '40px',
+                md: '40px',
+              },
+            }}
+          >
+            <br></br>
+            <br></br>
+            <Box
               sx={{
-                fontWeight: '900',
-                marginTop: 15,
+                borderRadius: 7,
+                backgroundColor: 'white',
+                paddingBottom: 8,
                 alignItems: 'center',
                 display: 'flex',
                 justifyContent: 'center',
+                width: 300,
+                height: 10,
+                m: 'auto',
               }}
             >
-              You must login to create a recipe!
-            </Typography>
-            <>
-              <img
-                alt="Loading..."
-                className="fryingpan"
-                width="432"
-                height="250"
-                data-id="14475354"
-                data-animated-url="https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif"
-                skip_resize="true"
-                srcset="https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 320w,
-          https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 400w,
-          https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 450w,
-          https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 640w,
-          https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 700w,
-          https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 800w,
-          https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 840w,
-          https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 1000w,
-          https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 1200w,
-          https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 768w,
-          https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 1600w"
-                sizes="(max-width: 919px) 100vw, max(768px, 98vh)"
-                src="https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif"
-              ></img>
-            </>
-            <Link href="/api/auth/login" passHref>
-              <button
-                variant="contained"
-                sx={{ justifyContent: 'center' }}
-                className="fixedLoginButton"
+              <Typography
+                font-align="center"
+                sx={{
+                  fontWeight: '800',
+                  fontSize: 15,
+                  paddingTop: 2,
+                  paddingBottom: 4,
+                  textAlign: 'center',
+                  m: 'auto',
+                  alignItems: 'center',
+                  display: 'flex',
+                  justifyContent: 'center',
+                }}
               >
-                Login
-              </button>
-            </Link>
-          </div>
-        }
+                You must login to create a recipe!
+              </Typography>
+            </Box>
+            <>
+              <Box
+                sx={{
+                  backgroundColor: 'white',
+                  borderRadius: 1000,
+                  display: 'flex',
+                  width: '33%',
+                  m: 'auto',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+              >
+                <img
+                  alt="Loading..."
+                  className="fryingpan"
+                  margin="auto"
+                  width="400"
+                  height="250"
+                  data-id="14475354"
+                  data-animated-url="https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif"
+                  skip_resize="false"
+                  srcset="https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 320w,
+  https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 400w,
+  https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 450w,
+  https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 640w,
+  https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 700w,
+  https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 800w,
+  https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 840w,
+  https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 1000w,
+  https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 1200w,
+  https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 768w,
+  https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 1600w"
+                  sizes="(max-width: 919px) 100vw, max(768px, 98vh)"
+                  src="https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif"
+                ></img>
+              </Box>
+            </>
+            <Box
+              sx={{
+                backgroundColor: 'white',
+                borderRadius: 10,
+                paddingBottom: 3,
+                paddingTop: 3,
+                alignItems: 'center',
+                display: 'flex',
+                justifyContent: 'center',
+                width: '18%',
+                m: 'auto',
+              }}
+            >
+              <Link href="/api/auth/login" passHref>
+                <Button
+                  variant="contained"
+                  className="fixedLoginButton"
+                  sx={{
+                    fontWeight: '900',
+                    marginTop: 15,
+                    alignItems: 'center',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    // width: '10%',
+                    m: 'auto',
+                  }}
+                >
+                  Login
+                </Button>
+              </Link>
+            </Box>
+          </Box>
+        </div>
       </>
     );
   }

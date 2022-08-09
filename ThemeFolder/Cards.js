@@ -52,7 +52,7 @@ const Cards = ({ data, sx }) => {
                   position: 'relative',
                 }}
               >
-                <Image src="/test.jpg" layout="fill" objectFit="cover" />
+                <Image src={item.image_url} layout="fill" objectFit="cover" />
                 <Chip
                   color="success"
                   label={item.nutrition}

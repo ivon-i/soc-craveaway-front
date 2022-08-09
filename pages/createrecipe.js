@@ -88,10 +88,24 @@ export default function createRecipe() {
   };
 
   const updateImageString = () => {
-    handleClick(previewSource);
-    setNewRecipeSubmission(newRecipe);
-    alert('Thank you! Your recipe has been submitted!');
+    if (newRecipeSubmission.title === newRecipe.title ||
+      newRecipeSubmission.author === newRecipe.author ||
+      newRecipeSubmission.description === newRecipe.description ||
+      newRecipeSubmission.time === newRecipe.time ||
+      newRecipeSubmission.cost === newRecipe.cost ||
+      newRecipeSubmission.nutrition === newRecipe.nutrition ||
+      newRecipeSubmission.ingredients === newRecipe.ingredients ||
+      newRecipeSubmission.serves === newRecipe.serves ||
+      newRecipeSubmission.imagestring === newRecipe.imagestring) { alert('Fill input boxes') }
+      else {
+      alert('Thank you! Your recipe has been submitted!');
+      setPreviewSource('');
+      handleClick(previewSource);
+      setNewRecipeSubmission(newRecipe);
+    };
   };
+
+
 
   if (user) {
     return (

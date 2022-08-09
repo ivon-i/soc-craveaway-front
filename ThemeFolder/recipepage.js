@@ -65,6 +65,7 @@ export default function RecipeCards({ recipedata, separatedingredients }) {
               height: '200px',
               position: 'relative',
               backgroundColor: '#343A40',
+              borderRadius: '16px',
             }}
           >
             <img src={item.image_url} layout="fill" objectFit="contain" />

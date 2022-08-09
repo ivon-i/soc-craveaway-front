@@ -85,6 +85,29 @@ export default function RecipeCards({ recipedata, separatedingredients }) {
           >
             {item.title}
           </Typography>
+          {/* CREATOR */}
+          <Box
+            sx={{
+              display: 'flex',
+              flexDirection: 'row',
+              alignItems: 'center',
+              gap: '16px',
+              marginTop: '32px',
+              marginBottom: '-8px',
+            }}
+          >
+            <Typography
+              variant="h6"
+              sx={{ fontWeight: '600', fontSize: '14px' }}
+            >
+              Creator:
+            </Typography>
+            <AccountCircleIcon sx={{ width: '16px', height: '16px' }} />
+            <Typography sx={{ margin: '-8px', fontSize: '14px' }}>
+              {' '}
+              {item.author}
+            </Typography>
+          </Box>
           <Box
             height="240px"
             backgroundColor="#34393C"
@@ -127,7 +150,7 @@ export default function RecipeCards({ recipedata, separatedingredients }) {
           <Grid container maxWidth="xl" sx={{ alignSelf: 'right' }}>
             <Grid item xs={3}>
               <Chip
-                label={`${item.rating} ${'Rating'}`}
+                label={`${item.rating} ${'Stars'}`}
                 // PUT AVARAGE INSTEAD OF RATING
                 icon={
                   <GradeIcon
@@ -225,26 +248,42 @@ export default function RecipeCards({ recipedata, separatedingredients }) {
             </Grid>
           </Grid>
           ​{/* INGREDIENTS */}
-          <Typography fontWeight={700} mt="32px">
+          <Typography
+            variant="h4"
+            mt="40px"
+            mb="16px"
+            fontWeight={600}
+            fontSize={'20px'}
+          >
             Ingredients
           </Typography>
-          <Box sx={{ display: 'flex', flexDirection: 'row' }}>
+          <Grid container spacing={2}>
             {separatedingredients.map((item) => (
-              <Chip
-                label={item}
-                variant="outlined"
-                sx={{
-                  borderColor: '#FCC62E',
-                  borderWidth: '1.5px',
-                  mt: '8px',
-                  mb: '32px',
-                }}
-                onClick={getChipInfo}
-                deleteIcon={<AddIcon />}
-                onDelete={handleDelete}
-              ></Chip>
+              <Grid item xs={6} sm={4}>
+                <Chip
+                  label={item}
+                  variant="outlined"
+                  sx={{
+                    borderColor: '#FCC62E',
+                    borderWidth: '1.5px',
+                    display: 'flex',
+                    width: '100%',
+
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    // paddingTop: '16px',
+                    // paddingBottom: '16px',
+                    padding: '16px 8px',
+                    borderRadius: '40px',
+                    fontSize: '14px',
+                  }}
+                  onClick={getChipInfo}
+                  deleteIcon={<AddIcon />}
+                  onDelete={handleDelete}
+                ></Chip>
+              </Grid>
             ))}
-          </Box>
+          </Grid>
           {/* DESCRIPTION */}
           <Typography fontWeight={700} mt="24px">
             Description
@@ -314,28 +353,6 @@ export default function RecipeCards({ recipedata, separatedingredients }) {
                 </Typography>
               </Button>
             </Box>
-          </Box>
-          {/* CREATOR */}
-          <Box
-            sx={{
-              display: 'flex',
-              flexDirection: 'row',
-              alignItems: 'center',
-              gap: '16px',
-              marginTop: '32px',
-            }}
-          >
-            <Typography sx={{ fontWeight: '700' }}>Creator:</Typography>
-          </Box>
-          <Box
-            sx={{
-              display: 'flex',
-              flexdirection: 'row',
-              alignItems: 'center',
-            }}
-          >
-            <AccountCircleIcon />
-            <Typography sx={{ margin: '8px' }}> {item.author}</Typography>
           </Box>
         </Box>
       ))}

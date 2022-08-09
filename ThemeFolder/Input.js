@@ -100,7 +100,7 @@ function Input({ searchInput, setSearchInput, trigger, sx }) {
           sx={{ p: '8px' }}
           aria-label="search"
         >
-          <SearchIcon sx={{ color: 'black' }} />
+          <SearchIcon sx={{ color: 'black', opacity: '70%' }} />
         </IconButton>
         <input
           onChange={handleChange}

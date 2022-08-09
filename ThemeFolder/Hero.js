@@ -47,7 +47,7 @@ export const Hero = () => {
             variant="h3"
             sx={{
               fontWeight: 700,
-              lineHeight: '1.3',
+              lineHeight: '1.2',
               fontSize: { xs: '2rem', sm: '3rem' },
             }}
           >

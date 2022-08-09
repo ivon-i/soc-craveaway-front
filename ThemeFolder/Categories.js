@@ -12,7 +12,7 @@ const Categories = () => {
       <Container
         sx={{
           marginTop: {
-            xs: '40px',
+            xs: '32px',
             sm: '80px',
             md: '88px',
           },
@@ -34,10 +34,8 @@ const Categories = () => {
             '& > div': {
               border: 1,
               padding: {
-                xs: '24px 16px',
+                xs: '16px 8px',
                 sm: '24px 16px',
-                md: '24px 16px',
-                lg: '24px 16px',
               },
               fontSize: '16px',
               borderRadius: '40px',

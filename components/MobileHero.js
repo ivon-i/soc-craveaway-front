@@ -8,7 +8,10 @@ function MobileHero() {
     <Paper
       sx={{
         backgroundColor: '#34393C',
-        marginTop: '40px',
+        marginTop: {
+          xs: '32px',
+          sm: '40px',
+        },
         position: 'relative',
         borderRadius: '16px',
         display: 'flex',
@@ -17,16 +20,17 @@ function MobileHero() {
     >
       <Box
         sx={{
-          padding: '40px',
+          padding: '32px',
         }}
       >
         <Typography
           variant="h5"
           sx={{
-            fontWeight: 600,
+            fontWeight: 500,
             color: '#fff',
             textAlign: 'center',
             maxWidth: '300px',
+            lineHeight: '1.4',
           }}
         >
           Search & create healthy alternatives to fast food!

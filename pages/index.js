@@ -377,7 +377,7 @@ export default function Home({ payload }) {
       </Hidden>
       <Container maxWidth="lg">
         <Typography
-          variant="h5"
+          variant="h6"
           sx={{
             fontWeight: '600',
             marginTop: {

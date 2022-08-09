@@ -6,6 +6,7 @@ import {
   Typography,
   Chip,
   IconButton,
+  Button,
 } from '@mui/material';
 import Image from 'next/image';
 import StarIcon from '@mui/icons-material/Star';
@@ -14,15 +15,22 @@ import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlin
 import Link from 'next/link';
 import { useState } from 'react';
 const Cards = ({ data }) => {
-  const [heartDisable, setHeartDisable] = useState(false);
+  const [list, setList] = useState([
+    { id: 1, label: 'Clickable Deletable' },
+    { id: 2, label: 'Clickable Deletable' },
+    { id: 3, label: 'Clickable Deletable' },
+    { id: 4, label: 'Clickable Deletable' },
+    { id: 5, label: ' Clickable Deletable' },
+  ]);
 
- function handleFavClick(e) {
-   e.currentTarget.disabled = true; 
-   }
-      
-  async function HeartFav(cardInfo, e) {
+  function handleFavClick(e, id) {
+    setList([...list, { id: id, label: !e.currentTarget.disabled }]);
+    // let x = !e.currentTarget.disabled;
+    console.log(list);
+  }
+
+  async function HeartFav(cardInfo) {
     console.log(cardInfo);
-    handleFavClick(e);
     const response = await fetch('http://craveaway.herokuapp.com/fav/create/', {
       method: 'POST',
       body: JSON.stringify(cardInfo),
@@ -33,7 +41,6 @@ const Cards = ({ data }) => {
     const data = await response.json();
     console.log(data);
   }
-
 
   return (
     <Container maxWidth="lg" sx={{ mb: 10 }}>
@@ -78,8 +85,9 @@ const Cards = ({ data }) => {
                 }}
               />
               <IconButton
-                onClick={(e) => {
-                  HeartFav(item, e);
+                onClick={() => {
+                  HeartFav(item);
+                  // handleFavClick(e, item.recipe_id);
                 }}
                 sx={{
                   zIndex: 101,
@@ -131,4 +139,5 @@ const Cards = ({ data }) => {
     </Container>
   );
 };
+
 export default Cards;

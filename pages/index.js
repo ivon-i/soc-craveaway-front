@@ -314,7 +314,8 @@ export async function getServerSideProps() {
     const response = await fetch(`http://craveaway.herokuapp.com/recipes`);
     const data = await response.json();
     const { payload } = data;
-    return { props: { payload } };
+    const avg = data.average;
+    return { props: { payload} };
   } catch (error) {
     console.log(error.message);
   }
@@ -335,7 +336,7 @@ export default function Home({ payload }) {
   return (
     <div>
       <Head>
-      <title> Craveaway </title>
+        <title> Craveaway </title>
         <meta name="description" content="Craveaway App" />
         <link rel="icon" href="/craveawayicon.svg" />
       </Head>

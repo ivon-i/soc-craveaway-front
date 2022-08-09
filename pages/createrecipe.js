@@ -308,8 +308,6 @@ export default function createRecipe() {
                 className="submitRecipeButton"
                 onClick={updateImageString}
                 sx={{
-                  borderRadius: '40px',
-                  padding: '16px 24px',
                   display: 'block',
                   marginTop: '40px',
                   width: {

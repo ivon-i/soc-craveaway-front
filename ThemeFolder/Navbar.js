@@ -17,12 +17,8 @@ import Image from 'next/image';
 import logoNewCaps from '/public/logoNewCaps.svg';
 import Input from './Input';
 import SwipeableTemporaryDrawer from '../components/navbar drawer';
-import { useRouter } from 'next/router';
-import { ConstructionOutlined } from '@mui/icons-material';
 
 export const Navbar = ({ searchInput, setSearchInput, trigger }) => {
-  const router = useRouter();
-  console.log(router);
   const [el, setEl] = useState(null);
   // this state captures the value from two inputs because the visibility of each input changes depending on viewport size
   const [input, setInput] = useState('');
@@ -51,13 +47,11 @@ export const Navbar = ({ searchInput, setSearchInput, trigger }) => {
               </Link>
             </Box>
             <Hidden mdDown>
-              {router.pathname === '/' ? (
-                <Input
-                  searchInput={searchInput}
-                  setSearchInput={setSearchInput}
-                  trigger={trigger}
-                />
-              ) : null}
+              <Input
+                searchInput={searchInput}
+                setSearchInput={setSearchInput}
+                trigger={trigger}
+              />
             </Hidden>
             {/* <Hidden mdUp>
               <MenuIcon onClick={openMenu} />

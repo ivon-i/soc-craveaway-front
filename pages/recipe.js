@@ -39,12 +39,9 @@ export default function RecipeCards({ recipedata, separatedingredients }) {
           <Typography mt="30px" fontWeight={700}>
             {item.title}
           </Typography>
-          <Box
-            width="340px"
-            height="200px"
-            backgroundColor="grey"
-            mt="20px"
-          ></Box>
+          <Box width="340px" height="200px" backgroundColor="grey" mt="20px">
+            IMAGE GOES HERE
+          </Box>
           <Stack direction="column">
             <Chip
               label={item.rating}

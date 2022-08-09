@@ -110,7 +110,7 @@ const Cards = ({ data }) => {
                   marginTop="16px"
                   marginBottom="16px"
                 >
-                  <StarIcon sx={{ color: 'yellow', marginRight: '4px' }} />{' '}
+                  <StarIcon sx={{ color: '#FCC62E', marginRight: '4px' }} />{' '}
                   {item.rating}
                 </Box>
                 <Box display="flex" alignItems="center">

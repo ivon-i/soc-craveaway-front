@@ -88,8 +88,10 @@ export default function RecipeCards({ recipedata, separatedingredients }) {
             backgroundColor="#34393C"
             mt="20px"
             borderRadius="8px"
+            position="relative"
+            overflow="hidden"
           >
-            {item.image}
+            <Image src={item.image_url} layout="fill" objectFit="contain" />
           </Box>
           <Grid container maxWidth="xl">
             <Grid item xs={3}>

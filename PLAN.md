@@ -18,3 +18,27 @@ tuesday 9th august
     - Hero component: Up & Down
   - create recipe page
   - to have rounded border-radius at least 50% of the height of the element. This is to be consistent with the tone of voice of the app: welcoming, appetising and quality and all other elements have rounded corners. ✅
+
+\*\*\*\* Homepage
+
+- change the yellow of the star to the brand yellow ✅
+
+\*\*\*\* Create recipe page
+
+- space the icon strip centrally
+- size the icons and the text to be slightly larger
+- make sure ingredients are contained within the width of the box and they wrap to a new line no matter how many ingredients added
+- see the Creator on a seperate line from the icon and author name
+- see if an icon or illustration looks better before the page title inline with the title (something food related to add approachability)
+- make sure the image comes through from the data and populate and cover the image area
+- position the image centrally and to the top
+- place the heart icon
+- place the nutrition icon
+-
+
+\*\*\*\* Recipe page
+
+\*\*\*\* User profile page
+
+- add navbar to user profile page
+- copy and paste code over from style branch for whole page to see if it fits

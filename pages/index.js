@@ -303,13 +303,14 @@ import { Container } from '@mui/system';
 import Categories from '../ThemeFolder/Categories';
 import { Hero } from '../ThemeFolder/Hero';
 import Cards from '../ThemeFolder/Cards';
-import { Box, Hidden, Typography } from '@mui/material';
+import { Box, Button, Hidden, Typography } from '@mui/material';
 import AddRecipeButton from '../ThemeFolder/AddRecipeButton';
 import { useState } from 'react';
 import Input from '../ThemeFolder/Input';
 import Link from 'next/link';
 import AddIcon from '@mui/icons-material/Add';
 import MobileHero from '../components/MobileHero';
+import data from '../db/newData';
 
 export async function getServerSideProps() {
   try {
@@ -325,6 +326,7 @@ export async function getServerSideProps() {
 export default function Home({ payload }) {
   const [search, setSearch] = useState('');
   const [filtered, setFiltered] = useState(payload);
+  const [limit, setLimit] = useState(12);
   function filterInput() {
     const filter = payload.filter(
       (r) =>
@@ -334,6 +336,12 @@ export default function Home({ payload }) {
     );
     setFiltered(filter);
     console.log(filtered);
+  }
+
+  function getAllRecipes() {
+    // console.log('payloadfromhome', payload);
+    console.log('clickedfromtopofindex');
+    setLimit(null);
   }
 
   return (
@@ -370,7 +378,7 @@ export default function Home({ payload }) {
         </Hidden>
       </Box>
       {/* </Box> */}
-      <Categories />
+      <Categories data={payload} />
       <Hidden smUp>
         <Container maxWidth="lg">
           <MobileHero />
@@ -391,9 +399,16 @@ export default function Home({ payload }) {
         >
           Top recipes
         </Typography>
+        <Button
+          onClick={() => {
+            getAllRecipes();
+          }}
+        >
+          All
+        </Button>
       </Container>
       <Box>
-        <Cards data={filtered} />
+        <Cards data={filtered} limit={limit} />
       </Box>
       <Hidden smUp>
         <Container

@@ -3,10 +3,13 @@ import { Container } from '@mui/system';
 import React from 'react';
 import MenuIcon from '@mui/icons-material/Menu';
 import Cards from '../ThemeFolder/Cards';
-const Categories = () => {
+import { useState } from 'react';
+
+const Categories = (props) => {
   // handles the chip if clicked on: the chip could be a quicklink or a filter for results
   function handleChip() {
     console.log('Categories Component ChipClicked');
+
     const [limit, setLimit] = useState(12);
   }
   return (
@@ -45,7 +48,11 @@ const Categories = () => {
             },
           }}
         >
-          <Chip label="All" variant="outlined" onClick={setLimit(null)} />
+          <Chip
+            label="All"
+            variant="outlined"
+            onClick={() => console.log('dataPassedFromIndex', props.data)}
+          />
           <Chip label="🍕 Pizza" variant="outlined" onClick={handleChip} />
           <Chip label="🍔 Burgers" variant="outlined" onClick={handleChip} />
           <Chip label="🥡 Chinese" variant="outlined" onClick={handleChip} />

@@ -15,9 +15,7 @@ import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlin
 import Link from 'next/link';
 
 import { useState } from 'react';
-const Cards = ({ data }) => {
-  const [limit, setLimit] = useState(12);
-
+const Cards = ({ data, limit }) => {
   async function HeartFav(cardInfo) {
     console.log(cardInfo);
     const response = await fetch('http://craveaway.herokuapp.com/fav/create/', {
@@ -57,7 +55,7 @@ const Cards = ({ data }) => {
           // padding: '20px',
         }}
       >
-        {data.slice(0, limit ? limit : payload.length).map((item) => (
+        {data.slice(0, limit ? limit : data.length).map((item) => (
           <Paper sx={{ overflow: 'hidden' }} key={data.recipe_id}>
             <Box
               sx={{

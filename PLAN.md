@@ -56,3 +56,11 @@ const [limit, setLimit] = useState(12);
 {payload.slice(0, limit ? limit : payload.length).map(item => <Cards data={limit} />)};
 
 <button onClick={() => setLimit(null)}>All recipes</button>
+
+---
+
+When you click the chip "all" in the Categories Component we want to populate the cards area in Cards Component with all of the cards from the data
+
+- we need to clear the current set of cards and render the new set of cards
+
+- we also need to change the 'Top recipes' headline to 'All recipes'

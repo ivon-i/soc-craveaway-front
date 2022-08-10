@@ -21,6 +21,7 @@ import SendIcon from '@mui/icons-material/Send';
 import { useUser } from '@auth0/nextjs-auth0';
 import AddRecipeButton from '../ThemeFolder/AddRecipeButton';
 import { Navbar } from '../ThemeFolder/Navbar';
+import { Alert, Dialog } from '@mui/material';
 
 export default function createRecipe() {
   const cookingTime = [
@@ -59,6 +60,8 @@ export default function createRecipe() {
   };
   const [newRecipeSubmission, setNewRecipeSubmission] = useState(newRecipe);
   const [newImage, setNewImage] = useState('');
+  const [open, setOpen] = useState(false);
+  const [success, setSuccess] = useState(false);
   // const [selectedFile, setSelectedFile] = useState('');
   const [previewSource, setPreviewSource] = useState();
 
@@ -100,11 +103,34 @@ export default function createRecipe() {
     };
   };
 
+  function handleClose() {
+    setOpen(!open);
+  }
+
   const updateImageString = () => {
-    handleClick(previewSource);
-    setNewRecipeSubmission(newRecipe);
-    alert('Thank you! Your recipe has been submitted!');
+    if (
+      newRecipeSubmission.title === newRecipe.title ||
+      newRecipeSubmission.author === newRecipe.author ||
+      newRecipeSubmission.description === newRecipe.description ||
+      newRecipeSubmission.time === newRecipe.time ||
+      newRecipeSubmission.cost === newRecipe.cost ||
+      newRecipeSubmission.nutrition === newRecipe.nutrition ||
+      newRecipeSubmission.ingredients === newRecipe.ingredients ||
+      newRecipeSubmission.serves === newRecipe.serves ||
+      newRecipeSubmission.imagestring === newRecipe.imagestring
+    ) {
+      setSuccess(false);
+      setOpen(true);
+    } else {
+      setPreviewSource('');
+      handleClick(previewSource);
+      setNewRecipeSubmission(newRecipe);
+      setSuccess(true);
+      setOpen(true);
+    }
   };
+
+
 
   if (user) {
     return (
@@ -341,6 +367,17 @@ export default function createRecipe() {
                   Submit recipe
                 </Typography>
               </Button>
+              <Dialog open={open} onClose={handleClose}>
+                {success ? (
+                  <Alert onClose={handleClose}>
+                    Thank you! Your recipe has been submitted!
+                  </Alert>
+                ) : (
+                  <Alert severity="error" onClose={handleClose}>
+                    You must fill out all the recipe information!
+                  </Alert>
+                )}
+              </Dialog>
             </Box>
           </Container>
         </Box>

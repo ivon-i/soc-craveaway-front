@@ -44,3 +44,10 @@ tuesday 9th august
 - add navbar to user profile page
 - consult figma design for layout
 - copy and paste code over from style branch for whole page to see if it fits
+
+
+<!-- limit top recipes to 12 and add show all recipes button
+1. array method - slice first 12 top recipes array (payload)
+2. 
+
+ -->

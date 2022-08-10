@@ -334,12 +334,8 @@ export default function Home({ payload }) {
     );
     setFiltered(filter);
     console.log(filtered);
-
-
-    const [limit, setLimit] = useState(12);
-   
-
   }
+
   return (
     <div>
       <Head>
@@ -397,7 +393,7 @@ export default function Home({ payload }) {
         </Typography>
       </Container>
       <Box>
-      {payload.slice(0, limit ? limit : payload.length).map(item => <Cards data={limit} />)};
+        <Cards data={filtered} />
       </Box>
       <button onClick={() => setLimit(null)}>All recipes</button>
       <Hidden smUp>

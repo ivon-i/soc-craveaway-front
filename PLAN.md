@@ -45,9 +45,14 @@ tuesday 9th august
 - consult figma design for layout
 - copy and paste code over from style branch for whole page to see if it fits
 
-
 <!-- limit top recipes to 12 and add show all recipes button
 1. array method - slice first 12 top recipes array (payload)
-2. 
+2.
 
  -->
+
+const [limit, setLimit] = useState(12);
+
+{payload.slice(0, limit ? limit : payload.length).map(item => <Cards data={limit} />)};
+
+<button onClick={() => setLimit(null)}>All recipes</button>

@@ -233,6 +233,7 @@ export default function Profile() {
       <>
         {
           <div>
+            <Navbar />
             <Box
               sx={{
                 backgroundImage: 'url(/food_illustration.png)',
@@ -244,6 +245,8 @@ export default function Profile() {
                 },
               }}
             >
+              <br></br>
+            <br></br>
               <Box
                 sx={{
                   borderRadius: 7,
@@ -258,10 +261,14 @@ export default function Profile() {
                 }}
               >
                 <Typography
+                  font-align="center"
                   sx={{
-                    fontWeight: '900',
-                    marginTop: 15,
-                    marginLeft: 3,
+                    fontWeight: '800',
+                    fontSize: 15,
+                    paddingTop: 2,
+                    paddingBottom: 4,
+                    textAlign: 'center',
+                    m: 'auto',
                     alignItems: 'center',
                     display: 'flex',
                     justifyContent: 'center',
@@ -283,8 +290,9 @@ export default function Profile() {
                 <Box
                   sx={{
                     backgroundColor: 'white',
-                    display: 'fixed',
-                    width: '43%',
+                    borderRadius: 1000,
+                    display: 'flex',
+                    width: '33%',
                     m: 'auto',
                     alignItems: 'center',
                     justifyContent: 'center',
@@ -293,6 +301,7 @@ export default function Profile() {
                   <img
                     className="fryingpan"
                     alt="Loading..."
+                    margin="auto"
                     width="400"
                     height="250"
                     data-id="14475354"
@@ -317,11 +326,13 @@ export default function Profile() {
               <Box
                 sx={{
                   backgroundColor: 'white',
-                  paddingBottom: 5,
+                  borderRadius: 10,
+                  paddingBottom: 3,
+                  paddingTop: 3,
                   alignItems: 'center',
                   display: 'flex',
                   justifyContent: 'center',
-                  width: '43%',
+                  width: '18%',
                   m: 'auto',
                 }}
               >
@@ -335,7 +346,7 @@ export default function Profile() {
                       alignItems: 'center',
                       display: 'flex',
                       justifyContent: 'center',
-                      width: '10%',
+                      // width: '10%',
                       m: 'auto',
                     }}
                   >

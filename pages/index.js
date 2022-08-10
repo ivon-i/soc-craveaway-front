@@ -395,7 +395,6 @@ export default function Home({ payload }) {
       <Box>
         <Cards data={filtered} />
       </Box>
-      <button onClick={() => setLimit(null)}>All recipes</button>
       <Hidden smUp>
         <Container
           maxWidth="lg"

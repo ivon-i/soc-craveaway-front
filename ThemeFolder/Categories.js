@@ -2,10 +2,12 @@ import { Box, Chip, Grid } from '@mui/material';
 import { Container } from '@mui/system';
 import React from 'react';
 import MenuIcon from '@mui/icons-material/Menu';
+import Cards from '../ThemeFolder/Cards';
 const Categories = () => {
   // handles the chip if clicked on: the chip could be a quicklink or a filter for results
   function handleChip() {
     console.log('Categories Component ChipClicked');
+    const [limit, setLimit] = useState(12);
   }
   return (
     <>
@@ -43,13 +45,7 @@ const Categories = () => {
             },
           }}
         >
-          <Chip
-            label="What's your craving ?"
-            sx={{
-              backgroundColor: 'transparent',
-              position: 'fixd',
-            }}
-          />
+          <Chip label="All" variant="outlined" onClick={setLimit(null)} />
           <Chip label="🍕 Pizza" variant="outlined" onClick={handleChip} />
           <Chip label="🍔 Burgers" variant="outlined" onClick={handleChip} />
           <Chip label="🥡 Chinese" variant="outlined" onClick={handleChip} />
@@ -57,7 +53,6 @@ const Categories = () => {
           <Chip label="🍖 BBQ" variant="outlined" onClick={handleChip} />
           <Chip label="🍰 Desserts" variant="outlined" onClick={handleChip} />
           <Chip label="🥤 Drinks" variant="outlined" onClick={handleChip} />
-          {/* <Chip label="🥓 Greasy" variant="outlined" onClick={handleChip} /> */}
         </Box>
       </Container>
     </>

@@ -106,6 +106,11 @@ function Input({ searchInput, setSearchInput, trigger, sx }) {
           onChange={handleChange}
           value={searchInput}
           placeholder="Search Recipe"
+          onKeyPress={(e) => {
+            if (e.key === 'Enter') {
+              handleClick(e);
+            }
+          }}
         />
       </Box>
     </>

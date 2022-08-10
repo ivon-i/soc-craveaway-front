@@ -392,7 +392,42 @@ export default function Home({ payload }) {
         </Typography>
       </Container>
       <Box>
-        <Cards data={filtered} />
+        <Container maxWidth="lg" sx={{ mb: 10 }}>
+          {/* <Grid container spacing={5}> */}
+          {/* <Grid item xs={6} sm={6} md={4} lg={3}> */}
+          {/* {data.map((item) => ( */}
+          <Box
+            sx={{
+              display: { sm: 'grid', xs: 'flex' },
+              gap: '20px',
+              alignItems: 'flex-start',
+              flexWrap: {
+                xs: 'nowrap',
+              },
+              gridTemplateColumns: {
+                sm: 'repeat(auto-fill, minmax(250px, 1fr))',
+              },
+              '& > div': {
+                marginBottom: '24px',
+                minWidth: '250px',
+                borderRadius: '16px',
+                // '&:not(:last-child)': { marginRight: '0px' },
+              },
+              overflowX: 'auto',
+              // padding: '20px',
+            }}
+          >
+            {filtered.length > 0
+              ? filtered.map((item) => {
+                  console.log(item);
+                  return <Cards item={item} />;
+                })
+              : ''}
+          </Box>
+          {/* ))} */}
+          {/* </Grid> */}
+          {/* </Grid> */}
+        </Container>
       </Box>
       <Hidden smUp>
         <Container

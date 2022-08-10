@@ -32,7 +32,7 @@ const Navbar = () => {
         position: 'sticky',
         padding: '6px',
       }}
-      backgroundColor="#D7D7D7"
+      backgroundColor="#D7D7D7"  
     >
       <>
         <Image src={CravLogo} alt="icon" width="80px" height="60px" />

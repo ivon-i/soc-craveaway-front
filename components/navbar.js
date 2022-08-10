@@ -11,6 +11,7 @@ import { margin } from '@mui/system';
 import text from '../extras/Text.png';
 import SwipeableTemporaryDrawer from './navbar drawer';
 
+
 const Navbar = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);

@@ -11,7 +11,36 @@
 
 ---
 
-added background color to box on recipe cards on home page
-added image to recipe page using image_url
-added overflow: hidden to box containing image
-layout="fill"
+tuesday 9th august
+
+- change +create recipe button and submit recipe button on all instances:
+  - AddRecipeButton component
+    - Hero component: Up & Down
+  - create recipe page
+  - to have rounded border-radius at least 50% of the height of the element. This is to be consistent with the tone of voice of the app: welcoming, appetising and quality and all other elements have rounded corners. ✅
+
+\*\*\*\* Homepage
+
+- change the yellow of the star to the brand yellow ✅
+
+\*\*\*\* Create recipe page
+
+- see if an icon or illustration looks better before the page title inline with the title (something food related to add approachability)
+
+\*\*\*\* Recipe page
+
+- place the heart icon ✅
+- place the nutrition icon ✅
+- make sure the image comes through from the data and populate and cover the image area ✅
+- see the Creator on a seperate line from the icon and author name ✅
+- space the icon strip centrally ✅
+- size the icons and the text to be slightly larger ✅
+- make sure ingredients are contained within the width of the box and they wrap to a new line no matter how many ingredients added
+- see if an icon or illustration looks better before the page title inline with the title (something food related to add approachability)
+- position the image centrally and to the top
+
+\*\*\*\* User profile page
+
+- add navbar to user profile page
+- consult figma design for layout
+- copy and paste code over from style branch for whole page to see if it fits

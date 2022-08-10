@@ -17,8 +17,12 @@ import Image from 'next/image';
 import logoNewCaps from '/public/logoNewCaps.svg';
 import Input from './Input';
 import SwipeableTemporaryDrawer from '../components/navbar drawer';
+import { useRouter } from 'next/router';
 
 export const Navbar = ({ searchInput, setSearchInput, trigger }) => {
+  const router = useRouter();
+  console.log('router', router);
+
   const [el, setEl] = useState(null);
   // this state captures the value from two inputs because the visibility of each input changes depending on viewport size
   const [input, setInput] = useState('');
@@ -47,11 +51,13 @@ export const Navbar = ({ searchInput, setSearchInput, trigger }) => {
               </Link>
             </Box>
             <Hidden mdDown>
-              <Input
-                searchInput={searchInput}
-                setSearchInput={setSearchInput}
-                trigger={trigger}
-              />
+              {router.pathname === '/' ? (
+                <Input
+                  searchInput={searchInput}
+                  setSearchInput={setSearchInput}
+                  trigger={trigger}
+                />
+              ) : null}
             </Hidden>
             {/* <Hidden mdUp>
               <MenuIcon onClick={openMenu} />
@@ -70,8 +76,8 @@ export const Navbar = ({ searchInput, setSearchInput, trigger }) => {
               </MenuItem>
             </Menu> */}
             {/* On Medium screen sizes and below the search bar input is hidden: It needs to be positioned below the Navbar instead of being hidden */}
-              {/* <AccountCircleIcon /> */}
-              <SwipeableTemporaryDrawer />
+            {/* <AccountCircleIcon /> */}
+            <SwipeableTemporaryDrawer />
           </Toolbar>
         </Container>
       </AppBar>

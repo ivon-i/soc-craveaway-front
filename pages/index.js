@@ -317,7 +317,7 @@ export async function getServerSideProps() {
     const data = await response.json();
     const { payload } = data;
     const avg = data.average;
-    return { props: { payload} };
+    return { props: { payload } };
   } catch (error) {
     console.log(error.message);
   }
@@ -377,8 +377,16 @@ export default function Home({ payload }) {
       </Hidden>
       <Container maxWidth="lg">
         <Typography
-          variant="h5"
-          sx={{ fontWeight: '600', marginTop: '80px', marginBottom: '16px' }}
+          variant="h6"
+          sx={{
+            fontWeight: '600',
+            marginTop: {
+              xs: '32px',
+              sm: '64px',
+              md: '80px',
+            },
+            marginBottom: '16px',
+          }}
         >
           Top recipes
         </Typography>

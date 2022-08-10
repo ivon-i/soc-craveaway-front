@@ -8,41 +8,33 @@ function MobileHero() {
     <Paper
       sx={{
         backgroundColor: '#34393C',
-        marginTop: '24px',
+        marginTop: {
+          xs: '32px',
+          sm: '40px',
+        },
         position: 'relative',
+        borderRadius: '16px',
+        display: 'flex',
+        justifyContent: 'center',
       }}
     >
       <Box
         sx={{
-          display: 'flex',
-          justifyContent: 'space-between',
+          padding: '32px',
         }}
       >
-        <Box sx={{ padding: '16px' }}>
-          <Typography variant="h4" sx={{ fontWeight: 600, color: '#fff' }}>
-            Choose the healthy alternative to fast food
-          </Typography>
-        </Box>
-        <Box
+        <Typography
+          variant="h5"
           sx={{
-            overflow: 'hidden',
-            //
-            border: '1px solid red',
-            '& > img': {
-              postion: 'absolute',
-              bottom: 0,
-              right: 0,
-              height: '100%',
-              width: '200px',
-            },
+            fontWeight: 500,
+            color: '#fff',
+            textAlign: 'center',
+            maxWidth: '300px',
+            lineHeight: '1.4',
           }}
         >
-          <img
-            src={'/MobileHero.png'}
-
-            // objectFit="contain"
-          />
-        </Box>
+          Search & create healthy alternatives to fast food!
+        </Typography>
       </Box>
     </Paper>
   );

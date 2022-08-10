@@ -47,7 +47,7 @@ export const Hero = () => {
             variant="h3"
             sx={{
               fontWeight: 700,
-              lineHeight: '1.3',
+              lineHeight: '1.2',
               fontSize: { xs: '2rem', sm: '3rem' },
             }}
           >
@@ -56,7 +56,11 @@ export const Hero = () => {
           <Hidden smDown>
             <AddRecipeButton
               icon={<AddIcon sx={{ marginRight: '4px' }} />}
-              sx={{ marginTop: '40px', fontSize: '20px' }}
+              sx={{
+                marginTop: '40px',
+                fontSize: '20px',
+                padding: '8px 24px',
+              }}
               text="Create Recipe"
             />
           </Hidden>

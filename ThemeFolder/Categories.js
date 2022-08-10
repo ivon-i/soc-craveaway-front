@@ -44,7 +44,7 @@ const Categories = () => {
           }}
         >
           <Chip
-            label="What's your craving :"
+            label="What's your craving ?"
             sx={{
               backgroundColor: 'transparent',
               position: 'fixd',

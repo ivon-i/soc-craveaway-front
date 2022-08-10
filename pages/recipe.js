@@ -18,9 +18,9 @@ import { useState, useEffect } from 'react';
 export default function RecipeCards({ recipedata, separatedingredients }) {
   const [value, setValue] = useState(0);
 
-  async function handleClick() {
+  async function handleClick(id) {
     try {
-      const patch = await fetch(`https://craveaway.herokuapp.com/recipes/18`, {
+      const patch = await fetch(`https://craveaway.herokuapp.com/recipes/${id}`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ rating: value }),
@@ -112,7 +112,7 @@ export default function RecipeCards({ recipedata, separatedingredients }) {
           />
         </Box>
       ))}
-      <Button onClick={handleClick}>Submit Rating</Button>
+      <Button onClick={() => handleClick(item.recipe_id)}>Submit Rating</Button>
     </div>
   );
 }

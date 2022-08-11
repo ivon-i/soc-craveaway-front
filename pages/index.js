@@ -410,11 +410,12 @@ export default function Home({ payload }) {
                 // marginBottom: '16px',
               }}
             >
-              Top recipes
+              Featured recipes
             </Typography>
           </Grid>
           <Grid item xs={12} sm={6} sx={{ textAlign: 'right' }}>
             <Typography
+              sx={{ cursor: 'pointer' }}
               // sx={{ paddingRight: '0' }}
               onClick={() => {
                 getAllRecipes();

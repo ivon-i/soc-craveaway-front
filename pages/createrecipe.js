@@ -228,6 +228,7 @@ export default function createRecipe() {
                         // height={300}
                         layout="fill"
                         objectFit="contain"
+                        sx={{ borderRadius: '8px 0 0 8px' }}
                       />
                     )}
                   </Grid>
@@ -289,10 +290,19 @@ export default function createRecipe() {
                 <Grid item sm={6} xs={12}>
                   <Typography sx={{ mb: 1, mt: 2 }}>Cooking Time: </Typography>
                   <Select
-                    sx={{ height: '50px', borderRadius: '8px' }}
+                    sx={{
+                      height: '50px',
+                      borderRadius: '8px',
+                    }}
                     value={newRecipeSubmission.time}
                     onChange={handleChangeFor('time')}
                     defaultValue=""
+                    displayEmpty
+                    labelId="select-label"
+                    label="Required"
+                    renderValue={(value) =>
+                      value !== '' ? value : 'Required*'
+                    }
                     fullWidth
                   >
                     {cookingTime.map((item) => (
@@ -308,6 +318,10 @@ export default function createRecipe() {
                     value={newRecipeSubmission.serves}
                     onChange={handleChangeFor('serves')}
                     defaultValue=""
+                    displayEmpty
+                    renderValue={(value) =>
+                      value !== '' ? value : 'Required*'
+                    }
                     fullWidth
                   >
                     {serves.map((item) => (
@@ -324,7 +338,11 @@ export default function createRecipe() {
                     sx={{ height: '50px', borderRadius: '8px' }}
                     value={newRecipeSubmission.nutrition}
                     onChange={handleChangeFor('nutrition')}
+                    displayEmpty
                     defaultValue=""
+                    renderValue={(value) =>
+                      value !== '' ? value : 'Required*'
+                    }
                     fullWidth
                   >
                     {nutritionCat.map((item) => (
@@ -339,7 +357,11 @@ export default function createRecipe() {
                     sx={{ height: '50px', borderRadius: '8px' }}
                     value={newRecipeSubmission.cost}
                     onChange={handleChangeFor('cost')}
+                    displayEmpty
                     defaultValue=""
+                    renderValue={(value) =>
+                      value !== '' ? value : 'Required*'
+                    }
                     fullWidth
                   >
                     {price.map((item) => (

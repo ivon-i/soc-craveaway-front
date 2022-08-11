@@ -192,83 +192,20 @@ export default function createRecipe() {
                   ml: '5px',
                   height: '150px',
                   mt: '24px',
-
-                  // display: 'flex',
-
-                  // justifyContent: 'center',
-                  // alignItems: 'center',
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
                   border: '0.5px solid rgba(0,0,0,0.5)',
-
                   borderRadius: '8px',
+                  backgroundImage: `url(${previewSource})`,
+                  backgroundSize: 'cover',
+                  backgroundRepeat: 'no-repeat',
+                  backgroundPosition: 'center',
                 }}
               >
-                <Grid
-                  container
-                  sx={{
-                    height: '100%',
-                  }}
-                >
-                  <Grid
-                    item
-                    xs={12}
-                    sm={6}
-                    sx={{
-                      height: '100%',
-                      position: 'relative',
-                      backgroundColor: '#343A40',
-                      borderRadius: '8px 0 0 8px',
-                    }}
-                  >
-                    {previewSource && (
-                      <Image
-                        src={previewSource}
-                        alt="chosen"
-                        // style={{ height: '100px' }}
-                        // width={300}
-                        // height={300}
-                        layout="fill"
-                        objectFit="contain"
-                        sx={{ borderRadius: '8px 0 0 8px' }}
-                      />
-                    )}
-                  </Grid>
-                  <Grid
-                    item
-                    xs={12}
-                    sm={6}
-                    sx={{
-                      height: '100%',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                    }}
-                  >
-                    <Button
-                      variant="text"
-                      component="label"
-                      sx={{ opacity: '100%', color: '#000' }}
-                    >
-                      + Upload Image
-                      <input
-                        hidden
-                        accept="image/*"
-                        multiple
-                        type="file"
-                        name="image"
-                        onChange={handleImageChange}
-                        value={newImage}
-                      />
-                    </Button>
-                  </Grid>
-                </Grid>
-                {/* {previewSource && (
-                  <img
-                    src={previewSource}
-                    alt="chosen"
-                    style={{ height: '100px' }}
-                  />
-                )}
-                <Button variant="text" component="label">
+                              
+                
+                  <Button variant="text" component="label">
                   + Upload Image
                   <input
                     hidden
@@ -279,11 +216,8 @@ export default function createRecipe() {
                     onChange={handleImageChange}
                     value={newImage}
                   />
-                </Button> */}
-
-                {/* <Button onClick={handleSubmit}> Submit</Button>
-                 */}
-              </Box>
+                </Button>
+                </Box>
 
               {/* COOKING TIME */}
               <Grid container spacing={3}>

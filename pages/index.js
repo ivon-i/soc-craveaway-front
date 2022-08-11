@@ -96,12 +96,12 @@ export default function Home({ payload }) {
           Featured recipes
         </Typography>
         <Typography
-          sx={{ cursor: 'pointer', backgroundColor: 'red' }}
+          sx={{ cursor: 'pointer', fontWeight: '600'  }}
           onClick={() => {
             getAllRecipes();
           }}
         >
-          All
+          All Recipes
         </Typography>
       </Container>
       <Box>

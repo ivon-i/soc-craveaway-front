@@ -48,11 +48,7 @@ const Categories = (props) => {
             },
           }}
         >
-          <Chip
-            label="All"
-            variant="outlined"
-            onClick={() => console.log('dataPassedFromIndex', props.data)}
-          />
+        
           <Chip label="🍕 Pizza" variant="outlined" onClick={handleChip} />
           <Chip label="🍔 Burgers" variant="outlined" onClick={handleChip} />
           <Chip label="🥡 Chinese" variant="outlined" onClick={handleChip} />

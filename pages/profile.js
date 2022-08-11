@@ -2,7 +2,7 @@ import React from 'react';
 import { useUser } from '@auth0/nextjs-auth0';
 import Link from 'next/link';
 import LockOpenIcon from '@mui/icons-material/LockOpen';
-import { Typography, Chip, Stack } from '@mui/material';
+import { Typography, Chip, Stack, Paper } from '@mui/material';
 import RecCard from '../components/recCard';
 import data from '../db/recipeData.js';
 import { useState, useEffect } from 'react';
@@ -97,71 +97,70 @@ export default function Profile() {
     return (
       <>
         <Navbar />
-        <Container maxWidth="lg" sx={{ marginBottom: '88px' }}>
-          <Box ml="15px">
-            <Typography
-              variant="h4"
-              mt="50px"
-              sx={{
-                fontWeight: '700',
-                textAlign: 'center',
-              }}
-            >
-              {/* {user.name}'s  */}
-              Profile
-            </Typography>
-            <Box
-              sx={{
-                display: 'flex',
-                justifyContent: 'center',
-                flexDirection: 'column',
-                alignItems: 'center',
-              }}
-            >
-              <img
-                src={user.picture}
-                alt={user.name}
-                style={{
-                  borderRadius: '100%',
-                  width: '108px',
-                  height: '108px',
-                  marginBottom: '16px',
-                  marginTop: '32px',
-                }}
-              />
-              <Typography variant="h5" fontWeight="600">
-                {user.name}
-              </Typography>
-            </Box>
-            <Typography
-              variant="h6"
-              sx={{
-                fontSize: '14px',
-                textAlign: 'center',
-                textDecoration: 'underline',
-                textTransform: 'capitalize',
-                mt: '8px',
-                opacity: '70%',
-              }}
-            >
-              <Link href="#">Edit profile</Link>
-            </Typography>
-            <Container
-              maxWidth="lg"
-              sx={{ backgroundColor: '', marginTop: '80px' }}
-            >
+        <Container maxWidth="md" sx={{ marginBottom: '88px' }}>
+          <Paper sx={{ padding: '40px 0px' }}>
+            <Box ml="15px">
               <Typography
                 variant="h4"
-                mt="40px"
-                mb="16px"
-                fontWeight={600}
-                fontSize={'20px'}
+                mt="50px"
+                sx={{
+                  fontWeight: '700',
+                  textAlign: 'center',
+                }}
               >
-                Favourites
+                {/* {user.name}'s  */}
+                Profile
               </Typography>
-            </Container>
-            <Cards data={favCard} />
-            {/* <Stack
+              <Box
+                sx={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                }}
+              >
+                <img
+                  src={user.picture}
+                  alt={user.name}
+                  style={{
+                    borderRadius: '100%',
+                    width: '108px',
+                    height: '108px',
+                    marginBottom: '16px',
+                    marginTop: '32px',
+                  }}
+                />
+                <Typography variant="h5" fontWeight="600">
+                  {user.name}
+                </Typography>
+              </Box>
+              <Typography
+                variant="h6"
+                sx={{
+                  fontSize: '14px',
+                  textAlign: 'center',
+                  textDecoration: 'underline',
+                  textTransform: 'capitalize',
+                  mt: '8px',
+                  opacity: '70%',
+                }}
+              ></Typography>
+              <Container
+                maxWidth="lg"
+                sx={{ backgroundColor: '', marginTop: '80px' }}
+              >
+                <Typography
+                  variant="h4"
+                  mt="40px"
+                  mb="16px"
+                  fontWeight={600}
+                  fontSize={'20px'}
+                >
+                  Favourites
+                </Typography>
+              </Container>
+              <Cards data={favCard} />
+              {/* <Stack
               direction="column"
               spacing={2}
               mt="15px"
@@ -172,23 +171,23 @@ export default function Profile() {
                 flexWrap: 'wrap',
               }}
             > */}
-            <Container maxWidth="lg">
-              <Typography
-                variant="h4"
-                mt="40px"
-                mb="16px"
-                fontWeight={600}
-                fontSize={'20px'}
-              >
-                Shopping List
-              </Typography>
-            </Container>
-            {list2.length === 4
-              ? setShopEmp(true) && (
-                  <Typography fontWeight={700}>Add smt</Typography>
-                )
-              : null}
-            {/* {list.map((item) => (
+              <Container maxWidth="lg">
+                <Typography
+                  variant="h4"
+                  mt="40px"
+                  mb="16px"
+                  fontWeight={600}
+                  fontSize={'20px'}
+                >
+                  Shopping List
+                </Typography>
+              </Container>
+              {list2.length === 4
+                ? setShopEmp(true) && (
+                    <Typography fontWeight={700}>Add smt</Typography>
+                  )
+                : null}
+              {/* {list.map((item) => (
             <Chip
               variant="outlined"
               label={item.label}
@@ -197,34 +196,35 @@ export default function Profile() {
               sx={{ borderColor: '#FCC62E', borderWidth: '1.5px' }}
             ></Chip>
           ))} */}
-            <Grid container spacing={2} sx={{ padding: '16px' }}>
-              {chipData.map((item) => (
-                <Grid item xs={6} sm={4} md={3}>
-                  <Chip
-                    key={item.item_id}
-                    variant="outlined"
-                    label={item.item}
-                    onClick={handleClick}
-                    onDelete={() => handleDeleteShopList(item.item_id)}
-                    sx={{
-                      borderColor: '#FCC62E',
-                      borderWidth: '1.5px',
-                      display: 'flex',
-                      width: '100%',
-                      alignItems: 'center',
-                      justifyContent: 'space-between',
-                      paddingTop: '16px',
-                      paddingBottom: '16px',
-                      padding: '24px 8px',
-                      borderRadius: '40px',
-                      fontSize: '14px',
-                    }}
-                  ></Chip>
-                </Grid>
-              ))}
-            </Grid>
-            {/* </Stack> */}
-          </Box>
+              <Grid container spacing={2} sx={{ padding: '16px' }}>
+                {chipData.map((item) => (
+                  <Grid item xs={6} sm={4} md={3}>
+                    <Chip
+                      key={item.item_id}
+                      variant="outlined"
+                      label={item.item}
+                      onClick={handleClick}
+                      onDelete={() => handleDeleteShopList(item.item_id)}
+                      sx={{
+                        borderColor: '#FCC62E',
+                        borderWidth: '1.5px',
+                        display: 'flex',
+                        width: '100%',
+                        alignItems: 'center',
+                        justifyContent: 'space-between',
+                        paddingTop: '16px',
+                        paddingBottom: '16px',
+                        padding: '24px 8px',
+                        borderRadius: '40px',
+                        fontSize: '14px',
+                      }}
+                    ></Chip>
+                  </Grid>
+                ))}
+              </Grid>
+              {/* </Stack> */}
+            </Box>
+          </Paper>
         </Container>
       </>
     );

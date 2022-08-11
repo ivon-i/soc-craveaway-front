@@ -19,7 +19,6 @@ import { useState } from 'react';
 const Cards = ({ item }) => {
   const { user } = useUser();
   const [favExists, setFavExists] = useState(false);
-
   async function HeartFav(cardInfo) {
     let array = [cardInfo];
     const favCardInfo = array.map((object) => {
@@ -60,26 +59,6 @@ const Cards = ({ item }) => {
               right: '16px',
             }}
           />
-          {/* <IconButton
-                onClick={() => {
-                  HeartFav(item);
-                  // handleFavClick(e, item.recipe_id);
-                }}
-                sx={{
-                  zIndex: 101,
-                  position: 'absolute',
-                  bottom: '16px',
-                  right: '16px',
-                  backgroundColor: '#fff',
-                  borderRadius: '100%',
-                  padding: '8px',
-                  fontSize: '40px',
-                  color: '#FF6B6B',
-                }}
-                // disabled={heartDisable}
-              >
-                <FavoriteBorderOutlinedIcon />
-              </IconButton> */}
           {favExists ? (
             <IconButton
               onClick={() => {

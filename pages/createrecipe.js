@@ -22,6 +22,7 @@ import { useUser } from '@auth0/nextjs-auth0';
 import AddRecipeButton from '../ThemeFolder/AddRecipeButton';
 import { Navbar } from '../ThemeFolder/Navbar';
 import { Alert, Dialog } from '@mui/material';
+import Image from 'next/image';
 
 export default function createRecipe() {
   const cookingTime = [
@@ -130,8 +131,6 @@ export default function createRecipe() {
     }
   };
 
-
-
   if (user) {
     return (
       <div>
@@ -156,6 +155,9 @@ export default function createRecipe() {
               padding: '24px 24px 24px 24px',
               borderRadius: '8px',
               // backgroundColor: '#FEF9EB',
+              '& label': {
+                opacity: '55%',
+              },
             }}
           >
             <Box>
@@ -190,15 +192,76 @@ export default function createRecipe() {
                   ml: '5px',
                   height: '150px',
                   mt: '24px',
-                  display: 'flex',
-                  justifyContent: 'center',
-                  alignItems: 'center',
+
+                  // display: 'flex',
+
+                  // justifyContent: 'center',
+                  // alignItems: 'center',
                   border: '0.5px solid rgba(0,0,0,0.5)',
 
                   borderRadius: '8px',
                 }}
               >
-                {previewSource && (
+                <Grid
+                  container
+                  sx={{
+                    height: '100%',
+                  }}
+                >
+                  <Grid
+                    item
+                    xs={12}
+                    sm={6}
+                    sx={{
+                      height: '100%',
+                      position: 'relative',
+                      backgroundColor: '#343A40',
+                      borderRadius: '8px 0 0 8px',
+                    }}
+                  >
+                    {previewSource && (
+                      <Image
+                        src={previewSource}
+                        alt="chosen"
+                        // style={{ height: '100px' }}
+                        // width={300}
+                        // height={300}
+                        layout="fill"
+                        objectFit="contain"
+                        sx={{ borderRadius: '8px 0 0 8px' }}
+                      />
+                    )}
+                  </Grid>
+                  <Grid
+                    item
+                    xs={12}
+                    sm={6}
+                    sx={{
+                      height: '100%',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                    }}
+                  >
+                    <Button
+                      variant="text"
+                      component="label"
+                      sx={{ opacity: '100%', color: '#000' }}
+                    >
+                      + Upload Image
+                      <input
+                        hidden
+                        accept="image/*"
+                        multiple
+                        type="file"
+                        name="image"
+                        onChange={handleImageChange}
+                        value={newImage}
+                      />
+                    </Button>
+                  </Grid>
+                </Grid>
+                {/* {previewSource && (
                   <img
                     src={previewSource}
                     alt="chosen"
@@ -216,7 +279,7 @@ export default function createRecipe() {
                     onChange={handleImageChange}
                     value={newImage}
                   />
-                </Button>
+                </Button> */}
 
                 {/* <Button onClick={handleSubmit}> Submit</Button>
                  */}
@@ -227,10 +290,19 @@ export default function createRecipe() {
                 <Grid item sm={6} xs={12}>
                   <Typography sx={{ mb: 1, mt: 2 }}>Cooking Time: </Typography>
                   <Select
-                    sx={{ height: '50px', borderRadius: '8px' }}
+                    sx={{
+                      height: '50px',
+                      borderRadius: '8px',
+                    }}
                     value={newRecipeSubmission.time}
                     onChange={handleChangeFor('time')}
                     defaultValue=""
+                    displayEmpty
+                    labelId="select-label"
+                    label="Required"
+                    renderValue={(value) =>
+                      value !== '' ? value : 'Required*'
+                    }
                     fullWidth
                   >
                     {cookingTime.map((item) => (
@@ -246,6 +318,10 @@ export default function createRecipe() {
                     value={newRecipeSubmission.serves}
                     onChange={handleChangeFor('serves')}
                     defaultValue=""
+                    displayEmpty
+                    renderValue={(value) =>
+                      value !== '' ? value : 'Required*'
+                    }
                     fullWidth
                   >
                     {serves.map((item) => (
@@ -262,7 +338,11 @@ export default function createRecipe() {
                     sx={{ height: '50px', borderRadius: '8px' }}
                     value={newRecipeSubmission.nutrition}
                     onChange={handleChangeFor('nutrition')}
+                    displayEmpty
                     defaultValue=""
+                    renderValue={(value) =>
+                      value !== '' ? value : 'Required*'
+                    }
                     fullWidth
                   >
                     {nutritionCat.map((item) => (
@@ -277,7 +357,11 @@ export default function createRecipe() {
                     sx={{ height: '50px', borderRadius: '8px' }}
                     value={newRecipeSubmission.cost}
                     onChange={handleChangeFor('cost')}
+                    displayEmpty
                     defaultValue=""
+                    renderValue={(value) =>
+                      value !== '' ? value : 'Required*'
+                    }
                     fullWidth
                   >
                     {price.map((item) => (

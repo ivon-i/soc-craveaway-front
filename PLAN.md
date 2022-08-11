@@ -44,3 +44,31 @@ tuesday 9th august
 - add navbar to user profile page
 - consult figma design for layout
 - copy and paste code over from style branch for whole page to see if it fits
+
+<!-- limit top recipes to 12 and add show all recipes button
+1. array method - slice first 12 top recipes array (payload)
+2.
+
+ -->
+
+const [limit, setLimit] = useState(12);
+
+{payload.slice(0, limit ? limit : payload.length).map(item => <Cards data={limit} />)};
+
+<button onClick={() => setLimit(null)}>All recipes</button>
+
+---
+
+When you click the chip "all" in the Categories Component we want to populate the cards area in Cards Component with all of the cards from the data
+
+- we need to clear the current set of cards and render the new set of cards
+
+- we also need to change the 'Top recipes' headline to 'All recipes'
+
+++
+
+- add image to home page ✅
+- fix image on mobile screen size mobile hero (ask team what they think it looks like)
+- place the all button on mobile ✅
+- make the opacity of the required lighter ✅
+- align nav hamburger menu icon to left (use material icon for it to get rid of the misalignment)

@@ -303,13 +303,14 @@ import { Container } from '@mui/system';
 import Categories from '../ThemeFolder/Categories';
 import { Hero } from '../ThemeFolder/Hero';
 import Cards from '../ThemeFolder/Cards';
-import { Box, Hidden, Typography } from '@mui/material';
+import { Box, Button, Hidden, Typography, Grid } from '@mui/material';
 import AddRecipeButton from '../ThemeFolder/AddRecipeButton';
 import { useState } from 'react';
 import Input from '../ThemeFolder/Input';
 import Link from 'next/link';
 import AddIcon from '@mui/icons-material/Add';
 import MobileHero from '../components/MobileHero';
+import data from '../db/newData';
 
 export async function getServerSideProps() {
   try {
@@ -325,6 +326,7 @@ export async function getServerSideProps() {
 export default function Home({ payload }) {
   const [search, setSearch] = useState('');
   const [filtered, setFiltered] = useState(payload);
+  const [limit, setLimit] = useState(12);
   function filterInput() {
     const filter = payload.filter(
       (r) =>
@@ -335,6 +337,13 @@ export default function Home({ payload }) {
     setFiltered(filter);
     console.log(filtered);
   }
+
+  function getAllRecipes() {
+    // console.log('payloadfromhome', payload);
+    console.log('clickedfromtopofindex');
+    setLimit(null);
+  }
+
   return (
     <div>
       <Head>
@@ -369,17 +378,16 @@ export default function Home({ payload }) {
         </Hidden>
       </Box>
       {/* </Box> */}
-      <Categories />
+      <Categories data={payload} />
       <Hidden smUp>
         <Container maxWidth="lg">
           <MobileHero />
         </Container>
       </Hidden>
       <Container maxWidth="lg">
-        <Typography
-          variant="h6"
+        <Grid
+          container
           sx={{
-            fontWeight: '600',
             marginTop: {
               xs: '32px',
               sm: '64px',
@@ -387,12 +395,39 @@ export default function Home({ payload }) {
             },
             marginBottom: '16px',
           }}
+          alignItems="end"
         >
-          Top recipes
-        </Typography>
+          <Grid item xs={12} sm={6}>
+            <Typography
+              variant="h6"
+              sx={{
+                fontWeight: '600',
+                // marginTop: {
+                //   xs: '32px',
+                //   sm: '64px',
+                //   md: '80px',
+                // },
+                // marginBottom: '16px',
+              }}
+            >
+              Featured recipes
+            </Typography>
+          </Grid>
+          <Grid item xs={12} sm={6} sx={{ textAlign: 'right' }}>
+            <Typography
+              sx={{ cursor: 'pointer' }}
+              // sx={{ paddingRight: '0' }}
+              onClick={() => {
+                getAllRecipes();
+              }}
+            >
+              All
+            </Typography>
+          </Grid>
+        </Grid>
       </Container>
       <Box>
-        <Cards data={filtered} />
+        <Cards data={filtered} limit={limit} />
       </Box>
       <Hidden smUp>
         <Container

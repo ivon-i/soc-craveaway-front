@@ -49,8 +49,9 @@ export default function SwipeableTemporaryDrawer() {
     >
       <List
         sx={{
-          background: '#34393C',
-          color: 'white',
+          
+          backgroundColor:'#F4CE5E',
+          color: 'black',
         }}
       >
         {[
@@ -70,7 +71,7 @@ export default function SwipeableTemporaryDrawer() {
                 {index === 0 && (
                   <HomeIcon
                     sx={{
-                      color: '#FBFBFB',
+                      color: 'black',
                       fontSize: 'xx-large',
                     }}
                   />
@@ -78,7 +79,7 @@ export default function SwipeableTemporaryDrawer() {
                 {index === 1 && (
                   <AccountCircleIcon
                     sx={{
-                      color: '#FBFBFB',
+                      color: 'black',
                       fontSize: 'xx-large',
                     }}
                   />
@@ -86,7 +87,7 @@ export default function SwipeableTemporaryDrawer() {
                 {index === 2 && (
                   <DinnerDiningIcon
                     sx={{
-                      color: '#FBFBFB',
+                      color: 'black',
                       fontSize: 'xx-large',
                     }}
                   />
@@ -100,8 +101,8 @@ export default function SwipeableTemporaryDrawer() {
       <Divider />
       <List
         sx={{
-          background: '#34393C',
-          color: '#FBFBFB',
+          background: '#F4CE5E',
+          color: 'black',
         }}
       >
         {[
@@ -119,7 +120,7 @@ export default function SwipeableTemporaryDrawer() {
                 {index === 0 && (
                   <Login
                     sx={{
-                      color: '#FBFBFB',
+                      color: 'black',
                       fontSize: 'xx-large',
                     }}
                   />
@@ -127,7 +128,7 @@ export default function SwipeableTemporaryDrawer() {
                 {index === 1 && (
                   <PolicyIcon
                     sx={{
-                      color: '#FBFBFB',
+                      color: 'black',
                       fontSize: 'xx-large',
                     }}
                   />
@@ -135,7 +136,7 @@ export default function SwipeableTemporaryDrawer() {
                 {index === 2 && (
                   <PersonAddIcon
                     sx={{
-                      color: '#FBFBFB',
+                      color: 'black',
                       fontSize: 'xx-large',
                     }}
                   />
@@ -157,8 +158,8 @@ export default function SwipeableTemporaryDrawer() {
     >
       <List
         sx={{
-          background: '#34393C',
-          color: 'white',
+          background: '#F4CE5E',
+          color: 'black',
         }}
       >
         {[
@@ -178,7 +179,7 @@ export default function SwipeableTemporaryDrawer() {
                 {index === 0 && (
                   <HomeIcon
                     sx={{
-                      color: '#FBFBFB',
+                      color: 'black',
                       fontSize: 'xx-large',
                     }}
                   />
@@ -186,7 +187,7 @@ export default function SwipeableTemporaryDrawer() {
                 {index === 1 && (
                   <AccountCircleIcon
                     sx={{
-                      color: '#FBFBFB',
+                      color: 'black',
                       fontSize: 'xx-large',
                     }}
                   />
@@ -194,7 +195,7 @@ export default function SwipeableTemporaryDrawer() {
                 {index === 2 && (
                   <DinnerDiningIcon
                     sx={{
-                      color: '#FBFBFB',
+                      color: 'black',
                       fontSize: 'xx-large',
                     }}
                   />
@@ -208,8 +209,8 @@ export default function SwipeableTemporaryDrawer() {
       <Divider />
       <List
         sx={{
-          background: '#FBFBFB',
-          color: '#34393C',
+          background: '#F4CE5E',
+          color: 'black',
         }}
       >
         {[

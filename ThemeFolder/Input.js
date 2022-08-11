@@ -73,15 +73,15 @@ function Input({ searchInput, setSearchInput, trigger, sx }) {
           display: 'flex',
           alignItems: 'center',
           backgroundColor: ' ',
-          border: ' 0.5px solid rgba(52, 58, 64, 0.8)',
+          border: '  0.75px solid rgba(114, 117, 118, 1)',
           borderRadius: '100px',
           py: 0.5,
-          px: 2,
+          px: 1,
           width: {
             sm: '100%',
             md: '420px',
           },
-          height: '48px',
+          height: '40px',
           '& input': {
             border: 'none',
             outline: 'none',
@@ -97,15 +97,20 @@ function Input({ searchInput, setSearchInput, trigger, sx }) {
         <IconButton
           onClick={handleClick}
           type="submit"
-          sx={{ p: '15px' }}
+          sx={{ p: '8px' }}
           aria-label="search"
         >
-          <SearchIcon sx={{ color: 'black' }} />
+          <SearchIcon sx={{ color: 'black', opacity: '70%' }} />
         </IconButton>
         <input
           onChange={handleChange}
           value={searchInput}
           placeholder="Search Recipe"
+          onKeyPress={(e) => {
+            if (e.key === 'Enter') {
+              handleClick(e);
+            }
+          }}
         />
       </Box>
     </>

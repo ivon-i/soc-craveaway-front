@@ -2,17 +2,22 @@ import { Box, Chip, Grid } from '@mui/material';
 import { Container } from '@mui/system';
 import React from 'react';
 import MenuIcon from '@mui/icons-material/Menu';
-const Categories = () => {
+import Cards from '../ThemeFolder/Cards';
+import { useState } from 'react';
+
+const Categories = (props) => {
   // handles the chip if clicked on: the chip could be a quicklink or a filter for results
   function handleChip() {
     console.log('Categories Component ChipClicked');
+
+    const [limit, setLimit] = useState(12);
   }
   return (
     <>
       <Container
         sx={{
           marginTop: {
-            xs: '40px',
+            xs: '32px',
             sm: '80px',
             md: '88px',
           },
@@ -32,26 +37,25 @@ const Categories = () => {
             '& > *:not(:last-child)': { marginRight: '16px' },
             // All the chips
             '& > div': {
-              border: 1,
+              border: ' 0.75px solid rgba(114, 117, 118, 1)',
               padding: {
-                xs: '24px 16px',
-                sm: '24px 16px',
-                md: '24px 16px',
-                lg: '24px 16px',
+                xs: '16px 16px',
+                sm: '16px 8px',
+                md: '16 px 16px',
               },
               fontSize: '16px',
               borderRadius: '40px',
             },
           }}
         >
-          <Chip label="Pizza" variant="outlined" onClick={handleChip} />
-          <Chip label="Burgers" variant="outlined" onClick={handleChip} />
-          <Chip label="Chinese" variant="outlined" onClick={handleChip} />
-          <Chip label="Fried" variant="outlined" onClick={handleChip} />
-          <Chip label="BBQ" variant="outlined" onClick={handleChip} />
-          <Chip label="Desserts" variant="outlined" onClick={handleChip} />
-          <Chip label="Soda" variant="outlined" onClick={handleChip} />
-          <Chip label="Greasy" variant="outlined" onClick={handleChip} />
+        
+          <Chip label="🍕 Pizza" variant="outlined" onClick={handleChip} />
+          <Chip label="🍔 Burgers" variant="outlined" onClick={handleChip} />
+          <Chip label="🥡 Chinese" variant="outlined" onClick={handleChip} />
+          <Chip label="🍗 Fried" variant="outlined" onClick={handleChip} />
+          <Chip label="🍖 BBQ" variant="outlined" onClick={handleChip} />
+          <Chip label="🍰 Desserts" variant="outlined" onClick={handleChip} />
+          <Chip label="🥤 Drinks" variant="outlined" onClick={handleChip} />
         </Box>
       </Container>
     </>

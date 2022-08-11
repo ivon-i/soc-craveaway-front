@@ -17,6 +17,7 @@ import PolicyIcon from '@mui/icons-material/Policy';
 import Link from 'next/link';
 import { useUser } from '@auth0/nextjs-auth0';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
+import Typography from '@mui/material/Typography';
 export default function SwipeableTemporaryDrawer() {
   const [state, setState] = React.useState({
     top: false,
@@ -48,19 +49,20 @@ export default function SwipeableTemporaryDrawer() {
     >
       <List
         sx={{
-          background: '#FFC529',
-          color: 'white',
+          
+          backgroundColor:'#F4CE5E',
+          color: 'black',
         }}
       >
         {[
           <Link href="/" passHref>
-            Home
+          <Typography variant="body1">Home</Typography>
           </Link>,
           <Link href="/profile" passHref>
-            My profile
+          <Typography variant="body1">My Profile</Typography>
           </Link>,
           <Link href="/createrecipe" passHref>
-            Create a recipe
+          <Typography variant="body1">Create a recipe</Typography>
           </Link>,
         ].map((text, index) => (
           <ListItem key={text} disablePadding>
@@ -69,7 +71,7 @@ export default function SwipeableTemporaryDrawer() {
                 {index === 0 && (
                   <HomeIcon
                     sx={{
-                      color: '#FE724C',
+                      color: 'black',
                       fontSize: 'xx-large',
                     }}
                   />
@@ -77,7 +79,7 @@ export default function SwipeableTemporaryDrawer() {
                 {index === 1 && (
                   <AccountCircleIcon
                     sx={{
-                      color: '#FE724C',
+                      color: 'black',
                       fontSize: 'xx-large',
                     }}
                   />
@@ -85,7 +87,7 @@ export default function SwipeableTemporaryDrawer() {
                 {index === 2 && (
                   <DinnerDiningIcon
                     sx={{
-                      color: '#FE724C',
+                      color: 'black',
                       fontSize: 'xx-large',
                     }}
                   />
@@ -99,17 +101,17 @@ export default function SwipeableTemporaryDrawer() {
       <Divider />
       <List
         sx={{
-          background: 'white',
-          color: '#FE724C',
+          background: '#F4CE5E',
+          color: 'black',
         }}
       >
         {[
           <Link href="/api/auth/login" passHref>
-            Login
+          <Typography variant="body1">Login</Typography>
           </Link>,
           'Usage Policy' /*Needs to be a link*/,
           <Link href="/api/auth/login" passHref>
-            Sign Up
+          <Typography variant="body1">Sign Up</Typography>
           </Link>,
         ].map((text, index) => (
           <ListItem key={text} disablePadding>
@@ -118,7 +120,7 @@ export default function SwipeableTemporaryDrawer() {
                 {index === 0 && (
                   <Login
                     sx={{
-                      color: '#FE724C',
+                      color: 'black',
                       fontSize: 'xx-large',
                     }}
                   />
@@ -126,7 +128,7 @@ export default function SwipeableTemporaryDrawer() {
                 {index === 1 && (
                   <PolicyIcon
                     sx={{
-                      color: '#FE724C',
+                      color: 'black',
                       fontSize: 'xx-large',
                     }}
                   />
@@ -134,7 +136,7 @@ export default function SwipeableTemporaryDrawer() {
                 {index === 2 && (
                   <PersonAddIcon
                     sx={{
-                      color: '#FE724C',
+                      color: 'black',
                       fontSize: 'xx-large',
                     }}
                   />
@@ -156,19 +158,19 @@ export default function SwipeableTemporaryDrawer() {
     >
       <List
         sx={{
-          background: '#FFC529',
-          color: 'white',
+          background: '#F4CE5E',
+          color: 'black',
         }}
       >
         {[
           <Link href="/" passHref>
-            Home
+          <Typography variant="body1">Home</Typography>
           </Link>,
           <Link href="/profile" passHref>
-            My profile
+          <Typography variant="body1">My Profile</Typography>
           </Link>,
           <Link href="/createrecipe" passHref>
-            Create a recipe
+          <Typography variant="body1">Create a recipe</Typography>
           </Link>,
         ].map((text, index) => (
           <ListItem key={text} disablePadding>
@@ -177,7 +179,7 @@ export default function SwipeableTemporaryDrawer() {
                 {index === 0 && (
                   <HomeIcon
                     sx={{
-                      color: '#FE724C',
+                      color: 'black',
                       fontSize: 'xx-large',
                     }}
                   />
@@ -185,7 +187,7 @@ export default function SwipeableTemporaryDrawer() {
                 {index === 1 && (
                   <AccountCircleIcon
                     sx={{
-                      color: '#FE724C',
+                      color: 'black',
                       fontSize: 'xx-large',
                     }}
                   />
@@ -193,7 +195,7 @@ export default function SwipeableTemporaryDrawer() {
                 {index === 2 && (
                   <DinnerDiningIcon
                     sx={{
-                      color: '#FE724C',
+                      color: 'black',
                       fontSize: 'xx-large',
                     }}
                   />
@@ -207,13 +209,13 @@ export default function SwipeableTemporaryDrawer() {
       <Divider />
       <List
         sx={{
-          background: 'white',
-          color: '#FE724C',
+          background: '#F4CE5E',
+          color: 'black',
         }}
       >
         {[
           <Link href="/api/auth/logout" passHref>
-            Logout
+          <Typography variant="body1">Logout</Typography>
           </Link>,
           'Usage Policy' /*Needs to be a link*/,
         ].map((text, index) => (
@@ -223,7 +225,7 @@ export default function SwipeableTemporaryDrawer() {
                 {index === 0 && (
                   <Logout
                     sx={{
-                      color: '#FE724C',
+                      color: '#34393C',
                       fontSize: 'xx-large',
                     }}
                   />
@@ -231,7 +233,7 @@ export default function SwipeableTemporaryDrawer() {
                 {index === 1 && (
                   <PolicyIcon
                     sx={{
-                      color: '#FE724C',
+                      color: '#34393C',
                       fontSize: 'xx-large',
                     }}
                   />
@@ -245,7 +247,7 @@ export default function SwipeableTemporaryDrawer() {
     </Box>
   );
   const { user, error, isLoading } = useUser();
-  if (isLoading) return <div>Loading...</div>;
+  // if (isLoading) return <div>Loading...</div>;
   if (error) return <div>{error.message}</div>;
   if (user) {
     return (
@@ -253,7 +255,7 @@ export default function SwipeableTemporaryDrawer() {
         {['right'].map((anchor) => (
           <React.Fragment key={anchor}>
             <Button onClick={toggleDrawer(anchor, true)}>
-              <HiMenu fontSize="32px" color="#FE724C" />
+              <HiMenu fontSize="32px" color="#34393C" />
             </Button>
             <SwipeableDrawer
               anchor={anchor}
@@ -273,7 +275,7 @@ export default function SwipeableTemporaryDrawer() {
         {['right'].map((anchor) => (
           <React.Fragment key={anchor}>
             <Button onClick={toggleDrawer(anchor, true)}>
-              <HiMenu className="burger-menu" fontSize="32px" color="#FE724C" />
+              <HiMenu className="burger-menu" fontSize="32px" color="#34393C" />
             </Button>
             <SwipeableDrawer
               anchor={anchor}

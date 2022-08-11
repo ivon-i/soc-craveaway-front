@@ -28,6 +28,9 @@ yarn-error.log*
 # local env files
 .env*.local
 
+# cypress auth0 info
+cypress.env.json
+
 
 # vercel
 .vercel

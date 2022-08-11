@@ -23,18 +23,16 @@ import { useState, useEffect } from 'react';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import AddIcon from '@mui/icons-material/Add';
 import { useUser } from '@auth0/nextjs-auth0';
+
 import { Alert, Dialog } from '@mui/material';
 
 export default function RecipeCards({ recipedata, separatedingredients }) {
   const [value, setValue] = useState(0);
   const { user } = useUser();
-
-
-
   async function handleClick(id) {
     try {
       const patch = await fetch(
-        `https://craveaway.herokuapp.com/recipes/${id}`,
+        'https://craveaway.herokuapp.com/recipes/${id}',
         {
           method: 'PATCH',
           headers: { 'Content-Type': 'application/json' },
@@ -47,7 +45,6 @@ export default function RecipeCards({ recipedata, separatedingredients }) {
       console.log(error.message);
     }
   }
-
   const getChipInfo = async (e) => {
     // console.info(e.currentTarget.innerText);
     const response = await fetch('https://craveaway.herokuapp.com/shop/list', {
@@ -68,7 +65,6 @@ export default function RecipeCards({ recipedata, separatedingredients }) {
         alert('This ingredient has been added to your shopping list!');
         console.log('sure thing');
   };
-
   return (
     <Container
       maxWidth="sm"
@@ -180,7 +176,7 @@ export default function RecipeCards({ recipedata, separatedingredients }) {
             </Grid>
             <Grid item xs={3}>
               <Chip
-                label={`${item.time} ${'Minutes'}`}
+                label={`${item.time}`}
                 icon={
                   <AccessTimeIcon
                     style={{
@@ -205,7 +201,7 @@ export default function RecipeCards({ recipedata, separatedingredients }) {
             </Grid>
             <Grid item xs={3}>
               <Chip
-                label={`${2} Servings`}
+                label={`${item.serves} Servings`}
                 icon={
                   <PeopleIcon
                     style={{
@@ -229,7 +225,7 @@ export default function RecipeCards({ recipedata, separatedingredients }) {
             </Grid>
             <Grid item xs={3}>
               <Chip
-                label={`£${5}pp`}
+                label={`${item.cost}`}
                 icon={
                   <PaymentIcon
                     style={{
@@ -273,7 +269,6 @@ export default function RecipeCards({ recipedata, separatedingredients }) {
                     borderWidth: '1.5px',
                     display: 'flex',
                     width: '100%',
-
                     alignItems: 'center',
                     justifyContent: 'space-between',
                     // paddingTop: '16px',
@@ -339,36 +334,33 @@ export default function RecipeCards({ recipedata, separatedingredients }) {
                 value={value}
               />
             </Box>
-            <Button
-              variant="contained"
-              size="large"
+          </Box>
+          <Button
+            variant="contained"
+            size="large"
+            sx={{
+              borderRadius: '40px',
+              marginTop: '40px',
+              width: {
+                xs: '100%',
+                md: 'auto',
+              },
+            }}
+            onClick={() => {
+              handleClick(item.recipe_id);
+            }}
+          >
+            <SendIcon sx={{ width: '16px', height: '16px', opacity: '75%' }} />
+            <Typography
               sx={{
-                borderRadius: '40px',
-                marginTop: '40px',
-                width: {
-                  xs: '100%',
-                  md: 'auto',
-                },
-              }}
-              onClick={() => {
-                handleClick(item.recipe_id);
+                fontWeight: '600',
+                marginLeft: '8px',
+                textTransform: 'none',
               }}
             >
-              {' '}
-              <SendIcon
-                sx={{ width: '16px', height: '16px', opacity: '75%' }}
-              />
-              <Typography
-                sx={{
-                  fontWeight: '600',
-                  marginLeft: '8px',
-                  textTransform: 'none',
-                }}
-              >
-                Submit rating
-              </Typography>
-            </Button>
-          </Box>
+              Submit rating
+            </Typography>
+          </Button>
         </Box>
       ))}
     </Container>

@@ -2,9 +2,15 @@
 import { Navbar } from '../../ThemeFolder/Navbar';
 import RecipeCards from '../../ThemeFolder/recipepage';
 import { Box } from '@mui/material';
+import { useUser } from '@auth0/nextjs-auth0';
+
 const Post = ({ data }) => {
   const separatedingredients = data.payload[0].ingredients.split(',');
-  console.log(separatedingredients);
+  const arrWithColor = data.payload.map((object) => {
+    return { ...object, userName: 'red' };
+  });
+  console.log(arrWithColor);
+
   return (
     <>
       <Box

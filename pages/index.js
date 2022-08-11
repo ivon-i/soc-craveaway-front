@@ -1,300 +1,3 @@
-// import Head from 'next/head';
-// import Banners from '../components/banners';
-// import Navbar from '../components/navbar';
-// import Searchbar from '../components/searchbar';
-// import RecCard from '../components/recCard.js';
-// import { Box, Typography } from '@mui/material';
-// import data from '../db/recipeData.js';
-// import CreateRecipeButton from '../components/createRecipeButton';
-
-// import { useState } from 'react';
-// import Link from 'next/link';
-// import { useUser } from '@auth0/nextjs-auth0';
-// export async function getServerSideProps() {
-//   try {
-//     const response = await fetch(`http://craveaway.herokuapp.com/recipes`);
-//     const data = await response.json();
-//     const { payload } = data;
-//     return { props: { payload } };
-//   } catch (error) {
-//     console.log(error.message);
-//   }
-// }
-
-// export default function Home({ payload }) {
-//   const [search, setSearch] = useState('');
-//   const [filtered, setFiltered] = useState(payload);
-
-//   function filterInput() {
-//     const filter = payload.filter(
-//       (r) =>
-//         r.time?.toUpperCase().includes(search.toUpperCase()) ||
-//         r.author?.toUpperCase().includes(search.toUpperCase()) ||
-//         r.title?.toUpperCase().includes(search.toUpperCase())
-//     );
-//     setFiltered(filter);
-//     console.log(filtered);
-//   }
-
-//   const { user, error, isLoading } = useUser();
-//   if (isLoading) return <div>Loading...</div>;
-//   if (error) return <div>{error.message}</div>;
-//   if (user) {
-//     return (
-//       <Box id="mainBox">
-//         <Head>
-//           <title>Craveaway</title>
-//         </Head>
-
-//         <main>
-//           <Searchbar
-//             searchInput={search}
-//             setSearchInput={setSearch}
-//             trigger={filterInput}
-//           />
-//           <Banners />
-//           <Typography mt="32px" ml="24px" fontWeight="600">
-//             Top recipes today
-//           </Typography>
-//           <RecCard data={filtered} />;
-//           <CreateRecipeButton text={'Create Recipe'} />
-//         </main>
-//       </Box>
-//     );
-//   } else {
-//     return (
-//       <>
-//         {' '}
-//         <Box id="mainBox">
-//           <Head>
-//             <title>Craveaway</title>
-//           </Head>
-//           <main>
-//             <Searchbar
-//               searchInput={search}
-//               setSearchInput={setSearch}
-//               trigger={filterInput}
-//             />
-//             {/* <a href="/api/auth/login">Login</a> */}
-//             <Banners />
-//             <Typography mt="32px" ml="24px" fontWeight="600">
-//               Top recipes today
-//             </Typography>
-//             <RecCard data={filtered} />;
-//             <CreateRecipeButton text={'Log in to create a recipe'} />
-//           </main>
-//         </Box>
-//       </>
-//     );
-//   }
-// }
-
-/*
-- index.js is where all components are initially accessible from
-- recCard is rendered on the index.js main page
-- recCard receives data as props from the index.js main page
-- in recCard this should be its own component:
-            <Typography mt="32px" ml="24px" fontWeight="600">
-              Top recipes today
-            </Typography>
-*/
-
-// BELOW ORIGIAL THEME AND MAIN
-
-// import Head from 'next/head';
-// import Image from 'next/image';
-// import styles from '../styles/Home.module.css';
-// import { Navbar } from '../ThemeFolder/Navbar.js';
-// import { Container } from '@mui/system';
-// import Categories from '../ThemeFolder/Categories';
-// import { Hero } from '../ThemeFolder/Hero';
-// import Cards from '../ThemeFolder/Cards';
-// import { Box, Hidden, Typography } from '@mui/material';
-// import AddRecipeButton from '../ThemeFolder/AddRecipeButton';
-// import { useState } from 'react';
-// import Input from '../ThemeFolder/Input';
-// import Link from 'next/link';
-// import { useUser } from '@auth0/nextjs-auth0';
-
-// export async function getServerSideProps() {
-//   try {
-//     const response = await fetch(`http://craveaway.herokuapp.com/recipes`);
-//     const data = await response.json();
-//     const { payload } = data;
-//     return { props: { payload } };
-//   } catch (error) {
-//     console.log(error.message);
-//   }
-// }
-
-// export default function Home({ payload }) {
-//   const [search, setSearch] = useState('');
-//   const [filtered, setFiltered] = useState(payload);
-//   function filterInput() {
-//     const filter = payload.filter(
-//       (r) =>
-//         r.time?.toUpperCase().includes(search.toUpperCase()) ||
-//         r.author?.toUpperCase().includes(search.toUpperCase()) ||
-//         r.title?.toUpperCase().includes(search.toUpperCase())
-//     );
-//     setFiltered(filter);
-//     console.log(filtered);
-//   }
-
-//   const { user, error, isLoading } = useUser();
-//   if (isLoading) return <div>Loading...</div>;
-//   if (error) return <div>{error.message}</div>;
-//   if (user) {
-//     return (
-//       <div>
-//         <Head>
-//           <title>Create Next App</title>
-//           <meta name="description" content="Generated by create next app" />
-//           <link rel="icon" href="/favicon.ico" />
-//         </Head>
-//         <Box
-//           sx={{
-//             boxShadow: 'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;',
-//             paddingBottom: '48px',
-//           }}
-//         >
-//           <Navbar />
-//           <Hidden mdDown>
-//             <Input
-//               searchInput={search}
-//               setSearchInput={setSearch}
-//               trigger={filterInput}
-//             />
-//           </Hidden>
-//           <Categories />
-//           {/* style={{ maxWidth: '812px', margin: '0 auto' }} */}
-//           <Box>
-//             <Hero />
-//           </Box>
-//         </Box>
-//         <Container maxWidth="lg">
-//           <Typography
-//             variant="h5"
-//             sx={{ fontWeight: '600', marginTop: '80px', marginBottom: '16px' }}
-//           >
-//             Top recipes
-//           </Typography>
-//         </Container>
-//         <Box>
-//           <Cards data={filtered} />
-//         </Box>
-//         {/* <Container maxWidth="lg">
-//         <Typography
-//           variant="h5"
-//           sx={{ fontWeight: '600', marginTop: '80px', marginBottom: '16px' }}
-//         >
-//           Newest recipes
-//         </Typography>
-//       </Container> */}
-//         {/* <Box>
-//         <Cards />
-//       </Box> */}
-//         <Hidden smUp>
-//           <Container
-//             maxWidth="lg"
-//             zIndex="100"
-//             sx={{
-//               position: 'fixed',
-//               bottom: '0px',
-//               left: '50%',
-//               transform: 'translateX(-50%)',
-//               backgroundColor: '#fff',
-//               zIndex: '200',
-//               paddingBottom: '24px',
-//             }}
-//           >
-//             <AddRecipeButton
-//               sx={{
-//                 width: '100%',
-//               }}
-//               text="Create Recipe"
-//             />
-//           </Container>
-//         </Hidden>
-//       </div>
-//     );
-//   } else {
-//     return (
-//       <div>
-//         <Head>
-//           <title>Create Next App</title>
-//           <meta name="description" content="Generated by create next app" />
-//           <link rel="icon" href="/favicon.ico" />
-//         </Head>
-//         <Box
-//           sx={{
-//             boxShadow: 'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;',
-//             paddingBottom: '48px',
-//           }}
-//         >
-//           <Navbar />
-//           <Hidden mdDown>
-//             <Input
-//               searchInput={search}
-//               setSearchInput={setSearch}
-//               trigger={filterInput}
-//             />
-//           </Hidden>
-//           <Categories />
-//           {/* style={{ maxWidth: '812px', margin: '0 auto' }} */}
-//           <Box>
-//             <Hero />
-//           </Box>
-//         </Box>
-//         <Container maxWidth="lg">
-//           <Typography
-//             variant="h5"
-//             sx={{ fontWeight: '600', marginTop: '80px', marginBottom: '16px' }}
-//           >
-//             Top recipes
-//           </Typography>
-//         </Container>
-//         <Box>
-//           <Cards data={filtered} />
-//         </Box>
-//         {/* <Container maxWidth="lg">
-//         <Typography
-//           variant="h5"
-//           sx={{ fontWeight: '600', marginTop: '80px', marginBottom: '16px' }}
-//         >
-//           Newest recipes
-//         </Typography>
-//       </Container> */}
-//         {/* <Box>
-//         <Cards />
-//       </Box> */}
-//         <Hidden smUp>
-//           <Container
-//             maxWidth="lg"
-//             zIndex="100"
-//             sx={{
-//               position: 'fixed',
-//               bottom: '0px',
-//               left: '50%',
-//               transform: 'translateX(-50%)',
-//               backgroundColor: '#fff',
-//               zIndex: '200',
-//               paddingBottom: '24px',
-//             }}
-//           >
-//             <AddRecipeButton
-//               sx={{
-//                 width: '100%',
-//               }}
-//               text="Create Recipe"
-//             />
-//           </Container>
-//         </Hidden>
-//       </div>
-//     );
-//   }
-// }
-
 import Head from 'next/head';
 import Image from 'next/image';
 import styles from '../styles/Home.module.css';
@@ -303,14 +6,13 @@ import { Container } from '@mui/system';
 import Categories from '../ThemeFolder/Categories';
 import { Hero } from '../ThemeFolder/Hero';
 import Cards from '../ThemeFolder/Cards';
-import { Box, Button, Hidden, Typography, Grid } from '@mui/material';
+import { Box, Hidden, Typography } from '@mui/material';
 import AddRecipeButton from '../ThemeFolder/AddRecipeButton';
 import { useState } from 'react';
 import Input from '../ThemeFolder/Input';
 import Link from 'next/link';
 import AddIcon from '@mui/icons-material/Add';
 import MobileHero from '../components/MobileHero';
-import data from '../db/newData';
 
 export async function getServerSideProps() {
   try {
@@ -326,7 +28,6 @@ export async function getServerSideProps() {
 export default function Home({ payload }) {
   const [search, setSearch] = useState('');
   const [filtered, setFiltered] = useState(payload);
-  const [limit, setLimit] = useState(12);
   function filterInput() {
     const filter = payload.filter(
       (r) =>
@@ -337,13 +38,6 @@ export default function Home({ payload }) {
     setFiltered(filter);
     console.log(filtered);
   }
-
-  function getAllRecipes() {
-    // console.log('payloadfromhome', payload);
-    console.log('clickedfromtopofindex');
-    setLimit(null);
-  }
-
   return (
     <div>
       <Head>
@@ -378,16 +72,17 @@ export default function Home({ payload }) {
         </Hidden>
       </Box>
       {/* </Box> */}
-      <Categories data={payload} />
+      <Categories />
       <Hidden smUp>
         <Container maxWidth="lg">
           <MobileHero />
         </Container>
       </Hidden>
       <Container maxWidth="lg">
-        <Grid
-          container
+        <Typography
+          variant="h6"
           sx={{
+            fontWeight: '600',
             marginTop: {
               xs: '32px',
               sm: '64px',
@@ -395,39 +90,47 @@ export default function Home({ payload }) {
             },
             marginBottom: '16px',
           }}
-          alignItems="end"
         >
-          <Grid item xs={12} sm={6}>
-            <Typography
-              variant="h6"
-              sx={{
-                fontWeight: '600',
-                // marginTop: {
-                //   xs: '32px',
-                //   sm: '64px',
-                //   md: '80px',
-                // },
-                // marginBottom: '16px',
-              }}
-            >
-              Featured recipes
-            </Typography>
-          </Grid>
-          <Grid item xs={12} sm={6} sx={{ textAlign: 'right' }}>
-            <Typography
-              sx={{ cursor: 'pointer' }}
-              // sx={{ paddingRight: '0' }}
-              onClick={() => {
-                getAllRecipes();
-              }}
-            >
-              All
-            </Typography>
-          </Grid>
-        </Grid>
+          Top recipes
+        </Typography>
       </Container>
       <Box>
-        <Cards data={filtered} limit={limit} />
+        <Container maxWidth="lg" sx={{ mb: 10 }}>
+          {/* <Grid container spacing={5}> */}
+          {/* <Grid item xs={6} sm={6} md={4} lg={3}> */}
+          {/* {data.map((item) => ( */}
+          <Box
+            sx={{
+              display: { sm: 'grid', xs: 'flex' },
+              gap: '20px',
+              alignItems: 'flex-start',
+              flexWrap: {
+                xs: 'nowrap',
+              },
+              gridTemplateColumns: {
+                sm: 'repeat(auto-fill, minmax(250px, 1fr))',
+              },
+              '& > div': {
+                marginBottom: '24px',
+                minWidth: '250px',
+                borderRadius: '16px',
+                // '&:not(:last-child)': { marginRight: '0px' },
+              },
+              overflowX: 'auto',
+              // padding: '20px',
+            }}
+          >
+            {filtered.length > 0
+              ? filtered.map((item) => {
+                  console.log(item);
+                  return <Cards item={item} />;
+                })
+              : ''}
+          </Box>
+          {/* ))} */}
+          {/* </Grid> */}
+          {/* </Grid> */}
+        </Container>
       </Box>
       <Hidden smUp>
         <Container

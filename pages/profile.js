@@ -22,45 +22,36 @@ export default function Profile() {
   const [favCard, setFavCard] = useState([]);
   const [state, setState] = useState(false);
   const [shopEmp, setShopEmp] = useState(false);
+  const [userName, setUserName] = useState('');
 
   useEffect(() => {
-    async function fetchData() {
+    async function fetchDataIngredients() {
+      if (user) {
+        const response = await fetch(
+          `https://craveaway.herokuapp.com/shop?username=${user.name}`
+        );
+        const data = await response.json();
+        const { payload } = data;
+        setChipData(payload);
+        console.log(userName);
+      }
+    }
+    async function fetchFavCards() {
       const response = await fetch(
-        `https://craveaway.herokuapp.com/shop?username=Yoshi Natsu`
+        `http://localhost:3001/fav?userName=${user.name}`
       );
       const data = await response.json();
       const { payload } = data;
-      setChipData(payload);
-    }
-    async function fetchFavCards() {
-      const response = await fetch(`https://craveaway.herokuapp.com/fav`);
-      const data = await response.json();
-      const { payload } = data;
       setFavCard(payload);
+      console.log(favCard);
     }
     try {
-      fetchData();
+      fetchDataIngredients();
       fetchFavCards();
     } catch (error) {
       console.log(error.message);
     }
   }, [state]);
-
-  const [list, setList] = useState([
-    { id: 1, label: 'Clickable Deletable' },
-    { id: 2, label: 'Clickable Deletable' },
-    { id: 3, label: 'Clickable Deletable' },
-    { id: 4, label: 'Clickable Deletable' },
-    { id: 5, label: 'Clickable Deletable' },
-    { id: 6, label: 'Clickable Deletable' },
-    { id: 7, label: 'Clickable Deletable' },
-    { id: 8, label: 'Clickable Deletable' },
-    { id: 9, label: 'Clickable Deletable' },
-    { id: 10, label: 'Clickable Deletable' },
-    { id: 11, label: 'Clickable Deletable' },
-    { id: 12, label: 'Clickable Deletable' },
-    { id: 13, label: 'Clickable Deletable' },
-  ]);
 
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>{error.message}</div>;
@@ -173,7 +164,39 @@ export default function Profile() {
                     Favourites
                   </Typography>
                 </Container>
-                <Cards data={favCard} />
+                         <Container maxWidth="lg" sx={{ mb: 10 }}>
+              {/* <Grid container spacing={5}> */}
+              {/* <Grid item xs={6} sm={6} md={4} lg={3}> */}
+              {/* {data.map((item) => ( */}
+              <Box
+                sx={{
+                  display: { sm: 'grid', xs: 'flex' },
+                  gap: '20px',
+                  alignItems: 'flex-start',
+                  flexWrap: {
+                    xs: 'nowrap',
+                  },
+                  gridTemplateColumns: {
+                    sm: 'repeat(auto-fill, minmax(250px, 1fr))',
+                  },
+                  '& > div': {
+                    marginBottom: '24px',
+                    minWidth: '250px',
+                    borderRadius: '16px',
+                    // '&:not(:last-child)': { marginRight: '0px' },
+                  },
+                  overflowX: 'auto',
+                  // padding: '20px',
+                }}
+              >
+                {favCard.length > 0
+                  ? favCard.map((item) => {
+                      console.log(item);
+                      return <Cards item={item} />;
+                    })
+                  : ''}
+              </Box>
+            </Container>
                 {/* <Stack
               direction="column"
               spacing={2}

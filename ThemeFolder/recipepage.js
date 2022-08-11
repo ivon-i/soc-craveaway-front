@@ -28,6 +28,8 @@ export default function RecipeCards({ recipedata, separatedingredients }) {
   const [value, setValue] = useState(0);
   const { user } = useUser();
 
+
+
   async function handleClick(id) {
     try {
       const patch = await fetch(

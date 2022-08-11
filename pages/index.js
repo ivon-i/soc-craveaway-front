@@ -103,6 +103,7 @@ export default function Home({ payload }) {
         >
           All Recipes
         </Typography>
+        
       </Container>
       <Box>
         <Container maxWidth="lg" sx={{ mb: 10 }}>

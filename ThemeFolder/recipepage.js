@@ -23,6 +23,9 @@ import { useState, useEffect } from 'react';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import AddIcon from '@mui/icons-material/Add';
 import { useUser } from '@auth0/nextjs-auth0';
+
+import { Alert, Dialog } from '@mui/material';
+
 export default function RecipeCards({ recipedata, separatedingredients }) {
   const [value, setValue] = useState(0);
   const { user } = useUser();
@@ -55,10 +58,12 @@ export default function RecipeCards({ recipedata, separatedingredients }) {
       },
     });
     const data = await response.json();
+    alert('This ingredient has been added to your shopping list!');
     console.log(data);
   };
   const handleDelete = async (e) => {
-    console.log('sure thing');
+        alert('This ingredient has been added to your shopping list!');
+        console.log('sure thing');
   };
   return (
     <Container
@@ -274,7 +279,7 @@ export default function RecipeCards({ recipedata, separatedingredients }) {
                   }}
                   onClick={getChipInfo}
                   deleteIcon={<AddIcon />}
-                  onDelete={handleDelete}
+                  onDelete={handleDelete}  
                 ></Chip>
               </Grid>
             ))}

@@ -18,7 +18,7 @@ function MobileHero() {
         justifyContent: 'center',
       }}
     >
-      <Box
+      {/* <Box
         sx={{
           padding: '32px',
         }}
@@ -35,7 +35,7 @@ function MobileHero() {
         >
           Search & create healthy alternatives to fast food!
         </Typography>
-      </Box>
+      </Box> */}
     </Paper>
   );
 }

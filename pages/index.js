@@ -303,7 +303,7 @@ import { Container } from '@mui/system';
 import Categories from '../ThemeFolder/Categories';
 import { Hero } from '../ThemeFolder/Hero';
 import Cards from '../ThemeFolder/Cards';
-import { Box, Button, Hidden, Typography } from '@mui/material';
+import { Box, Button, Hidden, Typography, Grid } from '@mui/material';
 import AddRecipeButton from '../ThemeFolder/AddRecipeButton';
 import { useState } from 'react';
 import Input from '../ThemeFolder/Input';
@@ -385,10 +385,9 @@ export default function Home({ payload }) {
         </Container>
       </Hidden>
       <Container maxWidth="lg">
-        <Typography
-          variant="h6"
+        <Grid
+          container
           sx={{
-            fontWeight: '600',
             marginTop: {
               xs: '32px',
               sm: '64px',
@@ -396,16 +395,35 @@ export default function Home({ payload }) {
             },
             marginBottom: '16px',
           }}
+          alignItems="end"
         >
-          Top recipes
-        </Typography>
-        <Button
-          onClick={() => {
-            getAllRecipes();
-          }}
-        >
-          All
-        </Button>
+          <Grid item xs={12} sm={6}>
+            <Typography
+              variant="h6"
+              sx={{
+                fontWeight: '600',
+                // marginTop: {
+                //   xs: '32px',
+                //   sm: '64px',
+                //   md: '80px',
+                // },
+                // marginBottom: '16px',
+              }}
+            >
+              Top recipes
+            </Typography>
+          </Grid>
+          <Grid item xs={12} sm={6} sx={{ textAlign: 'right' }}>
+            <Typography
+              // sx={{ paddingRight: '0' }}
+              onClick={() => {
+                getAllRecipes();
+              }}
+            >
+              All
+            </Typography>
+          </Grid>
+        </Grid>
       </Container>
       <Box>
         <Cards data={filtered} limit={limit} />

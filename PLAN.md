@@ -64,3 +64,11 @@ When you click the chip "all" in the Categories Component we want to populate th
 - we need to clear the current set of cards and render the new set of cards
 
 - we also need to change the 'Top recipes' headline to 'All recipes'
+
+++
+
+- add image to home page ✅
+- fix image on mobile screen size mobile hero (ask team what they think it looks like)
+- place the all button on mobile ✅
+- make the opacity of the required lighter ✅
+- align nav hamburger menu icon to left (use material icon for it to get rid of the misalignment)

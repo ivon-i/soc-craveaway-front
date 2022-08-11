@@ -45,12 +45,6 @@ export default function Home({ payload }) {
         <meta name="description" content="Craveaway App" />
         <link rel="icon" href="/craveawayicon.svg" />
       </Head>
-      {/* <Box
-        sx={{
-          boxShadow: 'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;',
-          paddingBottom: '48px',
-        }}
-      > */}
       <Navbar
         searchInput={search}
         setSearchInput={setSearch}
@@ -78,27 +72,40 @@ export default function Home({ payload }) {
           <MobileHero />
         </Container>
       </Hidden>
-      <Container maxWidth="lg">
+      <Container
+        maxWidth="lg"
+        sx={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          flexDirection: 'row',
+          alignItems: 'center',
+          marginTop: {
+            xs: '16px',
+            sm: '64px',
+            md: '80px',
+          },
+          marginBottom: '16px',
+        }}
+      >
         <Typography
           variant="h6"
           sx={{
             fontWeight: '600',
-            marginTop: {
-              xs: '32px',
-              sm: '64px',
-              md: '80px',
-            },
-            marginBottom: '16px',
           }}
         >
-          Top recipes
+          Featured recipes
+        </Typography>
+        <Typography
+          sx={{ cursor: 'pointer', backgroundColor: 'red' }}
+          onClick={() => {
+            getAllRecipes();
+          }}
+        >
+          All
         </Typography>
       </Container>
       <Box>
         <Container maxWidth="lg" sx={{ mb: 10 }}>
-          {/* <Grid container spacing={5}> */}
-          {/* <Grid item xs={6} sm={6} md={4} lg={3}> */}
-          {/* {data.map((item) => ( */}
           <Box
             sx={{
               display: { sm: 'grid', xs: 'flex' },
@@ -114,10 +121,8 @@ export default function Home({ payload }) {
                 marginBottom: '24px',
                 minWidth: '250px',
                 borderRadius: '16px',
-                // '&:not(:last-child)': { marginRight: '0px' },
               },
               overflowX: 'auto',
-              // padding: '20px',
             }}
           >
             {filtered.length > 0
@@ -127,9 +132,6 @@ export default function Home({ payload }) {
                 })
               : ''}
           </Box>
-          {/* ))} */}
-          {/* </Grid> */}
-          {/* </Grid> */}
         </Container>
       </Box>
       <Hidden smUp>

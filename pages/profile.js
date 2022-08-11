@@ -63,8 +63,6 @@ export default function Profile() {
     console.info(e.currentTarget.innerText);
   };
   const handleDeleteShopList = async (id) => {
-    // const newList = list.filter((item) => item.id !== id);
-    // setList(newList);
     try {
       const response = await fetch(
         `http://craveaway.herokuapp.com/shop/${id}`,
@@ -113,7 +111,6 @@ export default function Profile() {
                     textAlign: 'center',
                   }}
                 >
-                  {/* {user.name}'s  */}
                   Profile
                 </Typography>
                 <Box
@@ -164,50 +161,34 @@ export default function Profile() {
                     Favourites
                   </Typography>
                 </Container>
-                         <Container maxWidth="lg" sx={{ mb: 10 }}>
-              {/* <Grid container spacing={5}> */}
-              {/* <Grid item xs={6} sm={6} md={4} lg={3}> */}
-              {/* {data.map((item) => ( */}
-              <Box
-                sx={{
-                  display: { sm: 'grid', xs: 'flex' },
-                  gap: '20px',
-                  alignItems: 'flex-start',
-                  flexWrap: {
-                    xs: 'nowrap',
-                  },
-                  gridTemplateColumns: {
-                    sm: 'repeat(auto-fill, minmax(250px, 1fr))',
-                  },
-                  '& > div': {
-                    marginBottom: '24px',
-                    minWidth: '250px',
-                    borderRadius: '16px',
-                    // '&:not(:last-child)': { marginRight: '0px' },
-                  },
-                  overflowX: 'auto',
-                  // padding: '20px',
-                }}
-              >
-                {favCard.length > 0
-                  ? favCard.map((item) => {
-                      console.log(item);
-                      return <Cards item={item} />;
-                    })
-                  : ''}
-              </Box>
-            </Container>
-                {/* <Stack
-              direction="column"
-              spacing={2}
-              mt="15px"
-              sx={{
-                maxWidth: 345,
-                display: 'flex',
-                alignContent: 'flex-start',
-                flexWrap: 'wrap',
-              }}
-            > */}
+                <Container maxWidth="lg" sx={{ mb: 10 }}>
+                  <Box
+                    sx={{
+                      display: { sm: 'grid', xs: 'flex' },
+                      gap: '20px',
+                      alignItems: 'flex-start',
+                      flexWrap: {
+                        xs: 'nowrap',
+                      },
+                      gridTemplateColumns: {
+                        sm: 'repeat(auto-fill, minmax(250px, 1fr))',
+                      },
+                      '& > div': {
+                        marginBottom: '24px',
+                        minWidth: '250px',
+                        borderRadius: '16px',
+                      },
+                      overflowX: 'auto',
+                    }}
+                  >
+                    {favCard.length > 0
+                      ? favCard.map((item) => {
+                          console.log(item);
+                          return <Cards item={item} />;
+                        })
+                      : ''}
+                  </Box>
+                </Container>
                 <Container maxWidth="lg">
                   <Typography
                     variant="h4"
@@ -259,7 +240,6 @@ export default function Profile() {
                     </Grid>
                   ))}
                 </Grid>
-                {/* </Stack> */}
               </Box>
             </Paper>
           </Container>

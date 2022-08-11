@@ -97,7 +97,10 @@ export default function Profile() {
     return (
       <>
         <Navbar />
-        <Container maxWidth="md" sx={{ marginBottom: '88px' }}>
+        <Container
+          maxWidth="md"
+          sx={{ marginBottom: '88px', marginTop: '40px' }}
+        >
           <Paper sx={{ padding: '40px 0px' }}>
             <Box ml="15px">
               <Typography

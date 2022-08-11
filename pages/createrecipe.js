@@ -202,7 +202,12 @@ export default function createRecipe() {
                   borderRadius: '8px',
                 }}
               >
-                <Grid container sx={{ height: '100%' }}>
+                <Grid
+                  container
+                  sx={{
+                    height: '100%',
+                  }}
+                >
                   <Grid
                     item
                     xs={12}
@@ -237,7 +242,11 @@ export default function createRecipe() {
                       justifyContent: 'center',
                     }}
                   >
-                    <Button variant="text" component="label">
+                    <Button
+                      variant="text"
+                      component="label"
+                      sx={{ opacity: '100%', color: '#000' }}
+                    >
                       + Upload Image
                       <input
                         hidden

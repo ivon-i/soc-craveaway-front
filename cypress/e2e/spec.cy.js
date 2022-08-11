@@ -18,25 +18,6 @@ describe('The Home Page', () => {
   // });
 });
 
-// describe('Craveaway', () => {
-//   it('selects the hamburger menu button');
-// });
-
-// describe('Visit homepage', () => {
-//   it('visits the app url', () => {
-//     cy.visit('https://craveaway.vercel.app/');
-//   });
-// });
-
-// // +Create recipe button test
-// describe('Click +Create recipe button', () => {
-//   it('checks if it is a button', () => {
-//     cy.get(
-//       '.mui-style-0 > .MuiContainer-root > .MuiBox-root > .MuiButtonBase-root'
-//     );
-//   });
-// });
-
 //generic visit test 
 it('visits site', () => {
     cy.visit('https://craveaway.vercel.app/');

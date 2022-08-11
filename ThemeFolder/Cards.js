@@ -40,7 +40,7 @@ const Cards = ({ item }) => {
   }
   return (
     <div>
-      <Paper sx={{ overflow: 'hidden' }}>
+      <Paper sx={{ overflow: 'hidden', borderRadius: '16px' }}>
         <Box
           sx={{
             height: '200px',

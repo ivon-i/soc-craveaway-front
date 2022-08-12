@@ -1,19 +1,3 @@
-// import Layout from '../components/Layout'
-// import '../styles/globals.css'
-// import { UserProvider } from '@auth0/nextjs-auth0';
-
-// function MyApp({ Component, pageProps }) {
-
-//   const { user } = pageProps;
-//   return (
-//    <UserProvider user={user}>
-//     <Layout>
-//       <Component {...pageProps} />
-//     </Layout>
-//      </UserProvider>
-//   )
-// }
-// export default MyApp
 import PropTypes from 'prop-types';
 import Head from 'next/head';
 import { ThemeProvider } from '@mui/material/styles';
@@ -23,7 +7,7 @@ import theme from '../src/theme';
 import createEmotionCache from '../src/createEmotionCache';
 import { UserProvider } from '@auth0/nextjs-auth0';
 
-// Client-side cache, shared for the whole session of the user in the browser.
+// Client-side cache, shared for the whole session of the user in the browser. - makes the loading faster
 const clientSideEmotionCache = createEmotionCache();
 export default function MyApp(props) {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;

@@ -1,28 +1,21 @@
 import Link from 'next/link';
-import { nanoid } from 'nanoid';
 import {
   Typography,
-  Stack,
   TextField,
   Select,
   MenuItem,
   Button,
   Box,
-  Chip,
   Container,
-  FormLabel,
-  FormControl,
   Grid,
   Paper,
+  Alert,
+  Dialog,
 } from '@mui/material';
 import { useState } from 'react';
-import { NavigateNextOutlined } from '@mui/icons-material';
 import SendIcon from '@mui/icons-material/Send';
 import { useUser } from '@auth0/nextjs-auth0';
-import AddRecipeButton from '../ThemeFolder/AddRecipeButton';
 import { Navbar } from '../ThemeFolder/Navbar';
-import { Alert, Dialog } from '@mui/material';
-import Image from 'next/image';
 
 export default function createRecipe() {
   const cookingTime = [
@@ -46,7 +39,7 @@ export default function createRecipe() {
     'Low-sodium',
     'Low-carb',
   ];
-  const { user, error, isLoading } = useUser();
+  const { user } = useUser();
   const newRecipe = {
     title: '',
     author: '',
@@ -63,18 +56,19 @@ export default function createRecipe() {
   const [newImage, setNewImage] = useState('');
   const [open, setOpen] = useState(false);
   const [success, setSuccess] = useState(false);
-  // const [selectedFile, setSelectedFile] = useState('');
   const [previewSource, setPreviewSource] = useState();
 
+  // This function takes datapoints as a paramater and assigns target value as key value pairs of an object held in state to create a new recipe
   const handleChangeFor = (propertyName) => (e) => {
     setNewRecipeSubmission((newRecipeSubmission) => ({
       ...newRecipeSubmission,
       [propertyName]: e.target.value,
       ['author']: `${user.name}`,
     }));
-    console.log(newRecipeSubmission);
   };
-  const handleClick = async (x) => {
+
+  // This function allows the user to post their recipe to the database
+  const handleClick = async () => {
     const response = await fetch(
       'http://craveaway.herokuapp.com/recipes/create/',
       {
@@ -89,11 +83,11 @@ export default function createRecipe() {
     console.log(data);
   };
 
+  // This function allows the user to upload an image from their computer. The image is read and assigned a url string which can be stored in an object.
   const handleImageChange = (e) => {
     const file = e.target.files[0];
-    console.log('file', file);
     const reader = new FileReader();
-    console.log('READER', reader);
+
     reader.readAsDataURL(file);
     reader.onloadend = () => {
       setPreviewSource(reader.result);
@@ -108,6 +102,7 @@ export default function createRecipe() {
     setOpen(!open);
   }
 
+  // This function checks if a user has entered a value for the requested datapoints that enable enable them to submit a recipe and allows them to submit the recipe once all requested values have been entered
   const updateImageString = () => {
     if (
       newRecipeSubmission.title === newRecipe.title ||
@@ -146,6 +141,7 @@ export default function createRecipe() {
           }}
         >
           <Navbar />
+
           {/* TITLE */}
           <Container
             maxWidth="sm"
@@ -154,7 +150,7 @@ export default function createRecipe() {
               marginTop: '40px',
               padding: '24px 24px 24px 24px',
               borderRadius: '8px',
-              // backgroundColor: '#FEF9EB',
+
               '& label': {
                 opacity: '55%',
               },
@@ -186,6 +182,7 @@ export default function createRecipe() {
                 label="Required"
                 fullWidth
               />
+
               {/* IMAGE */}
               <Box
                 sx={{
@@ -203,9 +200,7 @@ export default function createRecipe() {
                   backgroundPosition: 'center',
                 }}
               >
-                              
-                
-                  <Button variant="text" component="label">
+                <Button variant="text" component="label">
                   + Upload Image
                   <input
                     hidden
@@ -217,7 +212,7 @@ export default function createRecipe() {
                     value={newImage}
                   />
                 </Button>
-                </Box>
+              </Box>
 
               {/* COOKING TIME */}
               <Grid container spacing={3}>
@@ -244,6 +239,7 @@ export default function createRecipe() {
                     ))}
                   </Select>
                 </Grid>
+
                 {/* SERVES */}
                 <Grid item sm={6} xs={12}>
                   <Typography sx={{ mb: 1, mt: 2 }}>Serves: </Typography>
@@ -263,6 +259,7 @@ export default function createRecipe() {
                     ))}
                   </Select>
                 </Grid>
+
                 {/* NUTRITION CATEGORY */}
                 <Grid item sm={6} xs={12}>
                   <Typography sx={{ mb: 1, mt: 2 }} d>
@@ -284,6 +281,7 @@ export default function createRecipe() {
                     ))}
                   </Select>
                 </Grid>
+
                 {/* PRICE PER SERVING */}
                 <Grid item sm={6} xs={12}>
                   <Typography sx={{ mb: 1, mt: 2 }}>Price: </Typography>
@@ -304,6 +302,7 @@ export default function createRecipe() {
                   </Select>
                 </Grid>
               </Grid>
+
               {/* INGREDIENTS */}
               <Typography sx={{ mt: 2, mb: 1 }}>Ingredients</Typography>
               <TextField
@@ -318,6 +317,7 @@ export default function createRecipe() {
                 label="Required"
                 fullWidth
               />
+
               {/* DESCRIPTION */}
               <Typography sx={{ mb: 1, mt: 2 }}>Description</Typography>
               <TextField
@@ -332,20 +332,6 @@ export default function createRecipe() {
                 label="Required"
                 fullWidth
               />
-              {/* <button className="submitRecipeButton" onClick={handleClick}>
-            Submit Recipe
-          </button> */}
-              {/* <AddRecipeButton
-            text="SUMBIT RECIPE"
-            variant="contained"
-            className="submitRecipeButton"
-            onClick={handleClick}
-            sx={{
-              display: 'block',
-              marginTop: '40px',
-              width: { xs: '100%', sm: 'auto' },
-            }}
-          /> */}
 
               <Button
                 size="large"
@@ -353,7 +339,6 @@ export default function createRecipe() {
                 className="submitRecipeButton"
                 onClick={updateImageString}
                 sx={{
-                  // display: 'block',
                   borderRadius: '40px',
                   marginTop: '40px',
                   width: {
@@ -362,16 +347,6 @@ export default function createRecipe() {
                   },
                 }}
               >
-                {/* <Button
-        variant="contained"
-        size="large"
-        sx={{
-          ...props.sx,
-          fontWeight: '600',
-          borderRadius: '40px',
-          textTransform: 'none',
-          fontWeight: 500,
-        }} */}
                 <SendIcon
                   sx={{ width: '16px', height: '16px', opacity: '75%' }}
                 />
@@ -509,7 +484,6 @@ export default function createRecipe() {
                     alignItems: 'center',
                     display: 'flex',
                     justifyContent: 'center',
-                    // width: '10%',
                     m: 'auto',
                   }}
                 >

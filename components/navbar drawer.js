@@ -35,11 +35,7 @@ export default function SwipeableTemporaryDrawer() {
     }
     setState({ ...state, [anchor]: open });
   };
-  /*
-2. Implement auth0 functionality based on previous log in button
-3. Return alternative list based on logged in status - handle in return
-*/
-  /*NOT LOGGED IN */
+
   const notInList = (anchor) => (
     <Box
       sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
@@ -49,20 +45,19 @@ export default function SwipeableTemporaryDrawer() {
     >
       <List
         sx={{
-          
-          backgroundColor:'#F4CE5E',
+          backgroundColor: '#F4CE5E',
           color: 'black',
         }}
       >
         {[
           <Link href="/" passHref>
-          <Typography variant="body1">Home</Typography>
+            <Typography variant="body1">Home</Typography>
           </Link>,
           <Link href="/profile" passHref>
-          <Typography variant="body1">My Profile</Typography>
+            <Typography variant="body1">My Profile</Typography>
           </Link>,
           <Link href="/createrecipe" passHref>
-          <Typography variant="body1">Create a recipe</Typography>
+            <Typography variant="body1">Create a recipe</Typography>
           </Link>,
         ].map((text, index) => (
           <ListItem key={text} disablePadding>
@@ -107,11 +102,11 @@ export default function SwipeableTemporaryDrawer() {
       >
         {[
           <Link href="/api/auth/login" passHref>
-          <Typography variant="body1">Login</Typography>
+            <Typography variant="body1">Login</Typography>
           </Link>,
-          'Usage Policy' /*Needs to be a link*/,
+          'Usage Policy',
           <Link href="/api/auth/login" passHref>
-          <Typography variant="body1">Sign Up</Typography>
+            <Typography variant="body1">Sign Up</Typography>
           </Link>,
         ].map((text, index) => (
           <ListItem key={text} disablePadding>
@@ -164,13 +159,13 @@ export default function SwipeableTemporaryDrawer() {
       >
         {[
           <Link href="/" passHref>
-          <Typography variant="body1">Home</Typography>
+            <Typography variant="body1">Home</Typography>
           </Link>,
           <Link href="/profile" passHref>
-          <Typography variant="body1">My Profile</Typography>
+            <Typography variant="body1">My Profile</Typography>
           </Link>,
           <Link href="/createrecipe" passHref>
-          <Typography variant="body1">Create a recipe</Typography>
+            <Typography variant="body1">Create a recipe</Typography>
           </Link>,
         ].map((text, index) => (
           <ListItem key={text} disablePadding>
@@ -215,9 +210,9 @@ export default function SwipeableTemporaryDrawer() {
       >
         {[
           <Link href="/api/auth/logout" passHref>
-          <Typography variant="body1">Logout</Typography>
+            <Typography variant="body1">Logout</Typography>
           </Link>,
-          'Usage Policy' /*Needs to be a link*/,
+          'Usage Policy',
         ].map((text, index) => (
           <ListItem key={text} disablePadding>
             <ListItemButton>
@@ -247,16 +242,20 @@ export default function SwipeableTemporaryDrawer() {
     </Box>
   );
   const { user, error, isLoading } = useUser();
-  // if (isLoading) return <div>Loading...</div>;
+
   if (error) return <div>{error.message}</div>;
   if (user) {
     return (
       <div>
         {['right'].map((anchor) => (
           <React.Fragment key={anchor}>
-            <Button onClick={toggleDrawer(anchor, true)}>
-              <HiMenu fontSize="32px" color="#34393C" />
-            </Button>
+            <HiMenu
+              cursor="pointer"
+              fontSize="32px"
+              color="#34393C"
+              onClick={toggleDrawer(anchor, true)}
+            />
+
             <SwipeableDrawer
               anchor={anchor}
               open={state[anchor]}
@@ -274,9 +273,13 @@ export default function SwipeableTemporaryDrawer() {
       <div>
         {['right'].map((anchor) => (
           <React.Fragment key={anchor}>
-            <Button onClick={toggleDrawer(anchor, true)}>
-              <HiMenu className="burger-menu" fontSize="32px" color="#34393C" />
-            </Button>
+            <HiMenu
+              className="burger-menu"
+              fontSize="32px"
+              color="#34393C"
+              onClick={toggleDrawer(anchor, true)}
+              cursor="pointer"
+            />
             <SwipeableDrawer
               anchor={anchor}
               open={state[anchor]}

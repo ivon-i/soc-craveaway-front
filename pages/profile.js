@@ -1,20 +1,18 @@
 import React from 'react';
 import { useUser } from '@auth0/nextjs-auth0';
 import Link from 'next/link';
-import LockOpenIcon from '@mui/icons-material/LockOpen';
-import { Typography, Chip, Stack, Paper } from '@mui/material';
-import RecCard from '../components/recCard';
-import data from '../db/recipeData.js';
+import {
+  Typography,
+  Chip,
+  Paper,
+  Container,
+  Grid,
+  Button,
+} from '@mui/material';
 import { useState, useEffect } from 'react';
 import { Box } from '@mui/system';
-dwadwaddwadadadadwadwadad
 import Cards from '../ThemeFolder/Cards';
 import { Navbar } from '../ThemeFolder/Navbar';
-import { Container } from '@mui/material';
-import { Image } from 'next/image';
-import { Grid } from '@mui/material';
-
-import { Button } from '@mui/material';
 
 export default function Profile() {
   const { user, error, isLoading } = useUser();
@@ -25,8 +23,10 @@ export default function Profile() {
   const [shopEmp, setShopEmp] = useState(false);
   const [userName, setUserName] = useState('');
 
+  // This function fetches ingredients based on a users profile.
+  // This function will run everytime 'state' changes.
   useEffect(() => {
-    async function fetchDataIngredients() {
+    async function fetchShoppingList() {
       if (user) {
         const response = await fetch(
           `https://craveaway.herokuapp.com/shop?username=${user.name}`
@@ -37,9 +37,11 @@ export default function Profile() {
         console.log(userName);
       }
     }
-    async function fetchFavCards() {
+
+    // This function get the recipes of the user for their profile.
+    async function fetchFavouritedRecipes() {
       const response = await fetch(
-        `http://localhost:3001/fav?userName=${user.name}`
+        `https://craveaway.herokuapp.com/fav?userName=${user.name}`
       );
       const data = await response.json();
       const { payload } = data;
@@ -47,8 +49,8 @@ export default function Profile() {
       console.log(favCard);
     }
     try {
-      fetchDataIngredients();
-      fetchFavCards();
+      fetchShoppingList();
+      fetchFavouritedRecipes();
     } catch (error) {
       console.log(error.message);
     }
@@ -56,13 +58,12 @@ export default function Profile() {
 
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>{error.message}</div>;
-  // // CHANGE THIS DATA TO BE THE CARD THAT YOU HAVE CLICKED , HEART
-  // // BACKEND!!!
-  // // HAVE A EMPTY TABLE, ONCE THE HEART IS CLICKED, POST REQUEST TO THIS TABLE, POPULATE THIS DATA WITH THAT TABLE'S DATA
-  // // TO GET DATA, GET REQUEST FROM THAT TABLE
+
   const handleClick = (e) => {
     console.info(e.currentTarget.innerText);
   };
+
+  // This function deltes an ingredient in the users shopping list by the ingredient id
   const handleDeleteShopList = async (id) => {
     try {
       const response = await fetch(
@@ -80,7 +81,6 @@ export default function Profile() {
     } catch (error) {
       console.log(error.message);
     }
-    console.log(id);
   };
 
   if (user) {
@@ -206,15 +206,6 @@ export default function Profile() {
                       <Typography fontWeight={700}>Add smt</Typography>
                     )
                   : null}
-                {/* {list.map((item) => (
-            <Chip
-              variant="outlined"
-              label={item.label}
-              onClick={handleClick}
-              onDelete={() => handleDelete(item.id)}
-              sx={{ borderColor: '#FCC62E', borderWidth: '1.5px' }}
-            ></Chip>
-          ))} */}
                 <Grid container spacing={2} sx={{ padding: '16px' }}>
                   {chipData.map((item) => (
                     <Grid item xs={6} sm={4} md={3}>
@@ -265,7 +256,7 @@ export default function Profile() {
               }}
             >
               <br></br>
-            <br></br>
+              <br></br>
               <Box
                 sx={{
                   borderRadius: 7,
@@ -297,15 +288,6 @@ export default function Profile() {
                 </Typography>
               </Box>
               <>
-                {/* <LockOpenIcon sx={{
-             fontSize:"120px",
-            fontWeight:"1000",
-              margin: 10,
-            marginLeft:18,
-            alignItems: "center",
-            display: "flex",
-            justifyContent: "center",
-          }}/> */}
                 <Box
                   sx={{
                     backgroundColor: 'white',
@@ -365,7 +347,6 @@ export default function Profile() {
                       alignItems: 'center',
                       display: 'flex',
                       justifyContent: 'center',
-                      // width: '10%',
                       m: 'auto',
                     }}
                   >

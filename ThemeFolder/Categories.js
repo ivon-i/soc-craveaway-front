@@ -38,13 +38,13 @@ const Categories = () => {
             },
           }}
         >
-          <Chip label="🍕 Pizza" variant="outlined" onClick={handleChip} />
-          <Chip label="🍔 Burgers" variant="outlined" onClick={handleChip} />
-          <Chip label="🥡 Chinese" variant="outlined" onClick={handleChip} />
-          <Chip label="🍗 Fried" variant="outlined" onClick={handleChip} />
-          <Chip label="🍖 BBQ" variant="outlined" onClick={handleChip} />
-          <Chip label="🍰 Desserts" variant="outlined" onClick={handleChip} />
-          <Chip label="🥤 Drinks" variant="outlined" onClick={handleChip} />
+          <Chip label="🍕 Pizza" variant="outlined" />
+          <Chip label="🍔 Burgers" variant="outlined" />
+          <Chip label="🥡 Chinese" variant="outlined" />
+          <Chip label="🍗 Fried" variant="outlined" />
+          <Chip label="🍖 BBQ" variant="outlined" />
+          <Chip label="🍰 Desserts" variant="outlined" />
+          <Chip label="🥤 Drinks" variant="outlined" />
         </Box>
       </Container>
     </>

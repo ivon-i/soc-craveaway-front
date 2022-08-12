@@ -121,20 +121,6 @@ export default function RecipeCards({ recipedata, separatedingredients }) {
                 right: '16px',
               }}
             />
-
-            <FavoriteBorderIcon
-              sx={{
-                zIndex: 101,
-                position: 'absolute',
-                bottom: '16px',
-                right: '16px',
-                backgroundColor: '#fff',
-                borderRadius: '100%',
-                padding: '8px',
-                fontSize: '40px',
-                color: '#FF6B6B',
-              }}
-            />
           </Box>
           <Grid container maxWidth="xl" sx={{ alignSelf: 'right' }}>
             <Grid item xs={3}>

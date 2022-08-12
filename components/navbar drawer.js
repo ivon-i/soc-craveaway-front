@@ -49,20 +49,19 @@ export default function SwipeableTemporaryDrawer() {
     >
       <List
         sx={{
-          
-          backgroundColor:'#F4CE5E',
+          backgroundColor: '#F4CE5E',
           color: 'black',
         }}
       >
         {[
           <Link href="/" passHref>
-          <Typography variant="body1">Home</Typography>
+            <Typography variant="body1">Home</Typography>
           </Link>,
           <Link href="/profile" passHref>
-          <Typography variant="body1">My Profile</Typography>
+            <Typography variant="body1">My Profile</Typography>
           </Link>,
           <Link href="/createrecipe" passHref>
-          <Typography variant="body1">Create a recipe</Typography>
+            <Typography variant="body1">Create a recipe</Typography>
           </Link>,
         ].map((text, index) => (
           <ListItem key={text} disablePadding>
@@ -107,11 +106,11 @@ export default function SwipeableTemporaryDrawer() {
       >
         {[
           <Link href="/api/auth/login" passHref>
-          <Typography variant="body1">Login</Typography>
+            <Typography variant="body1">Login</Typography>
           </Link>,
-          'Usage Policy' /*Needs to be a link*/,
+          'Usage Policy',
           <Link href="/api/auth/login" passHref>
-          <Typography variant="body1">Sign Up</Typography>
+            <Typography variant="body1">Sign Up</Typography>
           </Link>,
         ].map((text, index) => (
           <ListItem key={text} disablePadding>
@@ -164,13 +163,13 @@ export default function SwipeableTemporaryDrawer() {
       >
         {[
           <Link href="/" passHref>
-          <Typography variant="body1">Home</Typography>
+            <Typography variant="body1">Home</Typography>
           </Link>,
           <Link href="/profile" passHref>
-          <Typography variant="body1">My Profile</Typography>
+            <Typography variant="body1">My Profile</Typography>
           </Link>,
           <Link href="/createrecipe" passHref>
-          <Typography variant="body1">Create a recipe</Typography>
+            <Typography variant="body1">Create a recipe</Typography>
           </Link>,
         ].map((text, index) => (
           <ListItem key={text} disablePadding>
@@ -215,9 +214,9 @@ export default function SwipeableTemporaryDrawer() {
       >
         {[
           <Link href="/api/auth/logout" passHref>
-          <Typography variant="body1">Logout</Typography>
+            <Typography variant="body1">Logout</Typography>
           </Link>,
-          'Usage Policy' /*Needs to be a link*/,
+          'Usage Policy',
         ].map((text, index) => (
           <ListItem key={text} disablePadding>
             <ListItemButton>
@@ -247,7 +246,7 @@ export default function SwipeableTemporaryDrawer() {
     </Box>
   );
   const { user, error, isLoading } = useUser();
-  // if (isLoading) return <div>Loading...</div>;
+
   if (error) return <div>{error.message}</div>;
   if (user) {
     return (

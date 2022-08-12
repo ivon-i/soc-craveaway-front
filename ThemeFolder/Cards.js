@@ -1,4 +1,11 @@
-import { Paper, Box, Typography, Chip, IconButton } from '@mui/material';
+import {
+  Paper,
+  Box,
+  Typography,
+  Chip,
+  IconButton,
+  Hidden,
+} from '@mui/material';
 import Image from 'next/image';
 import StarIcon from '@mui/icons-material/Star';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
@@ -102,7 +109,13 @@ const Cards = ({ item }) => {
           <Box padding="16px">
             <Typography
               variant="h6"
-              sx={{ fontSize: '16px', fontWeight: '500' }}
+              sx={{
+                fontSize: '16px',
+                fontWeight: '500',
+                whiteSpace: 'nowrap',
+                overflowX: 'Hidden',
+                textOverflow: 'ellipsis',
+              }}
             >
               {item.title}
             </Typography>

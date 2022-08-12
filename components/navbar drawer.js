@@ -35,11 +35,7 @@ export default function SwipeableTemporaryDrawer() {
     }
     setState({ ...state, [anchor]: open });
   };
-  /*
-2. Implement auth0 functionality based on previous log in button
-3. Return alternative list based on logged in status - handle in return
-*/
-  /*NOT LOGGED IN */
+
   const notInList = (anchor) => (
     <Box
       sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 250 }}
@@ -253,14 +249,13 @@ export default function SwipeableTemporaryDrawer() {
       <div>
         {['right'].map((anchor) => (
           <React.Fragment key={anchor}>
-            {/* <Button onClick={toggleDrawer(anchor, true)}> */}
             <HiMenu
               cursor="pointer"
               fontSize="32px"
               color="#34393C"
               onClick={toggleDrawer(anchor, true)}
             />
-            {/* </Button> */}
+
             <SwipeableDrawer
               anchor={anchor}
               open={state[anchor]}
@@ -278,7 +273,6 @@ export default function SwipeableTemporaryDrawer() {
       <div>
         {['right'].map((anchor) => (
           <React.Fragment key={anchor}>
-            {/* <Button onClick={toggleDrawer(anchor, true)}> */}
             <HiMenu
               className="burger-menu"
               fontSize="32px"
@@ -286,7 +280,6 @@ export default function SwipeableTemporaryDrawer() {
               onClick={toggleDrawer(anchor, true)}
               cursor="pointer"
             />
-            {/* </Button> */}
             <SwipeableDrawer
               anchor={anchor}
               open={state[anchor]}

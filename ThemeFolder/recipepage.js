@@ -231,9 +231,13 @@ export default function RecipeCards({ recipedata, separatedingredients }) {
           >
             Ingredients
           </Typography>
-          <Grid container spacing={2}>
+          <Grid
+            container
+            spacing={2}
+            sx={{ justifyContent: 'space-inbetween' }}
+          >
             {separatedingredients.map((item) => (
-              <Grid item xs={6} sm={4}>
+              <Grid item>
                 <Chip
                   label={item}
                   variant="outlined"

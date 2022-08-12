@@ -1,9 +1,6 @@
 import {
   Typography,
   Chip,
-  Stack,
-  Select,
-  MenuItem,
   Button,
   Container,
   Paper,
@@ -12,27 +9,26 @@ import {
 import { Box } from '@mui/system';
 import Image from 'next/image';
 import GradeIcon from '@mui/icons-material/Grade';
-import IconButton from '@mui/material';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import Rating from '@mui/material/Rating';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import PeopleIcon from '@mui/icons-material/People';
 import PaymentIcon from '@mui/icons-material/Payment';
 import SendIcon from '@mui/icons-material/Send';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import AddIcon from '@mui/icons-material/Add';
 import { useUser } from '@auth0/nextjs-auth0';
 
-import { Alert, Dialog } from '@mui/material';
-
 export default function RecipeCards({ recipedata, separatedingredients }) {
   const [value, setValue] = useState(0);
   const { user } = useUser();
+
+  // This function receives the id of the recipecard and allows the user to rate it.
   async function handleClick(id) {
     try {
       const patch = await fetch(
-        'https://craveaway.herokuapp.com/recipes/${id}',
+        `https://craveaway.herokuapp.com/recipes/${id}`,
         {
           method: 'PATCH',
           headers: { 'Content-Type': 'application/json' },
@@ -40,13 +36,14 @@ export default function RecipeCards({ recipedata, separatedingredients }) {
         }
       );
       const res = await patch.json();
-      console.log(res);
     } catch (error) {
       console.log(error.message);
     }
   }
+
+  // This function allows the user to add an ingredient to their shopping list. It posts the user's username and ingredient so it can later on appear on the profile page
+  // for that user.
   const getChipInfo = async (e) => {
-    // console.info(e.currentTarget.innerText);
     const response = await fetch('https://craveaway.herokuapp.com/shop/list', {
       method: 'POST',
       body: JSON.stringify({
@@ -61,10 +58,7 @@ export default function RecipeCards({ recipedata, separatedingredients }) {
     alert('This ingredient has been added to your shopping list!');
     console.log(data);
   };
-  const handleDelete = async (e) => {
-        alert('This ingredient has been added to your shopping list!');
-        console.log('sure thing');
-  };
+
   return (
     <Container
       maxWidth="sm"
@@ -86,7 +80,6 @@ export default function RecipeCards({ recipedata, separatedingredients }) {
           >
             {item.title}
           </Typography>
-          {/* CREATOR */}
           <Box
             sx={{
               display: 'flex',
@@ -128,11 +121,7 @@ export default function RecipeCards({ recipedata, separatedingredients }) {
                 right: '16px',
               }}
             />
-            {/* <IconButton
-              onClick={() => {
-                HeartFav(item);
-              }}
-            > */}
+
             <FavoriteBorderIcon
               sx={{
                 zIndex: 101,
@@ -146,13 +135,11 @@ export default function RecipeCards({ recipedata, separatedingredients }) {
                 color: '#FF6B6B',
               }}
             />
-            {/* </IconButton> */}
           </Box>
           <Grid container maxWidth="xl" sx={{ alignSelf: 'right' }}>
             <Grid item xs={3}>
               <Chip
                 label={`${item.rating} ${'Stars'}`}
-                // PUT AVARAGE INSTEAD OF RATING
                 icon={
                   <GradeIcon
                     style={{
@@ -247,8 +234,8 @@ export default function RecipeCards({ recipedata, separatedingredients }) {
                 }}
               />
             </Grid>
-          </Grid>
-          ​{/* INGREDIENTS */}
+          </Grid>{' '}
+          {/* INGREDIENTS */}
           <Typography
             variant="h4"
             mt="40px"
@@ -271,15 +258,12 @@ export default function RecipeCards({ recipedata, separatedingredients }) {
                     width: '100%',
                     alignItems: 'center',
                     justifyContent: 'space-between',
-                    // paddingTop: '16px',
-                    // paddingBottom: '16px',
                     padding: '16px 8px',
                     borderRadius: '40px',
                     fontSize: '14px',
                   }}
                   onClick={getChipInfo}
                   deleteIcon={<AddIcon />}
-                  onDelete={handleDelete}  
                 ></Chip>
               </Grid>
             ))}

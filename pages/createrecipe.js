@@ -1,28 +1,21 @@
 import Link from 'next/link';
-import { nanoid } from 'nanoid';
 import {
   Typography,
-  Stack,
   TextField,
   Select,
   MenuItem,
   Button,
   Box,
-  Chip,
   Container,
-  FormLabel,
-  FormControl,
   Grid,
   Paper,
+  Alert,
+  Dialog,
 } from '@mui/material';
 import { useState } from 'react';
-import { NavigateNextOutlined } from '@mui/icons-material';
 import SendIcon from '@mui/icons-material/Send';
 import { useUser } from '@auth0/nextjs-auth0';
-import AddRecipeButton from '../ThemeFolder/AddRecipeButton';
 import { Navbar } from '../ThemeFolder/Navbar';
-import { Alert, Dialog } from '@mui/material';
-import Image from 'next/image';
 
 export default function createRecipe() {
   const cookingTime = [
@@ -46,7 +39,7 @@ export default function createRecipe() {
     'Low-sodium',
     'Low-carb',
   ];
-  const { user, error, isLoading } = useUser();
+  const { user } = useUser();
   const newRecipe = {
     title: '',
     author: '',
@@ -63,9 +56,10 @@ export default function createRecipe() {
   const [newImage, setNewImage] = useState('');
   const [open, setOpen] = useState(false);
   const [success, setSuccess] = useState(false);
-  // const [selectedFile, setSelectedFile] = useState('');
   const [previewSource, setPreviewSource] = useState();
 
+
+  // 
   const handleChangeFor = (propertyName) => (e) => {
     setNewRecipeSubmission((newRecipeSubmission) => ({
       ...newRecipeSubmission,
@@ -203,9 +197,7 @@ export default function createRecipe() {
                   backgroundPosition: 'center',
                 }}
               >
-                              
-                
-                  <Button variant="text" component="label">
+                <Button variant="text" component="label">
                   + Upload Image
                   <input
                     hidden
@@ -217,7 +209,7 @@ export default function createRecipe() {
                     value={newImage}
                   />
                 </Button>
-                </Box>
+              </Box>
 
               {/* COOKING TIME */}
               <Grid container spacing={3}>

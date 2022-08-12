@@ -14,6 +14,7 @@ import Link from 'next/link';
 import AddIcon from '@mui/icons-material/Add';
 import MobileHero from '../components/MobileHero';
 
+// This function will pre-render the home page on each request using the data returned by getServerSideProps. - In this case "payload" which is the recipe card's content.
 export async function getServerSideProps() {
   try {
     const response = await fetch(`http://craveaway.herokuapp.com/recipes`);
@@ -25,9 +26,12 @@ export async function getServerSideProps() {
     console.log(error.message);
   }
 }
+
 export default function Home({ payload }) {
   const [search, setSearch] = useState('');
   const [filtered, setFiltered] = useState(payload);
+
+  // This function filter through payload to check what the user input, in the search bar, agaisnt what it is in the paylaod.
   function filterInput() {
     const filter = payload.filter(
       (r) =>
@@ -96,14 +100,13 @@ export default function Home({ payload }) {
           Featured recipes
         </Typography>
         <Typography
-          sx={{ cursor: 'pointer', fontWeight: '600'  }}
+          sx={{ cursor: 'pointer', fontWeight: '600' }}
           onClick={() => {
             getAllRecipes();
           }}
         >
           All Recipes
         </Typography>
-        
       </Container>
       <Box>
         <Container maxWidth="lg" sx={{ mb: 10 }}>

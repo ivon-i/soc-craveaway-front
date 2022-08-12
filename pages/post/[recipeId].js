@@ -1,8 +1,6 @@
-// import RecipeCards from '../recipe';
 import { Navbar } from '../../ThemeFolder/Navbar';
 import RecipeCards from '../../ThemeFolder/recipepage';
 import { Box } from '@mui/material';
-import { useUser } from '@auth0/nextjs-auth0';
 
 const Post = ({ data }) => {
   const separatedingredients = data.payload[0].ingredients.split(',');
@@ -38,7 +36,7 @@ export default Post; // default export for the page and simple export for the se
 export async function getServerSideProps(context) {
   // simple export
   const response = await fetch(
-    `http://craveaway.herokuapp.com/recipes/${context.params.recipeId}`
+    `https://craveaway.herokuapp.com/recipes/${context.params.recipeId}`
   );
   const data = await response.json();
   console.log(data);

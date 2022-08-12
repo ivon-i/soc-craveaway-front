@@ -1,12 +1,10 @@
 import {
-  Container,
-  Grid,
   Paper,
   Box,
   Typography,
   Chip,
   IconButton,
-  Button,
+  Hidden,
 } from '@mui/material';
 import Image from 'next/image';
 import StarIcon from '@mui/icons-material/Star';
@@ -19,24 +17,31 @@ import { useState } from 'react';
 const Cards = ({ item }) => {
   const { user } = useUser();
   const [favExists, setFavExists] = useState(false);
+
+  // This function allows the user to add a favourite recipe to their profile.
+  //It posts the user's username and recipe data so it can later on appear on the profile page for that user.
+  //It also checks if the data.payload is true, if so the heart icon will be desabled for that card. This logic can be found on lines 66-106.
+
   async function HeartFav(cardInfo) {
     let array = [cardInfo];
     const favCardInfo = array.map((object) => {
       return { ...object, userName: `${user.name}` };
     });
-    const response = await fetch('http://localhost:3001/fav/create/', {
-      method: 'POST',
-      body: JSON.stringify(favCardInfo[0]),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
+    const response = await fetch(
+      'https://craveaway.herokuapp.com/fav/create/',
+      {
+        method: 'POST',
+        body: JSON.stringify(favCardInfo[0]),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }
+    );
     const data = await response.json();
     console.log(data);
     if (data.payload === true) {
       setFavExists(data.payload);
     }
-    // console.log(favCardInfo[0]);
   }
   return (
     <div>
@@ -63,7 +68,6 @@ const Cards = ({ item }) => {
             <IconButton
               onClick={() => {
                 HeartFav(item);
-                // handleFavClick(e, item.recipe_id);
               }}
               sx={{
                 zIndex: 101,
@@ -84,7 +88,6 @@ const Cards = ({ item }) => {
             <IconButton
               onClick={() => {
                 HeartFav(item);
-                // handleFavClick(e, item.recipe_id);
               }}
               sx={{
                 zIndex: 101,
@@ -106,7 +109,13 @@ const Cards = ({ item }) => {
           <Box padding="16px">
             <Typography
               variant="h6"
-              sx={{ fontSize: '16px', fontWeight: '500' }}
+              sx={{
+                fontSize: '16px',
+                fontWeight: '500',
+                whiteSpace: 'nowrap',
+                overflowX: 'Hidden',
+                textOverflow: 'ellipsis',
+              }}
             >
               {item.title}
             </Typography>
@@ -126,7 +135,6 @@ const Cards = ({ item }) => {
           </Box>
         </Link>
       </Paper>
-      {/* ))} */}
     </div>
   );
 };

@@ -253,9 +253,14 @@ export default function SwipeableTemporaryDrawer() {
       <div>
         {['right'].map((anchor) => (
           <React.Fragment key={anchor}>
-            <Button onClick={toggleDrawer(anchor, true)}>
-              <HiMenu fontSize="32px" color="#34393C" />
-            </Button>
+            {/* <Button onClick={toggleDrawer(anchor, true)}> */}
+            <HiMenu
+              cursor="pointer"
+              fontSize="32px"
+              color="#34393C"
+              onClick={toggleDrawer(anchor, true)}
+            />
+            {/* </Button> */}
             <SwipeableDrawer
               anchor={anchor}
               open={state[anchor]}
@@ -273,9 +278,15 @@ export default function SwipeableTemporaryDrawer() {
       <div>
         {['right'].map((anchor) => (
           <React.Fragment key={anchor}>
-            <Button onClick={toggleDrawer(anchor, true)}>
-              <HiMenu className="burger-menu" fontSize="32px" color="#34393C" />
-            </Button>
+            {/* <Button onClick={toggleDrawer(anchor, true)}> */}
+            <HiMenu
+              className="burger-menu"
+              fontSize="32px"
+              color="#34393C"
+              onClick={toggleDrawer(anchor, true)}
+              cursor="pointer"
+            />
+            {/* </Button> */}
             <SwipeableDrawer
               anchor={anchor}
               open={state[anchor]}

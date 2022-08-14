@@ -165,7 +165,7 @@ export default function Home({ payload }) {
                 }}
                 color="red"
               >
-                Sorry, No Results Found
+                Sorry, no results found
               </Typography>
             )}
           </Box>

@@ -106,7 +106,7 @@ const Cards = ({ item }) => {
           )}
         </Box>
         <Link href={`/post/${item.recipe_id}`} key={item.recipe_id}>
-          <Box padding="16px">
+          <Box padding="16px" sx={{ cursor: 'pointer' }}>
             <Typography
               variant="h6"
               sx={{

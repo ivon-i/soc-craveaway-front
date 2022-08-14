@@ -16,7 +16,6 @@ import { useState } from 'react';
 import SendIcon from '@mui/icons-material/Send';
 import { useUser } from '@auth0/nextjs-auth0';
 import { Navbar } from '../ThemeFolder/Navbar';
-
 export default function createRecipe() {
   const cookingTime = [
     '10-20 mins',
@@ -57,7 +56,6 @@ export default function createRecipe() {
   const [open, setOpen] = useState(false);
   const [success, setSuccess] = useState(false);
   const [previewSource, setPreviewSource] = useState();
-
   // This function takes datapoints as a paramater and assigns target value as key value pairs of an object held in state to create a new recipe
   const handleChangeFor = (propertyName) => (e) => {
     setNewRecipeSubmission((newRecipeSubmission) => ({
@@ -66,11 +64,10 @@ export default function createRecipe() {
       ['author']: `${user.name}`,
     }));
   };
-
   // This function allows the user to post their recipe to the database
   const handleClick = async () => {
     const response = await fetch(
-      'https://craveaway.herokuapp.com/recipes/create/',
+      'http://craveaway.herokuapp.com/recipes/create/',
       {
         method: 'POST',
         body: JSON.stringify(newRecipeSubmission),
@@ -82,12 +79,10 @@ export default function createRecipe() {
     const data = await response.json();
     console.log(data);
   };
-
   // This function allows the user to upload an image from their computer. The image is read and assigned a url string which can be stored in an object.
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     const reader = new FileReader();
-
     reader.readAsDataURL(file);
     reader.onloadend = () => {
       setPreviewSource(reader.result);
@@ -97,11 +92,9 @@ export default function createRecipe() {
       }));
     };
   };
-
   function handleClose() {
     setOpen(!open);
   }
-
   // This function checks if a user has entered a value for the requested datapoints that enable enable them to submit a recipe and allows them to submit the recipe once all requested values have been entered
   const updateImageString = () => {
     if (
@@ -125,7 +118,6 @@ export default function createRecipe() {
       setOpen(true);
     }
   };
-
   if (user) {
     return (
       <div>
@@ -141,7 +133,6 @@ export default function createRecipe() {
           }}
         >
           <Navbar />
-
           {/* TITLE */}
           <Container
             maxWidth="sm"
@@ -150,10 +141,6 @@ export default function createRecipe() {
               marginTop: '40px',
               padding: '24px 24px 24px 24px',
               borderRadius: '8px',
-
-              '& label': {
-                opacity: '55%',
-              },
             }}
           >
             <Box>
@@ -165,12 +152,11 @@ export default function createRecipe() {
                 Create your recipe
               </Typography>
               <Typography sx={{ mb: 1, mt: 4 }}>Recipe Name:</Typography>
-
               <TextField
                 sx={{
                   backgroundColor: '',
-                  borderRadius: '100px',
-                  border: '',
+                  '& > label': { opacity: '70   %' },
+                  '& div': { borderRadius: '8px' },
                 }}
                 variant="outlined"
                 value={newRecipeSubmission.title}
@@ -182,7 +168,6 @@ export default function createRecipe() {
                 label="Required"
                 fullWidth
               />
-
               {/* IMAGE */}
               <Box
                 sx={{
@@ -199,21 +184,27 @@ export default function createRecipe() {
                   backgroundRepeat: 'no-repeat',
                   backgroundPosition: 'center',
                 }}
+              ></Box>
+              <Button
+                variant="contained"
+                component="label"
+                sx={{
+                  marginTop: '8px',
+                  marginBottom: '24px',
+                  marginLeft: '4px',
+                }}
               >
-                <Button variant="text" component="label">
-                  + Upload Image
-                  <input
-                    hidden
-                    accept="image/*"
-                    multiple
-                    type="file"
-                    name="image"
-                    onChange={handleImageChange}
-                    value={newImage}
-                  />
-                </Button>
-              </Box>
-
+                + Upload Image
+                <input
+                  hidden
+                  accept="image/*"
+                  multiple
+                  type="file"
+                  name="image"
+                  onChange={handleImageChange}
+                  value={newImage}
+                />
+              </Button>
               {/* COOKING TIME */}
               <Grid container spacing={3}>
                 <Grid item sm={6} xs={12}>
@@ -222,6 +213,9 @@ export default function createRecipe() {
                     sx={{
                       height: '50px',
                       borderRadius: '8px',
+                      '& > div': {
+                        opacity: '70%',
+                      },
                     }}
                     value={newRecipeSubmission.time}
                     onChange={handleChangeFor('time')}
@@ -239,12 +233,15 @@ export default function createRecipe() {
                     ))}
                   </Select>
                 </Grid>
-
                 {/* SERVES */}
                 <Grid item sm={6} xs={12}>
                   <Typography sx={{ mb: 1, mt: 2 }}>Serves: </Typography>
                   <Select
-                    sx={{ height: '50px', borderRadius: '8px' }}
+                    sx={{
+                      height: '50px',
+                      borderRadius: '8px',
+                      '& > div': { opacity: '70%' },
+                    }}
                     value={newRecipeSubmission.serves}
                     onChange={handleChangeFor('serves')}
                     defaultValue=""
@@ -259,14 +256,17 @@ export default function createRecipe() {
                     ))}
                   </Select>
                 </Grid>
-
                 {/* NUTRITION CATEGORY */}
                 <Grid item sm={6} xs={12}>
                   <Typography sx={{ mb: 1, mt: 2 }} d>
                     Nutrition category:{' '}
                   </Typography>
                   <Select
-                    sx={{ height: '50px', borderRadius: '8px' }}
+                    sx={{
+                      height: '50px',
+                      borderRadius: '8px',
+                      '&  > div': { opacity: '70%' },
+                    }}
                     value={newRecipeSubmission.nutrition}
                     onChange={handleChangeFor('nutrition')}
                     displayEmpty
@@ -281,12 +281,15 @@ export default function createRecipe() {
                     ))}
                   </Select>
                 </Grid>
-
                 {/* PRICE PER SERVING */}
                 <Grid item sm={6} xs={12}>
                   <Typography sx={{ mb: 1, mt: 2 }}>Price: </Typography>
                   <Select
-                    sx={{ height: '50px', borderRadius: '8px' }}
+                    sx={{
+                      height: '50px',
+                      borderRadius: '8px',
+                      '& > div': { opacity: '70%' },
+                    }}
                     value={newRecipeSubmission.cost}
                     onChange={handleChangeFor('cost')}
                     displayEmpty
@@ -302,11 +305,10 @@ export default function createRecipe() {
                   </Select>
                 </Grid>
               </Grid>
-
               {/* INGREDIENTS */}
               <Typography sx={{ mt: 2, mb: 1 }}>Ingredients</Typography>
               <TextField
-                sx={{ borderRadius: '8px' }}
+                sx={{ borderRadius: '8px', '& > label': { opacity: '70%' } }}
                 variant="outlined"
                 value={newRecipeSubmission.ingredients}
                 onChange={handleChangeFor('ingredients')}
@@ -317,11 +319,10 @@ export default function createRecipe() {
                 label="Required"
                 fullWidth
               />
-
               {/* DESCRIPTION */}
               <Typography sx={{ mb: 1, mt: 2 }}>Description</Typography>
               <TextField
-                sx={{ borderRadius: '8px' }}
+                sx={{ borderRadius: '8px', '& > label': { opacity: '70%' } }}
                 variant="outlined"
                 value={newRecipeSubmission.description}
                 onChange={handleChangeFor('description')}
@@ -332,7 +333,6 @@ export default function createRecipe() {
                 label="Required"
                 fullWidth
               />
-
               <Button
                 size="large"
                 variant="contained"
@@ -379,73 +379,48 @@ export default function createRecipe() {
   } else {
     return (
       <>
-        <div>
-          <Navbar />
-          <Box
-            sx={{
-              backgroundImage: 'url(/food_illustration.png)',
-              minHeight: '100vh',
-              paddingBottom: {
-                xs: '0',
-                sm: '40px',
-                md: '40px',
-              },
-            }}
-          >
-            <br></br>
-            <br></br>
-            <Box
+        <Navbar />
+        <Box
+          sx={{
+            backgroundImage: 'url(/food_illustration.png)',
+            minHeight: '100vh',
+            paddingBottom: {
+              xs: '0',
+              sm: '40px',
+              md: '40px',
+            },
+          }}
+        >
+          <Container maxWidth="xs" position="relative">
+            <Paper
               sx={{
-                borderRadius: 7,
-                backgroundColor: 'white',
-                paddingBottom: 8,
-                alignItems: 'center',
+                padding: '40px 32px',
                 display: 'flex',
-                justifyContent: 'center',
-                width: 300,
-                height: 10,
-                m: 'auto',
+                flexDirection: 'column',
+                alignItems: 'center',
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
+                borderRadius: '16px',
+                backgroundColor: '#fdfdfd',
               }}
             >
               <Typography
-                font-align="center"
-                sx={{
-                  fontWeight: '800',
-                  fontSize: 15,
-                  paddingTop: 2,
-                  paddingBottom: 4,
-                  textAlign: 'center',
-                  m: 'auto',
-                  alignItems: 'center',
-                  display: 'flex',
-                  justifyContent: 'center',
-                }}
+                variant="h6"
+                sx={{ textAlign: 'center', fontWeight: '600' }}
               >
                 You must login to create a recipe!
               </Typography>
-            </Box>
-            <>
-              <Box
-                sx={{
-                  backgroundColor: 'white',
-                  borderRadius: 1000,
-                  display: 'flex',
-                  width: '33%',
-                  m: 'auto',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                }}
-              >
-                <img
-                  alt="Loading..."
-                  className="fryingpan"
-                  margin="auto"
-                  width="400"
-                  height="250"
-                  data-id="14475354"
-                  data-animated-url="https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif"
-                  skip_resize="false"
-                  srcset="https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 320w,
+              <img
+                alt="Loading..."
+                className="fryingpan"
+                width="220"
+                height="220"
+                data-id="14475354"
+                data-animated-url="https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif"
+                skip_resize="false"
+                srcset="https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 320w,
   https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 400w,
   https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 450w,
   https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 640w,
@@ -456,43 +431,25 @@ export default function createRecipe() {
   https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 1200w,
   https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 768w,
   https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 1600w"
-                  sizes="(max-width: 919px) 100vw, max(768px, 98vh)"
-                  src="https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif"
-                ></img>
-              </Box>
-            </>
-            <Box
-              sx={{
-                backgroundColor: 'white',
-                borderRadius: 10,
-                paddingBottom: 3,
-                paddingTop: 3,
-                alignItems: 'center',
-                display: 'flex',
-                justifyContent: 'center',
-                width: '18%',
-                m: 'auto',
-              }}
-            >
+                sizes="(max-width: 919px) 100vw, max(768px, 98vh)"
+                src="https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif"
+              />
               <Link href="/api/auth/login" passHref>
                 <Button
                   variant="contained"
+                  size="large"
                   className="fixedLoginButton"
                   sx={{
-                    fontWeight: '900',
-                    marginTop: 15,
-                    alignItems: 'center',
-                    display: 'flex',
-                    justifyContent: 'center',
-                    m: 'auto',
+                    fontWeight: '600',
+                    marginTop: '32px',
                   }}
                 >
                   Login
                 </Button>
               </Link>
-            </Box>
-          </Box>
-        </div>
+            </Paper>
+          </Container>
+        </Box>
       </>
     );
   }

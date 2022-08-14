@@ -6,7 +6,7 @@ import { Container } from '@mui/system';
 import Categories from '../ThemeFolder/Categories';
 import { Hero } from '../ThemeFolder/Hero';
 import Cards from '../ThemeFolder/Cards';
-import { Box, Hidden, Typography } from '@mui/material';
+import { Box, Button, Hidden, Typography } from '@mui/material';
 import AddRecipeButton from '../ThemeFolder/AddRecipeButton';
 import { useState } from 'react';
 import Input from '../ThemeFolder/Input';
@@ -44,10 +44,13 @@ export default function Home({ payload }) {
     );
     setFiltered(filter);
     setRecipeTypography(true);
+    // setLimit(payload.length);
   }
 
   function getAllRecipes() {
-    setLimit(null);
+    setLimit(payload.length);
+    setFiltered(payload);
+    console.log(payload.length);
   }
 
   return (
@@ -125,7 +128,7 @@ export default function Home({ payload }) {
             getAllRecipes();
           }}
         >
-          All Recipes
+          View All
         </Typography>
       </Container>
       <Box>

@@ -39,7 +39,8 @@ export default function Home({ payload }) {
       (r) =>
         r.time?.toUpperCase().includes(search.toUpperCase()) ||
         r.author?.toUpperCase().includes(search.toUpperCase()) ||
-        r.title?.toUpperCase().includes(search.toUpperCase())
+        r.title?.toUpperCase().includes(search.toUpperCase()) ||
+        r.nutrition?.toUpperCase().includes(search.toUpperCase())
     );
     setFiltered(filter);
     setRecipeTypography(true);

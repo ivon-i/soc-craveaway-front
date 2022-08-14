@@ -30,6 +30,8 @@ export async function getServerSideProps() {
 export default function Home({ payload }) {
   const [search, setSearch] = useState('');
   const [filtered, setFiltered] = useState(payload);
+  const [limit, setLimit] = useState(5);
+  const [recipeTypography, setRecipeTypography] = useState(false);
 
   // This function filter through payload to check what the user input, in the search bar, agaisnt what it is in the paylaod.
   function filterInput() {
@@ -40,8 +42,13 @@ export default function Home({ payload }) {
         r.title?.toUpperCase().includes(search.toUpperCase())
     );
     setFiltered(filter);
-    console.log(filtered);
+    setRecipeTypography(true);
   }
+
+  function getAllRecipes() {
+    setLimit(null);
+  }
+
   return (
     <div>
       <Head>
@@ -91,14 +98,26 @@ export default function Home({ payload }) {
           marginBottom: '16px',
         }}
       >
-        <Typography
-          variant="h6"
-          sx={{
-            fontWeight: '600',
-          }}
-        >
-          Featured recipes
-        </Typography>
+        {recipeTypography ? (
+          <Typography
+            variant="h6"
+            sx={{
+              fontWeight: '600',
+            }}
+          >
+            Search Results
+          </Typography>
+        ) : (
+          <Typography
+            variant="h6"
+            sx={{
+              fontWeight: '600',
+            }}
+          >
+            Featured recipes
+          </Typography>
+        )}
+
         <Typography
           sx={{ cursor: 'pointer', fontWeight: '600' }}
           onClick={() => {
@@ -129,12 +148,22 @@ export default function Home({ payload }) {
               overflowX: 'auto',
             }}
           >
-            {filtered.length > 0
-              ? filtered.map((item) => {
-                  console.log(item);
-                  return <Cards item={item} />;
-                })
-              : ''}
+            {filtered.length > 0 ? (
+              filtered.slice(0, limit ? limit : filtered.length).map((item) => {
+                console.log(item);
+                return <Cards item={item} />;
+              })
+            ) : (
+              <Typography
+                variant="h6"
+                sx={{
+                  fontWeight: '600',
+                }}
+                color="red"
+              >
+                Sorry, No Results Found
+              </Typography>
+            )}
           </Box>
         </Container>
       </Box>

@@ -22,6 +22,7 @@ import { useUser } from '@auth0/nextjs-auth0';
 
 export default function RecipeCards({ recipedata, separatedingredients }) {
   const [value, setValue] = useState(0);
+  const [ingredientAlert, setIngredientAlert] = useState('');
   const { user } = useUser();
 
   // This function receives the id of the recipecard and allows the user to rate it.
@@ -44,6 +45,10 @@ export default function RecipeCards({ recipedata, separatedingredients }) {
   // This function allows the user to add an ingredient to their shopping list. It posts the user's username and ingredient so it can later on appear on the profile page
   // for that user.
   const getChipInfo = async (e) => {
+    setIngredientAlert(
+      `Added ${e.currentTarget.innerText} to your ShoppingList`
+    );
+    setTimeout(reset_animation, 100);
     const response = await fetch('https://craveaway.herokuapp.com/shop/list', {
       method: 'POST',
       body: JSON.stringify({
@@ -55,9 +60,15 @@ export default function RecipeCards({ recipedata, separatedingredients }) {
       },
     });
     const data = await response.json();
-    alert('This ingredient has been added to your shopping list!');
     console.log(data);
+    console.log(ingredientAlert);
   };
+  function reset_animation() {
+    let el = document.getElementById('fdsss');
+    el.style.animation = 'none';
+    el.offsetHeight; /* trigger reflow */
+    el.style.animation = null;
+  }
 
   return (
     <Container
@@ -258,6 +269,11 @@ export default function RecipeCards({ recipedata, separatedingredients }) {
               </Grid>
             ))}
           </Grid>
+          {ingredientAlert.length > 0 && (
+            <Typography mt="10px" id="fdsss">
+              {ingredientAlert}
+            </Typography>
+          )}
           {/* DESCRIPTION */}
           <Typography
             variant="h6"

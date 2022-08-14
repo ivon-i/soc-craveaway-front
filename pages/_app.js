@@ -6,6 +6,7 @@ import { CacheProvider } from '@emotion/react';
 import theme from '../src/theme';
 import createEmotionCache from '../src/createEmotionCache';
 import { UserProvider } from '@auth0/nextjs-auth0';
+import '../styles/globals.css';
 
 // Client-side cache, shared for the whole session of the user in the browser. - makes the loading faster
 const clientSideEmotionCache = createEmotionCache();

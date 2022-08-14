@@ -269,4 +269,21 @@ textarea {
   margin-left: auto;
   margin-right: auto;
   width: 50%;
-} */
+}
+
+#fdsss {
+  display: flex;
+  justify-content: center;
+  font-size: 16px;
+  color: green;
+  opacity: 1;
+  transform: translateY(1rem);
+  animation: fadeInup 2s ease 1s forwards;
+}
+
+@keyframes fadeInup {
+  to {
+    opacity: 0;
+    transform: translateY(0);
+  }
+}

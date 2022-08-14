@@ -1,34 +1,51 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# CRAVEAWAY
 
-## Getting Started
+An app created by Retro Boomin' for our final 4-week project at [School of Code's](https://www.schoolofcode.co.uk/) Bootcamp (cohort 12). This is our front-end repository. You can check out our back-end [here](https://github.com/SchoolOfCode/final-project_back-end-retro-boomin).
 
-First, run the development server:
+*To view our deployed app, follow [this](https://craveaway.vercel.app/).*
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+## Project details
+### Our problem statement 
+Many people experience food cravings that may not necessairily fit their health needs, creating a need for meal alternatives suited to a wide range of specific nutritional requirements. This is highlighted in our user stories including:
+>as a student, I want to efficiently browse options consisting of junk food alternatives
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+>as a parent, I want to be able to provide a meal that is well balanced and affordable whilst sticking to my children’s specific dietary needs
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+### Our solution
+We took our project from an idea to a full-stack app which enables users to both browse through a collection of recipes and post their own tasty alternatives to a popular food craving, for everyone to enjoy! 
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+### Features
+- **searching** and browsing through all recipes, with or without an account
+- **posting** own recipe, with an account
+- **favouriting** a recipe for later viewing in profile, with an account 
+- adding an ingredient to a **shopping list** located within the user's profile, with an account
+- **responsive design**: Craveaway can be used on both mobile on desktop devices; we worked with a mobile-first approach based on our mentors' advice as a fair amount of mobile users are anticipated for this type of application
 
-## Learn More
+## Project Implementation
 
-To learn more about Next.js, take a look at the following resources:
+### Technology
+The front-end is written in Next.js and deployed to Vercel, with an Express.js server at the back-end deployed to Heroku. Authentication restricts certain features/pages and is handled via Auth0. 
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Organisation
+We managed our workflow using Notion.io and implemented an agile methodology with daily stand ups and retros, as well as continuous deployment. 
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Testing 
+This repository contains a set of Cypress end-to-end tests.
 
-## Deploy on Vercel
+### Challenges 
+As a team, we decided to work with some new technologies, ensuring we were pushing ourselves whilst recognising our limits. As such, we worked with Next.js which took some getting used to, as well as tackled the customisation of Material UI components. When it came to planning and organisation, we quickly learnt we needed to improve our scheduling habits which we managed via regular catch-up sessions on top of the daily stand ups/retros.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Authors 
+- [Stephen Robinson](https://github.com/ONESSR)
+- [Rebecca Tuffnell](https://github.com/rebeccatuffnell)
+- [Rafael Pacheco](https://github.com/RafaPach)
+- [Mabrouka Yaqoob](https://github.com/BrookaY)
+- [Leon Moule](https://github.com/theleonmo)
+- [Ivon Ivanova](https://github.com/ivon-i)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+
+
+
+

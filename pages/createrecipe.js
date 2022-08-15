@@ -56,7 +56,7 @@ export default function createRecipe() {
   const [open, setOpen] = useState(false);
   const [success, setSuccess] = useState(false);
   const [previewSource, setPreviewSource] = useState();
-  // This function takes datapoints as a paramater and assigns target value as key value pairs of an object held in state to create a new recipe
+  // This function takes datapoints as a paramater and assigns target value as key value pairs of an object held in state to create a new recipe.
   const handleChangeFor = (propertyName) => (e) => {
     setNewRecipeSubmission((newRecipeSubmission) => ({
       ...newRecipeSubmission,

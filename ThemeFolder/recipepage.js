@@ -279,7 +279,7 @@ export default function RecipeCards({ recipedata, separatedingredients }) {
             variant="h6"
             sx={{ fontWeight: '600', fontSize: '20px', marginTop: '32px' }}
           >
-            Instrutions / Methods
+            Method
           </Typography>
           <Typography
             sx={{

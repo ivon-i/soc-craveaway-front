@@ -65,7 +65,7 @@ export default function SwipeableTemporaryDrawer() {
             <ListItemButton>
               <ListItemIcon>
                 {index === 0 && (
-                  <HomeIcon
+                  <HomeIcon alt="Home"
                     sx={{
                       color: '#34393C',
                       fontSize: 'xx-large',
@@ -73,7 +73,7 @@ export default function SwipeableTemporaryDrawer() {
                   />
                 )}
                 {index === 1 && (
-                  <AccountCircleIcon
+                  <AccountCircleIcon alt="My Profile"
                     sx={{
                       color: '#34393C',
                       fontSize: 'xx-large',
@@ -81,7 +81,7 @@ export default function SwipeableTemporaryDrawer() {
                   />
                 )}
                 {index === 2 && (
-                  <DinnerDiningIcon
+                  <DinnerDiningIcon alt="Create a recipe"
                     sx={{
                       color: '#34393C',
                       fontSize: 'xx-large',
@@ -114,7 +114,7 @@ export default function SwipeableTemporaryDrawer() {
             <ListItemButton>
               <ListItemIcon>
                 {index === 0 && (
-                  <Login
+                  <Login alt="Login"
                     sx={{
                       color: '#34393C',
                       fontSize: 'xx-large',
@@ -122,7 +122,7 @@ export default function SwipeableTemporaryDrawer() {
                   />
                 )}
                 {index === 1 && (
-                  <PolicyIcon
+                  <PolicyIcon alt="Usage Policy"
                     sx={{
                       color: '#34393C',
                       fontSize: 'xx-large',
@@ -130,7 +130,7 @@ export default function SwipeableTemporaryDrawer() {
                   />
                 )}
                 {index === 2 && (
-                  <PersonAddIcon
+                  <PersonAddIcon alt="Sign up"
                     sx={{
                       color: '#34393C',
                       fontSize: 'xx-large',
@@ -173,7 +173,7 @@ export default function SwipeableTemporaryDrawer() {
             <ListItemButton>
               <ListItemIcon>
                 {index === 0 && (
-                  <HomeIcon
+                  <HomeIcon alt="Home"
                     sx={{
                       color: '#34393C',
                       fontSize: 'xx-large',
@@ -181,7 +181,7 @@ export default function SwipeableTemporaryDrawer() {
                   />
                 )}
                 {index === 1 && (
-                  <AccountCircleIcon
+                  <AccountCircleIcon alt="My Profile"
                     sx={{
                       color: '#34393C',
                       fontSize: 'xx-large',
@@ -189,7 +189,7 @@ export default function SwipeableTemporaryDrawer() {
                   />
                 )}
                 {index === 2 && (
-                  <DinnerDiningIcon
+                  <DinnerDiningIcon alt="Create a recipe"
                     sx={{
                       color: '#34393C',
                       fontSize: 'xx-large',
@@ -219,7 +219,7 @@ export default function SwipeableTemporaryDrawer() {
             <ListItemButton>
               <ListItemIcon>
                 {index === 0 && (
-                  <Logout
+                  <Logout alt="Logout"
                     sx={{
                       color: '#34393C',
                       fontSize: 'xx-large',
@@ -227,7 +227,7 @@ export default function SwipeableTemporaryDrawer() {
                   />
                 )}
                 {index === 1 && (
-                  <PolicyIcon
+                  <PolicyIcon alt="Usage Policy"
                     sx={{
                       color: '#34393C',
                       fontSize: 'xx-large',
@@ -275,6 +275,7 @@ export default function SwipeableTemporaryDrawer() {
           <React.Fragment key={anchor}>
             <HiMenu
               className="burger-menu"
+              alt="menu"
               fontSize="32px"
               color="#34393C"
               onClick={toggleDrawer(anchor, true)}

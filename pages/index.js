@@ -58,7 +58,7 @@ export default function Home({ payload }) {
       <Head>
         <title> Craveaway </title>
         <meta name="description" content="Craveaway App" />
-        <link rel="icon" href="/craveawayicon.svg" />
+        <link rel="icon" href="/craveawayicon.svg" alt="Craveaway logo" />
       </Head>
       <Navbar
         searchInput={search}

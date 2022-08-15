@@ -20,7 +20,7 @@ export const Navbar = ({ searchInput, setSearchInput, trigger }) => {
               sx={{ cursor: 'pointer', display: 'flex', alignItems: 'center' }}
             >
               <Link href="/">
-                <Image src={logoNewCaps} width={220} height={48} />
+                <Image src={logoNewCaps} width={220} height={48} alt="Craveaway home"/>
               </Link>
             </Box>
             <Hidden mdDown>

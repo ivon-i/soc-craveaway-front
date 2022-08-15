@@ -1,4 +1,5 @@
 # CRAVEAWAY
+![CraveAwayResponsiveMockup2](https://user-images.githubusercontent.com/103297403/184603518-3e3aed28-9a41-467c-8e6c-953676e17df9.jpg)
 
 An app created by Retro Boomin' for our final 4-week project at [School of Code's](https://www.schoolofcode.co.uk/) Bootcamp (cohort 12). This is our front-end repository. You can check out our back-end [here](https://github.com/SchoolOfCode/final-project_back-end-retro-boomin).
 

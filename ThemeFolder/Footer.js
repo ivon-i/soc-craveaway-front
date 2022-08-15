@@ -36,12 +36,12 @@ export default function Footer() {
             <Grid item xs={12} sm={4}>
             <Box borderBottom={1} sx={{ fontWeight: '500'}}>Account</Box>
               <Box>
-                <Link href="/" color="inherit">
+                <Link href="/api/auth/login" color="inherit">
                   Login
                 </Link>
               </Box>
               <Box>
-                <Link href="/" color="inherit">
+                <Link href="/api/auth/login" color="inherit">
                   Sign up
                 </Link>
               </Box>

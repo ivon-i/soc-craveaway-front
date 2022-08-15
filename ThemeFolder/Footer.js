@@ -2,6 +2,7 @@ import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Link from '@mui/material/Link';
+import { Typography } from '@mui/material';
 
 export default function Footer() {
   return (
@@ -9,13 +10,18 @@ export default function Footer() {
       <Box
         px={{ xs: 3, sm: 10 }}
         py={{ xs: 5, sm: 10 }}
-        bgcolor="#FCC62E"
+        bgcolor="#34393C"
         color="white"
       >
         <Container maxWidth="lg">
           <Grid container spacing={5}>
             <Grid item xs={12} sm={4}>
-              <Box borderBottom={1}>Help</Box>
+            <Box borderBottom={1} sx={{ fontWeight: '500'}}>Company</Box>
+              <Box>
+                <Link href="/" color="inherit">
+                  About us
+                </Link>
+              </Box>
               <Box>
                 <Link href="/" color="inherit">
                   Contact
@@ -26,14 +32,9 @@ export default function Footer() {
                   Support
                 </Link>
               </Box>
-              <Box>
-                <Link href="/" color="inherit">
-                  Privacy
-                </Link>
-              </Box>
             </Grid>
             <Grid item xs={12} sm={4}>
-              <Box borderBottom={1}>Account</Box>
+            <Box borderBottom={1} sx={{ fontWeight: '500'}}>Account</Box>
               <Box>
                 <Link href="/" color="inherit">
                   Login
@@ -41,25 +42,25 @@ export default function Footer() {
               </Box>
               <Box>
                 <Link href="/" color="inherit">
-                  Register
+                  Sign up
                 </Link>
               </Box>
             </Grid>
             <Grid item xs={12} sm={4}>
-              <Box borderBottom={1}>Messages</Box>
+            <Box borderBottom={1} sx={{ fontWeight: '500'}}>Policies</Box>
               <Box>
                 <Link href="/" color="inherit">
-                  Backup
+                  Terms & Conditions
                 </Link>
               </Box>
               <Box>
                 <Link href="/" color="inherit">
-                  History
+                  Privacy Policy
                 </Link>
               </Box>
               <Box>
                 <Link href="/" color="inherit">
-                  Roll
+                  Usage Policy
                 </Link>
               </Box>
             </Grid>

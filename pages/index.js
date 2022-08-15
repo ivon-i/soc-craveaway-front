@@ -58,7 +58,7 @@ export default function Home({ payload }) {
       <Head>
         <title> Craveaway </title>
         <meta name="description" content="Craveaway App" />
-        <link rel="icon" href="/craveawayicon.svg" />
+        <link rel="icon" href="/craveawayicon.svg" alt="Craveaway logo" />
       </Head>
       <Navbar
         searchInput={search}
@@ -154,7 +154,9 @@ export default function Home({ payload }) {
           >
             {filtered.length > 0 ? (
               filtered.slice(0, limit ? limit : filtered.length).map((item) => {
-                console.log(item);
+                {
+                  /* console.log(item); */
+                }
                 return <Cards item={item} />;
               })
             ) : (
@@ -186,6 +188,7 @@ export default function Home({ payload }) {
           }}
         >
           <AddRecipeButton
+            aria-label="Create Recipe"
             component="button"
             variant="contained"
             size="large"

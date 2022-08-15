@@ -107,7 +107,7 @@ export default function RecipeCards({ recipedata, separatedingredients }) {
             >
               Creator:
             </Typography>
-            <AccountCircleIcon sx={{ width: '16px', height: '16px' }} />
+            <AccountCircleIcon sx={{ width: '16px', height: '16px' }} alt="creator" />
             <Typography sx={{ margin: '-8px', fontSize: '14px' }}>
               {' '}
               {item.author}
@@ -121,7 +121,7 @@ export default function RecipeCards({ recipedata, separatedingredients }) {
             position="relative"
             overflow="hidden"
           >
-            <Image src={item.image_url} layout="fill" objectFit="cover" />
+            <Image src={item.image_url} layout="fill" objectFit="cover" alt={item.title} />
             <Chip
               color="success"
               label={item.nutrition}
@@ -138,7 +138,7 @@ export default function RecipeCards({ recipedata, separatedingredients }) {
               <Chip
                 label={`${item.rating} ${'Stars'}`}
                 icon={
-                  <GradeIcon
+                  <GradeIcon alt="rating out of 5"
                     style={{
                       color: '#FCC62E',
                       backgroundColor: '#34393C',
@@ -162,7 +162,7 @@ export default function RecipeCards({ recipedata, separatedingredients }) {
               <Chip
                 label={`${item.time}`}
                 icon={
-                  <AccessTimeIcon
+                  <AccessTimeIcon alt="cooking time"
                     style={{
                       color: '#FCC62E',
                       backgroundColor: '#34393C',
@@ -187,7 +187,7 @@ export default function RecipeCards({ recipedata, separatedingredients }) {
               <Chip
                 label={`${item.serves} Servings`}
                 icon={
-                  <PeopleIcon
+                  <PeopleIcon alt="servings"
                     style={{
                       color: '#FCC62E',
                       backgroundColor: '#34393C',
@@ -211,7 +211,7 @@ export default function RecipeCards({ recipedata, separatedingredients }) {
               <Chip
                 label={`${item.cost}`}
                 icon={
-                  <PaymentIcon
+                  <PaymentIcon alt="cost of ingredients"
                     style={{
                       color: '#FCC62E',
                       backgroundColor: '#34393C',

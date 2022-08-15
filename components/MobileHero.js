@@ -15,7 +15,7 @@ function MobileHero() {
         height: '170px',
       }}
     >
-      <Image src="/goodFood.svg" layout="fill" objectFit="contain" />
+      <Image src="/goodFood.svg" alt="Search and create healthy alternatives to fast food" layout="fill" objectFit="contain" />
     </Box>
   );
 }

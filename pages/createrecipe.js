@@ -186,6 +186,7 @@ export default function createRecipe() {
                 }}
               ></Box>
               <Button
+                aria-label="Upload Image"
                 variant="contained"
                 component="label"
                 sx={{
@@ -334,6 +335,7 @@ export default function createRecipe() {
                 fullWidth
               />
               <Button
+                aria-label="Submit Recipe"
                 size="large"
                 variant="contained"
                 className="submitRecipeButton"

@@ -339,6 +339,7 @@ export default function Profile() {
               >
                 <Link href="/api/auth/login" passHref>
                   <Button
+                    aria-label="Login"
                     variant="contained"
                     className="fixedLoginButton"
                     sx={{

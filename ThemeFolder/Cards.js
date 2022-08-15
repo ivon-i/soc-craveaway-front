@@ -53,7 +53,7 @@ const Cards = ({ item }) => {
             backgroundColor: '#34393C',
           }}
         >
-          <Image src={item.image_url} layout="fill" objectFit="cover" />
+          <Image src={item.image_url} alt={item.title} layout="fill" objectFit="cover" />
           <Chip
             color="success"
             label={item.nutrition}

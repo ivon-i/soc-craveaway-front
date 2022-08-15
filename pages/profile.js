@@ -67,7 +67,7 @@ export default function Profile() {
   const handleDeleteShopList = async (id) => {
     try {
       const response = await fetch(
-        `http://craveaway.herokuapp.com/shop/${id}`,
+        `https://craveaway.herokuapp.com/shop/${id}`,
         {
           method: 'DELETE',
           headers: {

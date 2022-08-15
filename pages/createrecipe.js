@@ -67,7 +67,7 @@ export default function createRecipe() {
   // This function allows the user to post their recipe to the database
   const handleClick = async () => {
     const response = await fetch(
-      'http://craveaway.herokuapp.com/recipes/create/',
+      'https://craveaway.herokuapp.com/recipes/create/',
       {
         method: 'POST',
         body: JSON.stringify(newRecipeSubmission),

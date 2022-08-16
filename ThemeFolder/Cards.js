@@ -22,10 +22,12 @@ const Cards = ({ item }) => {
   //It posts the user's username and recipe data so it can later on appear on the profile page for that user.
   //It also checks if the data.payload is true, if so the heart icon will be desabled for that card. This logic can be found on lines 66-106.
 
-  async function HeartFav(cardInfo) {
+  async function HeartFav(cardInfo, x) {
+    console.log(cardInfo);
+    console.log(x);
     let array = [cardInfo];
     const favCardInfo = array.map((object) => {
-      return { ...object, userName: `${user.name}` };
+      return { ...object, image_url: x, userName: `${user.name}` };
     });
     const response = await fetch(
       'https://craveaway.herokuapp.com/fav/create/',
@@ -38,14 +40,16 @@ const Cards = ({ item }) => {
       }
     );
     const data = await response.json();
-    console.log(data);
+    console.log('INFOOOO', favCardInfo[0]);
     if (data.payload === true) {
       setFavExists(data.payload);
     }
   }
   return (
     <div>
-      <Paper sx={{ overflow: 'hidden', borderRadius: '16px' }}>
+      <Paper
+        sx={{ overflow: 'hidden', borderRadius: '16px', maxWidth: '277px' }}
+      >
         <Box
           sx={{
             height: '200px',
@@ -53,7 +57,12 @@ const Cards = ({ item }) => {
             backgroundColor: '#34393C',
           }}
         >
-          <Image src={item.image_url} alt={item.title} layout="fill" objectFit="cover" />
+          <Image
+            src={item.image_url}
+            alt={item.title}
+            layout="fill"
+            objectFit="cover"
+          />
           <Chip
             color="success"
             label={item.nutrition}
@@ -67,7 +76,7 @@ const Cards = ({ item }) => {
           {favExists ? (
             <IconButton
               onClick={() => {
-                HeartFav(item);
+                HeartFav(item, item.image_url);
               }}
               sx={{
                 zIndex: 101,
@@ -87,7 +96,7 @@ const Cards = ({ item }) => {
           ) : (
             <IconButton
               onClick={() => {
-                HeartFav(item);
+                HeartFav(item, item.image_url);
               }}
               sx={{
                 zIndex: 101,

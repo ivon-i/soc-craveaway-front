@@ -31,7 +31,7 @@ export async function getServerSideProps() {
 export default function Home({ payload }) {
   const [search, setSearch] = useState('');
   const [filtered, setFiltered] = useState(payload);
-  const [limit, setLimit] = useState(5);
+  const [limit, setLimit] = useState(4);
   const [recipeTypography, setRecipeTypography] = useState(false);
 
   // This function filter through payload to check what the user input, in the search bar, agaisnt what it is in the paylaod.
@@ -67,7 +67,7 @@ export default function Home({ payload }) {
         trigger={filterInput}
       />
       <Hidden mdUp>
-        <Container maxWidth="lg">
+        <Container maxWidth="sm">
           <Input
             sx={{ mt: '24px' }}
             searchInput={search}
@@ -124,7 +124,7 @@ export default function Home({ payload }) {
         )}
 
         <Typography
-          sx={{ cursor: 'pointer', fontWeight: '600' }}
+          sx={{ cursor: 'pointer', fontWeight: '500' }}
           onClick={() => {
             getAllRecipes();
           }}

@@ -100,7 +100,7 @@ export default function Profile() {
           <Navbar />
           <Container
             maxWidth="md"
-            sx={{ marginBottom: '88px', marginTop: '40px' }}
+            sx={{ paddingBottom: '88px', marginTop: '40px' }}
           >
             <Paper sx={{ padding: '32px 0px' }}>
               <Box ml="15px">
@@ -206,9 +206,13 @@ export default function Profile() {
                       <Typography fontWeight={700}>Add smt</Typography>
                     )
                   : null}
-                <Grid container spacing={2} sx={{ padding: '16px' }}>
+                <Grid
+                  container
+                  spacing={2}
+                  sx={{ padding: '16px', justifyContent: 'space-between' }}
+                >
                   {chipData.map((item) => (
-                    <Grid item xs={6} sm={4} md={3}>
+                    <Grid item>
                       <Chip
                         key={item.item_id}
                         variant="outlined"

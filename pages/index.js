@@ -66,7 +66,7 @@ export default function Home({ payload }) {
         trigger={filterInput}
       />
       <Hidden mdUp>
-        <Container maxWidth="lg">
+        <Container maxWidth="sm">
           <Input
             sx={{ mt: '24px' }}
             searchInput={search}
@@ -123,7 +123,7 @@ export default function Home({ payload }) {
         )}
 
         <Typography
-          sx={{ cursor: 'pointer', fontWeight: '600' }}
+          sx={{ cursor: 'pointer', fontWeight: '500' }}
           onClick={() => {
             getAllRecipes();
           }}

@@ -105,32 +105,12 @@ export default function SwipeableTemporaryDrawer() {
           <Link href="/api/auth/login" passHref>
             <Typography variant="body1">Login</Typography>
           </Link>,
-          'Usage Policy',
-          <Link href="/api/auth/login" passHref>
-            <Typography variant="body1">Sign Up</Typography>
-          </Link>,
         ].map((text, index) => (
           <ListItem key={text} disablePadding>
             <ListItemButton>
               <ListItemIcon>
                 {index === 0 && (
                   <Login alt="Login"
-                    sx={{
-                      color: '#34393C',
-                      fontSize: 'xx-large',
-                    }}
-                  />
-                )}
-                {index === 1 && (
-                  <PolicyIcon alt="Usage Policy"
-                    sx={{
-                      color: '#34393C',
-                      fontSize: 'xx-large',
-                    }}
-                  />
-                )}
-                {index === 2 && (
-                  <PersonAddIcon alt="Sign up"
                     sx={{
                       color: '#34393C',
                       fontSize: 'xx-large',
@@ -220,14 +200,6 @@ export default function SwipeableTemporaryDrawer() {
               <ListItemIcon>
                 {index === 0 && (
                   <Logout alt="Logout"
-                    sx={{
-                      color: '#34393C',
-                      fontSize: 'xx-large',
-                    }}
-                  />
-                )}
-                {index === 1 && (
-                  <PolicyIcon alt="Usage Policy"
                     sx={{
                       color: '#34393C',
                       fontSize: 'xx-large',

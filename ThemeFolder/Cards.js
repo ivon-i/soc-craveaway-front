@@ -40,14 +40,16 @@ const Cards = ({ item }) => {
       }
     );
     const data = await response.json();
-    console.log(data);
+    console.log('INFOOOO', favCardInfo[0]);
     if (data.payload === true) {
       setFavExists(data.payload);
     }
   }
   return (
     <div>
-      <Paper sx={{ overflow: 'hidden', borderRadius: '16px' }}>
+      <Paper
+        sx={{ overflow: 'hidden', borderRadius: '16px', maxWidth: '277px' }}
+      >
         <Box
           sx={{
             height: '200px',
@@ -55,7 +57,12 @@ const Cards = ({ item }) => {
             backgroundColor: '#34393C',
           }}
         >
-          <Image src={item.image_url} alt={item.title} layout="fill" objectFit="cover" />
+          <Image
+            src={item.image_url}
+            alt={item.title}
+            layout="fill"
+            objectFit="cover"
+          />
           <Chip
             color="success"
             label={item.nutrition}

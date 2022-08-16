@@ -14,13 +14,19 @@ export const Navbar = ({ searchInput, setSearchInput, trigger }) => {
           <Toolbar
             sx={{
               justifyContent: 'space-between',
+              '& >div': { paddingLeft: '0px', paddingRight: '0px' },
             }}
           >
             <Box
               sx={{ cursor: 'pointer', display: 'flex', alignItems: 'center' }}
             >
               <Link href="/">
-                <Image src={logoNewCaps} width={220} height={48} alt="Craveaway home"/>
+                <Image
+                  src={logoNewCaps}
+                  width={220}
+                  height={48}
+                  alt="Craveaway home"
+                />
               </Link>
             </Box>
             <Hidden mdDown>

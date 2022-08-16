@@ -46,7 +46,7 @@ export default function Profile() {
       const data = await response.json();
       const { payload } = data;
       setFavCard(payload);
-      console.log(favCard);
+      console.log('favCard', favCard);
     }
     try {
       fetchShoppingList();

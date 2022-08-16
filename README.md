@@ -7,7 +7,7 @@ An app created by Retro Boomin' for our final 4-week project at [School of Code'
 
 ## Project details
 ### Our problem statement 
-How can we provide alternatives to people's favourite foods, that are compatible with their individual nutritional requirements, to help them live better lives? This is highlighted in our user stories including:
+How can we provide alternatives to people's favourite foods, that are compatible with their individual dietary preferences, to help them live better lives? This is highlighted in our user stories including:
 >as a student, I want to efficiently browse options consisting of junk food alternatives
 
 >as a parent, I want to be able to provide a meal that is well balanced and affordable whilst sticking to my children’s specific dietary needs

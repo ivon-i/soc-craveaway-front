@@ -82,8 +82,8 @@ export default function createRecipe() {
   const handleClick = async () => {
     console.log('newRecipeSubmission', newRecipeSubmission);
     const response = await fetch(
-      // 'https://craveaway.herokuapp.com/recipes/create/',
-      'http://localhost:3001/recipes/create/',
+      'https://craveaway.herokuapp.com/recipes/create/',
+      // 'http://localhost:3001/recipes/create/',
       {
         method: 'POST',
         body: JSON.stringify(newRecipeSubmission),

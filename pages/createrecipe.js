@@ -380,7 +380,6 @@ export default function createRecipe() {
                 aria-label="Submit Recipe"
                 size="large"
                 variant="contained"
-                className="submitRecipeButton"
                 onClick={updateImageString}
                 sx={{
                   borderRadius: '40px',

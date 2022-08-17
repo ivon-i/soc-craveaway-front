@@ -78,7 +78,7 @@ export default function createRecipe() {
       ['author']: `${user.name}`,
     }));
   };
-  // This function allows the user to post their recipe to the database
+  // This function allows the user to post their recipe to the database.
   const handleClick = async () => {
     console.log('newRecipeSubmission', newRecipeSubmission);
     const response = await fetch(

@@ -38,7 +38,19 @@ export default function createRecipe() {
     'Low-sodium',
     'Low-carb',
   ];
+
+  const categories = [
+    'Pizza',
+    'Burgers',
+    'Chinese',
+    'Fried',
+    'BBQ',
+    'Dessert',
+    'Drinks',
+  ];
+
   const { user } = useUser();
+
   const newRecipe = {
     title: '',
     author: '',
@@ -46,11 +58,13 @@ export default function createRecipe() {
     time: '',
     cost: '',
     nutrition: '',
+    categories: '',
     ingredients: '',
     image: 'hi',
     serves: '',
     imagestring: '',
   };
+
   const [newRecipeSubmission, setNewRecipeSubmission] = useState(newRecipe);
   const [newImage, setNewImage] = useState('');
   const [open, setOpen] = useState(false);
@@ -66,8 +80,10 @@ export default function createRecipe() {
   };
   // This function allows the user to post their recipe to the database
   const handleClick = async () => {
+    console.log('newRecipeSubmission', newRecipeSubmission);
     const response = await fetch(
-      'https://craveaway.herokuapp.com/recipes/create/',
+      // 'https://craveaway.herokuapp.com/recipes/create/',
+      'http://localhost:3001/recipes/create/',
       {
         method: 'POST',
         body: JSON.stringify(newRecipeSubmission),
@@ -77,7 +93,7 @@ export default function createRecipe() {
       }
     );
     const data = await response.json();
-    console.log(data);
+    console.log('data', data);
   };
   // This function allows the user to upload an image from their computer. The image is read and assigned a url string which can be stored in an object.
   const handleImageChange = (e) => {
@@ -104,6 +120,7 @@ export default function createRecipe() {
       newRecipeSubmission.time === newRecipe.time ||
       newRecipeSubmission.cost === newRecipe.cost ||
       newRecipeSubmission.nutrition === newRecipe.nutrition ||
+      newRecipeSubmission.categories === newRecipe.categories ||
       newRecipeSubmission.ingredients === newRecipe.ingredients ||
       newRecipeSubmission.serves === newRecipe.serves ||
       newRecipeSubmission.imagestring === newRecipe.imagestring
@@ -301,6 +318,31 @@ export default function createRecipe() {
                     fullWidth
                   >
                     {price.map((item) => (
+                      <MenuItem value={item}>{item}</MenuItem>
+                    ))}
+                  </Select>
+                </Grid>
+                {/*CATEGORIES */}
+                <Grid item sm={6} xs={12}>
+                  <Typography sx={{ mb: 1, mt: 2 }} d>
+                    Healthy alternative for:{' '}
+                  </Typography>
+                  <Select
+                    sx={{
+                      height: '50px',
+                      borderRadius: '8px',
+                      '&  > div': { opacity: '70%' },
+                    }}
+                    value={newRecipeSubmission.categories}
+                    onChange={handleChangeFor('categories')}
+                    displayEmpty
+                    defaultValue=""
+                    renderValue={(value) =>
+                      value !== '' ? value : 'Required*'
+                    }
+                    fullWidth
+                  >
+                    {categories.map((item) => (
                       <MenuItem value={item}>{item}</MenuItem>
                     ))}
                   </Select>

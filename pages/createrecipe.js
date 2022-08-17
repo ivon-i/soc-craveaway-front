@@ -111,7 +111,7 @@ export default function createRecipe() {
   function handleClose() {
     setOpen(!open);
   }
-  // This function checks if a user has entered a value for the requested datapoints that enable enable them to submit a recipe and allows them to submit the recipe once all requested values have been entered
+  // This function checks if a user has entered a value for the requested datapoints that enable enable them to submit a recipe and allows them to submit the recipe once all requested values have been entered.
   const updateImageString = () => {
     if (
       newRecipeSubmission.title === newRecipe.title ||

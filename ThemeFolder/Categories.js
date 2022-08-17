@@ -74,7 +74,12 @@ const Categories = ({ filterCategoryRecipe }) => {
                 component="button"
                 label={`${emoji} ${name}`}
                 variant="outlined"
-                sx={{ cursor: 'pointer' }}
+                sx={{
+                  cursor: 'pointer',
+                  borderRadius: '40px',
+                  padding: '20px 8px',
+                  fontSize: '16px',
+                }}
                 onClick={() => filterCategoryRecipe(name)}
               />
             );

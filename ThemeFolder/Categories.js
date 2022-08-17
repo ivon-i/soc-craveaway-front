@@ -13,8 +13,8 @@ const Categories = ({ filterCategoryRecipe }) => {
       emoji: '🍔 ',
     },
     {
-      name: 'Chinese',
-      emoji: '🥡',
+      name: 'Pasta',
+      emoji: '🍝',
     },
     {
       name: 'Fried',

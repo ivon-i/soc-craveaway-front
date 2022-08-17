@@ -19,6 +19,7 @@ import Footer from '../ThemeFolder/Footer';
 export async function getServerSideProps() {
   try {
     const response = await fetch(`https://craveaway.herokuapp.com/recipes`);
+    // const response = await fetch(`http://localhost:3001/recipes`);
     const data = await response.json();
     const { payload } = data;
     const avg = data.average;
@@ -33,6 +34,12 @@ export default function Home({ payload }) {
   const [filtered, setFiltered] = useState(payload);
   const [limit, setLimit] = useState(4);
   const [recipeTypography, setRecipeTypography] = useState(false);
+
+  const filterCategoryRecipe = (name) => {
+    const newRecipes = payload.filter((recipe) => recipe.categories === name);
+    console.log(newRecipes);
+    setFiltered(newRecipes);
+  };
 
   // This function filter through payload to check what the user input, in the search bar, agaisnt what it is in the paylaod.
   function filterInput() {
@@ -82,7 +89,7 @@ export default function Home({ payload }) {
         </Hidden>
       </Box>
       {/* </Box> */}
-      <Categories />
+      <Categories filterCategoryRecipe={filterCategoryRecipe} />
       <Hidden smUp>
         <Container maxWidth="lg">
           <MobileHero />

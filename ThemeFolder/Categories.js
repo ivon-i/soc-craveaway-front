@@ -2,7 +2,37 @@ import { Box, Chip } from '@mui/material';
 import { Container } from '@mui/system';
 import React from 'react';
 
-const Categories = () => {
+const Categories = ({ filterCategoryRecipe }) => {
+  const categories = [
+    {
+      name: 'Pizza',
+      emoji: '🍕',
+    },
+    {
+      name: 'Burgers',
+      emoji: '🍔 ',
+    },
+    {
+      name: 'Chinese',
+      emoji: '🥡',
+    },
+    {
+      name: 'Fried',
+      emoji: '🍗',
+    },
+    {
+      name: 'BBQ',
+      emoji: '🍖',
+    },
+    {
+      name: 'Desserts',
+      emoji: '🍰',
+    },
+    {
+      name: 'Drinks',
+      emoji: '🥤',
+    },
+  ];
   return (
     <>
       <Container
@@ -38,13 +68,17 @@ const Categories = () => {
             },
           }}
         >
-          <Chip label="🍕 Pizza" variant="outlined" />
-          <Chip label="🍔 Burgers" variant="outlined" />
-          <Chip label="🥡 Chinese" variant="outlined" />
-          <Chip label="🍗 Fried" variant="outlined" />
-          <Chip label="🍖 BBQ" variant="outlined" />
-          <Chip label="🍰 Desserts" variant="outlined" />
-          <Chip label="🥤 Drinks" variant="outlined" />
+          {categories.map(({ name, emoji }) => {
+            return (
+              <Chip
+                component="button"
+                label={`${emoji} ${name}`}
+                variant="outlined"
+                sx={{ cursor: 'pointer' }}
+                onClick={() => filterCategoryRecipe(name)}
+              />
+            );
+          })}
         </Box>
       </Container>
     </>

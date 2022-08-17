@@ -18,7 +18,8 @@ import Footer from '../ThemeFolder/Footer';
 // This function will pre-render the home page on each request using the data returned by getServerSideProps. - In this case "payload" which is the recipe card's content.
 export async function getServerSideProps() {
   try {
-    const response = await fetch(`https://craveaway.herokuapp.com/recipes`);
+    // const response = await fetch(`https://craveaway.herokuapp.com/recipes`);
+    const response = await fetch(`http://localhost:3001/recipes`);
     const data = await response.json();
     const { payload } = data;
     const avg = data.average;
@@ -33,6 +34,12 @@ export default function Home({ payload }) {
   const [filtered, setFiltered] = useState(payload);
   const [limit, setLimit] = useState(5);
   const [recipeTypography, setRecipeTypography] = useState(false);
+
+  const filterCategoryRecipe = (name) => {
+    const newRecipes = payload.filter((recipe) => recipe.category === name);
+    console.log(newRecipes);
+    setFiltered(newRecipes);
+  };
 
   // This function filter through payload to check what the user input, in the search bar, agaisnt what it is in the paylaod.
   function filterInput() {
@@ -82,7 +89,7 @@ export default function Home({ payload }) {
         </Hidden>
       </Box>
       {/* </Box> */}
-      <Categories />
+      <Categories filterCategoryRecipe={filterCategoryRecipe} />
       <Hidden smUp>
         <Container maxWidth="lg">
           <MobileHero />

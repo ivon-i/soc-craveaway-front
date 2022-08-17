@@ -42,7 +42,7 @@ export default function createRecipe() {
   const categories = [
     'Pizza',
     'Burgers',
-    'Chinese',
+    'Pasta',
     'Fried',
     'BBQ',
     'Dessert',

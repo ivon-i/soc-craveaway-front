@@ -1,25 +1,21 @@
 import Head from 'next/head';
-import Image from 'next/image';
-import styles from '../styles/Home.module.css';
-import { Navbar } from '../ThemeFolder/Navbar.js';
+import { Navbar } from '../components/Navbar.js';
 import { Container } from '@mui/system';
-import Categories from '../ThemeFolder/Categories';
-import { Hero } from '../ThemeFolder/Hero';
-import Cards from '../ThemeFolder/Cards';
-import { Box, Button, Hidden, Typography } from '@mui/material';
-import AddRecipeButton from '../ThemeFolder/AddRecipeButton';
+import Categories from '../components/Categories';
+import { Hero } from '../components/Hero';
+import Cards from '../components/Cards';
+import { Box, Hidden, Typography } from '@mui/material';
+import AddRecipeButton from '../components/AddRecipeButton';
 import { useState } from 'react';
-import Input from '../ThemeFolder/Input';
-import Link from 'next/link';
+import Input from '../components/Input';
 import AddIcon from '@mui/icons-material/Add';
 import MobileHero from '../components/MobileHero';
-import Footer from '../ThemeFolder/Footer';
+import Footer from '../components/Footer';
 
-// This function will pre-render the home page on each request using the data returned by getServerSideProps. - In this case "payload" which is the recipe card's content.
+// This function will pre-render the home page on each request using the data returned by getServerSideProps: In this case "payload" which is the recipe card's content.
 export async function getServerSideProps() {
   try {
     const response = await fetch(`https://craveaway.herokuapp.com/recipes`);
-    // const response = await fetch(`http://localhost:3001/recipes`);
     const data = await response.json();
     const { payload } = data;
     const avg = data.average;
@@ -41,7 +37,7 @@ export default function Home({ payload }) {
     setFiltered(newRecipes);
   };
 
-  // This function filter through payload to check what the user input, in the search bar, agaisnt what it is in the paylaod.
+  // This function filters through payload to check what the users search bar input versus what it is in the payload.
   function filterInput() {
     const filter = payload.filter(
       (r) =>
@@ -52,7 +48,6 @@ export default function Home({ payload }) {
     );
     setFiltered(filter);
     setRecipeTypography(true);
-    // setLimit(payload.length);
   }
 
   function getAllRecipes() {
@@ -88,7 +83,6 @@ export default function Home({ payload }) {
           <Hero />
         </Hidden>
       </Box>
-      {/* </Box> */}
       <Categories filterCategoryRecipe={filterCategoryRecipe} />
       <Hidden smUp>
         <Container maxWidth="lg">
@@ -162,9 +156,6 @@ export default function Home({ payload }) {
           >
             {filtered.length > 0 ? (
               filtered.slice(0, limit ? limit : filtered.length).map((item) => {
-                {
-                  /* console.log(item); */
-                }
                 return <Cards item={item} />;
               })
             ) : (

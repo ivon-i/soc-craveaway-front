@@ -1,5 +1,5 @@
-import { Navbar } from '../../ThemeFolder/Navbar';
-import RecipeCards from '../../ThemeFolder/recipepage';
+import { Navbar } from '../../components/Navbar';
+import RecipeCards from '../../components/recipepage';
 import { Box } from '@mui/material';
 
 const Post = ({ data }) => {
@@ -31,10 +31,9 @@ const Post = ({ data }) => {
     </>
   );
 };
-export default Post; // default export for the page and simple export for the server side function below
+export default Post;
 
 export async function getServerSideProps(context) {
-  // simple export
   const response = await fetch(
     `https://craveaway.herokuapp.com/recipes/${context.params.recipeId}`
   );
@@ -42,7 +41,7 @@ export async function getServerSideProps(context) {
   console.log(data);
 
   if (!data.payload.length) {
-    return { notFound: true }; // can also re-direct to homepage or other
+    return { notFound: true };
   }
 
   return {

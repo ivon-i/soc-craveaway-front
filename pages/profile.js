@@ -11,8 +11,8 @@ import {
 } from '@mui/material';
 import { useState, useEffect } from 'react';
 import { Box } from '@mui/system';
-import Cards from '../ThemeFolder/Cards';
-import { Navbar } from '../ThemeFolder/Navbar';
+import Cards from '../components/Cards';
+import { Navbar } from '../components/Navbar';
 
 export default function Profile() {
   const { user, error, isLoading } = useUser();
@@ -23,8 +23,7 @@ export default function Profile() {
   const [shopEmp, setShopEmp] = useState(false);
   const [userName, setUserName] = useState('');
 
-  // This function fetches ingredients based on a users profile.
-  // This function will run everytime 'state' changes.
+  // This function fetches ingredients based on a users profile. It will run everytime 'state' changes.
   useEffect(() => {
     async function fetchShoppingList() {
       if (user) {
@@ -38,7 +37,7 @@ export default function Profile() {
       }
     }
 
-    // This function get the recipes of the user for their profile.
+    // This function gets the recipes of the user for their profile.
     async function fetchFavouritedRecipes() {
       const response = await fetch(
         `https://craveaway.herokuapp.com/fav?userName=${user.name}`
@@ -63,7 +62,7 @@ export default function Profile() {
     console.info(e.currentTarget.innerText);
   };
 
-  // This function deltes an ingredient in the users shopping list by the ingredient id
+  // This function deletes an ingredient in the users shopping list by the ingredient id
   const handleDeleteShopList = async (id) => {
     try {
       const response = await fetch(
@@ -246,73 +245,52 @@ export default function Profile() {
     return (
       <>
         {
-          <div>
+          <>
             <Navbar />
             <Box
               sx={{
                 backgroundImage: 'url(/food_illustration.png)',
                 minHeight: '100vh',
-                paddingBottom: {
-                  xs: '0',
-                  sm: '40px',
-                  md: '40px',
-                },
               }}
             >
-              <br></br>
-              <br></br>
-              <Box
-                sx={{
-                  borderRadius: 7,
-                  backgroundColor: 'white',
-                  paddingBottom: 8,
-                  alignItems: 'center',
-                  display: 'flex',
-                  justifyContent: 'center',
-                  width: 300,
-                  height: 10,
-                  m: 'auto',
-                }}
-              >
-                <Typography
-                  font-align="center"
+              <Container maxWidth="xs" sx={{ paddingTop: '40px' }}>
+                <Paper
                   sx={{
-                    fontWeight: '800',
-                    fontSize: 15,
-                    paddingTop: 2,
-                    paddingBottom: 4,
+                    display: 'flex',
+                    flexDirection: 'column',
                     textAlign: 'center',
-                    m: 'auto',
-                    alignItems: 'center',
-                    display: 'flex',
-                    justifyContent: 'center',
+                    overflow: 'hidden',
+                    padding: '40px 40px',
                   }}
                 >
-                  You must login to access your profile!
-                </Typography>
-              </Box>
-              <>
-                <Box
-                  sx={{
-                    backgroundColor: 'white',
-                    borderRadius: 1000,
-                    display: 'flex',
-                    width: '33%',
-                    m: 'auto',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}
-                >
-                  <img
-                    className="fryingpan"
-                    alt="Loading..."
-                    margin="auto"
-                    width="400"
-                    height="250"
-                    data-id="14475354"
-                    data-animated-url="https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif"
-                    skip_resize="true"
-                    srcset="https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 320w,
+                  <Typography
+                    font-align="center"
+                    sx={{
+                      fontWeight: '700',
+                      fontSize: 16,
+                    }}
+                  >
+                    You must login to access your profile!
+                  </Typography>
+
+                  <Box
+                    sx={{
+                      display: 'flex',
+                      flexDirection: 'column',
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                    }}
+                  >
+                    <img
+                      className="fryingpan"
+                      alt="Loading..."
+                      width="400"
+                      height="250"
+                      margin="auto"
+                      data-id="14475354"
+                      data-animated-url="https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif"
+                      skip_resize="true"
+                      srcset="https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 320w,
             https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 400w,
             https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 450w,
             https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 640w,
@@ -323,44 +301,31 @@ export default function Profile() {
             https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 1200w,
             https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 768w,
             https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 1600w"
-                    sizes="(max-width: 919px) 100vw, max(768px, 98vh)"
-                    src="https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif"
-                  ></img>
-                </Box>
-              </>
-              <Box
-                sx={{
-                  backgroundColor: 'white',
-                  borderRadius: 10,
-                  paddingBottom: 3,
-                  paddingTop: 3,
-                  alignItems: 'center',
-                  display: 'flex',
-                  justifyContent: 'center',
-                  width: '18%',
-                  m: 'auto',
-                }}
-              >
-                <Link href="/api/auth/login" passHref>
-                  <Button
-                    aria-label="Login"
-                    variant="contained"
-                    className="fixedLoginButton"
-                    sx={{
-                      fontWeight: '900',
-                      marginTop: 15,
-                      alignItems: 'center',
-                      display: 'flex',
-                      justifyContent: 'center',
-                      m: 'auto',
-                    }}
-                  >
-                    Login
-                  </Button>
-                </Link>
-              </Box>
+                      sizes="(max-width: 919px) 100vw, max(768px, 98vh)"
+                      src="https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif"
+                    />
+                  </Box>
+
+                  <Link href="/api/auth/login" passHref>
+                    <Button
+                      size="large"
+                      aria-label="Login"
+                      variant="contained"
+                      className="fixedLoginButton"
+                      sx={{
+                        fontWeight: '600',
+                        textTransform: 'capitalize',
+                        borderRadius: '40px',
+                        marginTop: '24px',
+                      }}
+                    >
+                      Login
+                    </Button>
+                  </Link>
+                </Paper>
+              </Container>
             </Box>
-          </div>
+          </>
         }
       </>
     );

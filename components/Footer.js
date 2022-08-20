@@ -2,7 +2,6 @@ import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import Link from '@mui/material/Link';
-import { Typography } from '@mui/material';
 
 export default function Footer() {
   return (
@@ -16,7 +15,9 @@ export default function Footer() {
         <Container maxWidth="lg">
           <Grid container spacing={5}>
             <Grid item xs={12} sm={4}>
-            <Box borderBottom={1} sx={{ fontWeight: '500'}}>Company</Box>
+              <Box borderBottom={1} sx={{ fontWeight: '500' }}>
+                Company
+              </Box>
               <Box>
                 <Link href="/" color="inherit">
                   About us
@@ -34,7 +35,9 @@ export default function Footer() {
               </Box>
             </Grid>
             <Grid item xs={12} sm={4}>
-            <Box borderBottom={1} sx={{ fontWeight: '500'}}>Account</Box>
+              <Box borderBottom={1} sx={{ fontWeight: '500' }}>
+                Account
+              </Box>
               <Box>
                 <Link href="/api/auth/login" color="inherit">
                   Login
@@ -47,7 +50,9 @@ export default function Footer() {
               </Box>
             </Grid>
             <Grid item xs={12} sm={4}>
-            <Box borderBottom={1} sx={{ fontWeight: '500'}}>Policies</Box>
+              <Box borderBottom={1} sx={{ fontWeight: '500' }}>
+                Policies
+              </Box>
               <Box>
                 <Link href="/" color="inherit">
                   Terms & Conditions

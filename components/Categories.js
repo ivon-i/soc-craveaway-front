@@ -53,9 +53,7 @@ const Categories = ({ filterCategoryRecipe }) => {
           justifyContent="space-between"
           sx={{
             overflowX: 'auto',
-            // All the chips except for the last one.
             '& > *:not(:last-child)': { marginRight: '16px' },
-            // All the chips
             '& > div': {
               border: ' 0.75px solid rgba(114, 117, 118, 1)',
               padding: {

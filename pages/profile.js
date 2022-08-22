@@ -11,8 +11,8 @@ import {
 } from '@mui/material';
 import { useState, useEffect } from 'react';
 import { Box } from '@mui/system';
-import Cards from '../components/Cards';
-import { Navbar } from '../components/Navbar';
+import Cards from '../components/Cards.js';
+import { Navbar } from '../components/Navbar.js';
 
 export default function Profile() {
   const { user, error, isLoading } = useUser();

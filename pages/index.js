@@ -1,16 +1,16 @@
 import Head from 'next/head';
 import { Navbar } from '../components/Navbar.js';
 import { Container } from '@mui/system';
-import Categories from '../components/Categories';
-import { Hero } from '../components/Hero';
+import Categories from '../components/Categories.js';
+import { Hero } from '../components/Hero.js';
 import Cards from '../components/Cards';
 import { Box, Hidden, Typography } from '@mui/material';
-import AddRecipeButton from '../components/AddRecipeButton';
+import AddRecipeButton from '../components/AddRecipeButton.js';
 import { useState } from 'react';
-import Input from '../components/Input';
+import Input from '../components/Input.js';
 import AddIcon from '@mui/icons-material/Add';
-import MobileHero from '../components/MobileHero';
-import Footer from '../components/Footer';
+import MobileHero from '../components/MobileHero.js';
+import Footer from '../components/Footer.js';
 
 //This function will pre-render the home page on each request using the data returned by getServerSideProps: In this case "payload" which is the recipe card's content.
 export async function getServerSideProps() {

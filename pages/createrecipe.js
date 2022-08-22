@@ -15,7 +15,7 @@ import {
 import { useState } from 'react';
 import SendIcon from '@mui/icons-material/Send';
 import { useUser } from '@auth0/nextjs-auth0';
-import { Navbar } from '../components/Navbar.js';
+import { Navbar } from '../components/navbar.js';
 import { display } from '@mui/system';
 export default function createRecipe() {
   const cookingTime = [

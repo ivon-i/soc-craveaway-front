@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import { Navbar } from '../components/Navbar.js';
+import { Navbar } from "../components/navbar.js";
 import { Container } from '@mui/system';
 import Categories from '../components/Categories.js';
 import { Hero } from '../components/Hero.js';

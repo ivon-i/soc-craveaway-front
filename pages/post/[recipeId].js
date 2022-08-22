@@ -1,4 +1,4 @@
-import { Navbar } from '../../components/Navbar.js';
+import { Navbar } from '../../components/navbar.js';
 import RecipeCards from '../../components/recipepage';
 import { Box } from '@mui/material';
 

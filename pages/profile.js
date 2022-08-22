@@ -12,7 +12,7 @@ import {
 import { useState, useEffect } from 'react';
 import { Box } from '@mui/system';
 import Cards from '../components/Cards.js';
-import { Navbar } from '../components/Navbar.js';
+import { Navbar } from '../components/navbar.js';
 
 export default function Profile() {
   const { user, error, isLoading } = useUser();

@@ -12,7 +12,7 @@ import AddIcon from '@mui/icons-material/Add';
 import MobileHero from '../components/MobileHero';
 import Footer from '../components/Footer';
 
-// This function will pre-render the home page on each request using the data returned by getServerSideProps: In this case "payload" which is the recipe card's content.
+//This function will pre-render the home page on each request using the data returned by getServerSideProps: In this case "payload" which is the recipe card's content.
 export async function getServerSideProps() {
   try {
     const response = await fetch(`https://craveaway.herokuapp.com/recipes`);

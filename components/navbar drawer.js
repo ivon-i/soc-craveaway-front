@@ -1,7 +1,6 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import SwipeableDrawer from '@mui/material/SwipeableDrawer';
-import Button from '@mui/material/Button';
 import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
@@ -13,10 +12,8 @@ import HomeIcon from '@mui/icons-material/Home';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import DinnerDiningIcon from '@mui/icons-material/DinnerDining';
 import { Login, Logout } from '@mui/icons-material';
-import PolicyIcon from '@mui/icons-material/Policy';
 import Link from 'next/link';
 import { useUser } from '@auth0/nextjs-auth0';
-import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import Typography from '@mui/material/Typography';
 
 export default function SwipeableTemporaryDrawer() {
@@ -65,7 +62,8 @@ export default function SwipeableTemporaryDrawer() {
             <ListItemButton>
               <ListItemIcon>
                 {index === 0 && (
-                  <HomeIcon alt="Home"
+                  <HomeIcon
+                    alt="Home"
                     sx={{
                       color: '#34393C',
                       fontSize: 'xx-large',
@@ -73,7 +71,8 @@ export default function SwipeableTemporaryDrawer() {
                   />
                 )}
                 {index === 1 && (
-                  <AccountCircleIcon alt="My Profile"
+                  <AccountCircleIcon
+                    alt="My Profile"
                     sx={{
                       color: '#34393C',
                       fontSize: 'xx-large',
@@ -81,7 +80,8 @@ export default function SwipeableTemporaryDrawer() {
                   />
                 )}
                 {index === 2 && (
-                  <DinnerDiningIcon alt="Create a recipe"
+                  <DinnerDiningIcon
+                    alt="Create a recipe"
                     sx={{
                       color: '#34393C',
                       fontSize: 'xx-large',
@@ -110,7 +110,8 @@ export default function SwipeableTemporaryDrawer() {
             <ListItemButton>
               <ListItemIcon>
                 {index === 0 && (
-                  <Login alt="Login"
+                  <Login
+                    alt="Login"
                     sx={{
                       color: '#34393C',
                       fontSize: 'xx-large',
@@ -153,7 +154,8 @@ export default function SwipeableTemporaryDrawer() {
             <ListItemButton>
               <ListItemIcon>
                 {index === 0 && (
-                  <HomeIcon alt="Home"
+                  <HomeIcon
+                    alt="Home"
                     sx={{
                       color: '#34393C',
                       fontSize: 'xx-large',
@@ -161,7 +163,8 @@ export default function SwipeableTemporaryDrawer() {
                   />
                 )}
                 {index === 1 && (
-                  <AccountCircleIcon alt="My Profile"
+                  <AccountCircleIcon
+                    alt="My Profile"
                     sx={{
                       color: '#34393C',
                       fontSize: 'xx-large',
@@ -169,7 +172,8 @@ export default function SwipeableTemporaryDrawer() {
                   />
                 )}
                 {index === 2 && (
-                  <DinnerDiningIcon alt="Create a recipe"
+                  <DinnerDiningIcon
+                    alt="Create a recipe"
                     sx={{
                       color: '#34393C',
                       fontSize: 'xx-large',
@@ -193,13 +197,13 @@ export default function SwipeableTemporaryDrawer() {
           <Link href="/api/auth/logout" passHref>
             <Typography variant="body1">Logout</Typography>
           </Link>,
-          'Usage Policy',
         ].map((text, index) => (
           <ListItem key={text} disablePadding>
             <ListItemButton>
               <ListItemIcon>
                 {index === 0 && (
-                  <Logout alt="Logout"
+                  <Logout
+                    alt="Logout"
                     sx={{
                       color: '#34393C',
                       fontSize: 'xx-large',

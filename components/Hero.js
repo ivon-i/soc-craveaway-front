@@ -3,7 +3,6 @@ import AddIcon from '@mui/icons-material/Add';
 import AddRecipeButton from './AddRecipeButton';
 export const Hero = () => {
   return (
-    // Container contains all elements for the Hero section of the homepage: this is under the Navbar
     <Box>
       <Container maxWidth="lg">
         <Box

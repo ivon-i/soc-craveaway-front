@@ -8,7 +8,7 @@ import createEmotionCache from '../src/createEmotionCache';
 import { UserProvider } from '@auth0/nextjs-auth0';
 import '../styles/globals.css';
 
-// Client-side cache, shared for the whole session of the user in the browser. - makes the loading faster
+// Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
 export default function MyApp(props) {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;

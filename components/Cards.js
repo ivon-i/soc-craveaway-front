@@ -1,11 +1,4 @@
-import {
-  Paper,
-  Box,
-  Typography,
-  Chip,
-  IconButton,
-  Hidden,
-} from '@mui/material';
+import { Paper, Box, Typography, Chip, IconButton } from '@mui/material';
 import Image from 'next/image';
 import StarIcon from '@mui/icons-material/Star';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';

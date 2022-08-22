@@ -15,7 +15,8 @@ import {
 import { useState } from 'react';
 import SendIcon from '@mui/icons-material/Send';
 import { useUser } from '@auth0/nextjs-auth0';
-import { Navbar } from '../ThemeFolder/Navbar';
+import { Navbar } from '../components/Navbar.js';
+import { display } from '@mui/system';
 export default function createRecipe() {
   const cookingTime = [
     '10-20 mins',
@@ -70,7 +71,7 @@ export default function createRecipe() {
   const [open, setOpen] = useState(false);
   const [success, setSuccess] = useState(false);
   const [previewSource, setPreviewSource] = useState();
-  // This function takes datapoints as a paramater and assigns target value as key value pairs of an object held in state to create a new recipe.
+  // This function takes datapoints as a parameter and assigns target value as key value pairs of an object held in state to create a new recipe.
   const handleChangeFor = (propertyName) => (e) => {
     setNewRecipeSubmission((newRecipeSubmission) => ({
       ...newRecipeSubmission,
@@ -83,7 +84,6 @@ export default function createRecipe() {
     console.log('newRecipeSubmission', newRecipeSubmission);
     const response = await fetch(
       'https://craveaway.herokuapp.com/recipes/create/',
-      // 'http://localhost:3001/recipes/create/',
       {
         method: 'POST',
         body: JSON.stringify(newRecipeSubmission),
@@ -188,7 +188,6 @@ export default function createRecipe() {
               {/* IMAGE */}
               <Box
                 sx={{
-                  ml: '5px',
                   height: '150px',
                   mt: '24px',
                   display: 'flex',
@@ -423,73 +422,52 @@ export default function createRecipe() {
     return (
       <>
         {
-          <div>
+          <>
             <Navbar />
             <Box
               sx={{
                 backgroundImage: 'url(/food_illustration.png)',
                 minHeight: '100vh',
-                paddingBottom: {
-                  xs: '0',
-                  sm: '40px',
-                  md: '40px',
-                },
               }}
             >
-              <br></br>
-              <br></br>
-              <Box
-                sx={{
-                  borderRadius: 7,
-                  backgroundColor: 'white',
-                  paddingBottom: 8,
-                  alignItems: 'center',
-                  display: 'flex',
-                  justifyContent: 'center',
-                  width: 300,
-                  height: 10,
-                  m: 'auto',
-                }}
-              >
-                <Typography
-                  font-align="center"
+              <Container maxWidth="xs" sx={{ paddingTop: '40px' }}>
+                <Paper
                   sx={{
-                    fontWeight: '800',
-                    fontSize: 15,
-                    paddingTop: 2,
-                    paddingBottom: 4,
+                    display: 'flex',
+                    flexDirection: 'column',
                     textAlign: 'center',
-                    m: 'auto',
-                    alignItems: 'center',
-                    display: 'flex',
-                    justifyContent: 'center',
+                    overflow: 'hidden',
+                    padding: '40px 40px',
                   }}
                 >
-                  You must login to access your profile!
-                </Typography>
-              </Box>
-              <>
-                <Box
-                  sx={{
-                    backgroundColor: 'white',
-                    borderRadius: 1000,
-                    display: 'flex',
-                    width: '33%',
-                    m: 'auto',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}
-                >
-                  <img
-                    className="fryingpan"
-                    alt="Loading..."
-                    margin="auto"
-                    width="400"
-                    height="250"
-                    data-id="14475354"
-                    data-animated-url="https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif"
-                    skip_resize="true"
-                    srcset="https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 320w,
+                  <Typography
+                    font-align="center"
+                    sx={{
+                      fontWeight: '700',
+                      fontSize: 16,
+                    }}
+                  >
+                    You must login to access your profile!
+                  </Typography>
+
+                  <Box
+                    sx={{
+                      display: 'flex',
+                      flexDirection: 'column',
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                    }}
+                  >
+                    <img
+                      className="fryingpan"
+                      alt="Loading..."
+                      width="400"
+                      height="250"
+                      margin="auto"
+                      data-id="14475354"
+                      data-animated-url="https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif"
+                      skip_resize="true"
+                      srcset="https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 320w,
             https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 400w,
             https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 450w,
             https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 640w,
@@ -500,44 +478,31 @@ export default function createRecipe() {
             https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 1200w,
             https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 768w,
             https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif 1600w"
-                    sizes="(max-width: 919px) 100vw, max(768px, 98vh)"
-                    src="https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif"
-                  ></img>
-                </Box>
-              </>
-              <Box
-                sx={{
-                  backgroundColor: 'white',
-                  borderRadius: 10,
-                  paddingBottom: 3,
-                  paddingTop: 3,
-                  alignItems: 'center',
-                  display: 'flex',
-                  justifyContent: 'center',
-                  width: '18%',
-                  m: 'auto',
-                }}
-              >
-                <Link href="/api/auth/login" passHref>
-                  <Button
-                    aria-label="Login"
-                    variant="contained"
-                    className="fixedLoginButton"
-                    sx={{
-                      fontWeight: '900',
-                      marginTop: 15,
-                      alignItems: 'center',
-                      display: 'flex',
-                      justifyContent: 'center',
-                      m: 'auto',
-                    }}
-                  >
-                    Login
-                  </Button>
-                </Link>
-              </Box>
+                      sizes="(max-width: 919px) 100vw, max(768px, 98vh)"
+                      src="https://cdn.dribbble.com/users/393062/screenshots/14475354/media/f2221ff5ea31cd694fea71f05a28805c.gif"
+                    />
+                  </Box>
+
+                  <Link href="/api/auth/login" passHref>
+                    <Button
+                      size="large"
+                      aria-label="Login"
+                      variant="contained"
+                      className="fixedLoginButton"
+                      sx={{
+                        fontWeight: '600',
+                        textTransform: 'capitalize',
+                        borderRadius: '40px',
+                        marginTop: '24px',
+                      }}
+                    >
+                      Login
+                    </Button>
+                  </Link>
+                </Paper>
+              </Container>
             </Box>
-          </div>
+          </>
         }
       </>
     );

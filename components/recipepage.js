@@ -9,7 +9,6 @@ import {
 import { Box } from '@mui/system';
 import Image from 'next/image';
 import GradeIcon from '@mui/icons-material/Grade';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import Rating from '@mui/material/Rating';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import PeopleIcon from '@mui/icons-material/People';
@@ -42,8 +41,7 @@ export default function RecipeCards({ recipedata, separatedingredients }) {
     }
   }
 
-  // This function allows the user to add an ingredient to their shopping list. It posts the user's username and ingredient so it can later on appear on the profile page
-  // for that user.
+  // This function allows the user to add an ingredient to their shopping list. It posts the user's username and ingredient so it can later on appear on the profile page for that user.
   const getChipInfo = async (e) => {
     setIngredientAlert(
       `Added ${e.currentTarget.innerText} to your ShoppingList`

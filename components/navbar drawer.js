@@ -15,6 +15,7 @@ import { Login, Logout } from '@mui/icons-material';
 import Link from 'next/link';
 import { useUser } from '@auth0/nextjs-auth0';
 import Typography from '@mui/material/Typography';
+import PersonAddIcon from '@mui/icons-material/PersonAdd';
 
 export default function SwipeableTemporaryDrawer() {
   const [state, setState] = React.useState({
@@ -105,6 +106,9 @@ export default function SwipeableTemporaryDrawer() {
           <Link href="/api/auth/login" passHref>
             <Typography variant="body1">Login</Typography>
           </Link>,
+          <Link href="/api/auth/login" passHref>
+            <Typography variant="body1">Sign Up</Typography>
+          </Link>,
         ].map((text, index) => (
           <ListItem key={text} disablePadding>
             <ListItemButton>
@@ -115,6 +119,14 @@ export default function SwipeableTemporaryDrawer() {
                     sx={{
                       color: '#34393C',
                       fontSize: 'xx-large',
+                    }}
+                  />
+                )}
+                {index === 1 && (
+                  <PersonAddIcon
+                    sx={{
+                      color: "#34393C",
+                      fontSize: "xx-large"
                     }}
                   />
                 )}
